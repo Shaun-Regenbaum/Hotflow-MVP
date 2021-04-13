@@ -1,4 +1,9 @@
 <script>
+	import * as api from '$lib/api.js';
+	import { session } from '$app/stores';
+	let name = '';
+	if ($session.user)
+		name = $session.user.name;
 </script>
 
 <svelte:head>
@@ -6,7 +11,12 @@
 </svelte:head>
 
 <main>
-	<h1>Hello world!</h1>
+
+	{#if name}
+	<h1>Hello {name}!</h1>
+	{:else}
+	<a href="/login">Login?</a>
+	{/if}
 
 </main>
 

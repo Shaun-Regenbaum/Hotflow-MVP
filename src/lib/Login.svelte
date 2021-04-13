@@ -25,7 +25,8 @@ async function submit(event) {
     errors = response.errors;
     console.log(response)
     if (response.body) {
-        $session.user = response.user;
+        console.log(response.body)
+        $session.user = response.body;
         goto('/');
     }
 	}
