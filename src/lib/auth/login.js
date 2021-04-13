@@ -2,12 +2,10 @@ import * as api from '$lib/api.js';
 import { respond } from './_respond';
 
 export async function post(request) {
+    console.log(request)
 	const body = await api.post('users/login', {
-		user: {
-			email: request.body.email,
-			password: request.body.password
-		}
+        "login": request.email,
+        "password": request.password
 	});
-
 	return respond(body);
 }

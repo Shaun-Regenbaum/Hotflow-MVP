@@ -2,7 +2,8 @@ const base = 'https://api.backendless.com/A8D2B6D2-9B17-5895-FF17-30E5A6049800/9
 
 async function send({ method, path, data, token }) {
 	const opts = { method, headers: {} };
-
+    console.log(path, data, token)
+    console.log("hello")
 	if (data) {
 		opts.headers['Content-Type'] = 'application/json';
 		opts.body = JSON.stringify(data);
@@ -15,12 +16,13 @@ async function send({ method, path, data, token }) {
 	const fetch =
 		typeof window !== 'undefined'
 			? window.fetch
-			: await import('node-fetch').then((mod) => mod.default);
+            : await import('node-fetch').then((mod) => mod.default);
+    
 
 	return fetch(`${base}/${path}`, opts)
 		.then((r) => r.text())
 		.then((json) => {
-			try {
+            try {
 				return JSON.parse(json);
 			} catch (err) {
 				return json;

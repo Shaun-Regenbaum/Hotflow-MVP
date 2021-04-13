@@ -1,12 +1,9 @@
 export function respond(body) {
-    console.log(body)
 	if (body.errors) {
 		return { status: 401, body };
-	}
-
-	const json = JSON.stringify(body.user);
-	const value = Buffer.from(json).toString('base64');
-
+    }
+    const json = JSON.stringify(body["user-token"]);
+	const value = json
 	return {
 		headers: {
 			'set-cookie': `jwt=${value}; Path=/; HttpOnly`

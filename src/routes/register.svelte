@@ -5,8 +5,8 @@
 </script>
 
 {#if !session.user}
-<Login />
-<a href="/register">Don't have an account yet?</a>
+<Register />
+<a href="/login">Already have an accont?</a>
 {:else}
 <h1>You are already logged in!</h1>
 {/if}
