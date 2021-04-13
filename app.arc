@@ -1,5 +1,5 @@
 @app
-svelte-kit-app
+Hotflow-MVP
 
 @http
 get /
