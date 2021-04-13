@@ -14,7 +14,7 @@ module.exports = {
 
 		vite: {
 			ssr: {
-				noExternal: ['node-fetch']
+				noExternal: ['node-fetch', 'cookie']
 			}
 		}
 	}
