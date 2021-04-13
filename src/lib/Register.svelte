@@ -17,6 +17,8 @@
     let userTypeBool = 'false';
     $: userType = userTypeBool ? "Creator" : "Consumer";
 
+    let message = ""
+
 	let password = '';
 	let errors = null;
 	async function submit(event) {
@@ -24,6 +26,7 @@
 		errors = response.errors;
 		if (response.body) {
 			$session.user = response.body;
+            message = "You have registered! Please Login!"
 			goto('/');
 		}
 	}
@@ -53,5 +56,6 @@
             Sign up
         </button>
     </form>
+    <h1>{message}</h1>
 
 </div>
