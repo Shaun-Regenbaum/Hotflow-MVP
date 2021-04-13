@@ -1,9 +1,14 @@
 <script>
+	import Login from "$lib/Login.svelte";
+	import Register from "$lib/Register.svelte";
 	import * as api from '$lib/api.js';
 	import { session } from '$app/stores';
 	let name = '';
 	if ($session.user)
 		name = $session.user.name;
+
+	let existing = true;
+
 </script>
 
 <svelte:head>
@@ -14,15 +19,21 @@
 
 	{#if name}
 	<h1>Hello {name}!</h1>
+	<h2>You are logged in!</h2>
 	{:else}
-	<a href="/login">Login?</a>
+		<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
+		{#if existing}
+		<Login/>
+		{:else}
+		<Register/>
+		{/if}
+
 	{/if}
 
 </main>
 
 <style>
 	main {
-		text-align: center;
 		padding: 1em;
 		margin: 0 auto;
 	}
