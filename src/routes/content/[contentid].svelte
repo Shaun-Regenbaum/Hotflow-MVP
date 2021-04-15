@@ -1,7 +1,9 @@
 <script context="module">
-	let url;
 	import { getLink } from '$lib/db/getlink.js';
+	import { session } from '$app/stores';
+	let url;
 	export async function load({ page }) {
+		console.log(page.params.contentid)
 		const result = await getLink(page.params.contentid)
 		console.log(result)
 		if (result.status){ 
