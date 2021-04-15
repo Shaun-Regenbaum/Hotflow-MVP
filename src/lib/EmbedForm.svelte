@@ -1,9 +1,14 @@
 <script>
+    import { saveLink } from '$lib/db/savelink.js';
+    import { session } from '$app/stores';
+    let userToken = $session.user['user-token']
     let url;
     const withHttp = (url) => (!/^http?:\/\//i.test(url) ? `http://${url}` : url);
 
     async function submit(event) {
-        
+        console.log(withHttp(url))
+        const result = await saveLink(withHttp(url), userToken);
+        console.log(result)
     }
 </script>
 

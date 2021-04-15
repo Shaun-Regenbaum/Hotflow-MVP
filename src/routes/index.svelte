@@ -4,7 +4,7 @@
 	import EmbedForm from "$lib/EmbedForm.svelte";
 	import * as api from '$lib/api.js';
 	import { session } from '$app/stores';
-	let name = '';
+	$: name = '';
 	if ($session.user)
 		name = $session.user.name;
 

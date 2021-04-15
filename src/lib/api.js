@@ -15,7 +15,7 @@ async function send({ method, path, data, token }) {
 	}
 	// If we provide a token add it to the request
 	if (token) {
-		options.headers['Authorization'] = `Token ${token}`;
+		options.headers['user-token'] = token;
 	}
 
 	try {

@@ -17,7 +17,6 @@ import { login } from '$lib/auth/login.js';
 
 let email = 'a@a.com';
 let password = 'a';
-let errors = null;
 let message = "Nothing Happening Right Now"
 
 async function submit(event) {
