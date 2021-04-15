@@ -7,36 +7,35 @@
 </script>
 
 <script>
+    import { register } from '$lib/auth/register.js';
 	import { session } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { post } from '$lib/auth/register.js';
-	import ListErrors from '$lib/ListErrors.svelte';
+
     import Switch from "$lib/ToggleSwitch.svelte";
+
+
 	let name = '';
 	let email = '';
+    let password = '';
     let userTypeBool = 'false';
     $: userType = userTypeBool ? "Creator" : "Consumer";
 
-    let message = ""
+    let message = "Nothing Happening Right Now";
 
-	let password = '';
-	let errors = null;
+
 	async function submit(event) {
-		const response = await post({ name, email, password, userType });
-		errors = response.errors;
-		if (response.body) {
-			$session.user = response.body;
-            message = "You have registered! Please Login!"
-			goto('/');
-		}
+        message = "Trying to Register You";
+		const result = await register(name, email, password, userType);
+        console.log(result)
+        if (result.status){ 
+            message = "Succesfully Registered You";
+            $session.user = result.body.data
+            message = "Set Session Data";
+		} else{message = result.body.data.message}
 	}
 </script>
-
-<svelte:head>
-</svelte:head>
-
+<div id="StatusMessage">{message}</div>
 <div>
-    <ListErrors {errors}/>
     <h1>Make Your Account</h1>
     <form on:submit|preventDefault={submit}>
         <fieldset>
@@ -52,10 +51,10 @@
             <Switch bind:checked={userTypeBool}></Switch>
             <h4>{userType}</h4>
         </fieldset>
-        <button>
+        <button type=submit>
             Sign up
         </button>
     </form>
-    <h1>{message}</h1>
+
 
 </div>

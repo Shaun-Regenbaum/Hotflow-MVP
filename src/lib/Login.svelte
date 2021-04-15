@@ -13,25 +13,25 @@
 <script>
 import { session } from '$app/stores';
 import { goto } from '$app/navigation';
-import { post } from '$lib/auth/login.js';
-import ListErrors from '$lib/ListErrors.svelte';
+import { login } from '$lib/auth/login.js';
+
 let email = 'a@a.com';
 let password = 'a';
 let errors = null;
+let message = "Nothing Happening Right Now"
 
 async function submit(event) {
     console.log(email, password)
-    const response = await post({ email, password });
-    errors = response.errors;
-    console.log(response)
-    if (response.body) {
-        console.log(response.body)
-        $session.user = response.body;
-        goto('/');
-    }
+    const result = await login(email, password);
+    console.log(result)
+    if (result.status){ 
+            message = "Succesfully Registered You";
+            $session.user = result.body.data
+            message = "Set Session Data";
+    } else{message = result.body.data.message}
 	}
 </script>
-
+<div id="StatusMessage">{message}</div>
 <div>
     <h1>Sign In</h1>
     <form on:submit|preventDefault={submit}>

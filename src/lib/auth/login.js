@@ -1,11 +1,13 @@
 import * as api from '$lib/api.js';
-import { respond } from './_respond';
 
-export async function post(request) {
-    console.log(request)
-	const body = await api.post('users/login', {
-        "login": request.email,
-        "password": request.password
-	});
-	return respond(body);
+export async function login(email, password) {
+    const data = {
+		"login": email,
+		"password": password,
+	}
+    const path = 'users/login'
+    const response = await api.post(path, data);
+    let responseStatus = response && response.status === 200 && response.statusText === 'OK';
+	return { status: responseStatus, body: await response };
 }
+
