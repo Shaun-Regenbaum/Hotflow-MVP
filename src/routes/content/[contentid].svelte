@@ -1,6 +1,10 @@
 <script context="module">
+	import Login from "$lib/Login.svelte";
+	import Register from "$lib/Register.svelte";
+	import * as api from '$lib/api.js';
 	import { getLink } from '$lib/db/getlink.js';
 	import { session } from '$app/stores';
+	console.log("hello")
 	let existing=false;
 	let url;
 	export async function load({ page }) {
