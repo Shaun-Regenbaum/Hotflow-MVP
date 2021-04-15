@@ -10,11 +10,11 @@
 
     async function submit(event) {
         console.log(withHttp(url))
-        const result = await saveLink(withHttp(url), userToken);
+        const result = await saveLink(withHttps(url), userToken);
         if (result.status) {
             newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)}
         else{
-            result = await saveLink(withHttps(url), userToken);
+            result = await saveLink(withHttp(url), userToken);
             if (result.status) {
                 newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)
             }
