@@ -48,6 +48,6 @@ function addhttps(url) {
 	id="monetized"
 	style="	width:40%;
 	height:30vh;"
-	src={withHttp(url)}
+	src={addhttp(url)}
 />
 
