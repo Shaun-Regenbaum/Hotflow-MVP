@@ -6,13 +6,19 @@
     let newUrl;
     console.log(location)
     const withHttp = (url) => (!/^http?:\/\//i.test(url) ? `http://${url}` : url);
+    const withHttps = (url) => (!/^http?:\/\//i.test(url) ? `http://${url}` : url);
 
     async function submit(event) {
         console.log(withHttp(url))
         const result = await saveLink(withHttp(url), userToken);
-        console.log(result)
-        console.log(location.origin, result.body.data.objectId)
-        newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)
+        if result.status {
+            newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)}
+        else{
+            result = await saveLink(withHttps(url), userToken);
+            if result.status {
+                newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)
+            }
+        }
     }
 </script>
 
