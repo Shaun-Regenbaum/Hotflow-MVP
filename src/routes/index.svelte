@@ -1,6 +1,7 @@
 <script>
 	import Login from "$lib/Login.svelte";
 	import Register from "$lib/Register.svelte";
+	import EmbedForm from "$lib/EmbedForm.svelte";
 	import * as api from '$lib/api.js';
 	import { session } from '$app/stores';
 	let name = '';
@@ -20,6 +21,7 @@
 	{#if name}
 	<h1>Hello {name}!</h1>
 	<h2>You are logged in!</h2>
+	<EmbedForm/>
 	{:else}
 		<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
 		{#if existing}
