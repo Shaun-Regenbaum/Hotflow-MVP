@@ -5,19 +5,26 @@
     let url;
     let newUrl;
     console.log(location)
-    const withHttp = (url) => (!/^http?:\/\//i.test(url) ? `http://${url}` : url);
-    const withHttps = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
+function addhttp(url) {
+    if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+        url = "http://" + url;
+    }
+    return url;
+}
+function addhttps(url) {
+    if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+        url = "https://" + url;
+    }
+        return url;
+}
 
     async function submit(event) {
         console.log(withHttp(url))
-        const result = await saveLink(withHttps(url), userToken);
+        const result = await saveLink(addhttp(url), userToken);
         if (result.status) {
             newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)}
         else{
-            result = await saveLink(withHttp(url), userToken);
-            if (result.status) {
-                newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)
-            }
+            result = await saveLink(addhttps(url), userToken);
         }
     }
 </script>
