@@ -18,8 +18,8 @@
 
 <main>
 
-	{#if name}
-	<h1>Hello {name}!</h1>
+	{#if $session.user}
+	<h1>Hello {$session.user.name}!</h1>
 	<h2>You are logged in!</h2>
 	<EmbedForm/>
 	{:else}
