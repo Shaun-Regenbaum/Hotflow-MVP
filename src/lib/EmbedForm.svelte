@@ -19,7 +19,7 @@ function addhttps(url) {
 }
 
     async function submit(event) {
-        console.log(withHttp(url))
+        console.log(addhttp(url))
         const result = await saveLink(addhttp(url), userToken);
         if (result.status) {
             newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)}
