@@ -6,7 +6,7 @@
     let newUrl;
     console.log(location)
     const withHttp = (url) => (!/^http?:\/\//i.test(url) ? `http://${url}` : url);
-    const withHttps = (url) => (!/^http?:\/\//i.test(url) ? `http://${url}` : url);
+    const withHttps = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
 
     async function submit(event) {
         console.log(withHttp(url))
