@@ -1,6 +1,7 @@
 <script context="module">
 	import { getLink } from '$lib/db/getlink.js';
 	import { session } from '$app/stores';
+	let existing=false;
 	let url;
 	export async function load({ page }) {
 		console.log(page.params.contentid)
@@ -13,6 +14,7 @@
 		return result
 	}
 </script>
+{#if $session.user}
 <iframe
 	title="iframe"
 	id="monetized"
@@ -20,3 +22,12 @@
 	height:100vh;"
 	src={url}
 	/>
+	{:else}
+		<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
+		{#if existing}
+		<Login/>
+		{:else}
+		<Register/>
+		{/if}
+
+	{/if}

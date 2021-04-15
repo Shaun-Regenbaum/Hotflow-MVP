@@ -26,6 +26,7 @@ async function submit(event) {
     if (result.status){ 
             message = "Succesfully Registered You";
             $session.user = result.body.data
+            document.cookie = result.body.data
             message = "Set Session Data";
     } else{message = result.body.data.message}
 	}
