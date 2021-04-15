@@ -4,7 +4,8 @@ const base = 'https://api.backendless.com/A8D2B6D2-9B17-5895-FF17-30E5A6049800/9
 async function send({ method, path, data, token }) {
 
 	const url = base +'/' +path
-	const options = { url: url, method: method, headers: {} };
+	let options = { url: url, method: method, headers: {} };
+	console.log(options)
 	// Well update the value later, but we want to return something no matter what;
 	let response;
 
