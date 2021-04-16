@@ -1,6 +1,5 @@
 <script>
   export let checked = false;
-  global = globalThis
 </script>
 
 <label class="switch">
