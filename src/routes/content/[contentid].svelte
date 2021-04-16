@@ -1,4 +1,4 @@
-<script>
+<script context="module">
 	import { getLink } from '$lib/db/getlink.js';
 
 	let url;
