@@ -1,11 +1,11 @@
-import axios from 'axios'
+import fetch from 'node-fetch'
 const base = 'https://api.backendless.com/A8D2B6D2-9B17-5895-FF17-30E5A6049800/9964E6B0-B7BB-4355-9549-60C45FCDEBB1';
 
 async function send({ method, path, data, token }) {
 
 	const url = base + '/' + path
 	let options = { method: method, headers: {} };
-	options.url = url
+	// options.url = url;
 	console.log("1")
 	// Well update the value later, but we want to return something no matter what;
 	let response;
@@ -24,12 +24,12 @@ async function send({ method, path, data, token }) {
 
 
 	try {
-		
+		response = await fetch(url, options);
 		console.log("3")
 	}
 	catch (error) {
 		response = error.response;
-		console.log("4", error)
+		console.log("4")
 	}
 	// let responseStatus = response && response.status === 200 && response.statusText === 'OK';
 	return response;

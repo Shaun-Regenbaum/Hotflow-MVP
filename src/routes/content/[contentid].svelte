@@ -5,7 +5,8 @@
 	export async function load({ page }) {
 		const result = await getLink(page.params.contentid)
 		if (result.status){ 
-			url = result.body.data.url
+			console.log(result)
+			url = result.body.url
     } else{message = result.body.data.message}
 		
 		return result
