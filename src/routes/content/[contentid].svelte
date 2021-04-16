@@ -1,12 +1,9 @@
 <script context="module">
 	import { getLink } from '$lib/db/getlink.js';
-	console.log("hello")
 
 	let url;
 	export async function load({ page }) {
-		console.log(page.params.contentid)
 		const result = await getLink(page.params.contentid)
-		console.log(result)
 		if (result.status){ 
 			url = result.body.data.url
     } else{message = result.body.data.message}
