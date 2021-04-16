@@ -14,7 +14,7 @@ module.exports = {
 
 		vite: {
 			ssr: {
-				noExternal: ['node-fetch']
+				noExternal: Object.keys(pkg.dependencies)
 			}
 		}
 	}
