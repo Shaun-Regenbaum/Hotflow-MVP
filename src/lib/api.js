@@ -21,6 +21,8 @@ async function send({ method, path, data, token }) {
 
 	console.log("2")
 
+
+
 	try {
 		response = await axios(options);
 		console.log("3")
