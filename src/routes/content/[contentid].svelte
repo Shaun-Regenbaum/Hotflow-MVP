@@ -17,7 +17,7 @@
 	import { session } from '$app/stores';
 	import Login from "$lib/Login.svelte";
 	import Register from "$lib/Register.svelte";
-		let existing = false;
+	let existing = true;
 </script>
 {#if $session.user}
 <iframe
