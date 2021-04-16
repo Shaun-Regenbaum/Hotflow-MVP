@@ -14,7 +14,7 @@ module.exports = {
 
 		vite: {
 			ssr: {
-				external: pkg.axios,
+				noExternal: Object.keys(pkg.dependencies)
 			}
 		}
 	}
