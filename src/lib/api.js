@@ -3,8 +3,9 @@ const base = 'https://api.backendless.com/A8D2B6D2-9B17-5895-FF17-30E5A6049800/9
 
 async function send({ method, path, data, token }) {
 
-	const url = base +'/' +path
-	let options = { url: url, method: method, headers: {} };
+	const url = base + '/' + path
+	let options = { method: method, headers: {} };
+	// options.url = url;
 	console.log("1")
 	// Well update the value later, but we want to return something no matter what;
 	let response;
@@ -21,16 +22,16 @@ async function send({ method, path, data, token }) {
 
 	console.log("2")
 
+	response = await axios.get(url, options);	
 
-
-	try {
-		response = await axios(options);
-		console.log("3")
-	}
-	catch (error) {
-		response = error.response;
-		console.log("4", error)
-	}
+	// try {
+		
+	// 	console.log("3")
+	// }
+	// catch (error) {
+	// 	response = error.response;
+	// 	console.log("4", error)
+	// }
 	// let responseStatus = response && response.status === 200 && response.statusText === 'OK';
 	return response;
 }
