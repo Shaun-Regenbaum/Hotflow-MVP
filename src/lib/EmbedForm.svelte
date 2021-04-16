@@ -1,5 +1,5 @@
 <script>
-    import { saveLink } from '$lib/db/savelink.js';
+    import { saveLink } from '$lib/urls/saveURL.js';
     import { session } from '$app/stores';
     let userToken = $session.user['user-token']
     let url;

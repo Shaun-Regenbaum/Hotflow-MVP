@@ -1,5 +1,5 @@
 <script context="module">
-	import { getLink } from '$lib/db/getlink.js';
+	import { getLink } from '$lib/urls/getURL.js';
 
 	let url;
 	export async function load({ page }) {
@@ -27,12 +27,12 @@
 	height:100vh;"
 	src={url}
 	/>
+{:else}
+	<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
+	{#if existing}
+	<Login/>
 	{:else}
-		<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
-		{#if existing}
-		<Login/>
-		{:else}
-		<Register/>
-		{/if}
-
+	<Register/>
 	{/if}
+
+{/if}

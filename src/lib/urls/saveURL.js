@@ -1,16 +1,21 @@
-import * as api from '$lib/api.js';
-import {v4 as uuidv4 } from "uuid"
+import * as api from '$lib/backendlessAPI.js';
 
 export async function saveLink(url, userToken) {
-    const id = uuidv4()
-    const data = {
-        "id": id,
-        "url":url
-	}
+    // We need the path, data, and associated userToken for the call:
     const path = 'data/embeds'
+    const data = { "url" : url }
     const token = userToken
+ 
+    // Making the call:
     const response = await api.post(path, data, token);
-    console.log(response)
+
+    // Checking to see if it was a success
     let responseStatus = response && response.status === 200 && response.statusText === 'OK';
+
+    // Returning a custom object that contains success/failure and everything else.
 	return { status: responseStatus, body: await response };
 }
+
+
+
+

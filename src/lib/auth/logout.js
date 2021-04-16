@@ -1,18 +1,16 @@
-// We should def incorporate this into the api.js but for now its fine.
-export async function post(request) {
-	const base = 'https://api.backendless.com/A8D2B6D2-9B17-5895-FF17-30E5A6049800/9964E6B0-B7BB-4355-9549-60C45FCDEBB1';
+import * as api from '$lib/backendlessAPI.js';
+export async function logout(userToken) {
+     // We need the path and userToken for the call:
 	const path = 'users/logout'
-	const method = 'GET'
-	const opts = { method, headers: {"user-token":request.userToken} };
-    console.log(request)
+	const token = userToken
 
-	return fetch(`${base}/${path}`, opts)
-	.then((r) => r.text())
-	.then((json) => {
-		try {
-			return JSON.parse(json);
-		} catch (err) {
-			return json;
-		}
-	});
+    // Making the call:
+    const response = await api.get(path, token);
+
+    // Checking to see if it was a success
+    let responseStatus = response && response.status === 200 && response.statusText === 'OK';
+
+    // Returning a custom object that contains success/failure and everything else.
+	return { status: responseStatus, body: await response };
 }
+

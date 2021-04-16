@@ -2,7 +2,6 @@
 	import Login from "$lib/Login.svelte";
 	import Register from "$lib/Register.svelte";
 	import EmbedForm from "$lib/EmbedForm.svelte";
-	import * as api from '$lib/api.js';
 	import { session } from '$app/stores';
 	$: name = '';
 	if ($session.user)

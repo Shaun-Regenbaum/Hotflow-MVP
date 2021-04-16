@@ -24,7 +24,6 @@
 	"type": "module",
 	"dependencies": {
 		"cookie": "^0.4.1",
-		"node-fetch": "^2.6.1",
-		"uuid": "^8.3.2"
+		"node-fetch": "^2.6.1"
 	}
 }

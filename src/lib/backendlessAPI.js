@@ -1,40 +1,44 @@
-import fetch from 'node-fetch'
-const base = 'https://api.backendless.com/A8D2B6D2-9B17-5895-FF17-30E5A6049800/9964E6B0-B7BB-4355-9549-60C45FCDEBB1';
+const appID = 'A8D2B6D2-9B17-5895-FF17-30E5A6049800'
+const restID = '9964E6B0-B7BB-4355-9549-60C45FCDEBB1'
+const base = 'https://api.backendless.com/' + appID +'/' + restID
 
 async function send({ method, path, data, token }) {
 
+	// Variables for API Call:
 	const url = base + '/' + path
 	let options = { method: method, headers: {} };
-	// options.url = url;
-	console.log("1")
-	// Well update the value later, but we want to return something no matter what;
 	let response;
 
-	// If we are using POST, then we'll have some data
+	// If we have data, add it to the call:
 	if (data) {
 		options.headers['Content-Type'] = 'application/json';
 		options.data = data;
 	}
-	// If we provide a token add it to the request
+	// If we have a token, add it to the call:
 	if (token) {
 		options.headers['user-token'] = token;
 	}
 
-	console.log("2")
-
-
+	// Check to see if we need Server or Client-Side Fetch:
+		const fetch = typeof window !== 'undefined'
+			? window.fetch
+		: await import('node-fetch').then((mod) => mod.default);
+	
+	// The call will either be a success or failure:
 	try {
+		console.log(url, options)
 		response = await fetch(url, options);
-		console.log("3")
+
 	}
 	catch (error) {
 		response = error.response;
-		console.log("4")
+		console.error(response)
 	}
-	// let responseStatus = response && response.status === 200 && response.statusText === 'OK';
+	console.log(response)
 	return response;
 }
 
+// The main types of calls we can do:
 export function get(path, token) {
 	return send({ method: 'GET', path, token });
 }

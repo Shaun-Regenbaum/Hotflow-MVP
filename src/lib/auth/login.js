@@ -1,13 +1,20 @@
-import * as api from '$lib/api.js';
+import * as api from '$lib/backendlessAPI.js';
 
 export async function login(email, password) {
+     // We need the path and login data for the call:
+    const path = 'users/login'
     const data = {
 		"login": email,
 		"password": password,
-	}
-    const path = 'users/login'
+    }
+
+    // Making the call:
     const response = await api.post(path, data);
+
+    // Checking to see if it was a success
     let responseStatus = response && response.status === 200 && response.statusText === 'OK';
+
+    // Returning a custom object that contains success/failure and everything else.
 	return { status: responseStatus, body: await response };
 }
 
