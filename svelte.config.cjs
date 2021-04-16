@@ -14,7 +14,7 @@ module.exports = {
 
 		vite: {
 			ssr: {
-				noExternal: [pkg.dependencies.cookie, pkg.dependencies.uuid]
+				noExternal: Object.keys(pkg.dependencies || {})
 			}
 		}
 	}
