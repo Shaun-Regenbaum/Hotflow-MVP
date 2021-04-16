@@ -29,10 +29,10 @@
         console.log(result)
         if (result.status){ 
             message = "Succesfully Registered You";
-            $session.user = result.body.data
-            document.cookie = result.body.data
+            $session.user = result.body
+            document.cookie = result.body
             message = "Set Session Data";
-		} else{message = result.body.data.message}
+		} else{message = result.body}
 	}
 </script>
 <div id="StatusMessage">{message}</div>

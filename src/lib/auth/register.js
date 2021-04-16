@@ -15,8 +15,7 @@ export async function register(name, email, password, userType) {
 	const response = await api.post(path, data);
 
     // Checking to see if it was a success
-	let responseStatus = response && response.status === 200 && response.statusText === 'OK';
-
+    let responseStatus = response.email ? true : false
     // Returning a custom object that contains success/failure and everything else.
-	return  { status: responseStatus, body: await response };
+	return { status: responseStatus, body: response };
 }

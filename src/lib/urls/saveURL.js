@@ -8,12 +8,10 @@ export async function saveLink(url, userToken) {
  
     // Making the call:
     const response = await api.post(path, data, token);
-
     // Checking to see if it was a success
-    let responseStatus = response && response.status === 200 && response.statusText === 'OK';
-
+    let responseStatus = response.url ? true : false
     // Returning a custom object that contains success/failure and everything else.
-	return { status: responseStatus, body: await response };
+	return { status: responseStatus, body: response };
 }
 
 

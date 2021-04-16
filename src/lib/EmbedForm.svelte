@@ -17,7 +17,7 @@ function addhttps(url) {
         console.log(addhttps(url))
         const result = await saveLink(addhttps(url), userToken);
         if (result.status) {
-            newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)}
+            newUrl = String(location.origin) + '/content/' + String(result.body.objectId)}
         else{
         }
     }
@@ -42,6 +42,6 @@ function addhttps(url) {
 	id="monetized"
 	style="	width:40%;
 	height:30vh;"
-	src={addhttp(url)}
+	src={addhttps(url)}
 />
 

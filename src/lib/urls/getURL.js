@@ -3,15 +3,13 @@ import * as api from '$lib/backendlessAPI.js';
 
 export async function getLink(objectId) {
     // We just need the path and id of object for get call:
-    const path = 'data/embeds/' + retrievalId
-    const retrievalId = objectId
+    const path = 'data/embeds/' + objectId
   
     // Making the call:
     const response = await api.get(path);
 
      // Checking to see if it was a success
-    let responseStatus = response && response.status === 200 && response.statusText === 'OK';
-
+    let responseStatus = response.url ? true : false
     // Returning a custom object that contains success/failure and everything else.
-    return { status: responseStatus, body: await response };
+	return { status: responseStatus, body: response };
 }
