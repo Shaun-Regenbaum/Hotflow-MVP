@@ -5,12 +5,7 @@
     let url;
     let newUrl;
     console.log(location)
-function addhttp(url) {
-    if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
-        url = "http://" + url;
-    }
-    return url;
-}
+
 function addhttps(url) {
     if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
         url = "https://" + url;
@@ -19,12 +14,11 @@ function addhttps(url) {
 }
 
     async function submit(event) {
-        console.log(addhttp(url))
-        const result = await saveLink(addhttp(url), userToken);
+        console.log(addhttps(url))
+        const result = await saveLink(addhttps(url), userToken);
         if (result.status) {
             newUrl = String(location.origin) + '/content/' + String(result.body.data.objectId)}
         else{
-            result = await saveLink(addhttps(url), userToken);
         }
     }
 </script>
