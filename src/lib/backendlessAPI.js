@@ -19,7 +19,6 @@ async function send({ method, path, data, token }) {
 	if (token) {
 		options.headers['user-token'] = token;
 	}
-	console.log(url, options)
 
 	// Check to see if we need Server or Client-Side Fetch:
 	const fetch =
@@ -32,7 +31,6 @@ async function send({ method, path, data, token }) {
 	return result
 		.then((r) => r.text())
 		.then((json) => {
-			console.log(json)
 			try {
 				return JSON.parse(json);
 			} catch (err) {
