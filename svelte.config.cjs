@@ -14,7 +14,7 @@ module.exports = {
 
 		vite: {
 			ssr: {
-				noExternal: ['cookies', 'uuid', 'axios']
+				noExternal: []
 			}
 		}
 	}
