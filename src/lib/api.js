@@ -5,7 +5,7 @@ async function send({ method, path, data, token }) {
 
 	const url = base +'/' +path
 	let options = { url: url, method: method, headers: {} };
-	console.log(options)
+	console.log("1",options)
 	// Well update the value later, but we want to return something no matter what;
 	let response;
 
@@ -19,10 +19,15 @@ async function send({ method, path, data, token }) {
 		options.headers['user-token'] = token;
 	}
 
+	console.log("2",options)
+
 	try {
 		response = await axios(options);
-	} catch (error) {
+		console.log("3", response)
+	}
+	catch (error) {
 		response = error.response;
+		console.log("4", error)
 	}
 	// let responseStatus = response && response.status === 200 && response.statusText === 'OK';
 	return response;
