@@ -27,7 +27,7 @@
 		border: solid 5px gray;
 		position: absolute;
         width: 9vw;
-        height: 8vh;
+        height: 2vh;
         text-align: center;
 	}
 </style>

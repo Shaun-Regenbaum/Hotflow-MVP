@@ -26,11 +26,11 @@
 	title="iframe"
 	id="monetized"
 	style="	width: 100%;
-	height:100vh;"
+	height: 100vh;"
 	src={url}
 	/>  
 	<Draggable>
-		<h1>Refund</h1>
+		Refund
 	</Draggable>
 
 {:else}
