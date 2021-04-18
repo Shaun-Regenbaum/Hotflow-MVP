@@ -7,7 +7,6 @@ const base = 'https://api.backendless.com/' + appID +'/' + restID
 async function send({ method, path, data, token }) {
 
 	// Variables for API Call:
-	const url = base + '/' + path
 	let options = { method, headers: {} };
 
 	// If we have data, add it to the call:
