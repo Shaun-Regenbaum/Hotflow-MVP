@@ -15,8 +15,8 @@
 
 <script>
 	import Login from '$lib/Login.svelte';
+	import Pay from '$lib/Pay.svelte';
 
-	let existing = true;
 	let permission = false;
 	let blur = permission
 		? 'width: 100%; height: 100vh;'
@@ -24,5 +24,6 @@
 </script>
 
 <Login />
+<Pay />
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
 

@@ -14,6 +14,20 @@ export async function getURLfromName(title) {
 	return { status: responseStatus, body: response };
 }
 
+// This function is for internal use to add a url to a purchase object in the purchase database
+export async function getObjectIdfromName(title) {
+	// We just need the path and id of object for get call:
+	const path = 'data/embeds?where=title%20%3D%20%27' + title + '%27';
+
+	// Making the call:
+	const response = await api.get(path);
+
+	// Checking to see if it was a success
+	// let responseStatus = response[0].url ? true : false;
+
+	return response.body[0].url;
+}
+
 
 // This functions gets the url of the iframe from the objectId
 export async function getURLfromObjectId(objectId) {
