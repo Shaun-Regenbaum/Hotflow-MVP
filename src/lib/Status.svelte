@@ -1,1 +1,0 @@
-<!-- This component is a work in progress, eventually I want to give users a constant view of whats going on in the background, without going to console. -->
