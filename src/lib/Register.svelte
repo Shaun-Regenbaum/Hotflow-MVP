@@ -11,7 +11,7 @@
 	import { session } from '$app/stores';
 	import { goto } from '$app/navigation';
 
-    import Switch from "$lib/ToggleSwitch.svelte";
+    import Switch from "$lib/Buttons/ToggleSwitch.svelte";
 
 
 	let name = '';
@@ -30,7 +30,7 @@
         if (result.status){ 
             message = "Succesfully Registered You";
             $session.user = result.body
-            document.cookie = result.body
+            document.cookie = result.body['user-token']
             message = "Set Session Data";
 		} else{message = result.body}
 	}

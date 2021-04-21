@@ -1,44 +1,32 @@
 <script context="module">
-	import { getLink } from '$lib/urls/getURL.js';
+	import { getURLfromName } from '$lib/urls/getURL.js';
 
 	let url;
-	export async function load({ page }) {
-		const result = await getLink(page.params.contentid)
-		if (result.status){ 
-			console.log(result)
-			url = result.body.url
-    } else{message = result.body.data.message}
-		
-		return result
+	export async function load({ page, session, context }) {
+		const result = await getURLfromName(page.params.contentid);
+		if (result.status) {
+			url = result.body[0].url;
+		} else {
+		}
+
+		return result;
 	}
 </script>
 
 <script>
-	import { session } from '$app/stores';
-	import Login from "$lib/Login.svelte";
-	import Register from "$lib/Register.svelte";
-	import Draggable from '$lib/Draggable.svelte';
+	import Login from '$lib/Login.svelte';
+	// import Register from '$lib/Register.svelte';
+	import Draggable from '$lib/Buttons/Draggable.svelte';
 
 	let existing = true;
+	let permission = false;
+	let blur = permission
+		? 'width: 100%; height: 100vh;'
+		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
-{#if $session.user}
-<iframe
-	title="iframe"
-	id="monetized"
-	style="	width: 100%;
-	height: 100vh;"
-	src={url}
-	/>  
-	<Draggable>
-		Refund
-	</Draggable>
+<Login />
+<iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
+<Draggable>Refund</Draggable>
 
-{:else}
-	<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
-	{#if existing}
-	<Login/>
-	{:else}
-	<Register/>
-	{/if}
+<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
 
-{/if}

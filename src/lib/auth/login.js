@@ -1,4 +1,5 @@
 import * as api from '$lib/backendlessAPI.js';
+import { session } from '$app/stores';
 
 export async function login(email, password) {
      // We need the path and login data for the call:
@@ -10,6 +11,7 @@ export async function login(email, password) {
 
     // Making the call:
     const response = await api.post(path, data);
+
 
     // Checking to see if it was a success
     let responseStatus = response.email ? true : false

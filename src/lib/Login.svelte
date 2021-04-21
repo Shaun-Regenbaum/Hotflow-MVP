@@ -26,14 +26,14 @@ async function submit(event) {
     if (result.status){ 
             message = "Succesfully Registered You";
             $session.user = result.body
-            document.cookie = result.body
+            document.cookie = result.body['user-token']
             message = "Set Session Data";
     } else{message = result.body}
 	}
 </script>
-<div id="StatusMessage">{message}</div>
-<div>
-    <h1>Sign In</h1>
+
+<div id='login'>
+    <h1>Hotflow</h1>
     <form on:submit|preventDefault={submit}>
         <fieldset>
             <input  type="email" required placeholder="Email" bind:value={email}>
@@ -46,3 +46,16 @@ async function submit(event) {
         </button>
     </form>
 </div>
+
+<style>
+#login {
+    position: absolute;
+    bottom: 0%;
+    left: 20%;
+    background: grey;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 5px black;
+    z-index: 2;
+}
+</style>
