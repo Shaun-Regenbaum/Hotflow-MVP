@@ -1,12 +1,5 @@
 <script>
-    import { session } from '$app/stores';
     import Login from "$lib/Login.svelte";
-    import Register from "$lib/Register.svelte";
 </script>
 
-{#if !session.user}
-<Login />
-<a href="/register">Don't have an account yet?</a>
-{:else}
-<h1>You are already logged in!</h1>
-{/if}
+<Login existing={true}/>

@@ -1,14 +1,7 @@
 <script>
 	import Login from "$lib/Login.svelte";
-	import Register from "$lib/Register.svelte";
 	import EmbedForm from "$lib/EmbedForm.svelte";
 	import { session } from '$app/stores';
-	$: name = '';
-	if ($session.user)
-		name = $session.user.name;
-
-	let existing = true;
-
 </script>
 
 <svelte:head>
@@ -16,21 +9,13 @@
 </svelte:head>
 
 <main>
-
 	{#if $session.user}
-	<h1>Hello {$session.user.name}!</h1>
-	<h2>You are logged in!</h2>
+		<h1>Hello {$session.user.name}!</h1>
+		<h2>You are logged in!</h2>
 	<EmbedForm/>
 	{:else}
-		<button on:click={() => (existing = !existing)}><h4>Wrong Form?</h4></button>
-		{#if existing}
 		<Login/>
-		{:else}
-		<Register/>
-		{/if}
-
 	{/if}
-
 </main>
 
 <style>

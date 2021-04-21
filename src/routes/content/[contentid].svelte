@@ -14,7 +14,7 @@
 </script>
 
 <script>
-	import Login2 from '$lib/Login2.svelte';
+	import Login from '$lib/Login.svelte';
 	// import Register from '$lib/Register.svelte';
 	import Draggable from '$lib/Buttons/Draggable.svelte';
 
@@ -24,7 +24,7 @@
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
-<Login2 />
+<Login />
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
 <Draggable>Refund</Draggable>
 
