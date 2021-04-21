@@ -1,5 +1,6 @@
 import * as api from '$lib/backendlessAPI.js';
 
+// This function saves a url into the embed database
 export async function saveURL(url, title, userToken) {
     // We need the path, data, and associated userToken for the call:
     const path = 'data/embeds'

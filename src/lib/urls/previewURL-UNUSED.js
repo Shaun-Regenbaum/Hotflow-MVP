@@ -1,3 +1,4 @@
+// WE ARE NOT USING THIS RIGHT NOW
 // We are using the linkpreview.net API
 // It only does one thing, which is which, the whole call is in this file.
 const key = '7e294e628f4ccb8edc21e505bd9af9ec'

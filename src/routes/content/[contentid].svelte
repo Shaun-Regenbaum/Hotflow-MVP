@@ -15,7 +15,6 @@
 
 <script>
 	import Login from '$lib/Login.svelte';
-	import Draggable from '$lib/Buttons/Draggable.svelte';
 
 	let existing = true;
 	let permission = false;
@@ -26,5 +25,4 @@
 
 <Login />
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
-<Draggable>Refund</Draggable>
 

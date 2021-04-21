@@ -1,8 +1,9 @@
 import * as api from '$lib/backendlessAPI.js';
 
-export async function getURLfromName(name) {
+// This functions gets the url of the iframe from the name of the landing page
+export async function getURLfromName(title) {
 	// We just need the path and id of object for get call:
-	const path = 'data/embeds?where=title%20%3D%20%27' + name + '%27';
+	const path = 'data/embeds?where=title%20%3D%20%27' + title + '%27';
 
 	// Making the call:
 	const response = await api.get(path);
@@ -13,6 +14,8 @@ export async function getURLfromName(name) {
 	return { status: responseStatus, body: response };
 }
 
+
+// This functions gets the url of the iframe from the objectId
 export async function getURLfromObjectId(objectId) {
 	// We just need the path and id of object for get call:
 	const path = 'data/embeds/' + objectId;
