@@ -1,7 +1,23 @@
 <script>
-	import Login from "$lib/Login.svelte";
-	import EmbedForm from "$lib/EmbedForm.svelte";
+	import Login from '$lib/Login.svelte';
+	import Logout from '$lib/Buttons/Logout.svelte';
+	import EmbedForm from '$lib/EmbedForm.svelte';
 	import { session } from '$app/stores';
+	import { browser } from '$app/env';
+
+	let user = {};
+	if (browser) {
+		user.objectId = localStorage.getItem('userID');
+		user['user-token'] = localStorage.getItem('user-token');
+		user.name = localStorage.getItem('name');
+		if (user.name !== null){
+			$session.user = user;
+		} else{
+			$session.user = false;
+		}
+
+	}
+
 </script>
 
 <svelte:head>
@@ -10,11 +26,12 @@
 
 <main>
 	{#if $session.user}
+		<Logout />
 		<h1>Hello {$session.user.name}!</h1>
 		<h2>You are logged in!</h2>
-	<EmbedForm/>
+		<EmbedForm />
 	{:else}
-		<Login/>
+		<Login />
 	{/if}
 </main>
 

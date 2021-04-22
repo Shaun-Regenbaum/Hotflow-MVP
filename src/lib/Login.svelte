@@ -1,7 +1,15 @@
+<script context="module">
+	export async function load({ session, context }) {
+		console.log(session, context);
+		return session;
+	}
+</script>
+
 <script>
 	import { session } from '$app/stores';
 	import { login } from '$lib/auth/login.js';
 	import { register } from '$lib/auth/register.js';
+	import { browser } from '$app/env';
 
 	export let existing = true;
 	let name = '';
@@ -10,23 +18,31 @@
 	let message = 'Nothing Happening Right Now';
 
 	async function submit_login(event) {
-		console.log(email, password);
-		const result = await login(email, password);
-		if (result.status) {
-			$session.user = result.body;
-			document.cookie = result.body['user-token'];
+		const response = await login(email, password);
+		if (response.status) {
+			console.log(response.body)
+			$session.user = response.body;
+			if (browser) {
+				localStorage.setItem('name', response.body['name']);
+				localStorage.setItem('userID', response.body['objectId']);
+				localStorage.setItem('user-token', response.body['user-token']);
+			}
 		} else {
-			message = result.body;
+			message = response.body;
 		}
 	}
 
 	async function submit_registration(event) {
-		const result = await register(name, email, password);
-		if (result.status) {
-			$session.user = result.body;
-			document.cookie = result.body['user-token'];
+		const response = await register(name, email, password);
+		if (response.status) {
+			$session.user = response.body;
+			if (browser) {
+				localStorage.setItem('name', response.body['name']);
+				localStorage.setItem('userID', response.body['objectId']);
+				localStorage.setItem('user-token', response.body['user-token']);
+			}
 		} else {
-			message = result.body;
+			message = response.body;
 		}
 	}
 </script>
@@ -42,7 +58,7 @@
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit"> Sign In </button>
-            <button on:click={() => (existing = !existing)}>New User?</button>
+			<button on:click={() => (existing = !existing)}>New User?</button>
 		</form>
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
@@ -56,7 +72,7 @@
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit"> Sign Up </button>
-            <button on:click={() => (existing = !existing)}>Existing User?</button>
+			<button on:click={() => (existing = !existing)}>Existing User?</button>
 		</form>
 	{/if}
 </div>
