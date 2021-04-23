@@ -3,8 +3,10 @@ import * as apiSQR from '$lib/sqaureAPI.js';
 
 import { getObjectIdfromName } from '$lib/urls/getURL.js';
 
+// This function creates a purchase, this purchase has an owner and it says what links they purchased.
+// A purchase is essentially adding a site to the history of a user.
 export async function createPurchase(amount, name, token) {
-	// We just need the path, amount, and data to create the purhcase:
+	// We need the path, amount to create the purchase:
 	const path1 = 'data/purchases';
 	const data1 = {
 		amount: amount
@@ -13,6 +15,7 @@ export async function createPurchase(amount, name, token) {
 	// Making the call:
 	const response1 = await api.post(path1, data1, token);
 	console.log(response1);
+
 	//Get object id of the embed:
 	const siteId = await getObjectIdfromName(name);
 	console.log(siteId);
@@ -21,6 +24,7 @@ export async function createPurchase(amount, name, token) {
 	const path2 = 'data/purchases/' + response1.objectId + '/link';
 	const data2 = [siteId];
 
+	// Adding the relation
 	const response2 = await api.put(path2, data2, token);
 	console.log(response2)
 	return response2;

@@ -40,7 +40,7 @@
 </script>
 
 {#if $session.user}
-	<Logout />
+	<Logout pos={"absolute"}/>
 {:else}
 	<Login />
 {/if}

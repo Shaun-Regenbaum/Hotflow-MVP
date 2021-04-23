@@ -9,6 +9,7 @@
 		token = localStorage.getItem('user-token');
 	}
 
+    export let pos = "inherit";
 	async function submitLogout(token) {
 		await logout(token);
 		$session = false;
@@ -19,4 +20,6 @@
 	}
 </script>
 
-<button on:click={submitLogout}><h4>Logout</h4></button>
+<button on:click={submitLogout} style="position: {pos}; z-index: 2;"><h4>Logout</h4></button>
+
+
