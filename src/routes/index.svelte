@@ -1,21 +1,29 @@
+<script context="module">
+	import { browser } from '$app/env';
+	export async function load({}) {
+		let user = {};
+
+		if (browser) {
+			user.objectId = localStorage.getItem('userID');
+			user['user-token'] = localStorage.getItem('user-token');
+			user.name = localStorage.getItem('name');
+		}
+		return{
+			props: { user }
+		};
+	}
+</script>
+
 <script>
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Buttons/Logout.svelte';
 	import EmbedForm from '$lib/EmbedForm.svelte';
-
-	// Checking to see if you are logged in, should prob be simplified:
 	import { session } from '$app/stores';
-	import { browser } from '$app/env';
-	let user = {};
+
+	// Checking to see if you are logged in:
+	export let user = {};
 	if (browser) {
-		user.objectId = localStorage.getItem('userID');
-		user['user-token'] = localStorage.getItem('user-token');
-		user.name = localStorage.getItem('name');
-		if (user.name !== null) {
-			$session.user = user;
-		} else {
-			$session.user = false;
-		}
+		$session.user = user.name ? user : false;
 	}
 </script>
 
