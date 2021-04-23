@@ -14,6 +14,7 @@
 </script>
 
 <script>
+	import Logout from '$lib/Buttons/Logout.svelte';
 	import Login from '$lib/Login.svelte';
 	import Pay from '$lib/Pay.svelte';
 
@@ -21,9 +22,27 @@
 	let blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
+
+	// Checking to see if you are logged in, should prob be simplified:
+	import { session } from '$app/stores';
+	import { browser } from '$app/env';
+	let user = {};
+	if (browser) {
+		user.objectId = localStorage.getItem('userID');
+		user['user-token'] = localStorage.getItem('user-token');
+		user.name = localStorage.getItem('name');
+		if (user.name !== null) {
+			$session.user = user;
+		} else {
+			$session.user = false;
+		}
+	}
 </script>
 
-<Login />
+{#if $session.user}
+	<Logout />
+{:else}
+	<Login />
+{/if}
 <Pay />
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
-

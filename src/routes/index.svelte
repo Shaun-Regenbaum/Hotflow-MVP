@@ -2,9 +2,10 @@
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Buttons/Logout.svelte';
 	import EmbedForm from '$lib/EmbedForm.svelte';
+
+	// Checking to see if you are logged in, should prob be simplified:
 	import { session } from '$app/stores';
 	import { browser } from '$app/env';
-
 	let user = {};
 	if (browser) {
 		user.objectId = localStorage.getItem('userID');

@@ -20,7 +20,6 @@
 	async function submit_login(event) {
 		const response = await login(email, password);
 		if (response.status) {
-			console.log(response.body)
 			$session.user = response.body;
 			if (browser) {
 				localStorage.setItem('name', response.body['name']);

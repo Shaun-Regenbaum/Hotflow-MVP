@@ -7,7 +7,6 @@ export async function getURLfromName(title) {
 
 	// Making the call:
 	const response = await api.get(path);
-
 	// Checking to see if it was a success
 	let responseStatus = response[0].url ? true : false;
 	// Returning a custom object that contains success/failure and everything else.
@@ -21,11 +20,9 @@ export async function getObjectIdfromName(title) {
 
 	// Making the call:
 	const response = await api.get(path);
-
 	// Checking to see if it was a success
-	// let responseStatus = response[0].url ? true : false;
 
-	return response.body[0].url;
+	return response[0].objectId;
 }
 
 

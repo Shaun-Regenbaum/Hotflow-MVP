@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import { addUserToLink } from '$lib/urls/addUserToLink-UNUSED.js';
     import { session } from '$app/stores';
     function purchase(){
@@ -9,4 +9,4 @@
 </script>
 
 
-<button on:click={purchase}><h4>Wrong Form?</h4></button>
+<button on:click={purchase}><h4>Wrong Form?</h4></button> -->
