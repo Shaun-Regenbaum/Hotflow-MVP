@@ -3,13 +3,15 @@
 	import { browser } from '$app/env';
 	import { session } from '$app/stores';
 
-	if (browser) {
-		let token;
-		token = localStorage.getItem('user-token');
-	}
 
 	export let pos = 'inherit';
-	async function submitLogout(token) {
+	
+
+	async function submitLogout() {
+		let token;
+		if (browser) {
+			token = localStorage.getItem('user-token');
+		}
 		await logout(token);
 		$session = false;
 		if (browser) {

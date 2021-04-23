@@ -1,10 +1,3 @@
-<script context="module">
-	export async function load({ session, context }) {
-		console.log(session, context);
-		return session;
-	}
-</script>
-
 <script>
 	import { session } from '$app/stores';
 	import { login } from '$lib/auth/login';
@@ -15,9 +8,8 @@
 	let name = '';
 	let email = 'a@a.com';
 	let password = 'a';
-	let message = 'Nothing Happening Right Now';
 
-	async function submit_login(event) {
+	async function submit_login() {
 		const response = await login(email, password);
 		if (response.status) {
 			$session.user = response.body;
@@ -26,12 +18,10 @@
 				localStorage.setItem('userID', response.body['objectId']);
 				localStorage.setItem('user-token', response.body['user-token']);
 			}
-		} else {
-			message = response.body;
-		}
+		} 
 	}
 
-	async function submit_registration(event) {
+	async function submit_registration() {
 		const response = await register(name, email, password);
 		if (response.status) {
 			$session.user = response.body;
