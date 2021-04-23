@@ -7,8 +7,8 @@
 
 <script>
 	import { session } from '$app/stores';
-	import { login } from '$lib/auth/login.js';
-	import { register } from '$lib/auth/register.js';
+	import { login } from '$lib/auth/login';
+	import { register } from '$lib/auth/register';
 	import { browser } from '$app/env';
 
 	export let existing = true;

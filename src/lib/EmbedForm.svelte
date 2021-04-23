@@ -1,28 +1,29 @@
 <script>
-    import { saveURL } from '$lib/urls/saveURL.js';
-    import { session } from '$app/stores';
-    let userToken = $session.user['user-token']
-    let url;
-    let newUrl;
-    let title;
-    console.log(location)
+	import { saveURL } from '$lib/urls/saveURL';
+	import { session } from '$app/stores';
+	let userToken = $session.user['user-token'];
+	let url;
+	let newUrl;
+	let title;
+	console.log(location);
 
-function addhttps(url) {
-    if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
-        url = "https://" + url;
-    }
-        return url;
-}
+	function addhttps(url) {
+		if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+			url = 'https://' + url;
+		}
+		return url;
+	}
 
-    async function submit(event) {
-        const result = await saveURL(addhttps(url), title, userToken);
-        if (result.status) {
-            if (title) {
-                newUrl = String(location.origin) + '/content/' + title}
-            }else{
-                newUrl = String(location.origin) + '/content/' + String(result.body.objectId)
-            }
-    }
+	async function submit(event) {
+		const result = await saveURL(addhttps(url), title, userToken);
+		if (result.status) {
+			if (title) {
+				newUrl = String(location.origin) + '/content/' + title;
+			}
+		} else {
+			newUrl = String(location.origin) + '/content/' + String(result.body.objectId);
+		}
+	}
 </script>
 
 <h1>Put the link you want to monetize below</h1>

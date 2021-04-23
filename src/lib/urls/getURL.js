@@ -1,4 +1,4 @@
-import * as api from '$lib/backendlessAPI.js';
+import * as api from '$lib/backendlessAPI';
 
 // This functions gets the url of the iframe from the name of the landing page
 export async function getURLfromName(title) {
@@ -24,7 +24,6 @@ export async function getObjectIdfromName(title) {
 
 	return response[0].objectId;
 }
-
 
 // This functions gets the url of the iframe from the objectId
 export async function getURLfromObjectId(objectId) {

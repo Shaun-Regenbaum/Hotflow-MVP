@@ -1,5 +1,4 @@
-import * as api from '$lib/backendlessAPI.js';
-import * as apiSQR from '$lib/sqaureAPI.js';
+import * as api from '$lib/backendlessAPI';
 
 import { getObjectIdfromName } from '$lib/urls/getURL.js';
 
@@ -26,6 +25,6 @@ export async function createPurchase(amount, name, token) {
 
 	// Adding the relation
 	const response2 = await api.put(path2, data2, token);
-	console.log(response2)
+	console.log(response2);
 	return response2;
 }

@@ -1,7 +1,6 @@
-import * as api from '$lib/backendlessAPI.js';
-import { session } from '$app/stores';
+import * as api from '$lib/backendlessAPI';
 
-export async function login(email, password) {
+export async function login(email: string, password: string) {
 	// We need the path and login data for the call:
 	const path = 'users/login';
 	const data = {

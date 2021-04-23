@@ -18,12 +18,14 @@
 		}
 	}
 	let token = user['user-token'];
-	const name = String(site).substring(String(site).lastIndexOf('/') + 1)
+	const name = String(site).substring(String(site).lastIndexOf('/') + 1);
 	let amount = 6;
 
+	export let purchased = false;
 	async function submitPurchase(event) {
 		const result = await createPurchase(amount, name, token);
 		if (result.status) {
+			purchased = true;
 			console.log(result);
 		} else {
 		}

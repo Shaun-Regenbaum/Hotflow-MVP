@@ -1,9 +1,9 @@
-import * as api from '$lib/backendlessAPI.js';
+import * as api from '$lib/backendlessAPI';
 
 // This functions gets user properties from usertokenId:
-export async function getURLfromName(title) {
+export async function getURLfromName(contentTitle) {
 	// We just need the path and id of object for get call:
-	const path = 'data/embeds?where=title%20%3D%20%27' + title + '%27';
+	const path = 'data/embeds?where=title%20%3D%20%27' + contentTitle + '%27';
 
 	// Making the call:
 	const response = await api.get(path);
