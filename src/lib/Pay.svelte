@@ -1,7 +1,5 @@
 <script>
 	import { createPurchase } from '$lib/payments/createPurchase';
-
-	// Checking to see if you are logged in, should prob be simplified:
 	import { session } from '$app/stores';
 	import { browser } from '$app/env';
 	let user = {};
@@ -22,7 +20,7 @@
 	let amount = 6;
 
 	export let purchased = false;
-	async function submitPurchase(event) {
+	async function submitPurchase() {
 		const result = await createPurchase(amount, name, token);
 		if (result.status) {
 			purchased = true;

@@ -1,5 +1,5 @@
 <script context="module">
-	import { getURLfromName } from '$lib/urls/getURL.js';
+	import { getFromTitle } from '$lib/urls/getURL';
 	import { browser } from '$app/env';
 	export async function load({ page }) {
 
@@ -12,16 +12,14 @@
 			user.name = localStorage.getItem('name');
 		}
 
-		const result = await getURLfromName(page.params.contentid);
+		const result = await getFromTitle(page.params.contentid);
 		if (result.status) {
 			url = result.body[0].url;
 		}
-		return{
+		return {
 		props: { url, user }
-		};
-
-
-	}
+		}
+	};
 </script>
 
 
