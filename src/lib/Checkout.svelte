@@ -2,6 +2,8 @@
 <script>
   import { loadScript } from "@paypal/paypal-js";
   const CLIENT_ID = "ASiFFEFRrUkbEbsUFte8rlV9e_a48O4dGoBQf9c3qJf0PFxhEFCPxU-jRQB5AHY3F3Rf3vEfXC3SbzZV";
+import { browser } from '$app/env';
+if (browser) {
   loadScript({ "client-id": CLIENT_ID }).then((paypal) => {
     paypal
       .Buttons({
@@ -35,6 +37,7 @@
       })
       .render("#paypal-button-container");
   });
+}
 </script>
 
 <div id="paypal-button-container" />
