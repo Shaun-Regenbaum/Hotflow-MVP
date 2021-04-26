@@ -15,7 +15,7 @@
 		const result = await getFromTitle(page.params.contentid);
 		console.log(result)
 		if (result.status) {
-			url = result.body[0].url;
+			url = result.body.url;
 		}
 		return {
 		props: { url, user }
@@ -28,7 +28,6 @@
 	import Logout from '$lib/Buttons/Logout.svelte';
 	import Login from '$lib/Login.svelte';
 	import Pay from '$lib/Pay.svelte';
-	import PaymentForm from '$lib/Pay.svelte';
 	import { session } from '$app/stores';
 
 	export let url;
@@ -52,5 +51,5 @@
 {:else}
 	<Login />
 {/if}
-<!-- <Pay /> -->
+<Pay />
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
