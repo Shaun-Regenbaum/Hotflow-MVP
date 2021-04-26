@@ -1,4 +1,5 @@
 <script>
+	import Checkout from '$lib/Checkout.svelte'
 	import { createPurchase } from '$lib/payments/createPurchase';
 	import { session } from '$app/stores';
 	import { browser } from '$app/env';
@@ -29,8 +30,8 @@
 		}
 	}
 </script>
-
 <div id="pay">
+	<Checkout/>
 	<h1>Purchase Form</h1>
 	<form on:submit|preventDefault={submitPurchase}>
 		<fieldset>

@@ -1,27 +1,6 @@
 import * as api from '$lib/backendlessAPI';
 import { getFromTitle } from '$lib/urls/getURL';
 
-type urlResult = {
-	created: number;
-	objectId: string;
-	ownerId: string;
-	title?: string;
-	updated?: string;
-	url: string;
-}
-
-type getResult = {
-	status: boolean;
-	body: [{
-		created: number,
-		objectId: string,
-		ownerId: string,
-		title?: string,
-		updated?: string,
-		url?: string,
-		amount?:number
-	}];
-};
 
 /**This is the data that backendless takes to save a purchase*/
 type purchaseData = {
@@ -38,7 +17,7 @@ export async function createPurchase(amount:number, name:string, token:string) {
 	};
 
 	// Making the call:
-	const response1:urlResult = await api.post(path1, data1, token);
+	const response1 = await api.post(path1, data1, token);
 	const parentObjectId:string = response1.objectId;
 
 	//Get object id of the embed:

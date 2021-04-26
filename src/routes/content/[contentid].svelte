@@ -27,6 +27,7 @@
 	import Logout from '$lib/Buttons/Logout.svelte';
 	import Login from '$lib/Login.svelte';
 	import Pay from '$lib/Pay.svelte';
+	import PaymentForm from '$lib/Pay.svelte';
 	import { session } from '$app/stores';
 
 	export let url;
@@ -43,10 +44,13 @@
 
 </script>
 
+
+
 {#if $session.user}
 	<Logout pos={'absolute'} />
 {:else}
 	<Login />
 {/if}
 <Pay />
+<PaymentForm/>
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />

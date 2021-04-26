@@ -19,7 +19,7 @@
 	import Logout from '$lib/Buttons/Logout.svelte';
 	import EmbedForm from '$lib/EmbedForm.svelte';
 	import { session } from '$app/stores';
-
+	
 	// Checking to see if you are logged in:
 	export let user = {};
 	if (browser) {
@@ -30,7 +30,6 @@
 <svelte:head>
 	<title>Hello world!</title>
 </svelte:head>
-
 <main>
 	{#if $session.user}
 		<Logout />
