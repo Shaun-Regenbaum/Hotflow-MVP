@@ -1,5 +1,5 @@
 
-<script type='module'>
+<script>
   import { loadScript } from "@paypal/paypal-js";
   const CLIENT_ID = "ASiFFEFRrUkbEbsUFte8rlV9e_a48O4dGoBQf9c3qJf0PFxhEFCPxU-jRQB5AHY3F3Rf3vEfXC3SbzZV";
   loadScript({ "client-id": CLIENT_ID }).then((paypal) => {
