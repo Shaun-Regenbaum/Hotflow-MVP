@@ -11,6 +11,12 @@ module.exports = {
 		adapter: netlify(),
 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
+		target: '#svelte',
+
+		vite: {
+			ssr: {
+				noExternal: ['node-fetch', '@paypal/paypal-js']
+			}
+		}
 	}
 };
