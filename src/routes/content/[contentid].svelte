@@ -13,6 +13,7 @@
 		}
 
 		const result = await getFromTitle(page.params.contentid);
+		console.log(result)
 		if (result.status) {
 			url = result.body[0].url;
 		}
@@ -51,6 +52,5 @@
 {:else}
 	<Login />
 {/if}
-<Pay />
-<PaymentForm/>
+<!-- <Pay /> -->
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />

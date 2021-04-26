@@ -23,7 +23,6 @@ type CallInfo = {
  */
 async function send(info: CallInfo): Promise<any> {
 	let options: RequestInit = { method: info.method, headers: {} };
-
 	let body: BodyInit = JSON.stringify(info.data);
 
 	if (info.data) {

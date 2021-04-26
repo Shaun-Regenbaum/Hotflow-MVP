@@ -4,9 +4,9 @@ type urlResult = {
 	created: number;
 	objectId: string;
 	ownerId: string;
+	url: string;
 	title?: string;
 	updated?: string;
-	url: string;
 }
 
 /**This is the data that backendless takes to save a url for future embeds*/
