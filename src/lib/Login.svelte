@@ -5,7 +5,8 @@
 	import { browser } from '$app/env';
 
 	export let existing = true;
-	let name = '';
+	export let name = "Login"
+	let username = '';
 	let email = 'a@a.com';
 	let password = 'a';
 
@@ -22,7 +23,7 @@
 	}
 
 	async function submit_registration() {
-		const response = await register(name, email, password);
+		const response = await register(username, email, password);
 		if (response.status) {
 			$session.user = response.body;
 			if (browser) {
@@ -31,7 +32,6 @@
 				localStorage.setItem('user-token', response.body['user-token']);
 			}
 		} else {
-			message = response.body;
 		}
 	}
 </script>
@@ -52,7 +52,7 @@
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
 			<fieldset>
-				<input type="text" required placeholder="Your Name" bind:value={name} />
+				<input type="text" required placeholder="Your Name" bind:value={username} />
 			</fieldset>
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
@@ -68,13 +68,8 @@
 
 <style>
 	#login {
-		position: absolute;
-		bottom: 0%;
-		left: 20%;
-		background: grey;
 		text-align: center;
 		border-radius: 10px;
-		border: solid 5px black;
 		z-index: 2;
 	}
 </style>

@@ -1,4 +1,8 @@
 <script context="module">
+	/* In this script we are getting two things before rendering the page:
+	1) We are getting the user info, if they are logged in.
+	2) We are getting the url info associated with the content they want
+	*/
 	import { getFromTitle } from '$lib/urls/getURL';
 	import { browser } from '$app/env';
 	export async function load({ page }) {
@@ -25,9 +29,15 @@
 
 
 <script>
+	import Menu from '$lib/Menu.svelte';
 	import Logout from '$lib/Buttons/Logout.svelte';
 	import Login from '$lib/Login.svelte';
 	import Pay from '$lib/Pay.svelte';
+
+	const component_list = ["Login"]
+	let currentComponent = Login;
+
+
 	import { session } from '$app/stores';
 
 	export let url;
@@ -45,11 +55,6 @@
 </script>
 
 
+<Menu items={component_list} current_component={currentComponent}/>
 
-{#if $session.user}
-	<Logout pos={'absolute'} />
-{:else}
-	<Login />
-{/if}
-<Pay />
 <iframe title="iframe" id="monetized" style={blur} src={url} frameBorder="0" />
