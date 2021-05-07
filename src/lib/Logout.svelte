@@ -17,9 +17,30 @@ import { time_ranges_to_array } from 'svelte/internal';
 		$session = false;
 	}
 </script>
-<form>
-	<fieldset>
-			<button on:click={submitLogout} style="position: {pos}; z-index: 2;">Logout</button>
-	</fieldset>
+<div id="logout">
+	<button on:click={submitLogout} style="position: {pos}; z-index: 2;"><h3>Logout</h3></button>
+</div>
 
-</form>
+
+<style>
+	#logout {
+		text-align: center;
+
+		/*Padding: */
+		padding: 1rem;
+
+	}
+	button {
+		/* Removing all the default outlines: */
+		border: 0;
+  		outline:0;
+		background: #e0e0e0;
+		padding: 0.8rem 1.3rem 0.8em 1.3rem;
+		margin-top: 0.5rem;
+		color:rgba(65, 65, 65, 0.719);
+		border-radius: 10px;
+		box-shadow: 3px 3px 10px #bebebe,
+             -3px -3px 10px #ffffff;
+	}
+</style>
+	

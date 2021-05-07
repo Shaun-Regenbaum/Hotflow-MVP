@@ -23,7 +23,7 @@
 	import Menu from '$lib/Menu.svelte';
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
-	import Pay from '$lib/Pay.svelte';
+	import New from '$lib/Creator/NewCreator.svelte';
 	import Checkout from '$lib/Checkout.svelte'
 	import EmbedForm from '$lib/EmbedForm.svelte';
 	import { session } from '$app/stores';
@@ -38,10 +38,10 @@
 		{ component: Login, name: 'Login' }
 	];
 	let component_list2: MenuComponent[] = [
-		{ component: Pay, name: 'Pay'},
 		{ component: Logout, name: 'Logout'},
 		{ component: EmbedForm, name: 'Form'},
-		{ component: Checkout, name: 'Form'}
+		{ component: Checkout, name: 'Checkout'},
+		{ component: New, name: 'Creator'}
 	];
 
 
