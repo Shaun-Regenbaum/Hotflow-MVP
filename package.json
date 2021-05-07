@@ -10,7 +10,7 @@
 		"check": "svelte-check"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-netlify": "next",
+		"@sveltejs/adapter-netlify": "^1.0.0-next.11",
 		"@sveltejs/kit": "next",
 		"@tsconfig/svelte": "^1.0.10",
 		"@types/node-fetch": "^2.5.10",
