@@ -2,7 +2,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import netlify from '@sveltejs/adapter-netlify';
 
 /** @type {import('@sveltejs/kit').Config} */
-module.exports = {
+const config = {
 	preprocess: sveltePreprocess(),
 	kit: {
 		// By default, `npm run build` will create a standard Node app.
@@ -14,3 +14,5 @@ module.exports = {
 		target: '#svelte'
 	}
 };
+
+export default config;
