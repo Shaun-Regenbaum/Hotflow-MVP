@@ -39,49 +39,55 @@
 
 </script>
 
-<div id="menu" style="width:{minimized ? '10rem' : '30%'}; border-radius: {minimized ?  '7px 7px 0 0': '30px 30px 0 0'};">
-	<section id="toolbar" on:click="{minimize}" style="height: {minimized ? '1rem' : 'inherit'}; width: {minimized ? '5rem' : ''}; ">
+<div id="menu" style="width:{minimized ? '5rem' : ''}; grid-template-rows: {minimized ? '2rem' : ''}; border-radius: {minimized ?  '7px 7px 0 0': ''};">
+	<section id="toolbar" on:click="{minimize}">
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id='minimize' style='transform: rotate({minimized ? '225deg' : '45deg'});'></button>
 	</section>
 	<div id="card" style="display:{visible}">
 		<svelte:component this={current_component.component} />
 	</div>
+	{#if components.length > 1}
 	<nav style="display:{visible}">
-		{#each components as component}
-		<li style="display: inline;"><button on:click={switchComponent(component.name)}>{component.name}</button></li>
-		{/each}
-	</nav>
 
+			{#each components as component}
+			<li style="display: inline;"><button on:click={switchComponent(component.name)}>{component.name}</button></li>
+			{/each}
+	</nav>
+	{/if}
 </div>
 
 <style>
+	/* Everything here is for mobile and desktop, desktop specific comes after: */
 	#menu {
 		/* Positioning: */
 		position: absolute;
 		z-index: 2;
 		bottom: 0;
-		right: 10%;
+		
 
 		/* Grid Layout: */
 		display: grid;
-		grid-template-rows: 2rem 1fr 1rem 3rem 1rem;
+		grid-template-rows: 2rem 1fr 1rem auto 1rem;
 		grid-template-columns: 2rem 1fr 2rem;
 
 		/* Size of Container: */
 		max-height: 50vh;
+		width: 100%;
+		left:0;
 
 		/* Colors: */
 		background-color: #e0e0e0; /* Fallback for older browsers */
 
 		/* Nueromorphism: */
-		box-shadow:  -5px -5px 20px #00000021,
-             5px 5px 15px #ffffff21;
+		border-radius: 25px 25px 0 0;
+		box-shadow:  -2px -2px 5px #0000003d,
+             2px 2px 5px #ffffff9b;
 	}
 	#toolbar{
 		/*Grid Placement:*/
-		grid-column-start: 2;
-		grid-column-end: 3;
+		grid-column-start: 1;
+		grid-column-end: 4;
 		grid-row-start: 1;
 		grid-row-end: 2;
 	}
@@ -125,20 +131,23 @@
 		grid-column-end: 3;
 		grid-row-start: 4;
 
+		/* Internal Padiding */
+		padding: 0.6rem;
+
 		/* To make menu items evely spaced: */
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 
 		/* Shape of menu bar: */
-		border-radius: 1rem/2rem;
+		border-radius: 2rem;
 
 		/* Nueuromorphism: */
 		background: #e2e2e2f3;
-		box-shadow: 3px 5px 5px #ffffff,
-		 -3px -3px 10px #9c9c9c,
-		  inset 1px 5px 20px #b3b0b0,
-		 inset -1px -10px 30px #e9e9e9;
+			box-shadow:   -1px -1px 1px #64606052,
+			1px 1px 2px #fff7f7,
+			inset 10px 10px 20px #64606052,
+			inset -10px -10px 20px #fff7f7;
 
 	}
 
@@ -152,5 +161,22 @@
 		border-radius: 10px;
 		box-shadow: 3px 3px 8px #bebebe,
              -3px -3px 8px #ffffff;
+	}
+
+	/*Between Mobile and Desktop specific:  */
+	@media (min-width: 380px) {
+		#menu{
+			min-width: 380px;
+			max-width: 550px;
+			width: 50%;
+			left: 10%;
+		}
+	}
+
+	@media (min-width: 1100px) {
+		#menu{
+			min-width: 550px;
+			width: 30%;
+		}
 	}
 </style>

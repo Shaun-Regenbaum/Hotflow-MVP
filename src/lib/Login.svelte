@@ -67,6 +67,14 @@
 	#login {
 		/* Keeping the Login Form Centered: */
 		text-align: center;
+
+		/*Padding: */
+		padding: 1rem;
+
+		/* Neuromorphism */
+		border-radius: 25px;
+		box-shadow: inset 3px 3px 5px #eeeeee,
+             inset -3px -3px 5px #bebebe;
 	}
 
 	fieldset {
@@ -95,7 +103,6 @@
 		background: #e0e0e0;
 		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 		margin-top: 0.5rem;
-		margin-bottom: 1rem;
 		color:rgba(65, 65, 65, 0.719);
 		border-radius: 10px;
 		box-shadow: 3px 3px 10px #bebebe,

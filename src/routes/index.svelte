@@ -41,7 +41,7 @@
 		{ component: Pay, name: 'Pay'},
 		{ component: Logout, name: 'Logout'},
 		{ component: EmbedForm, name: 'Form'},
-		{ component: Checkout, name: 'Check'}
+		{ component: Checkout, name: 'Form'}
 	];
 
 
@@ -57,7 +57,7 @@
 	{:else}
 		<Menu components={component_list1} />
 	{/if}
-	<iframe title="iframe" id="monetized" style={blur} src="https://nocodeneeded.com/shaun" frameBorder="0" />
+	<iframe title="iframe" id="monetized" style={blur} src="https://nocodeneeded.com/shaun" frameBorder="none" />
 </body>
 
 <style>
@@ -65,5 +65,12 @@
 		margin-bottom: 0;
 		overflow:hidden;
 		scrollbar-width: 0;
+	}
+	#monetized{
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
 	}
 </style>
