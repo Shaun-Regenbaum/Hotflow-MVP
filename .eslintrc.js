@@ -1,4 +1,6 @@
-module.exports = {
+import config from './svelte.config';
+
+config = {
 	root: true,
 	parser: '@typescript-eslint/parser',
 	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
@@ -19,3 +21,5 @@ module.exports = {
 		node: true
 	}
 };
+
+export default config;
