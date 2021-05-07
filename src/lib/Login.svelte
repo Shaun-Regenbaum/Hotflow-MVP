@@ -5,9 +5,9 @@
 	import { browser } from '$app/env';
 
 	export let existing = true;
-	let username = 'default';
-	let email = 'default@default.com';
-	let password = 'default';
+	let username = '';
+	let email = '';
+	let password = '';
 
 	async function submit_login() {
 		const response = await login(email, password);
@@ -43,7 +43,7 @@
 			<fieldset>
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit"> Sign In </button>
+			<button type="submit"> Login </button>
 			<button on:click={() => (existing = !existing)}>New User?</button>
 		</form>
 	{:else}
@@ -65,8 +65,40 @@
 
 <style>
 	#login {
+		/* Keeping the Login Form Centered: */
 		text-align: center;
+	}
+
+	fieldset {
+		/* Removing the fieldset borders */
+		border: 0;
+	}
+
+	input {
+		/* Removing all the default outlines: */
+		border: none;
+  		outline:none;
+		/* Making the input fields nueromorphic: */
+		background: rgba(255, 255, 255, 0.383);
+		padding: 0.5rem 1rem 0.5rem 1rem;
+		color:rgba(65, 65, 65, 0.719);
+		margin-bottom: 0.4rem;
+		border-radius: 25px;
+		box-shadow: inset 3px 3px 10px #64606052,
+				inset -3px -3px 10px #fff7f7;
+	}
+
+	button {
+		/* Removing all the default outlines: */
+		border: 0;
+  		outline:0;
+		background: #e0e0e0;
+		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+		color:rgba(65, 65, 65, 0.719);
 		border-radius: 10px;
-		z-index: 2;
+		box-shadow: 3px 3px 10px #bebebe,
+             -3px -3px 10px #ffffff;
 	}
 </style>

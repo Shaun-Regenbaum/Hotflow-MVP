@@ -39,16 +39,10 @@
 
 </script>
 
-<div id="menu">
+<div id="menu" style="width:{minimized ? '3%' : '30%'}; border-radius: {minimized ?  '7px 7px 0 0': '30px 30px 0 0'};">
 	<section on:click="{minimize}" style="height: {minimized ? '1rem' : 'inherit'};">
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id='minimize' style='transform: rotate({minimized ? '225deg' : '45deg'});'></button>
-	</section>
-	<section style="display:{visible}">
-		<div id="creator">
-			<div id="picture" />
-			<p id="name">{name}</p>
-		</div>
 	</section>
 	<section style="display:{visible}">
 		<div id="card">
@@ -58,7 +52,7 @@
 	<section style="display:{visible}">
 		<nav>
 			{#each components as component}
-				<li style="display: inline;"><button on:click={switchComponent(component.name)}>{component.name}</button></li>
+				<li style="display: inline;"><button class="component" on:click={switchComponent(component.name)}>{component.name}</button></li>
 			{/each}
 		</nav>
 	</section>
@@ -75,19 +69,18 @@
 
 		/* Grid Layout: */
 		display: grid;
-		grid-template-rows: auto auto 1fr auto;
+		grid-template-rows: 10% 70% 10%;
 
 		/* Size of Container: */
-		width: 40%;
 		max-width: 50%;
 		max-height: 50vh;
 
 		/* Colors: */
-		background-color: #85ffbe; /* Fallback for older browsers */
-		background-image: linear-gradient(45deg, #85c4ff98, #fffb7dc5);
+		background-color: #e0e0e0; /* Fallback for older browsers */
 
-		/* To round the top two corners: */
-		border-radius: 40px 40px 0 0;
+		/* Nueromorphism: */
+		box-shadow:  -5px -5px 20px #bebebe,
+             5px 5px 15px #ffffff;
 	}
 	#minimize {
 		/* Centering the Box/Arrow: */
@@ -99,49 +92,19 @@
 
 		/* Color of Box/Arrow: */
   		border-color:rgba(0, 213, 255, 0.527);
-		background-color: rgba(0, 0, 0, 0);
+		background-color: rgba(246, 185, 185, 0.404);
 
 		/* Transforming the border of a box into an arrow */
   		border-width: 0px 3px 3px 0px;
 
 		/* Padding, to make it not rest on top on minimied: */
-		padding: 0.4rem;
-	}
-	#creator {
-		/* Size of container: */
-		height: 100%;
-		max-height: 5rem;
+		padding-top: 0.3rem;
 
-		/* Grid Layout: */
-		display: grid;
-		grid-template-columns: 20% 80%;
-	}
-
-	#picture {
-		/* To make a perfect square: */
-		width: 3rem;
-		height: 0;
-		padding-top: 3rem;
-		/* To make the square circular: */
-		border-radius: 50%;
-
-		/* To center it: */
-		margin: 0 auto;
-		margin-top: 10%;
-		margin-bottom: 10%;
-
-		/* Colors: */
-		background: linear-gradient(
-			30deg,
-			rgba(248, 4, 4, 0.609) 0%,
-			rgba(167, 140, 20, 0.644) 45%,
-			rgba(1, 85, 33, 0.623) 100%
-		);
-	}
-
-	#name {
-		/* To center: */
-		margin: auto 0;
+			border: 0;
+		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+		border-radius: 10px;
+		box-shadow: 3px 3px 10px #bebebe,
+             -3px -3px 10px #ffffff;
 	}
 
 	#card {
@@ -149,7 +112,7 @@
 		overflow-y: auto;
 		max-height: 20vh;
 		/* To give padding: */
-		padding: 0% 8% 0% 8%;
+		padding: 1rem 1rem 1rem 1rem;
 	}
 
 	nav {
@@ -160,10 +123,35 @@
 
 		/* To make it always stay nicely on bottom:*/
 		max-height: 3rem;
+
+		/* Shape of menu bar: */
+		border-radius: 4rem/1.3rem;
+
+		/* Nueuromorphism: */
+		padding: 10px 0 10px 0;
+		margin: 5px 1rem 5px 1rem;
+		background: linear-gradient(145deg, #cacaca, #f0f0f0);
+		box-shadow:   inset 2px 2px 10px #a7a7a773,
+			inset -3px -3px 10px #ffebeb73,
+            10px 10px 10px #ffffffb2,
+			inset -20px -20px 130px #ebebebb2;
+
 	}
 
 	section{
 		/* This is to give padding between all the sections */
 		padding-top: 1%;
+	}
+
+	.component {
+		/* Removing all the default outlines: */
+		border: 0;
+  		outline:0;
+		background: #e0e0e0;
+		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+		color:rgba(65, 65, 65, 0.719);
+		border-radius: 10px;
+		box-shadow: 3px 3px 10px #bebebe,
+             -3px -3px 10px #ffffff;
 	}
 </style>
