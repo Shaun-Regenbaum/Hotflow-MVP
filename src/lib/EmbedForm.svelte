@@ -38,6 +38,3 @@
 	<h1>Here is your monetized link:</h1>
 	<a href={newUrl}>{newUrl}</a>
 {/if}
-<h1>Preview:</h1>
-<iframe title="iframe" id="monetized" style="	width:40%;
-	height:30vh;" src={addhttps(url)} />

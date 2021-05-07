@@ -1,5 +1,5 @@
 <script>
-	import Checkout from '$lib/Checkout.svelte'
+	import Checkout from '$lib/Checkout.svelte';
 	import { createPurchase } from '$lib/payments/createPurchase';
 	import { session } from '$app/stores';
 	import { browser } from '$app/env';
@@ -30,8 +30,9 @@
 		}
 	}
 </script>
+
 <div id="pay">
-	<Checkout/>
+	<Checkout />
 	<h1>Purchase Form</h1>
 	<form on:submit|preventDefault={submitPurchase}>
 		<fieldset>
@@ -49,13 +50,8 @@
 
 <style>
 	#pay {
-		position: absolute;
-		bottom: 0%;
-		left: 60%;
 		background: grey;
 		text-align: center;
-		border-radius: 10px;
-		border: solid 5px black;
-		z-index: 2;
+		padding: 10px;
 	}
 </style>

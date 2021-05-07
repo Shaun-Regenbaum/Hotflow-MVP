@@ -3,7 +3,6 @@ const restID: string = '65E6C81A-5B7F-4F1E-91AC-4BF1863C83B3';
 /**The base is what we append our resource locations to fetch data from our backend, which in our case is backendless */
 const base: string = `https://api.backendless.com/${appID}/${restID}`;
 
-
 /**This is the info we supply to make the call to the backend */
 type CallInfo = {
 	/**This can be either get, put, post, or del */
@@ -14,7 +13,7 @@ type CallInfo = {
 	data?: object;
 	/**If we are doing something that is associated with a user, or requires auth, then we will supply that auth token here */
 	token?: string;
-}
+};
 
 /**
  * This funciton sets up a call to the Backendless API

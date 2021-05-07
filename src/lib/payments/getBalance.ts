@@ -1,6 +1,6 @@
 import * as api from '$lib/backendlessAPI';
 
-export async function getBalance(objectId:string, token:string) {
+export async function getBalance(objectId: string, token: string) {
 	// We just need the path and id of object for get call:
 	const path = `users/${objectId}?props=balance`;
 

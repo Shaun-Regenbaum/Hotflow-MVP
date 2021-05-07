@@ -17,7 +17,7 @@ type LoginResult = {
 	'user-token': string;
 	userStatus: string;
 	userType: string;
-}
+};
 
 /**This is the data that backendless takes to register a user*/
 type RegistrationData = {
@@ -26,12 +26,17 @@ type RegistrationData = {
 	password: string;
 	name: string;
 	userType?: string;
-}
+};
 
 /**This function initiates the call to register a user*/
-export async function register(name:string, email:string, password:string, userType:string = "Consumer") {
-	const path:string = 'users/register';
-	const data:RegistrationData = {
+export async function register(
+	name: string,
+	email: string,
+	password: string,
+	userType: string = 'Consumer'
+) {
+	const path: string = 'users/register';
+	const data: RegistrationData = {
 		email: email,
 		password: password,
 		name: name,
@@ -39,10 +44,10 @@ export async function register(name:string, email:string, password:string, userT
 	};
 
 	// Making the call:
-	const response:LoginResult = await api.post(path, data);
+	const response: LoginResult = await api.post(path, data);
 
 	// Checking to see if it was a success
-	let responseStatus:boolean = response.email ? true : false;
+	let responseStatus: boolean = response.email ? true : false;
 	// Returning a custom object that contains success/failure and everything else.
 	return { status: responseStatus, body: response };
 }

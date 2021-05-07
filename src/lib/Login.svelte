@@ -5,10 +5,9 @@
 	import { browser } from '$app/env';
 
 	export let existing = true;
-	export let name = "Login"
-	let username = '';
-	let email = 'a@a.com';
-	let password = 'a';
+	let username = 'default';
+	let email = 'default@default.com';
+	let password = 'default';
 
 	async function submit_login() {
 		const response = await login(email, password);
@@ -19,7 +18,7 @@
 				localStorage.setItem('userID', response.body['objectId']);
 				localStorage.setItem('user-token', response.body['user-token']);
 			}
-		} 
+		}
 	}
 
 	async function submit_registration() {
@@ -31,13 +30,11 @@
 				localStorage.setItem('userID', response.body['objectId']);
 				localStorage.setItem('user-token', response.body['user-token']);
 			}
-		} else {
 		}
 	}
 </script>
 
 <div id="login">
-	<h1>Hotflow</h1>
 	{#if existing}
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
