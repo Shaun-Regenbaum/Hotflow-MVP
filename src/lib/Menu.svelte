@@ -162,9 +162,9 @@
 		transition: all 0.2s ease;
 	}
 
-	button:hover, button:active {
-	box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
-	
+	button:hover,
+	button:active {
+		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
 	}
 
 	/*Between Mobile and Desktop specific:  */

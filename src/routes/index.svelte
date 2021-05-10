@@ -38,8 +38,8 @@
 		{ component: Logout, name: 'Logout' },
 		{ component: New, name: 'Creator' },
 		{ component: Recharge, name: 'Recharge' },
-		{ component: Home , name: 'Home' },
-		{ component: Refund, name: 'Refund'}
+		{ component: Home, name: 'Home' },
+		{ component: Refund, name: 'Refund' }
 	];
 
 	// Checking to see if you are logged in:

@@ -1,13 +1,14 @@
 <script>
-	import Form from '$lib/Creator/Form.svelte'
+	import Form from '$lib/Creator/Form.svelte';
 	export let creator = false;
 
-	function assignCreator(){
+	function assignCreator() {
 		creator = !creator;
 	}
 </script>
+
 {#if creator}
-	<Form/>
+	<Form />
 {:else}
 	<div id="new_creator">
 		<h3>Welcome to Hotflow Creators</h3>
@@ -15,13 +16,12 @@
 			<p>Gain new streams of revenue by monetizing anything with a link through Hotflow.</p>
 		</div>
 
-		<button on:click="{assignCreator}"
+		<button on:click={assignCreator}
 			><h3>Become a Creator</h3>
 			<div id="raised"><p>No sign up required</p></div></button
 		>
 	</div>
 {/if}
-
 
 <style>
 	#new_creator {
@@ -64,7 +64,8 @@
 		transition: all 0.2s ease;
 	}
 
-	button:hover, button:active {
+	button:hover,
+	button:active {
 		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
 	}
 </style>

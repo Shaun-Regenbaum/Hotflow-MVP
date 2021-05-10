@@ -1,58 +1,58 @@
 <script>
+	import supabase from '$lib/db.js';
 	import { fade } from 'svelte/transition';
 	import { browser } from '$app/env';
-	// For Front End Dev:
-	const user=true;
-
+	import Error from '$lib/Error.svelte'
 
 	export let existing = true;
 	let email = '';
 	let password = '';
-	let message = "Nothing";
+	let message=''
 
 	async function submit_login() {
-		// let { user, session, error } = await supabase.auth.signIn({
-		// 	email: email,
-		// 	password: password
-		// });
+		let { user, session, error } = await supabase.auth.signIn({
+			email: email,
+			password: password
+		});
 		if (user) {
 			if (browser) {
-				localStorage.setItem('token', 'true');
-				window.location.replace("/");
+				localStorage.setItem('token', session.access_token);
+				window.location.replace('/');
 			}
 		} else {
-			// message = error;
+			message = error.message;
 		}
 	}
 
 	async function submit_registration() {
-		const user=true;
-		// let { user, session, error } = await supabase.auth.signUp({
-		// 	email: email,
-		// 	password: password
-		// });
+		let { user, session, error } = await supabase.auth.signUp({
+			email: email,
+			password: password
+		});
 		if (user) {
 			if (browser) {
-				localStorage.setItem('token', 'true');
-				window.location.replace("/");
+				localStorage.setItem('token', session.access_token);
+				window.location.replace('/');
 			}
 		} else {
-			// message = error;
+			message = error.message;
 		}
 	}
 </script>
 
 <div id="login">
 	{#if existing}
-		<form on:submit|preventDefault={submit_login} >
+		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
 			</fieldset>
 			<fieldset>
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit" in:fade="{{delay: 50, duration: 500}}"> Login </button>
-			<button on:click={() => (existing = !existing)} in:fade="{{delay: 50, duration: 500}}">New User?</button>
+			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Login </button>
+			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
+				>New User?</button
+			>
 		</form>
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
@@ -62,10 +62,13 @@
 			<fieldset>
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit" in:fade="{{delay: 50, duration: 500}}"> Sign Up </button>
-			<button on:click={() => (existing = !existing)} in:fade="{{delay: 50, duration: 500}}">Existing User?</button>
+			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Sign Up </button>
+			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
+				>Existing User?</button
+			>
 		</form>
 	{/if}
+	<p>{message}</p>
 </div>
 
 <style>
@@ -93,7 +96,7 @@
 		/* Text: */
 		color: rgba(65, 65, 65, 0.719);
 		/* Making the input fields nueromorphic: */
-		
+
 		background: rgba(255, 255, 255, 0.383);
 		padding: 0.5rem 1rem 0.5rem 1rem;
 		margin-bottom: 0.4rem;
@@ -123,8 +126,8 @@
 		transition: all 0.2s ease;
 	}
 
-	button:hover, button:active {
+	button:hover,
+	button:active {
 		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
-		
 	}
 </style>

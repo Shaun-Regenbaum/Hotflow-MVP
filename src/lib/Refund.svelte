@@ -1,7 +1,5 @@
 <div id="new_creator">
-		<button
-		><h3>Refund</h3></button
-	>
+	<button><h3>Refund</h3></button>
 </div>
 
 <style>
@@ -45,7 +43,8 @@
 		transition: all 0.2s ease;
 	}
 
-	button:hover, button:active {
+	button:hover,
+	button:active {
 		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
 	}
 </style>
