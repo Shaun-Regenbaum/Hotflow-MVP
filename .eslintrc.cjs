@@ -1,6 +1,4 @@
-import config from './svelte.config';
-
-config = {
+module.exports = {
 	root: true,
 	parser: '@typescript-eslint/parser',
 	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
@@ -8,18 +6,15 @@ config = {
 	ignorePatterns: ['*.cjs'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
 	settings: {
-		'svelte3/typescript': require('typescript')
+		'svelte3/typescript': () => require('typescript')
 	},
 	parserOptions: {
 		sourceType: 'module',
-		ecmaVersion: 2019,
-		project: './tsconfig.json'
+		ecmaVersion: 2019
 	},
 	env: {
 		browser: true,
-		es2020: true,
+		es2017: true,
 		node: true
 	}
 };
-
-export default config;
