@@ -21,6 +21,7 @@
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
 	import New from '$lib/Creator/NewCreator.svelte';
+	import Refund from '$lib/Refund.svelte';
 	import EmbedForm from '$lib/EmbedForm.svelte';
 	import { session } from '$app/stores';
 
@@ -35,7 +36,8 @@
 	let component_list2: MenuComponent[] = [
 		{ component: Logout, name: 'Logout' },
 		{ component: EmbedForm, name: 'Form' },
-		{ component: New, name: 'Creator' }
+		{ component: New, name: 'Creator' },
+		{ component: Refund, name: 'Refund'}
 	];
 
 	// Checking to see if you are logged in:

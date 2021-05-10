@@ -1,13 +1,6 @@
-
 <div id="new_creator">
-	<h3>Welcome to Hotflow Creators</h3>
-	<div id="description">
-		<p>Gain new streams of revenue by monetizing anything with a link through Hotflow.</p>
-	</div>
-
-	<button
-		><h3>Become a Creator</h3>
-		<div id="raised"><p>No sign up required</p></div></button
+		<button
+		><h3>Refund</h3></button
 	>
 </div>
 
