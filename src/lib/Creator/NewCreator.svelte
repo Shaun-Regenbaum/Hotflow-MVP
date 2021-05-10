@@ -1,15 +1,27 @@
+<script>
+	import EmbedForm from '$lib/EmbedForm.svelte'
+	export let creator = false;
 
-<div id="new_creator">
-	<h3>Welcome to Hotflow Creators</h3>
-	<div id="description">
-		<p>Gain new streams of revenue by monetizing anything with a link through Hotflow.</p>
+	function assignCreator(){
+		creator = !creator;
+	}
+</script>
+{#if creator}
+	<EmbedForm/>
+{:else}
+	<div id="new_creator">
+		<h3>Welcome to Hotflow Creators</h3>
+		<div id="description">
+			<p>Gain new streams of revenue by monetizing anything with a link through Hotflow.</p>
+		</div>
+
+		<button on:click="{assignCreator}"
+			><h3>Become a Creator</h3>
+			<div id="raised"><p>No sign up required</p></div></button
+		>
 	</div>
+{/if}
 
-	<button
-		><h3>Become a Creator</h3>
-		<div id="raised"><p>No sign up required</p></div></button
-	>
-</div>
 
 <style>
 	#new_creator {

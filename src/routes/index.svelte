@@ -35,7 +35,6 @@
 	let component_list1: MenuComponent[] = [{ component: Login, name: 'Login' }];
 	let component_list2: MenuComponent[] = [
 		{ component: Logout, name: 'Logout' },
-		{ component: EmbedForm, name: 'Form' },
 		{ component: New, name: 'Creator' },
 		{ component: Refund, name: 'Refund'}
 	];
