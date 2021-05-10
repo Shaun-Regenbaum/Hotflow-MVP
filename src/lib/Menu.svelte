@@ -20,40 +20,42 @@
 	export let components: MenuComponent[];
 	export let starting_component: MenuComponent = components[0];
 	let current_component: MenuComponent = starting_component;
-	export let name = 'Mr. Anonymous';
 
+	let minimized = false;
+	$: visible = minimized ? 'none' : '';
 
-
-	let minimized = false
-	$: visible = minimized ? 'none' : ''
-
-	function minimize(){
-		console.log("Hello")
-		minimized = !minimized
+	function minimize() {
+		console.log('Hello');
+		minimized = !minimized;
 	}
 
-	function switchComponent(selection:string){
-		let select = components.filter(component => component.name == selection)
+	function switchComponent() {
+		let select = components.filter((component) => component.name == current_component.name);
 		current_component = select[0];
 	}
-
 </script>
 
-<div id="menu" style="width:{minimized ? '5rem' : ''}; grid-template-rows: {minimized ? '2rem' : ''}; border-radius: {minimized ?  '7px 7px 0 0': ''};">
-	<section id="toolbar" on:click="{minimize}">
+<div
+	id="menu"
+	style="width:{minimized ? '5rem' : ''}; grid-template-rows: {minimized
+		? '2rem'
+		: ''}; border-radius: {minimized ? '7px 7px 0 0' : ''};"
+>
+	<section id="toolbar" on:click={minimize}>
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
-		<button id='minimize' style='transform: rotate({minimized ? '225deg' : '45deg'});'></button>
+		<button id="minimize" style="transform: rotate({minimized ? '225deg' : '45deg'});" />
 	</section>
 	<div id="card" style="display:{visible}">
 		<svelte:component this={current_component.component} />
 	</div>
 	{#if components.length > 1}
-	<nav style="display:{visible}">
-
+		<nav style="display:{visible}">
 			{#each components as component}
-			<li style="display: inline;"><button on:click={switchComponent(component.name)}>{component.name}</button></li>
+				<li style="display: inline;">
+					<button on:click={switchComponent}>{component.name}</button>
+				</li>
 			{/each}
-	</nav>
+		</nav>
 	{/if}
 </div>
 
@@ -64,7 +66,6 @@
 		position: absolute;
 		z-index: 2;
 		bottom: 0;
-		
 
 		/* Grid Layout: */
 		display: grid;
@@ -74,17 +75,16 @@
 		/* Size of Container: */
 		max-height: 50vh;
 		width: 100%;
-		left:0;
+		left: 0;
 
 		/* Colors: */
 		background-color: #e0e0e0; /* Fallback for older browsers */
 
 		/* Nueromorphism: */
 		border-radius: 25px 25px 0 0;
-		box-shadow:  -2px -2px 5px #0000003d,
-             2px 2px 5px #ffffff9b;
+		box-shadow: -2px -2px 5px #0000003d, 2px 2px 5px #ffffff9b;
 	}
-	#toolbar{
+	#toolbar {
 		/*Grid Placement:*/
 		grid-column-start: 1;
 		grid-column-end: 4;
@@ -92,26 +92,26 @@
 		grid-row-end: 2;
 	}
 
-	#minimize {  /*Probably want to redo this guy*/
+	#minimize {
+		/*Probably want to redo this guy*/
 		/* Centering the Box/Arrow: */
 		margin-left: 50%;
 
 		/* Size of Box/Arrow */
 		height: 1rem;
-  		width: 1rem;
+		width: 1rem;
 
 		/* Color of Box/Arrow: */
 		background-color: rgba(246, 185, 185, 0.404);
 
 		/* Transforming the border of a box into an arrow */
-  		border-width: 0px 3px 3px 0px;
+		border-width: 0px 3px 3px 0px;
 
 		/* Padding, to make it not rest on top on minimied: */
 
 		border: 0;
 		border-radius: 10px;
-		box-shadow: 3px 3px 10px #bebebe,
-             -3px -3px 10px #ffffff;
+		box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
 	}
 
 	#card {
@@ -144,28 +144,24 @@
 
 		/* Nueuromorphism: */
 		background: #e2e2e2f3;
-			box-shadow:   -1px -1px 1px #64606052,
-			1px 1px 2px #fff7f7,
-			inset 10px 10px 20px #64606052,
+		box-shadow: -1px -1px 1px #64606052, 1px 1px 2px #fff7f7, inset 10px 10px 20px #64606052,
 			inset -10px -10px 20px #fff7f7;
-
 	}
 
 	button {
 		/* Removing all the default outlines: */
 		border: 0;
-  		outline:0;
+		outline: 0;
 		background: #e0e0e0;
 		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-		color:rgba(65, 65, 65, 0.719);
+		color: rgba(65, 65, 65, 0.719);
 		border-radius: 10px;
-		box-shadow: 3px 3px 8px #bebebe,
-             -3px -3px 8px #ffffff;
+		box-shadow: 3px 3px 8px #bebebe, -3px -3px 8px #ffffff;
 	}
 
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 380px) {
-		#menu{
+		#menu {
 			min-width: 380px;
 			max-width: 550px;
 			width: 50%;
@@ -174,7 +170,7 @@
 	}
 
 	@media (min-width: 1100px) {
-		#menu{
+		#menu {
 			min-width: 550px;
 			width: 30%;
 		}

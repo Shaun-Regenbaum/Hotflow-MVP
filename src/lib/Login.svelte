@@ -1,9 +1,8 @@
 <script>
-	import supabase from '$lib/supabase'
+	import supabase from '$lib/supabase';
 	import { browser } from '$app/env';
 
 	export let existing = true;
-	let username = '';
 	let email = '';
 	let password = '';
 	let message;
@@ -12,14 +11,13 @@
 		let { user, session, error } = await supabase.auth.signIn({
 			email: email,
 			password: password
-		})
+		});
 		if (user) {
 			if (browser) {
-				localStorage.setItem('token', session.access_token)
+				localStorage.setItem('token', session.access_token);
 			}
-		}
-		else {
-			message=error;
+		} else {
+			message = error;
 		}
 	}
 
@@ -27,14 +25,13 @@
 		let { user, session, error } = await supabase.auth.signUp({
 			email: email,
 			password: password
-		})
+		});
 		if (user) {
 			if (browser) {
-				localStorage.setItem('token', session.access_token)
+				localStorage.setItem('token', session.access_token);
 			}
-		}
-		else {
-			message=error;
+		} else {
+			message = error;
 		}
 	}
 </script>
@@ -75,8 +72,7 @@
 
 		/* Neuromorphism */
 		border-radius: 25px;
-		box-shadow: inset 3px 3px 5px #eeeeee,
-             inset -3px -3px 5px #bebebe;
+		box-shadow: inset 3px 3px 5px #eeeeee, inset -3px -3px 5px #bebebe;
 	}
 
 	fieldset {
@@ -87,27 +83,25 @@
 	input {
 		/* Removing all the default outlines: */
 		border: none;
-  		outline:none;
+		outline: none;
 		/* Making the input fields nueromorphic: */
 		background: rgba(255, 255, 255, 0.383);
 		padding: 0.5rem 1rem 0.5rem 1rem;
-		color:rgba(65, 65, 65, 0.719);
+		color: rgba(65, 65, 65, 0.719);
 		margin-bottom: 0.4rem;
 		border-radius: 25px;
-		box-shadow: inset 3px 3px 10px #64606052,
-				inset -3px -3px 10px #fff7f7;
+		box-shadow: inset 3px 3px 10px #64606052, inset -3px -3px 10px #fff7f7;
 	}
 
 	button {
 		/* Removing all the default outlines: */
 		border: 0;
-  		outline:0;
+		outline: 0;
 		background: #e0e0e0;
 		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 		margin-top: 0.5rem;
-		color:rgba(65, 65, 65, 0.719);
+		color: rgba(65, 65, 65, 0.719);
 		border-radius: 10px;
-		box-shadow: 3px 3px 10px #bebebe,
-             -3px -3px 10px #ffffff;
+		box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
 	}
 </style>

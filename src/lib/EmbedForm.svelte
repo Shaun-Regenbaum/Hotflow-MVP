@@ -4,14 +4,14 @@
 	let title;
 	console.log(location);
 
-	function addhttps(url) {
-		if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
-			url = 'https://' + url;
-		}
-		return url;
-	}
+	// function addhttps(url) {
+	// 	if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+	// 		url = 'https://' + url;
+	// 	}
+	// 	return url;
+	// }
 
-	async function submit(event) {
+	async function submit() {
 		// const result = await saveURL(addhttps(url), title, userToken);
 		// if (result.status) {
 		// 	if (title) {

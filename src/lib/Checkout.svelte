@@ -41,4 +41,3 @@
 </script>
 
 <div id="paypal-button-container" />
-
