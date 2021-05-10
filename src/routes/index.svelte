@@ -9,7 +9,6 @@
 		if (browser) {
 			user.token = localStorage.getItem('token');
 		}
-		console.log(user);
 
 		return {
 			props: { user }
