@@ -9,7 +9,12 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-		target: '#svelte'
+		target: '#svelte',
+		vite: {
+			optimizeDeps: {
+				include: ['@supabase/supabase-js']
+			}
+		}
 	}
 };
 

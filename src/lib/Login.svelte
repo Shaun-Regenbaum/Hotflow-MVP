@@ -1,5 +1,5 @@
 <script>
-	import supabase from '$lib/supabase.js'
+	import supabase from '$lib/supabase'
 	import { browser } from '$app/env';
 
 	export let existing = true;
@@ -10,8 +10,8 @@
 
 	async function submit_login() {
 		let { user, session, error } = await supabase.auth.signIn({
-			email: 'someone@email.com',
-			password: 'qhITHjxxZhvGBrADulwt'
+			email: email,
+			password: password
 		})
 		if (user) {
 			if (browser) {
@@ -25,8 +25,8 @@
 
 	async function submit_registration() {
 		let { user, session, error } = await supabase.auth.signUp({
-			email: 'someone@email.com',
-			password: 'qhITHjxxZhvGBrADulwt'
+			email: email,
+			password: password
 		})
 		if (user) {
 			if (browser) {
