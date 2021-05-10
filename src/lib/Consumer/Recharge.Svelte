@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <div id="recharge">
     <div id="container">
         <button><h3>$1</h3></button>
