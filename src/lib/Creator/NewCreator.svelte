@@ -50,5 +50,12 @@
 		color: rgba(65, 65, 65, 0.719);
 		border-radius: 10px;
 		box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
+
+		/* Animations: */
+		transition: all 0.2s ease;
+	}
+
+	button:hover, button:active {
+		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
 	}
 </style>

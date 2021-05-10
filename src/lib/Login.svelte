@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition';
 	import { browser } from '$app/env';
 	// For Front End Dev:
 	const user=true;
@@ -17,6 +18,7 @@
 		if (user) {
 			if (browser) {
 				localStorage.setItem('token', 'true');
+				window.location.replace("/");
 			}
 		} else {
 			// message = error;
@@ -32,6 +34,7 @@
 		if (user) {
 			if (browser) {
 				localStorage.setItem('token', 'true');
+				window.location.replace("/");
 			}
 		} else {
 			// message = error;
@@ -41,15 +44,15 @@
 
 <div id="login">
 	{#if existing}
-		<form on:submit|preventDefault={submit_login}>
+		<form on:submit|preventDefault={submit_login} >
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
 			</fieldset>
 			<fieldset>
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit"> Login </button>
-			<button on:click={() => (existing = !existing)}>New User?</button>
+			<button type="submit" in:fade="{{delay: 50, duration: 500}}"> Login </button>
+			<button on:click={() => (existing = !existing)} in:fade="{{delay: 50, duration: 500}}">New User?</button>
 		</form>
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
@@ -59,8 +62,8 @@
 			<fieldset>
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit"> Sign Up </button>
-			<button on:click={() => (existing = !existing)}>Existing User?</button>
+			<button type="submit" in:fade="{{delay: 50, duration: 500}}"> Sign Up </button>
+			<button on:click={() => (existing = !existing)} in:fade="{{delay: 50, duration: 500}}">Existing User?</button>
 		</form>
 	{/if}
 </div>
@@ -87,24 +90,41 @@
 		/* Removing all the default outlines: */
 		border: none;
 		outline: none;
+		/* Text: */
+		color: rgba(65, 65, 65, 0.719);
 		/* Making the input fields nueromorphic: */
+		
 		background: rgba(255, 255, 255, 0.383);
 		padding: 0.5rem 1rem 0.5rem 1rem;
-		color: rgba(65, 65, 65, 0.719);
 		margin-bottom: 0.4rem;
 		border-radius: 25px;
 		box-shadow: inset 3px 3px 10px #64606052, inset -3px -3px 10px #fff7f7;
+
+		/* Animations: */
+		transition: all 0.2s ease;
+	}
+	input:focus {
+		box-shadow: inset 5px 5px 6px #64606052, inset -5px -5px 6px #fff7f7;
 	}
 
 	button {
 		/* Removing all the default outlines: */
 		border: 0;
 		outline: 0;
-		background: #e0e0e0;
 		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 		margin-top: 0.5rem;
+		margin-inline: 1rem;
 		color: rgba(65, 65, 65, 0.719);
 		border-radius: 10px;
-		box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
+		background: #e0e0e0;
+		box-shadow: 5px 5px 10px #9b9b9b, -5px -5px 10px #ffffff;
+
+		/* Animations: */
+		transition: all 0.2s ease;
+	}
+
+	button:hover, button:active {
+		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
+		
 	}
 </style>
