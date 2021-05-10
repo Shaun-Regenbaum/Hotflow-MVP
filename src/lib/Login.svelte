@@ -1,35 +1,40 @@
 <script>
-	import { session } from '$app/stores';
-	import { login } from '$lib/auth/login';
-	import { register } from '$lib/auth/register';
+	import supabase from '$lib/supabase.js'
 	import { browser } from '$app/env';
 
 	export let existing = true;
 	let username = '';
 	let email = '';
 	let password = '';
+	let message;
 
 	async function submit_login() {
-		const response = await login(email, password);
-		if (response.status) {
-			$session.user = response.body;
+		let { user, session, error } = await supabase.auth.signIn({
+			email: 'someone@email.com',
+			password: 'qhITHjxxZhvGBrADulwt'
+		})
+		if (user) {
 			if (browser) {
-				localStorage.setItem('name', response.body['name']);
-				localStorage.setItem('userID', response.body['objectId']);
-				localStorage.setItem('user-token', response.body['user-token']);
+				localStorage.setItem('token', session.access_token)
 			}
+		}
+		else {
+			message=error;
 		}
 	}
 
 	async function submit_registration() {
-		const response = await register(username, email, password);
-		if (response.status) {
-			$session.user = response.body;
+		let { user, session, error } = await supabase.auth.signUp({
+			email: 'someone@email.com',
+			password: 'qhITHjxxZhvGBrADulwt'
+		})
+		if (user) {
 			if (browser) {
-				localStorage.setItem('name', response.body['name']);
-				localStorage.setItem('userID', response.body['objectId']);
-				localStorage.setItem('user-token', response.body['user-token']);
+				localStorage.setItem('token', session.access_token)
 			}
+		}
+		else {
+			message=error;
 		}
 	}
 </script>
@@ -48,9 +53,6 @@
 		</form>
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
-			<fieldset>
-				<input type="text" required placeholder="Your Name" bind:value={username} />
-			</fieldset>
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
 			</fieldset>

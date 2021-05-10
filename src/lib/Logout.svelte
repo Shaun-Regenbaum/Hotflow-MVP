@@ -1,20 +1,19 @@
 <script>
-	import { logout } from '$lib/auth/logout';
+	import supabase from '$lib/supabase';
 	import { browser } from '$app/env';
-	import { session } from '$app/stores';
-import { time_ranges_to_array } from 'svelte/internal';
 
 	export let pos = 'inherit';
+	let message;
 
 	async function submitLogout() {
-		let token;
+	
 		if (browser) {
 			console.log('cleared')
-			token = localStorage.getItem('user-token');
 			localStorage.clear();
 		}
-		await logout(token);
-		$session = false;
+
+		let { error } = await supabase.auth.signOut()
+		message = error;
 	}
 </script>
 <div id="logout">

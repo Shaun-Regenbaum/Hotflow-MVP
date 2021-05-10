@@ -1,7 +1,4 @@
 <script>
-	import { saveURL } from '$lib/urls/saveURL';
-	import { session } from '$app/stores';
-	let userToken = $session.user['user-token'];
 	let url;
 	let newUrl;
 	let title;
@@ -15,14 +12,14 @@
 	}
 
 	async function submit(event) {
-		const result = await saveURL(addhttps(url), title, userToken);
-		if (result.status) {
-			if (title) {
-				newUrl = String(location.origin) + '/content/' + title;
-			}
-		} else {
-			newUrl = String(location.origin) + '/content/' + String(result.body.objectId);
-		}
+		// const result = await saveURL(addhttps(url), title, userToken);
+		// if (result.status) {
+		// 	if (title) {
+		// 		newUrl = String(location.origin) + '/content/' + title;
+		// 	}
+		// } else {
+		// 	newUrl = String(location.origin) + '/content/' + String(result.body.objectId);
+		// }
 	}
 </script>
 

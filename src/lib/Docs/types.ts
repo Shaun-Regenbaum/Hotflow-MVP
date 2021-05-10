@@ -9,5 +9,5 @@ export type User = {
 	/**This is the uuid of the user in the database to reference */
 	userId?: string | undefined;
 	/**This is the session token for the user for permissions*/
-	userToken?: string | undefined;
+	token?: string | undefined;
 };

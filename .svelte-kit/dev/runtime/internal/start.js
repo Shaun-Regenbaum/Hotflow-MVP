@@ -246,6 +246,20 @@ class Router {
 	}
 }
 
+/** @param {string | Uint8Array} value */
+function hash(value) {
+	let hash = 5381;
+	let i = value.length;
+
+	if (typeof value === 'string') {
+		while (i) hash = (hash * 33) ^ value.charCodeAt(--i);
+	} else {
+		while (i) hash = (hash * 33) ^ value[--i];
+	}
+
+	return (hash >>> 0).toString(36);
+}
+
 /**
  * @param {import('types/page').LoadOutput} loaded
  * @returns {import('types/internal').NormalizedLoadOutput}
@@ -331,7 +345,14 @@ function page_store(value) {
  */
 function initial_fetch(resource, opts) {
 	const url = typeof resource === 'string' ? resource : resource.url;
-	const script = document.querySelector(`script[type="svelte-data"][url="${url}"]`);
+
+	let selector = `script[type="svelte-data"][url="${url}"]`;
+
+	if (opts && typeof opts.body === 'string') {
+		selector += `[body="${hash(opts.body)}"]`;
+	}
+
+	const script = document.querySelector(selector);
 	if (script) {
 		const { body, ...init } = JSON.parse(script.textContent);
 		return Promise.resolve(new Response(body, init));
