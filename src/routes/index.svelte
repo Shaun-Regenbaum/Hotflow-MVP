@@ -21,6 +21,7 @@
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
 	import New from '$lib/Creator/New.svelte';
+	import Consumer from '$lib/Consumer/Home.svelte';
 	import Recharge from '$lib/Consumer/Recharge.svelte';
 	import Refund from '$lib/Refund.svelte';
 	import { session } from '$app/stores';
@@ -37,6 +38,7 @@
 		{ component: Logout, name: 'Logout' },
 		{ component: New, name: 'Creator' },
 		{ component: Recharge, name: 'Recharge' },
+		{ component: Consumer, name: 'Home' },
 		{ component: Refund, name: 'Refund'}
 	];
 
