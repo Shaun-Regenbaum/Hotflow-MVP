@@ -26,8 +26,8 @@
 	<h1>Put the link you want to monetize below</h1>
 <form on:submit|preventDefault={submit}>
 	<fieldset>
+		<input type="title" required placeholder="Content Title (Optional)" bind:value={title} />
 		<input type="link" required placeholder="URL" bind:value={url} />
-		<input type="title" required placeholder="Title (Optional)" bind:value={title} />
 	</fieldset>
 	<button type="submit"> Monetize </button>
 </form>
