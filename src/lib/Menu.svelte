@@ -168,7 +168,7 @@
 	}
 
 	/*Between Mobile and Desktop specific:  */
-	@media (min-width: 380px) {
+	@media (min-width: 550px) {
 		#menu {
 			min-width: 380px;
 			max-width: 550px;
