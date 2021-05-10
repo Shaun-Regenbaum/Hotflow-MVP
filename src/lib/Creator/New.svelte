@@ -1,5 +1,5 @@
 <script>
-	import EmbedForm from '$lib/EmbedForm.svelte'
+	import Form from '$lib/Creator/Form.svelte'
 	export let creator = false;
 
 	function assignCreator(){
@@ -7,7 +7,7 @@
 	}
 </script>
 {#if creator}
-	<EmbedForm/>
+	<Form/>
 {:else}
 	<div id="new_creator">
 		<h3>Welcome to Hotflow Creators</h3>

@@ -20,9 +20,8 @@
 	import Menu from '$lib/Menu.svelte';
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
-	import New from '$lib/Creator/NewCreator.svelte';
+	import New from '$lib/Creator/New.svelte';
 	import Refund from '$lib/Refund.svelte';
-	import EmbedForm from '$lib/EmbedForm.svelte';
 	import { session } from '$app/stores';
 
 	/*eslint no-empty-pattern: 1*/
