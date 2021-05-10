@@ -1,5 +1,5 @@
 <script>
-	import supabase from '$lib/supabase';
+	// import supabase from '$lib/supabase';
 	import { browser } from '$app/env';
 
 	export let pos = 'inherit';
@@ -11,8 +11,8 @@
 			localStorage.clear();
 		}
 
-		let { error } = await supabase.auth.signOut();
-		message = error;
+		// let { error } = await supabase.auth.signOut();
+		// message = error;
 	}
 </script>
 

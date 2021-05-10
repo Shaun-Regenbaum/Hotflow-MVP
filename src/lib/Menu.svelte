@@ -29,8 +29,8 @@
 		minimized = !minimized;
 	}
 
-	function switchComponent() {
-		let select = components.filter((component) => component.name == current_component.name);
+	function switchComponent(selection: string) {
+		let select = components.filter((component) => component.name == selection);
 		current_component = select[0];
 	}
 </script>
@@ -52,7 +52,7 @@
 		<nav style="display:{visible}">
 			{#each components as component}
 				<li style="display: inline;">
-					<button on:click={switchComponent}>{component.name}</button>
+					<button on:click={switchComponent(component.name)}>{component.name}</button>
 				</li>
 			{/each}
 		</nav>

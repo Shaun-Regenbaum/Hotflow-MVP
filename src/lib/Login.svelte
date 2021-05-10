@@ -1,37 +1,40 @@
 <script>
-	import supabase from '$lib/supabase';
 	import { browser } from '$app/env';
+	// For Front End Dev:
+	const user=true;
+
 
 	export let existing = true;
 	let email = '';
 	let password = '';
-	let message;
+	let message = "Nothing";
 
 	async function submit_login() {
-		let { user, session, error } = await supabase.auth.signIn({
-			email: email,
-			password: password
-		});
+		// let { user, session, error } = await supabase.auth.signIn({
+		// 	email: email,
+		// 	password: password
+		// });
 		if (user) {
 			if (browser) {
-				localStorage.setItem('token', session.access_token);
+				localStorage.setItem('token', 'true');
 			}
 		} else {
-			message = error;
+			// message = error;
 		}
 	}
 
 	async function submit_registration() {
-		let { user, session, error } = await supabase.auth.signUp({
-			email: email,
-			password: password
-		});
+		const user=true;
+		// let { user, session, error } = await supabase.auth.signUp({
+		// 	email: email,
+		// 	password: password
+		// });
 		if (user) {
 			if (browser) {
-				localStorage.setItem('token', session.access_token);
+				localStorage.setItem('token', 'true');
 			}
 		} else {
-			message = error;
+			// message = error;
 		}
 	}
 </script>
