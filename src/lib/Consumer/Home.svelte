@@ -4,7 +4,7 @@
 
 <div id="home">
     <div id="raised">
-        <h1 id="balance">${Number(balance/100).toLocaleString('en' ,{minimumFractionDigits: 2})}</h1>
+        <h1>${Number(balance/100).toLocaleString('en' ,{minimumFractionDigits: 2})}</h1>
     </div>
 </div>
 
