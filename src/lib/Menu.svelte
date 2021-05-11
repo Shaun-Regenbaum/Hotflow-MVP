@@ -104,7 +104,7 @@
 		background-color: rgba(134, 134, 134, 0.404);
 	}
 
-	#minimze:active, #minimize:focus{
+	#minimize:focus{
 		background: var(--bg);
 		box-shadow: 2px 2px 5px var(--neuro-dark), 
 						-2px -2px 5px var(--neuro-light),
@@ -154,7 +154,6 @@
 	}
 
 	
-	
 
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
@@ -166,6 +165,7 @@
 		}
 	}
 
+	/* For Desktop: */
 	@media (min-width: 1100px) {
 		#menu {
 			min-width: 550px;

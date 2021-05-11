@@ -27,24 +27,4 @@
 		border-radius: 10px;
 		box-shadow: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
 	}
-
-	button {
-		/* Removing all the default outlines: */
-		border: 0;
-		outline: 0;
-		background: #e0e0e0;
-		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-		margin-top: 0.5rem;
-		color: rgba(65, 65, 65, 0.719);
-		border-radius: 10px;
-		box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
-
-		/* Animations: */
-		transition: all 0.2s ease;
-	}
-
-	button:hover,
-	button:active {
-		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
-	}
 </style>
