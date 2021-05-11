@@ -8,6 +8,7 @@
 
 <style>
     #testing { 
+        background:rgba(0, 128, 0, 0);
         padding: 1rem;
         border: 4px solid rgb(248, 233, 20);
         overflow: auto;

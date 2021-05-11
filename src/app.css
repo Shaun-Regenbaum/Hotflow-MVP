@@ -1,3 +1,25 @@
 :root {
+	/* Text Properties: */
 	font-family: Arial, Helvetica, sans-serif;
+	--primary-color: black;
+	--secondary-color: black;
+	--greyed-out: grey;
+
+
+	/* General Properties: */
+	--bg: rgb(255, 255, 255);
+
+	/* Neuromorphic Properties: */
+	--neuro-light: #ececec8a;
+	--neuro-dark: #0202028a;
+
+	/* Nueromorphic Active Properties */
+	--neuro1-bg: #fcf4d8;
+	--neuro1-light: #fffaea;
+	--neuro1-dark: #c5bfa4;
+
+	/* Nueromorphic Hover Properties */
+	--neuro2-bg: rgb(255, 255, 255);
+	--neuro2-light: #ffffff;
+	--neuro2-dark: #a5a5a5;
 }
