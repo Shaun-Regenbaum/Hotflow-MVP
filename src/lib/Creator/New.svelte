@@ -13,7 +13,7 @@
 	<div id="new_creator">
 		<h3>Welcome to Hotflow Creators</h3>
 		<div id="description">
-			<p>Gain new streams of revenue by monetizing anything with a link through Hotflow.</p>
+			<p>Gain new streams of revenue by monetizing anything with a link through 402.</p>
 		</div>
 
 		<button on:click={assignCreator}

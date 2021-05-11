@@ -2,14 +2,14 @@
 	let url;
 	let newUrl;
 	let title;
-	console.log(location);
+	let mooch;	
 
-	// function addhttps(url) {
-	// 	if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
-	// 		url = 'https://' + url;
-	// 	}
-	// 	return url;
-	// }
+	function addhttps(url) {
+		if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+			url = 'https://' + url;
+		}
+		return url;
+	}
 
 	async function submit() {
 		// const result = await saveURL(addhttps(url), title, userToken);
@@ -23,20 +23,31 @@
 	}
 </script>
 
-<div id="link_form">
-	<h1>Put the link you want to monetize below</h1>
-	<form on:submit|preventDefault={submit}>
-		<fieldset>
-			<input type="title" required placeholder="Content Title (Optional)" bind:value={title} />
-			<input type="link" required placeholder="URL" bind:value={url} />
-		</fieldset>
-		<button type="submit"> Monetize </button>
-	</form>
-	{#if newUrl}
-		<h1>Here is your monetized link:</h1>
-		<a href={newUrl}>{newUrl}</a>
-	{/if}
-</div>
+<form id="link_form" on:submit|preventDefault={submit}>
+	<fieldset>
+		<legend>Monetization Form</legend>
+		<section>
+			<label for="title">Title for Content - Optional</label>
+			<input class = "text_input" type="text" name='title' required placeholder="Content Title (Optional)" bind:value={title} />
+			<label for="title">Source Url of Content</label>
+			<input class = "text_input" type="url" name='url' required placeholder="URL" bind:value={url} />
+		</section>
+		<section>
+			<label for="price">Price</label>
+			<input type="range" name="price" bind:value={mooch} min="0.05" max="2.00" step="0.01"/>
+		</section>
+		<div>
+			<label for="mooch">Allow Moochers?</label>
+			<input type="checkbox" name="mooch" bind:value={mooch} />
+		</div>
+	
+	</fieldset>
+	<button type="submit"> Monetize </button>
+</form>
+{#if newUrl}
+	<h1>Here is your monetized link:</h1>
+	<a href={newUrl}>{newUrl}</a>
+{/if}
 
 <style>
 	#link_form {
@@ -55,7 +66,12 @@
 		border: 0;
 	}
 
-	input {
+	label {
+		/* We want label for accessibility reasons, but we want to hide it for aesthetics: */
+		display: none;
+
+	}
+	.text_input {
 		/* Removing all the default outlines: */
 		border: none;
 		outline: none;
@@ -72,9 +88,17 @@
 		/* Animations: */
 		transition: all 0.2s ease;
 	}
-	input:focus {
+	.text_input:focus {
 		box-shadow: inset 5px 5px 6px #64606052, inset -5px -5px 6px #fff7f7;
 	}
+
+	.raised {
+		padding: 0.4rem;
+		border-radius: 10px;
+		box-shadow: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
+	}
+
+
 
 	button {
 		/* Removing all the default outlines: */

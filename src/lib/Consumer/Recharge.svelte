@@ -7,7 +7,7 @@
 		<button><h3>$3</h3></button>
 		<button><h3>$5</h3></button>
 	</div>
-	<p id="raised">
+	<p class="raised">
 		Your 402 Wallet will be recharged after charging your preferred payment method. You will be
 		asked for one more confirmation after you click the button.
 	</p>
@@ -32,11 +32,11 @@
 
 		padding: 1rem 5rem;
 	}
-	#raised {
+	.raised {
 		/* Center text */
 		text-align: center;
 
-		padding: 0.1rem;
+		padding: 1rem;
 		border-radius: 10px;
 		box-shadow: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
 	}

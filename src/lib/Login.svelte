@@ -40,13 +40,13 @@
 </script>
 
 <div id="login">
+
 	{#if existing}
+	<h1 in:fade={{ delay: 50, duration: 500 }}>Login:</h1>
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
-				<input type="email" required placeholder="Email" bind:value={email} />
-			</fieldset>
-			<fieldset>
-				<input type="password" required placeholder="Password" bind:value={password} />
+				<input class="text_input" type="email" required placeholder="Email" bind:value={email} />
+				<input class="text_input" type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Login </button>
 			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
@@ -54,11 +54,10 @@
 			>
 		</form>
 	{:else}
+	<h1 in:fade={{ delay: 50, duration: 500 }}>Register:</h1>
 		<form on:submit|preventDefault={submit_registration}>
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
-			</fieldset>
-			<fieldset>
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Sign Up </button>
@@ -88,7 +87,7 @@
 		border: 0;
 	}
 
-	input {
+	.text_input {
 		/* Removing all the default outlines: */
 		border: none;
 		outline: none;
@@ -105,7 +104,7 @@
 		/* Animations: */
 		transition: all 0.2s ease;
 	}
-	input:focus {
+	.text_input:focus {
 		box-shadow: inset 5px 5px 6px #64606052, inset -5px -5px 6px #fff7f7;
 	}
 
