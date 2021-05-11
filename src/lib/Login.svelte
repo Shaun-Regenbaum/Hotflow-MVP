@@ -45,8 +45,8 @@
 	<h1 in:fade={{ delay: 50, duration: 500 }}>Login:</h1>
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
-				<input class="text_input" type="email" required placeholder="Email" bind:value={email} />
-				<input class="text_input" type="password" required placeholder="Password" bind:value={password} />
+				<input type="email" required placeholder="Email" bind:value={email} />
+				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Login </button>
 			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
@@ -87,7 +87,7 @@
 		border: 0;
 	}
 
-	.text_input {
+	input {
 		/* Removing all the default outlines: */
 		border: none;
 		outline: none;
@@ -104,7 +104,7 @@
 		/* Animations: */
 		transition: all 0.2s ease;
 	}
-	.text_input:focus {
+	input:focus {
 		box-shadow: inset 5px 5px 6px #64606052, inset -5px -5px 6px #fff7f7;
 	}
 

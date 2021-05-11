@@ -28,9 +28,9 @@
 		<legend>Monetization Form</legend>
 		<section>
 			<label for="title">Title for Content - Optional</label>
-			<input class = "text_input" type="text" name='title' required placeholder="Content Title (Optional)" bind:value={title} />
+			<input type="text" name='title' required placeholder="Content Title (Optional)" bind:value={title} />
 			<label for="title">Source Url of Content</label>
-			<input class = "text_input" type="url" name='url' required placeholder="URL" bind:value={url} />
+			<input type="url" name='url' required placeholder="URL" bind:value={url} />
 		</section>
 		<section>
 			<label for="price">Price</label>
@@ -71,7 +71,7 @@
 		display: none;
 
 	}
-	.text_input {
+	input {
 		/* Removing all the default outlines: */
 		border: none;
 		outline: none;
@@ -88,7 +88,7 @@
 		/* Animations: */
 		transition: all 0.2s ease;
 	}
-	.text_input:focus {
+	input:focus {
 		box-shadow: inset 5px 5px 6px #64606052, inset -5px -5px 6px #fff7f7;
 	}
 
