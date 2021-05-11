@@ -82,7 +82,7 @@
 
 		/* Nueromorphism: */
 		border-radius: 25px 25px 0 0;
-		box-shadow: -2px -2px 5px #0000003d, 2px 2px 5px #ffffff9b;
+		box-shadow: 2px 2px 5px #0000003d, -2px -2px 5px #ffffff9b;
 	}
 	#toolbar {
 		/*Grid Placement:*/
