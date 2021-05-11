@@ -1,22 +1,7 @@
-<script context="module">
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ page }) {
-		const base = page.host
-		console.log(page);
-		return {
-			props: {
-				host: base
-			}
-		};
-	}
-</script>
-
 <script lang='ts'>
 	import supabase from '$lib/db'
 	// import session from '$app/stores'
-	import { browser } from '$app/env';
+	// import { browser } from '$app/env';
 
 
 	let url:string = "https://nocodeneeded.com/shaun";
@@ -26,8 +11,6 @@
 	let price:number = 10;
 	let base:string;
 	let message:string = '';
-	export let host;
-
 
 	function addhttps(url) {
 		if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
@@ -45,7 +28,6 @@
 		if (data) {
 			completed=true;
 			base = `content\\${title}`
-			console.log(host)
 		} else {
 			message = error.message;
 		}
@@ -79,7 +61,7 @@
 </form>
 {#if completed}
 	<h1>Here is your monetized link:</h1>
-	<a href={host + base}>{host+ base}</a>
+	<a href={location.origin + '\\' + base}>{location.origin + '\\' + base}</a>
 {:else}
 <p>{message}</p>
 {/if}

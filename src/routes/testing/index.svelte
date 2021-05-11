@@ -1,9 +1,10 @@
 <script>
-    import Form from '$lib/Creator/Form.svelte'
+    // import Form from '$lib/Creator/Form.svelte'
+    import Login from '$lib/Login.svelte'
 </script>
 
 <div id="testing">
-    <Form/>
+    <Login/>
 </div>
 
 <style>

@@ -73,16 +73,19 @@
 		grid-template-columns: 2rem 1fr 2rem;
 
 		/* Size of Container: */
-		max-height: 50vh;
-		width: 100%;
-		left: 0;
+		max-height: 70vh;
+		width: 110%;
+		left: -5%;
 
 		/* Colors: */
 		background-color: #e0e0e0; /* Fallback for older browsers */
 
 		/* Nueromorphism: */
-		border-radius: 25px 25px 0 0;
-		box-shadow: 2px 2px 5px #0000003d, -2px -2px 5px #ffffff9b;
+		border-radius: 25px 25px 10px 10px;
+		box-shadow:  2px 2px 3px var(--neuro-dark), 
+					 -2px -2px 3px var(--neuro-light),
+					inset -2px -10px 15px var(--neuro-dark), 
+					inset 2px 2px 15px var(--neuro-light);	
 	}
 	#toolbar {
 		/*Grid Placement:*/

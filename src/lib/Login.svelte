@@ -1,13 +1,16 @@
+<!-- This file contains the login and register forms, and the ability to switch between them -->
 <script>
 	import { browser } from '$app/env';
 	import supabase from '$lib/db';
 	import { fade } from 'svelte/transition';
 
 	export let existing = true;
+	let name = '';
 	let email = '';
 	let password = '';
 	let message = '';
 
+	// The login action:
 	async function submit_login() {
 		let { user, session, error } = await supabase.auth.signIn({
 			email: email,
@@ -15,6 +18,7 @@
 		});
 		if (user) {
 			if (browser) {
+				localStorage.setItem('userId', user.id);
 				localStorage.setItem('token', session.access_token);
 				window.location.replace('/');
 			}
@@ -23,15 +27,26 @@
 		}
 	}
 
+	// The register action:
 	async function submit_registration() {
 		let { user, session, error } = await supabase.auth.signUp({
 			email: email,
-			password: password
+			password: password,
 		});
+
+		// Once a user has registered, we then create a row for them in the profiles database, where we hold other data relevant to them:
 		if (user) {
+			const { data, error } = await supabase
+				.from('profiles')
+				.insert([
+				{  ownerId: user.id, name: name }
+  			]);
+			console.log(data, error)
 			if (browser) {
+				localStorage.setItem('userId', user.id);
 				localStorage.setItem('token', session.access_token);
-				window.location.replace('/');
+				// localStorage.setItem('name', data.name);
+				// window.location.replace('/');
 			}
 		} else {
 			message = error.message;
@@ -57,6 +72,7 @@
 	<h1 in:fade={{ delay: 50, duration: 500 }}>Register:</h1>
 		<form on:submit|preventDefault={submit_registration}>
 			<fieldset>
+				<input type="text" required placeholder="Name" bind:value={name} />
 				<input type="email" required placeholder="Email" bind:value={email} />
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
@@ -96,7 +112,7 @@
 		/* Making the input fields nueromorphic: */
 
 		background: rgba(255, 255, 255, 0.383);
-		padding: 0.5rem 1rem 0.5rem 1rem;
+		padding: 0.5rem 2rem 0.5rem 1rem;
 		margin-bottom: 0.4rem;
 		border-radius: 25px;
 		box-shadow: inset 3px 3px 10px #64606052, inset -3px -3px 10px #fff7f7;
