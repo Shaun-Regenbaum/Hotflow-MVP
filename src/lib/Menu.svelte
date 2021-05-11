@@ -66,7 +66,7 @@
 		position: absolute;
 		z-index: 1000;
 		bottom: 0;
-		left:0;
+		left: 0;
 
 		/* Grid Layout: */
 		display: grid;
@@ -82,10 +82,8 @@
 
 		/* Nueromorphism: */
 		border-radius: 25px 25px 10px 10px;
-		box-shadow:  2px 2px 3px var(--neuro-dark), 
-					 -2px -2px 3px var(--neuro-light),
-					inset -2px -10px 15px var(--neuro-dark), 
-					inset 2px 2px 15px var(--neuro-light);	
+		box-shadow: 2px 2px 3px var(--neuro-dark), -2px -2px 3px var(--neuro-light),
+			inset -2px -10px 15px var(--neuro-dark), inset 2px 2px 15px var(--neuro-light);
 	}
 	#toolbar {
 		/*Grid Placement:*/
@@ -104,12 +102,10 @@
 		background-color: rgba(134, 134, 134, 0.404);
 	}
 
-	#minimize:focus{
+	#minimize:focus {
 		background: var(--bg);
-		box-shadow: 2px 2px 5px var(--neuro-dark), 
-						-2px -2px 5px var(--neuro-light),
-						inset -2px -2px 5px var(--neuro-dark), 
-						inset 2px 2px 5px var(--neuro-light);
+		box-shadow: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
+			inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
 	}
 
 	#card {
@@ -147,13 +143,9 @@
 
 		/* Nueuromorphism: */
 		background: #e2e2e2f3;
-		box-shadow: inset 5px 5px 10px var(--neuro-dark), 
-						inset -5px -5px 10px var(--neuro-light),
-						-2px -2px 5px var(--neuro-dark), 
-						2px 2px 5px var(--neuro-light);
+		box-shadow: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
+			-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 	}
-
-	
 
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {

@@ -31,17 +31,15 @@
 	async function submit_registration() {
 		let { user, session, error } = await supabase.auth.signUp({
 			email: email,
-			password: password,
+			password: password
 		});
 
 		// Once a user has registered, we then create a row for them in the profiles database, where we hold other data relevant to them:
 		if (user) {
 			const { data, error } = await supabase
 				.from('profiles')
-				.insert([
-				{  ownerId: user.id, name: name }
-  			]);
-			console.log(data, error)
+				.insert([{ ownerId: user.id, name: name }]);
+			console.log(data, error);
 			if (browser) {
 				localStorage.setItem('userId', user.id);
 				localStorage.setItem('token', session.access_token);
@@ -54,9 +52,8 @@
 </script>
 
 <div id="login">
-
 	{#if existing}
-	<h1 in:fade={{ delay: 50, duration: 500 }}>Login:</h1>
+		<h1 in:fade={{ delay: 50, duration: 500 }}>Login:</h1>
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
@@ -68,7 +65,7 @@
 			>
 		</form>
 	{:else}
-	<h1 in:fade={{ delay: 50, duration: 500 }}>Register:</h1>
+		<h1 in:fade={{ delay: 50, duration: 500 }}>Register:</h1>
 		<form on:submit|preventDefault={submit_registration}>
 			<fieldset>
 				<input type="text" required placeholder="Name" bind:value={name} />
@@ -97,5 +94,4 @@
 
 		overflow: overlay;
 	}
-
 </style>

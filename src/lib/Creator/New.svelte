@@ -48,6 +48,4 @@
 		border-radius: 10px;
 		box-shadow: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
 	}
-
-
 </style>

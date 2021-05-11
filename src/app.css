@@ -5,7 +5,6 @@
 	--secondary-color: black;
 	--greyed-out: grey;
 
-
 	/* General Properties: */
 	--bg: rgb(255, 255, 255);
 
@@ -39,28 +38,22 @@ button {
 	color: var(--primary-color);
 	border-radius: 10px;
 	background: var(--bg);
-	box-shadow:  5px 5px 7px var(--neuro-dark), 
-				 -5px -5px 7px var(--neuro-light),
-				inset -2px -2px 5px var(--neuro-dark), 
-				inset 2px 2px 5px var(--neuro-light);	
+	box-shadow: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
+		inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
 
 	/* Animations: */
 	transition: all 0.2s ease;
 }
 button:hover {
-	box-shadow: 2px 2px 5px var(--neuro-dark), 
-					-2px -2px 5px var(--neuro-light),
-					inset -2px -2px 5px var(--neuro-dark), 
-					inset 2px 2px 5px var(--neuro-light);
+	box-shadow: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
+		inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
 }
-button:active, button:focus	 {
+button:active,
+button:focus {
 	background: var(--neuro1-bg);
-	box-shadow:   2px 2px 3px var(--neuro1-dark), 
-					-2px -2px 3px var(--neuro1-light),
-					inset -2px -2px 5px var(--neuro1-dark), 
-					inset 2px 2px 5px var(--neuro1-light);
-}	
-
+	box-shadow: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
+		inset -2px -2px 5px var(--neuro1-dark), inset 2px 2px 5px var(--neuro1-light);
+}
 
 fieldset {
 	/* Removing the fieldset borders */
@@ -82,10 +75,8 @@ input {
 	/* Making the input fields nueromorphic: */
 	background: var(--bg);
 	border-radius: 25px;
-	box-shadow: inset 5px 5px 10px var(--neuro-dark), 
-					inset -5px -5px 10px var(--neuro-light),
-					-2px -2px 5px var(--neuro-dark), 
-					2px 2px 5px var(--neuro-light);
+	box-shadow: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
+		-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 
 	/* Animations: */
 	transition: all 0.2s ease;
@@ -93,8 +84,6 @@ input {
 input:focus {
 	/* Making selection very clear: */
 	background: var(--neuro1-bg);
-	box-shadow: inset 5px 5px 10px var(--neuro1-dark), 
-				 inset -5px -5px 10px var(--neuro1-light),
-				 -2px -2px 5px var(--neuro1-dark), 
-				 2px 2px 5px var(--neuro1-light);
+	box-shadow: inset 5px 5px 10px var(--neuro1-dark), inset -5px -5px 10px var(--neuro1-light),
+		-2px -2px 5px var(--neuro1-dark), 2px 2px 5px var(--neuro1-light);
 }
