@@ -64,7 +64,7 @@
 	#menu {
 		/* Positioning: */
 		position: absolute;
-		z-index: 2;
+		z-index: 1000;
 		bottom: 0;
 
 		/* Grid Layout: */
