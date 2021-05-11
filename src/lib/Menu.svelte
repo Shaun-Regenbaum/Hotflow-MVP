@@ -153,42 +153,7 @@
 						2px 2px 5px var(--neuro-light);
 	}
 
-	button {
-		/* Removing all the default outlines: */
-		border: 0;
-		outline: 0;
-
-		/* Adding some padding around button text: */
-		padding: 0.5rem 1rem 0.5rem 1rem;
-
-		/* Keeping Next door buttons seperate: */
-		margin: 0.7rem 0.5rem;
-
-		/* Button Nueromorphism */
-		color: var(--primary-color);
-		border-radius: 10px;
-		background: var(--bg);
-		box-shadow:  5px 5px 7px var(--neuro-dark), 
-					 -5px -5px 7px var(--neuro-light),
-					inset -2px -2px 5px var(--neuro-dark), 
-					inset 2px 2px 5px var(--neuro-light);	
 	
-		/* Animations: */
-		transition: all 0.2s ease;
-	}
-	button:hover {
-		box-shadow: 2px 2px 5px var(--neuro-dark), 
-						-2px -2px 5px var(--neuro-light),
-						inset -2px -2px 5px var(--neuro-dark), 
-						inset 2px 2px 5px var(--neuro-light);
-	}
-	button:active, button:focus	 {
-		background: var(--neuro1-bg);
-		box-shadow:   2px 2px 3px var(--neuro1-dark), 
-						-2px -2px 3px var(--neuro1-light),
-						inset -2px -2px 5px var(--neuro1-dark), 
-						inset 2px 2px 5px var(--neuro1-light);
-	}	
 	
 
 	/*Between Mobile and Desktop specific:  */
