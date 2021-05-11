@@ -66,6 +66,7 @@
 		position: absolute;
 		z-index: 1000;
 		bottom: 0;
+		left:0;
 
 		/* Grid Layout: */
 		display: grid;
@@ -74,8 +75,7 @@
 
 		/* Size of Container: */
 		max-height: 70vh;
-		width: 110%;
-		left: -5%;
+		width: 100%;
 
 		/* Colors: */
 		background-color: #e0e0e0; /* Fallback for older browsers */
