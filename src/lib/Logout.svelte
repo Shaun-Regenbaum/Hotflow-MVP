@@ -3,7 +3,7 @@
 	import { browser } from '$app/env';
 
 	export let pos = 'inherit';
-	let message='';
+	let message = '';
 
 	async function submitLogout() {
 		if (browser) {

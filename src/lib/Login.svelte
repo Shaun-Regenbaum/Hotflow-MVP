@@ -6,7 +6,7 @@
 	export let existing = true;
 	let email = '';
 	let password = '';
-	let message=''
+	let message = '';
 
 	async function submit_login() {
 		let { user, session, error } = await supabase.auth.signIn({
