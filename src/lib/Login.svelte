@@ -2,7 +2,6 @@
 	import supabase from '$lib/db.js';
 	import { fade } from 'svelte/transition';
 	import { browser } from '$app/env';
-	import Error from '$lib/Error.svelte'
 
 	export let existing = true;
 	let email = '';
