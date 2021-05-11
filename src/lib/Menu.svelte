@@ -43,7 +43,7 @@
 >
 	<section id="toolbar" on:click={minimize}>
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
-		<button id="minimize" style="transform: rotate({minimized ? '225deg' : '45deg'});" />
+		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
 	<div id="card" style="display:{visible}">
 		<svelte:component this={current_component.component} />
@@ -98,23 +98,18 @@
 	#minimize {
 		/*Probably want to redo this guy*/
 		/* Centering the Box/Arrow: */
-		margin-left: 50%;
-
-		/* Size of Box/Arrow */
-		height: 1rem;
-		width: 1rem;
+		margin-left: 47%;
 
 		/* Color of Box/Arrow: */
-		background-color: rgba(246, 185, 185, 0.404);
+		background-color: rgba(134, 134, 134, 0.404);
+	}
 
-		/* Transforming the border of a box into an arrow */
-		border-width: 0px 3px 3px 0px;
-
-		/* Padding, to make it not rest on top on minimied: */
-
-		border: 0;
-		border-radius: 10px;
-		box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
+	#minimze:active, #minimize:focus{
+		background: var(--bg);
+		box-shadow: 2px 2px 5px var(--neuro-dark), 
+						-2px -2px 5px var(--neuro-light),
+						inset -2px -2px 5px var(--neuro-dark), 
+						inset 2px 2px 5px var(--neuro-light);
 	}
 
 	#card {
@@ -134,7 +129,7 @@
 		grid-column-end: 3;
 		grid-row-start: 4;
 
-		/* Internal Padiding */
+		/* Internal Paddding */
 		padding: 0.6rem;
 
 		/* To make menu items evely spaced: */
@@ -142,33 +137,58 @@
 		align-items: center;
 		justify-content: space-around;
 
+		/* To make menu bar overflow:  */
+		padding-left: 9rem;
+		overflow-x: scroll;
+		overflow-y: hidden;
+
 		/* Shape of menu bar: */
 		border-radius: 2rem;
 
 		/* Nueuromorphism: */
 		background: #e2e2e2f3;
-		box-shadow: -1px -1px 1px #64606052, 1px 1px 2px #fff7f7, inset 10px 10px 20px #64606052,
-			inset -10px -10px 20px #fff7f7;
+		box-shadow: inset 5px 5px 10px var(--neuro-dark), 
+						inset -5px -5px 10px var(--neuro-light),
+						-2px -2px 5px var(--neuro-dark), 
+						2px 2px 5px var(--neuro-light);
 	}
 
 	button {
 		/* Removing all the default outlines: */
 		border: 0;
 		outline: 0;
-		background: #e0e0e0;
-		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-		color: rgba(65, 65, 65, 0.719);
-		border-radius: 10px;
-		box-shadow: 3px 3px 8px #bebebe, -3px -3px 8px #ffffff;
 
+		/* Adding some padding around button text: */
+		padding: 0.5rem 1rem 0.5rem 1rem;
+
+		/* Keeping Next door buttons seperate: */
+		margin: 0.7rem 0.5rem;
+
+		/* Button Nueromorphism */
+		color: var(--primary-color);
+		border-radius: 10px;
+		background: var(--bg);
+		box-shadow:  5px 5px 7px var(--neuro-dark), 
+					 -5px -5px 7px var(--neuro-light),
+					inset -2px -2px 5px var(--neuro-dark), 
+					inset 2px 2px 5px var(--neuro-light);	
+	
 		/* Animations: */
 		transition: all 0.2s ease;
 	}
-
-	button:hover,
-	button:active {
-		box-shadow: 1px 1px 5px #9b9b9b, -1px -1px 5px #ffffff;
+	button:hover {
+		box-shadow: 2px 2px 5px var(--neuro-dark), 
+						-2px -2px 5px var(--neuro-light),
+						inset -2px -2px 5px var(--neuro-dark), 
+						inset 2px 2px 5px var(--neuro-light);
 	}
+	button:active, button:focus	 {
+		background: var(--neuro1-bg);
+		box-shadow:   2px 2px 3px var(--neuro1-dark), 
+						-2px -2px 3px var(--neuro1-light),
+						inset -2px -2px 5px var(--neuro1-dark), 
+						inset 2px 2px 5px var(--neuro1-light);
+	}	
 	
 
 	/*Between Mobile and Desktop specific:  */
