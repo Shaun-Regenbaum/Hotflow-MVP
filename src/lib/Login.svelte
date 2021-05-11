@@ -45,8 +45,7 @@
 			if (browser) {
 				localStorage.setItem('userId', user.id);
 				localStorage.setItem('token', session.access_token);
-				// localStorage.setItem('name', data.name);
-				// window.location.replace('/');
+				window.location.replace('/');
 			}
 		} else {
 			message = error.message;
@@ -95,7 +94,8 @@
 
 		/* Neuromorphism */
 		border-radius: 25px;
-		box-shadow: inset 3px 3px 5px #eeeeee, inset -3px -3px 5px #bebebe;
+
+		overflow: overlay;
 	}
 
 	fieldset {
