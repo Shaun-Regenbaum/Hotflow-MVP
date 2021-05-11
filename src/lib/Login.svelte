@@ -110,7 +110,7 @@
 
 		/* Positioning: */
 		padding: 0.5rem 2rem 0.5rem 1rem;
-		margin-bottom: 0.4rem;
+		margin-bottom: 1rem;
 
 		/* Text: */
 		color: rgba(65, 65, 65, 0.719);
