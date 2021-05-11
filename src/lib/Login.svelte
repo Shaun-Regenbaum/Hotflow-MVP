@@ -1,5 +1,4 @@
 <script>
-
 	import { browser } from '$app/env';
 	import supabase from '$lib/db';
 	import { fade } from 'svelte/transition';

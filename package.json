@@ -24,5 +24,8 @@
 		"tslib": "^2.0.0",
 		"typescript": "^4.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@sveltejs/adapter-begin": "^1.0.0-next.7"
+	}
 }
