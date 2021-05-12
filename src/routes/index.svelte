@@ -32,19 +32,18 @@
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
 
+
 <body>
+	
 	{#if user}
 		<Menu components={component_list2} starting_component={component_list2[2]} />
 	{:else}
 		<Menu components={component_list1} />
 	{/if}
-	<iframe
-		title="iframe"
-		id="monetized"
-		style={blur}
-		src="https://nocodeneeded.com/shaun"
-		frameBorder="none"
-	/>
+	<a href="/testing">Click Here to see current component testing</a>
+	<br>
+	<a href="/alpha/default">Click Here to see sample new site</a>
+
 </body>
 
 <style>

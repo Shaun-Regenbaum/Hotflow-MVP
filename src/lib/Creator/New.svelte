@@ -3,10 +3,9 @@
 	import { browser } from '$app/env';
 	import Form from '$lib/Creator/Form.svelte';
 
-	let creator = false;
 	let user;
 
-	let brand = '';
+	let brand;
 	let message = '';
 	if (browser) {
 		user = supabase.auth.user();
@@ -19,7 +18,7 @@
 			.select('brand')
 			.filter('ownerId', 'eq', user.id);
 		if (data) {
-			creator = data[0].brand;
+			brand = data[0].brand;
 		} else {
 			message = error.message;
 		}
@@ -30,15 +29,15 @@
 			.update({ brand: brand })
 			.filter('ownerId', 'eq', user.id);
 		if (data) {
-			creator = true;
+			brand = brand;
 		} else {
 			message = error.message;
 		}
 	}
 </script>
 
-{#if creator}
-	<Form {brand} />
+{#if brand}
+	<Form brand={brand} />
 {:else}
 	<div id="new_creator">
 		<h2>402 Creators</h2>

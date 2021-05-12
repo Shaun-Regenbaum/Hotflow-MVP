@@ -1,14 +1,19 @@
 <script>
 	import New from '$lib/Creator/New.svelte';
-	// import Login from '$lib/Login.svelte';
+	import Login from '$lib/Login.svelte';
 </script>
 
-<div id="testing">
+<div class="testing">
 	<New />
 </div>
+<br>
+<div class="testing">
+	<Login/>
+</div>
+
 
 <style>
-	#testing {
+	.testing {
 		background: rgba(0, 128, 0, 0);
 		padding: 1rem;
 		border: 4px solid rgb(248, 233, 20);

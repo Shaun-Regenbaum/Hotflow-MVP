@@ -4,6 +4,7 @@
 	// import { browser } from '$app/env';
 
 	export let brand;
+	console.log(brand)
 	let url = 'https://nocodeneeded.com/shaun';
 	let completed = false;
 	let title = 'default';
@@ -18,7 +19,7 @@
 			{
 				link: url,
 				mooch: mooch,
-				owner: '1d2147a7-d81f-41a7-b4ca-c61d8ba0ac9d',
+				owner: user.id,
 				title: title,
 				price: price,
 				brand: brand
@@ -26,9 +27,9 @@
 		]);
 		if (data) {
 			completed = true;
-			base = `content\\${title}`;
+			base = `${brand}/${title}`;
 		} else {
-			message = error.message;
+			message = error.details;
 		}
 	}
 </script>
