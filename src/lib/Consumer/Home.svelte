@@ -11,8 +11,11 @@
 	<div id="logo">
 		<h4>402</h4>
 	</div>
-	<button id="grid1">Purchase for ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</button>
-	<button id="grid2">Mooch the Content</button>
+	<div id="options">
+		<button>Purchase for ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</button>
+		<button>Mooch the Content</button>
+	</div>
+	
 </div>
 
 <style>
@@ -24,7 +27,7 @@
 
 		/* Positioning and Sizing: */
 		aspect-ratio: 15/9;
-		min-width: 300px;
+		min-width: 340px;
 		min-height: 150px;
 		max-width: 700px;
 
@@ -62,25 +65,20 @@
 		/* Positioning: */
 		padding-left: 2rem;
 	}
-
-
-	#grid1 {
+	#options{
 		/*Grid Placement:*/
 		grid-row-start: 3;
 		grid-row-end: 4;
 		grid-column-start: 1;
-		grid-column-end: 3;
-
-	}
-	#grid2 {
-		/*Grid Placement:*/
-		grid-row-start: 3;
-		grid-row-end: 4;
-		grid-column-start: 3;
 		grid-column-end: 5;
+
+		/* Button Placement: */
+		text-align: center ;
 	}
 	button{
-		margin:2rem;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		margin-bottom: 0;
 		font-size: 1rem;
 	}
 </style>
