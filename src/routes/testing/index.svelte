@@ -1,10 +1,12 @@
 <script>
-	import New from '$lib/Creator/New.svelte';
+	import Home from '$lib/Consumer/Home.svelte'
+	// import New from '$lib/Creator/New.svelte';
 	import Login from '$lib/Login.svelte';
+	// import Welcome from '$lib/Welcome.svelte'
 </script>
 
 <div class="testing">
-	<New />
+	<Home/>
 </div>
 <br>
 <div class="testing">

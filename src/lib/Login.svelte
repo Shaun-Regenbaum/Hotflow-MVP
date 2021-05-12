@@ -87,4 +87,8 @@
 
 		overflow: overlay;
 	}
+
+	input{
+		margin: 0.5rem;
+	}
 </style>

@@ -1,28 +1,72 @@
 <script>
 	export let balance = 210;
+	export let price = 10
 </script>
 
-<div id="home">
-	<div id="raised">
+<div id="card">
+	<div id="balance">
+		<h4>Your Credit:</h4>
 		<h1>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</h1>
 	</div>
+		<button id="grid1">Purchase for ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</button>
+		<button id="grid2">Mooch the Content</button>
 </div>
 
 <style>
-	#home {
-		/* Keeping the Login Form Centered: */
-		text-align: center;
+	#card {
+		/* Grid Layout: */
+		display: grid;
+		grid-template-rows: 40% 10% 40% 10%;
+		grid-template-columns: 50% 50%;
+
+		/* Positioning and Sizing: */
+		aspect-ratio: 15/9;
+		min-width: 300px;
+		min-height: 150px;
+		max-width: 700px;
+
 
 		/*Padding: */
-		padding: 1rem;
+		padding: 0.5rem;
+
+		background-color: rgb(164, 164, 255);
 
 		/* Neuromorphism */
-		border-radius: 25px;
-		box-shadow: inset 3px 3px 5px #eeeeee, inset -3px -3px 5px #bebebe;
+		border-radius: 30px;
+		box-shadow: 3px 3px 7px var(--neuro-dark), -4px -4px 7px var(--neuro-light),
+		inset -2px -2px 4px var(--neuro-dark), inset 2px 2px 4px var(--neuro-light);
+
 	}
-	#raised {
-		padding: 0.1rem;
-		border-radius: 10px;
-		box-shadow: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
+	#balance{
+		/*Grid Placement:*/
+		grid-row-start: 1;
+		grid-row-end: 2;
+		grid-column-start: 1;
+		grid-column-end: 2;
+
+
+		/* Positioning: */
+		padding-left: 2rem;
+	}
+
+
+	#grid1 {
+		/*Grid Placement:*/
+		grid-row-start: 3;
+		grid-row-end: 4;
+		grid-column-start: 1;
+		grid-column-end: 2;
+
+	}
+	#grid2 {
+		/*Grid Placement:*/
+		grid-row-start: 3;
+		grid-row-end: 4;
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+	button{
+		margin:2rem;
+		font-size: 1rem;
 	}
 </style>

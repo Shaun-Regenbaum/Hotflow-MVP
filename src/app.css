@@ -39,20 +39,20 @@ button {
 	border-radius: 10px;
 	background: var(--bg);
 	box-shadow: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
-		inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
+		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 
 	/* Animations: */
 	transition: all 0.2s ease;
 }
 button:hover {
 	box-shadow: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
-		inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
+		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 }
 button:active,
 button:focus {
 	background: var(--neuro1-bg);
 	box-shadow: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
-		inset -2px -2px 5px var(--neuro1-dark), inset 2px 2px 5px var(--neuro1-light);
+		inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
 }
 
 fieldset {
