@@ -1,25 +1,56 @@
 <script>
+	import supabase from '$lib/db';
+	import { browser } from '$app/env';
 	import Form from '$lib/Creator/Form.svelte';
-	export let creator = false;
 
-	function assignCreator() {
-		creator = !creator;
+	let creator = false;
+	let user;
+
+	let brand = '';
+	let message = '';
+	if (browser) {
+		user = supabase.auth.user();
+		checkStatus(user);
+	}
+
+	async function checkStatus(user) {
+		const { data, error } = await supabase
+			.from('profiles')
+			.select('brand')
+			.filter('ownerId', 'eq', user.id);
+		if (data) {
+			creator = data[0].brand;
+		} else {
+			message = error.message;
+		}
+	}
+	async function assignCreator() {
+		const { data, error } = await supabase
+			.from('profiles')
+			.update({ brand: brand })
+			.filter('ownerId', 'eq', user.id);
+		if (data) {
+			creator = true;
+		} else {
+			message = error.message;
+		}
 	}
 </script>
 
 {#if creator}
-	<Form />
+	<Form {brand} />
 {:else}
 	<div id="new_creator">
-		<h3>Welcome to Hotflow Creators</h3>
-		<div id="description">
-			<p>Gain new streams of revenue by monetizing anything with a link through Hotflow.</p>
-		</div>
-
-		<button on:click={assignCreator}
-			><h3>Become a Creator</h3>
-			<div id="raised"><p>No sign up required</p></div></button
-		>
+		<h2>402 Creators</h2>
+		<h4>Create new streams of revenue by monetizing anything with a link:</h4>
+		<p>Just tell us the brand under which your content should be:</p>
+		<form on:submit|preventDefault={assignCreator}>
+			<label for="title">Title for Content - Optional</label>
+			<input type="text" name="brand" placeholder="Brand Name" bind:value={brand} />
+			<div />
+			<button type="submit"><h3>Become a Creator</h3></button>
+		</form>
+		<p>{message}</p>
 	</div>
 {/if}
 
@@ -34,18 +65,5 @@
 		/* Neuromorphism */
 		border-radius: 25px;
 		box-shadow: inset 3px 3px 5px #eeeeee, inset -3px -3px 5px #bebebe;
-	}
-
-	#description {
-		min-width: 200px;
-		width: 70%;
-		margin: auto;
-		justify-content: center;
-	}
-
-	#raised {
-		padding: 0.1rem;
-		border-radius: 10px;
-		box-shadow: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
 	}
 </style>

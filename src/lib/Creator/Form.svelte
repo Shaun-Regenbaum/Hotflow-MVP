@@ -3,6 +3,7 @@
 	// import session from '$app/stores'
 	// import { browser } from '$app/env';
 
+	export let brand;
 	let url = 'https://nocodeneeded.com/shaun';
 	let completed = false;
 	let title = 'default';
@@ -12,13 +13,15 @@
 	let message = '';
 
 	async function submit() {
+		const user = supabase.auth.user();
 		const { data, error } = await supabase.from('links').insert([
 			{
 				link: url,
 				mooch: mooch,
 				owner: '1d2147a7-d81f-41a7-b4ca-c61d8ba0ac9d',
 				title: title,
-				price: price
+				price: price,
+				brand: brand
 			}
 		]);
 		if (data) {
@@ -80,10 +83,6 @@
 
 	/* Element Properties: */
 	/* TODO - We need to rehaul these */
-	label {
-		/* We want label for accessibility reasons, but we want to hide it for aesthetics: */
-		display: none;
-	}
 	input[type='number'] {
 		width: 2rem;
 	}

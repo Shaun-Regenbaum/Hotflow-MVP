@@ -1,22 +1,6 @@
-<script context="module" lang="ts">
-	import type { User } from '$lib/Docs/types';
-	import type { MenuComponent } from '$lib/Menu.svelte';
-	import { browser } from '$app/env';
-
-	export async function load({}) {
-		let user: User = { token: false };
-
-		if (browser) {
-			user.token = localStorage.getItem('token');
-		}
-
-		return {
-			props: { user }
-		};
-	}
-</script>
-
 <script lang="ts">
+	import { browser } from '$app/env';
+	import type { MenuComponent } from '$lib/Menu.svelte';
 	import Menu from '$lib/Menu.svelte';
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
@@ -24,13 +8,12 @@
 	import Home from '$lib/Consumer/Home.svelte';
 	import Recharge from '$lib/Consumer/Recharge.svelte';
 	import Refund from '$lib/Refund.svelte';
-	import { session } from '$app/stores';
+	import supabase from '$lib/db';
 
+	let user;
 	/*eslint no-empty-pattern: 1*/
-	export let user: User = { token: false }; // I think this has to be export to make it a property of the component
-
 	if (browser) {
-		$session.user = user.token ? user.token : false;
+		user = supabase.auth.user();
 	}
 
 	let component_list1: MenuComponent[] = [{ component: Login, name: 'Login' }];
@@ -43,14 +26,14 @@
 	];
 
 	// Checking to see if you are logged in:
-	let permission = user.name ? true : false;
+	let permission = user ? true : false;
 	let blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
 
 <body>
-	{#if user.token}
+	{#if user}
 		<Menu components={component_list2} starting_component={component_list2[2]} />
 	{:else}
 		<Menu components={component_list1} />

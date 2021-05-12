@@ -18,8 +18,6 @@
 		});
 		if (user) {
 			if (browser) {
-				localStorage.setItem('userId', user.id);
-				localStorage.setItem('token', session.access_token);
 				window.location.replace('/');
 			}
 		} else {
@@ -39,12 +37,7 @@
 			const { data, error } = await supabase
 				.from('profiles')
 				.insert([{ ownerId: user.id, name: name }]);
-			console.log(data, error);
-			if (browser) {
-				localStorage.setItem('userId', user.id);
-				localStorage.setItem('token', session.access_token);
-				window.location.replace('/');
-			}
+			window.location.replace('/');
 		} else {
 			message = error.message;
 		}

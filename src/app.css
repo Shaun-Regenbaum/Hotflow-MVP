@@ -60,6 +60,11 @@ fieldset {
 	border: 0;
 }
 
+label {
+	/* We want label for accessibility reasons, but we want to hide it for aesthetics: */
+	display: none;
+}
+
 input {
 	/* Removing all the default outlines: */
 	border: none;
