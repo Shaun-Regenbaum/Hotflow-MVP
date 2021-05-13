@@ -9,8 +9,9 @@
 	--bg: rgb(255, 255, 255);
 
 	/* Neuromorphic Properties: */
-	--neuro-light: #ececec8a;
+	--neuro-light: #fdfdfd3b;
 	--neuro-dark: #0202028a;
+	inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 
 	/* Nueromorphic Active Properties */
 	--neuro1-bg: #fcf4d8;
@@ -21,6 +22,18 @@
 	--neuro2-bg: rgb(255, 255, 255);
 	--neuro2-light: #ffffff;
 	--neuro2-dark: #a5a5a5;
+
+
+	/* Nueromorphic Element Types: */
+	--button: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
+	inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
+	--button-hover: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
+	inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
+	--button-highlight: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
+	inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
+	--divot: inset 2px 2px 1px #bebebe, inset -2px -2px 1px #eeeeee;
+
+
 }
 
 button {
@@ -38,21 +51,17 @@ button {
 	color: var(--primary-color);
 	border-radius: 10px;
 	background: var(--bg);
-	box-shadow: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
-		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
-
+	box-shadow: var(--button);
 	/* Animations: */
 	transition: all 0.2s ease;
 }
 button:hover {
-	box-shadow: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
-		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
+	box-shadow: var(--button-hover);
 }
 button:active,
 button:focus {
 	background: var(--neuro1-bg);
-	box-shadow: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
-		inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
+	box-shadow: var(--button-highlight);
 }
 
 fieldset {

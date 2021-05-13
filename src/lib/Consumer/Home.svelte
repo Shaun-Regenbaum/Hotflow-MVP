@@ -12,8 +12,8 @@
 		<h4>402</h4>
 	</div>
 	<div id="options">
-		<button>Purchase for ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</button>
-		<button>Mooch the Content</button>
+		<button>Pay Now</button>
+		<button>Pay Later</button>
 	</div>
 	
 </div>
