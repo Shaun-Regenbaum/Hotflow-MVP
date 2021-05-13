@@ -5,8 +5,8 @@
 
 <div id="card">
 	<div id="balance">
-		<h4>Your Credit:</h4>
-		<h1>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</h1>
+		<p>Your Credit:</p>
+		<p>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 	</div>
 	<div id="logo">
 		<h4>402</h4>
@@ -22,12 +22,12 @@
 	#card {
 		/* Grid Layout: */
 		display: grid;
-		grid-template-rows: 40% 10% 40% 10%;
+		grid-template-rows: 30% 10% 50% 10%;
 		grid-template-columns: 10% 0.5fr 0.5fr 50px;
 
 		/* Positioning and Sizing: */
 		aspect-ratio: 15/9;
-		min-width: 340px;
+		min-width: 300px;
 		min-height: 150px;
 		max-width: 700px;
 
@@ -35,7 +35,8 @@
 		/*Padding: */
 		padding: 0.5rem;
 
-		background-color: rgb(164, 164, 255);
+		background-color: #bff7bf;
+		background: linear-gradient(90deg, #bff7bf, #83d6c4);
 
 		/* Neuromorphism */
 		border-radius: 30px;
@@ -76,8 +77,8 @@
 		text-align: center ;
 	}
 	button{
-		margin-left: 1rem;
-		margin-right: 1rem;
+		margin-left: 2vw;
+		margin-right: 2vw;
 		margin-bottom: 0;
 		font-size: 1rem;
 	}
