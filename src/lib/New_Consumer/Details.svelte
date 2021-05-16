@@ -25,28 +25,55 @@
 	export let title = 'The Adventures of Narnia';
 </script>
 
-<div id="container">
+<dl id="details">
 	<section>
-		<p>Price: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
+		<dt>Title:</dt>
+		<dd>{title}</dd>
 	</section>
 	<section>
-		<p>Refund Policy: {refund_policy}</p>
+		<dt>Price:</dt>
+		<dd>${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</dd>
 	</section>
 	<section>
-		<p>Ttile: {title}</p>
+		<dt>Refund Policy:</dt>
+		<dd>{refund_policy}</dd>
 	</section>
-</div>
+</dl>
 
 <style>
-	#container {
+	#details {
+		/* Layout */
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 	}
-
 	section {
-		box-shadow: var(--button);
-		padding: 0px 10px;
+		/* Design and Layout: */
+		display: inline-block;
+		box-shadow: var(--divot);
+		padding: 5px 10px;
 		margin: 10px;
 		border-radius: 5px;
+
+		/* Aligning Text: */
+		text-align: center;
+	}
+
+	/* dt is descriptin term , or the  title of the relevant property for the content on the page.*/
+	dt {
+		/* Positioning and Sizing: */
+		position: relative;
+		top: 0;
+		left: 0;
+		text-align: left;
+
+		/* Font Prroperties: */
+		font-size: 0.7rem;
+	}
+
+	/* dd is descriptin detail , or the actual vale for property of the content on the page.*/
+	dd {
+		/* Font Prroperties: */
+		font-size: 1.1rem;
 	}
 </style>

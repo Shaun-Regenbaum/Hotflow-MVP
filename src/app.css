@@ -32,6 +32,8 @@
 	--button-highlight: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
 		inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
 	--divot: inset 1px 1px 4px #cccccc81, inset -1px -1px 10rem #ffffff70;
+	--input: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
+	-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 }
 
 button {
@@ -87,8 +89,7 @@ input {
 	/* Making the input fields nueromorphic: */
 	background: var(--bg);
 	border-radius: 25px;
-	box-shadow: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
-		-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
+	box-shadow: var(--input);
 
 	/* Animations: */
 	transition: all 0.2s ease;

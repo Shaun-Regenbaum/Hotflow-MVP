@@ -30,27 +30,32 @@
 		--pic-length: 50px;
 	}
 	#container {
-		/* Grid Properties; */
-		display: grid;
-		grid-template-columns: 20% 80%;
-		max-width: 400px;
+		/* Layout */
+		display: flex;
+		flex-wrap: wrap;
+
+		/* Positionging: */
+		justify-content: flex-start;
 		min-width: 200px;
+		margin-left: 30px;
 	}
 	#picture {
-		/* Grid Placement: */
-		grid-column: 1 2;
-
 		/* Picture Size and shape: */
 		width: var(--pic-length);
 		height: var(--pic-length);
 		border-radius: 100%;
-		background-color: brown;
+		background-color: var(--bg);
+
+		/* Nuero: */
+		box-shadow: var(--divot);
 	}
 	#brand {
-		/* Grid Placement: */
-		grid-column: 2 3;
-
-		/* Centering Text: */
-		margin: auto;
+		align-self: center;
+		padding: 10px;
+		margin: 10px;
+	
+		/* Nuero: */
+		box-shadow: var(--divot);
+		border-radius: 20px;
 	}
 </style>

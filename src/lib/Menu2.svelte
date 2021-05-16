@@ -34,20 +34,13 @@
 </script>
 
 <div
-	id="menu"
-	style="width:{minimized ? '5rem' : ''}; grid-template-rows: {minimized
-		? '2rem'
-		: ''}; border-radius: {minimized ? '7px 7px 0 0' : ''};"
->
+	id="menu">
 	<section id="toolbar" on:click={minimize}>
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
-	<section id="blurb" style="display:{visible}">
-		<p>Get an instant refund if you think it's not worth it.</p>
-	</section>
 	<div id="card" style="display:{visible}">
-		<slot />
+		<slot/>
 	</div>
 </div>
 
@@ -60,29 +53,15 @@
 		bottom: 0;
 		left: 0;
 
-		/* Grid Layout: */
-		display: grid;
-		grid-template-rows: 2rem 0.2fr 0.8fr 1rem auto 1rem;
-		grid-template-columns: 2rem 1fr 2rem;
+		/* Layout: */
+		display:flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
 
-		/* Size of Container: */
-		max-height: 70vh;
-		width: 100%;
-
-		resize: horizontal;
-
-		/* Colors: */
-		background-color: #e0e0e0; /* Fallback for older browsers */
-
-		/* Nueromorphism: */
-		border-radius: 25px 25px 0px 0px;
-	}
-	#toolbar {
-		/*Grid Placement:*/
-		grid-column-start: 1;
-		grid-column-end: 4;
-		grid-row-start: 1;
-		grid-row-end: 2;
+		/* Container Look: */
+		background-color: white;
+		border-radius: 50px;
+		border-style: solid;
 	}
 
 	#minimize {
@@ -93,35 +72,6 @@
 		/* Color of Box/Arrow: */
 		background-color: rgba(134, 134, 134, 0.404);
 	}
-
-	#minimize:focus {
-		background: var(--bg);
-		box-shadow: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
-			inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
-	}
-
-	#blurb {
-		/*Grid Placement:*/
-		grid-column-start: 2;
-		grid-column-end: 3;
-		grid-row-start: 2;
-		grid-row-end: 3;
-
-		text-align: center;
-	}
-
-	#card {
-		/*Grid Placement:*/
-		grid-column-start: 2;
-		grid-column-end: 3;
-		grid-row-start: 3;
-		grid-row-end: 4;
-
-		/* Positioning: */
-		overflow-y: auto;
-		max-height: 40vh;
-	}
-
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
 		#menu {

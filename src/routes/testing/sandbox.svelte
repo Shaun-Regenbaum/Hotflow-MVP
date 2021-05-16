@@ -3,11 +3,11 @@
 	import Login from '$lib/Login.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
 	import Details from '$lib/New_Consumer/Details.svelte';
-	import Prompt from '$lib/New_Consumer/Prompt.svelte';
+	import Lend from '$lib/New_Consumer/Lend.svelte'
 </script>
 
 <div class="testing">
-	<Prompt />
+	<Lend />
 </div>
 <br />
 <div class="testing">
