@@ -19,19 +19,26 @@
 <script>
 	export let brand = 'Mr. Anonymous';
 </script>
-
-<div id="container">
-	<div id="picture" />
-	<div id="brand">{brand}</div>
+<div id="grid">
+	<div id="container">
+		<div id="picture" />
+		<div id="brand">{brand}</div>
+	</div>
+	<div id="purchase"><b>This content requires Purchase</b></div>
 </div>
 
 <style>
 	:root {
 		--pic-length: 50px;
 	}
+	#grid {
+		display:grid;
+		grid-template-columns: 1fr auto;
+	}
 	#container {
 		/* Layout */
 		display: flex;
+		flex-direction: row;
 		flex-wrap: wrap;
 
 		/* Positionging: */
@@ -53,6 +60,15 @@
 		align-self: center;
 		padding: 10px;
 		margin: 10px;
+	
+		/* Nuero: */
+		box-shadow: var(--divot);
+		border-radius: 20px;
+	}
+	#purchase {
+		align-self: center;
+		padding: 10px;
+		margin-right: 40px;
 	
 		/* Nuero: */
 		box-shadow: var(--divot);

@@ -1,3 +1,8 @@
+<script>
+
+import { now } from "svelte/internal";
+
+</script>
 <!-- @component
 	PROPERTIES: NONE
 
@@ -6,7 +11,7 @@
     This component is designed to show up for a new user to let them know we will lend them 40 cents.:
  -->
 <div id="container">
-    <p>This content requires purchase. We will lend you 40 cents if you sign up now so you can immediately see the content. (Click Anywhere to Continue)</p>
+    <p>If you Sign up now, we will lend you 40 cents, so you can immediately see the content.</p>
 </div>
 
 <style>

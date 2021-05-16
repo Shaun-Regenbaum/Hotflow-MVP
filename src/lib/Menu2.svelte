@@ -8,22 +8,7 @@
     It is important to note that this design is based on handling the state of the menu externally to the menu component.
 
  -->
-<script context="module" lang="ts">
-	/**This is an object containing a component and all the details associated to display in a menu */
-	export type MenuComponent = {
-		/**This is the actual component to supply to another component */
-		component;
-		/**This is the name of the component if we needt to navigate between multiple components */
-		name: string;
-	};
-</script>
-
 <script lang="ts">
-	import Default from '$lib/Default.svelte';
-	export let components: MenuComponent[] = [{ component: Default, name: 'Default' }];
-	export let starting_component: MenuComponent = components[0];
-	let current_component: MenuComponent = starting_component;
-
 	let minimized = false;
 	$: visible = minimized ? 'none' : '';
 
@@ -39,8 +24,8 @@
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
-	<div id="card" style="display:{visible}">
-		<slot/>
+	<div id="components" style="display:{visible}">
+		<slot></slot>
 	</div>
 </div>
 
@@ -56,7 +41,6 @@
 		/* Layout: */
 		display:flex;
 		flex-direction: column;
-		flex-wrap: nowrap;
 
 		/* Container Look: */
 		background-color: white;
@@ -76,7 +60,7 @@
 	@media (min-width: 550px) {
 		#menu {
 			min-width: 380px;
-			max-width: 550px;
+			max-width: 400px;
 			width: 50%;
 			left: 10%;
 		}
@@ -85,7 +69,7 @@
 	/* For Desktop: */
 	@media (min-width: 1100px) {
 		#menu {
-			min-width: 550px;
+			min-width: 700px;
 			width: 30%;
 		}
 	}

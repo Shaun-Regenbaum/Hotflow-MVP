@@ -24,7 +24,8 @@
 
 	export let login_message = 'Log In';
 	export let register_message = 'Sign Up';
-	export let existing = true;
+	export let existing;
+
 	let name = '';
 	let email = '';
 	let password = '';
@@ -69,10 +70,9 @@
 				<input type="email" required placeholder="Email" bind:value={email} />
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
-			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
-				>New User?</button
-			>
+		<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
+		<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
+			>New User?</button>
 		</form>
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
