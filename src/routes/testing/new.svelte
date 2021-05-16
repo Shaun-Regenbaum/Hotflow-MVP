@@ -14,7 +14,6 @@
 <Menu2>
 </Menu2>
 <iframe title="iframe" id="monetized" style={blur} src="\landing" frameBorder="none" />
-
 <style>
 	#monetized {
 		position: absolute;

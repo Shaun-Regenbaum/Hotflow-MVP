@@ -5,7 +5,6 @@
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
 	import New from '$lib/Creator/New.svelte';
-	import Home from '$lib/Consumer/Home.svelte';
 	import Recharge from '$lib/Consumer/Recharge.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import supabase from '$lib/db';
@@ -20,8 +19,7 @@
 	let component_list2: MenuComponent[] = [
 		{ component: Logout, name: 'Logout' },
 		{ component: New, name: 'Creator' },
-		{ component: Recharge, name: 'Recharge' },
-		{ component: Home, name: 'Home' },
+		{ component: Recharge, name: 'Recharge' }
 		{ component: Refund, name: 'Refund' }
 	];
 
