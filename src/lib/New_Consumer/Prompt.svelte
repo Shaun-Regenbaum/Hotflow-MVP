@@ -20,7 +20,7 @@
 <script>
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	import Details from '$lib/New_Consumer/Details.svelte';
-	import Login from '$lib/Login.svelte/Details.svelte';
+	import Login from '$lib/Login.svelte';
 
 	export let brand = 'Anonymous Inc.';
 	export let price = 10;
