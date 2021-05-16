@@ -17,9 +17,6 @@
 <div>
 	<Logout />
 </div>
-<!-- <div>
-        <Menu/>
-</div> -->
 <div>
 	<Refund />
 </div>

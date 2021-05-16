@@ -19,7 +19,7 @@
 	let component_list2: MenuComponent[] = [
 		{ component: Logout, name: 'Logout' },
 		{ component: New, name: 'Creator' },
-		{ component: Recharge, name: 'Recharge' }
+		{ component: Recharge, name: 'Recharge' },
 		{ component: Refund, name: 'Refund' }
 	];
 

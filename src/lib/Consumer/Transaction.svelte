@@ -1,5 +1,12 @@
 <!-- @component
+	PROPERTIES:
+
+		1) price -> the price of the content purchased.
+		2) brand -> the brand name of the creator.
+	DESCRIPTION:
+
     This component is designed to show up for when an existing user with suffecient balance purchases an item.
+	
         1) What they know:
             a. They just clicked on an item.
             b. They are expecting to see content.

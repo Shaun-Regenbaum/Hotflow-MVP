@@ -1,4 +1,4 @@
-<!-- @page
+<!--
     This page is designed to imitate a new user landing on the page:
  -->
 <script>

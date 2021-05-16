@@ -1,3 +1,18 @@
+<!-- @component
+	PROPERTIES:
+
+		1) NONE
+	DESCRIPTION:
+
+    This component is designed to be the refund button. IT NEEDS WORK.
+	
+        1) What they know:
+			a. ?
+        2) What they don't know:
+            a. ?
+        3) What they will want to know:
+            a. ?
+ -->
 <script>
 	import supabase from '$lib/db';
 	import { browser } from '$app/env';

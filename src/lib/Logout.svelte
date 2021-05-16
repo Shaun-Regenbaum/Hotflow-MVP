@@ -1,3 +1,8 @@
+<!-- @component
+	DESCRIPTION:
+
+    This component is for logging out, it should be very basic.
+ -->
 <script>
 	import supabase from '$lib/db';
 	import { browser } from '$app/env';

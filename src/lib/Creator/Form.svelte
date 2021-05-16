@@ -1,16 +1,30 @@
-<script lang="ts">
+<!-- @component
+	PROPERTIES:
+
+		1) brand -> name of content creator to show.
+	DESCRIPTION:
+
+    This component is designed to show up for whenever a user needs to login or register:
+
+        1) What they know:
+            a. That they want to monetize a link.
+        2) What they don't know:
+            a. What does it take to monetize a link?
+            b. How customizable is it?
+			c. More?
+        3) What they will want to know:
+            a. ?
+ -->
+<script>
 	import supabase from '$lib/db';
-	// import session from '$app/stores'
-	// import { browser } from '$app/env';
 
 	export let brand;
-	console.log(brand);
 	let url = 'https://nocodeneeded.com/shaun';
 	let completed = false;
 	let title = 'default';
 	let mooch = true;
 	let price = 10;
-	let base: string;
+	let base;
 	let message = '';
 
 	async function submit() {
