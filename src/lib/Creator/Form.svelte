@@ -4,7 +4,7 @@
 	// import { browser } from '$app/env';
 
 	export let brand;
-	console.log(brand)
+	console.log(brand);
 	let url = 'https://nocodeneeded.com/shaun';
 	let completed = false;
 	let title = 'default';

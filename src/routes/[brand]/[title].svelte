@@ -1,5 +1,9 @@
 <script context="module">
 	import supabase from '$lib/db';
+
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
 	export async function load({ page }) {
 		const brand = page.params.brand;
 		const title = page.params.title;
@@ -58,9 +62,9 @@
 </script>
 
 {#if user}
-<Menu components={component_list2} starting_component={component_list2[2]} />
+	<Menu components={component_list2} starting_component={component_list2[2]} />
 {:else}
-<Menu components={component_list1} />
+	<Menu components={component_list1} />
 {/if}
 <iframe title="iframe" id="monetized" style={blur} src={link} frameBorder="none" />
 <p>{message}</p>

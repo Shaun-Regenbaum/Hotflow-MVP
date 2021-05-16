@@ -1,5 +1,13 @@
 <!-- @component
+	PROPERTIES:
+
+		1) login-message -> message to show in login-button
+		2) register-message -> message to show in login-button
+		3) exsiting -> show login or register prompt first?
+	DESCRIPTION:
+
     This component is designed to show up for whenever a user needs to login or register:
+
         1) What they know:
             a. The basics of what login/registration is.
         2) What they don't know:
@@ -9,12 +17,13 @@
             a. What information can they use to login/register?
             b. Forgot Password/Account?
  -->
- <script>
+<script>
 	import { browser } from '$app/env';
 	import supabase from '$lib/db';
 	import { fade } from 'svelte/transition';
-	export let login_message = "Log In";
-	export let register_message = "Sign Up";
+
+	export let login_message = 'Log In';
+	export let register_message = 'Sign Up';
 	export let existing = true;
 	let name = '';
 	let email = '';
@@ -23,7 +32,7 @@
 
 	// The login action:
 	async function submit_login() {
-		let { user, session, error } = await supabase.auth.signIn({
+		let { user, error } = await supabase.auth.signIn({
 			email: email,
 			password: password
 		});
@@ -38,16 +47,14 @@
 
 	// The register action:
 	async function submit_registration() {
-		let { user, session, error } = await supabase.auth.signUp({
+		let { user, error } = await supabase.auth.signUp({
 			email: email,
 			password: password
 		});
 
 		// Once a user has registered, we then create a row for them in the profiles database, where we hold other data relevant to them:
 		if (user) {
-			await supabase
-				.from('profiles')
-				.insert([{ ownerId: user.id, name: name }]);
+			await supabase.from('profiles').insert([{ ownerId: user.id, name: name }]);
 			window.location.replace('/');
 		} else {
 			message = error.message;
@@ -95,7 +102,7 @@
 		overflow: overlay;
 	}
 
-	input{
+	input {
 		/* Providing padding between the inputs:  */
 		margin: 0.5rem;
 	}

@@ -26,15 +26,9 @@
 	];
 
 	// Checking to see if you are logged in:
-	let permission = user ? true : false;
-	let blur = permission
-		? 'width: 100%; height: 100vh;'
-		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
 
-
 <body>
-	
 	{#if user}
 		<Menu components={component_list2} starting_component={component_list2[2]} />
 	{:else}
@@ -63,11 +57,7 @@
 		<li>
 			<a href="/documentation">Open Questions and Documentation</a>
 		</li>
-
-
 	</ul>
-
-
 </body>
 
 <style>

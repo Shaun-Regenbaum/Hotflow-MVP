@@ -37,7 +37,7 @@
 </script>
 
 {#if brand}
-	<Form brand={brand} />
+	<Form {brand} />
 {:else}
 	<div id="new_creator">
 		<h2>402 Creators</h2>

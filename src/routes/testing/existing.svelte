@@ -1,6 +1,6 @@
 <script>
-    let existing = true;
-    	// Checking to see if you are logged in:
+	// let existing = true;
+	// Checking to see if you are logged in:
 	let permission = true;
 	let blur = permission
 		? 'width: 100%; height: 100vh;'

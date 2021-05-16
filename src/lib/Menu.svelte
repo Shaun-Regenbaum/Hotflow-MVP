@@ -1,4 +1,5 @@
 <!-- @component
+	NEEDS TO BE REDONE
     This component is designed for the overlay of when a user is looking at content.
     It's structure has three parts:
      - A header where if the user is logged in, well put info related to the content at hand
@@ -10,15 +11,15 @@
 	/**This is an object containing a component and all the details associated to display in a menu */
 	export type MenuComponent = {
 		/**This is the actual component to supply to another component */
-		component: any | undefined;
-		/**This is the name of the component if we needt to navigate between multiple components */
+		component;
+		/**This is the name of the component ifÅ we needt to navigate between multiple components */
 		name: string;
 	};
 </script>
 
 <script lang="ts">
-	import Default from '$lib/Default.svelte'
-	export let components: MenuComponent[] = [{component: Default, name: "Default"}]
+	import Default from '$lib/Default.svelte';
+	export let components: MenuComponent[] = [{ component: Default, name: 'Default' }];
 	export let starting_component: MenuComponent = components[0];
 	let current_component: MenuComponent = starting_component;
 

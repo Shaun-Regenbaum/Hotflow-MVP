@@ -8,19 +8,19 @@
     It is important to note that this design is based on handling the state of the menu externally to the menu component.
 
  -->
- <script context="module" lang="ts">
+<script context="module" lang="ts">
 	/**This is an object containing a component and all the details associated to display in a menu */
 	export type MenuComponent = {
 		/**This is the actual component to supply to another component */
-		component: any | undefined;
+		component;
 		/**This is the name of the component if we needt to navigate between multiple components */
 		name: string;
 	};
 </script>
 
 <script lang="ts">
-	import Default from '$lib/Default.svelte'
-	export let components: MenuComponent[] = [{component: Default, name: "Default"}]
+	import Default from '$lib/Default.svelte';
+	export let components: MenuComponent[] = [{ component: Default, name: 'Default' }];
 	export let starting_component: MenuComponent = components[0];
 	let current_component: MenuComponent = starting_component;
 
@@ -30,11 +30,6 @@
 	function minimize() {
 		console.log('Hello');
 		minimized = !minimized;
-	}
-
-	function switchComponent(selection: string) {
-		let select = components.filter((component) => component.name == selection);
-		current_component = select[0];
 	}
 </script>
 
@@ -48,12 +43,11 @@
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
-    <section id="blurb" style="display:{visible}">
-        <p>Get an instant refund if you think it's not worth it.</p>
-
-    </section>
+	<section id="blurb" style="display:{visible}">
+		<p>Get an instant refund if you think it's not worth it.</p>
+	</section>
 	<div id="card" style="display:{visible}">
-		<slot></slot>
+		<slot />
 	</div>
 </div>
 
@@ -75,7 +69,7 @@
 		max-height: 70vh;
 		width: 100%;
 
-        resize:horizontal;
+		resize: horizontal;
 
 		/* Colors: */
 		background-color: #e0e0e0; /* Fallback for older browsers */
@@ -106,16 +100,15 @@
 			inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
 	}
 
-    #blurb {
-        /*Grid Placement:*/
+	#blurb {
+		/*Grid Placement:*/
 		grid-column-start: 2;
 		grid-column-end: 3;
 		grid-row-start: 2;
 		grid-row-end: 3;
 
-        text-align: center;
-
-    }
+		text-align: center;
+	}
 
 	#card {
 		/*Grid Placement:*/
@@ -129,7 +122,6 @@
 		max-height: 40vh;
 	}
 
-	
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
 		#menu {

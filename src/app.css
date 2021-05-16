@@ -11,7 +11,6 @@
 	/* Neuromorphic Properties: */
 	--neuro-light: #fdfdfd3b;
 	--neuro-dark: #0202028a;
-	inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 
 	/* Nueromorphic Active Properties */
 	--neuro1-bg: #fcf4d8;
@@ -23,19 +22,16 @@
 	--neuro2-light: #ffffff;
 	--neuro2-dark: #a5a5a5;
 
-
 	/* Nueromorphic Element Types: */
 	--card: 3px 3px 7px var(--neuro-dark), -4px -4px 7px var(--neuro-light),
-	inset -2px -2px 4px var(--neuro-dark), inset 2px 2px 4px var(--neuro-light);
+		inset -2px -2px 4px var(--neuro-dark), inset 2px 2px 4px var(--neuro-light);
 	--button: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
-	inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
+		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 	--button-hover: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
-	inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
+		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 	--button-highlight: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
-	inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
+		inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
 	--divot: inset 1px 1px 4px #cccccc81, inset -1px -1px 10rem #ffffff70;
-
-
 }
 
 button {

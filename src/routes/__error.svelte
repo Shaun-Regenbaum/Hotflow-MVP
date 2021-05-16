@@ -1,7 +1,13 @@
 <script context="module">
+	/**
+	 * @type {import('@sveltejs/kit').ErrorLoad}
+	 */
 	export async function load({ error, status }) {
 		return {
-			props: { error, status }
+			props: {
+				status: status,
+				error: error
+			}
 		};
 	}
 </script>

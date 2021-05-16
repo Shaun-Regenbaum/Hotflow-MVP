@@ -11,50 +11,48 @@
             b. Inspiration
  -->
 <div id="offerings">
-    <div class="offer">Google Docs</div>
-    <div class="offer">Airtables</div>
-    <div class="offer">Prezis</div>
-    <div class="offer">Files</div>
-    <div class="offer">Videos</div>
-    <div class="offer">Courses</div>
-    <div class="offer">Figma Templates</div>
-    <div class="offer">Google Docs</div>
-    <div class="offer">Google Docs</div>
-    <div class="offer">Google Docs</div>
-
+	<div class="offer">Google Docs</div>
+	<div class="offer">Airtables</div>
+	<div class="offer">Prezis</div>
+	<div class="offer">Files</div>
+	<div class="offer">Videos</div>
+	<div class="offer">Courses</div>
+	<div class="offer">Figma Templates</div>
+	<div class="offer">Google Docs</div>
+	<div class="offer">Google Docs</div>
+	<div class="offer">Google Docs</div>
 </div>
 
 <style>
-    #offerings{
-        /* Container: */
-        max-width: 500px;
-        padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-grow: 20 ;
-        background: var(--bg);
-        
-        /* Rouncing Corners: */
-        border-radius: 20px;
+	#offerings {
+		/* Container: */
+		max-width: 500px;
+		padding: 10px;
+		display: flex;
+		flex-wrap: wrap;
+		flex-grow: 20;
+		background: var(--bg);
 
-        /* Nueromprhic Design: */
-        box-shadow: var(--card);
+		/* Rouncing Corners: */
+		border-radius: 20px;
 
-        /* Animations: */
-	    transition: all 0.2s ease;
-    }
+		/* Nueromprhic Design: */
+		box-shadow: var(--card);
 
-    .offer{
-        /* Color: */
-        background: rgba(128, 128, 128, 0.281);
+		/* Animations: */
+		transition: all 0.2s ease;
+	}
 
-        /* Container: */
-        padding: 5px;
-        margin: 5px;
-        border-radius: 8px;
+	.offer {
+		/* Color: */
+		background: rgba(128, 128, 128, 0.281);
 
-        /* Nueromorphic: */
-        box-shadow: var(--card);
-    }
+		/* Container: */
+		padding: 5px;
+		margin: 5px;
+		border-radius: 8px;
 
+		/* Nueromorphic: */
+		box-shadow: var(--card);
+	}
 </style>
