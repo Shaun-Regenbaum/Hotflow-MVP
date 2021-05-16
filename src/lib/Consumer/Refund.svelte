@@ -1,7 +1,6 @@
 <!-- @component
-	PROPERTIES:
-
-		1) NONE
+	PROPERTIES: NONE
+	
 	DESCRIPTION:
 
     This component is designed to be the refund button. IT NEEDS WORK.
@@ -13,20 +12,15 @@
         3) What they will want to know:
             a. ?
  -->
-<div id="new_creator">
+<div id="refund">
 	<button><h3>Refund</h3></button>
 </div>
 
 <style>
-	#new_creator {
-		/* Keeping the Login Form Centered: */
+	#refund {
 		text-align: center;
 
 		/*Padding: */
 		padding: 1rem;
-
-		/* Neuromorphism */
-		border-radius: 25px;
-		box-shadow: inset 3px 3px 5px #eeeeee, inset -3px -3px 5px #bebebe;
 	}
 </style>

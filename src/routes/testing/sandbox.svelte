@@ -13,15 +13,7 @@
 <div class="testing">
 	<Details />
 </div>
-<div class="testing">
-	<Blurb />
-</div>
-<div class="testing">
-	<Login />
-</div>
-<div class="testing">
-	<Transaction />
-</div>
+
 
 <style>
 	.testing {

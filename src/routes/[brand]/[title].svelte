@@ -16,7 +16,8 @@
 		if (data) {
 			return {
 				props: {
-					link: data[0].link
+					link: data[0].link,
+					price: data[0].price
 				}
 			};
 		}
@@ -27,16 +28,23 @@
 </script>
 
 <script lang="ts">
+	export let price = 0;
 	export let link = 'https://nocodeneeded.com/shaun';
 	export let message = '';
 	import { browser } from '$app/env';
-	import type { MenuComponent } from '$lib/Menu.svelte';
-	import Menu from '$lib/Menu.svelte';
-	import Login from '$lib/Login.svelte';
-	import Logout from '$lib/Logout.svelte';
-	import New from '$lib/Creator/New.svelte';
-	import Recharge from '$lib/Consumer/Recharge.svelte';
+
+	import Menu2 from '$lib/Menu2.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
+	import Blurb from '$lib/Creator/Blurb.svelte';
+	import Details from '$lib/New_Consumer/Details.svelte';
+	import Login from '$lib/Login.svelte';
+	import Lend from '$lib/New_Consumer/Lend.svelte';
+
+	let brand = 'Anonymous Inc.';
+	let title = 'The Adventures of Narnia';
+
+
+
 
 	let user;
 
@@ -44,14 +52,6 @@
 	if (browser) {
 		user = supabase.auth.user();
 	}
-
-	let component_list1: MenuComponent[] = [{ component: Login, name: 'Login' }];
-	let component_list2: MenuComponent[] = [
-		{ component: Logout, name: 'Logout' },
-		{ component: New, name: 'Creator' },
-		{ component: Recharge, name: 'Recharge' },
-		{ component: Refund, name: 'Refund' }
-	];
 
 	// Checking to see if you are logged in:
 	let permission = user ? true : false;
@@ -61,9 +61,32 @@
 </script>
 
 {#if user}
-	<Menu components={component_list2} starting_component={component_list2[2]} />
+	<Menu2>
+		<section id="blurb">
+			<Blurb {brand} />
+		</section>
+		<seciton id="details">
+			<Details {price} {title} />
+		</seciton>
+		<section id="refund">
+			<Refund/>
+		</section>
+	</Menu2>
 {:else}
-	<Menu components={component_list1} />
+	<Menu2>
+		<section id="blurb">
+			<Blurb {brand} />
+		</section>
+		<seciton id="details">
+			<Details {price} {title} />
+		</seciton>
+		<section id="explanation">
+			<Lend/>
+		</section>
+		<section id="login">
+			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
+		</section>
+	</Menu2>
 {/if}
 <iframe title="iframe" id="monetized" style={blur} src={link} frameBorder="none" />
 <p>{message}</p>
