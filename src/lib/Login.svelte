@@ -1,9 +1,20 @@
-<!-- This file contains the login and register forms, and the ability to switch between them -->
-<script>
+<!-- @component
+    This component is designed to show up for whenever a user needs to login or register:
+        1) What they know:
+            a. The basics of what login/registration is.
+        2) What they don't know:
+            a. What is behind the login/registration (TODO as contextually dependant)
+            b. What will be done with the information provided.
+        3) What they will want to know:
+            a. What information can they use to login/register?
+            b. Forgot Password/Account?
+ -->
+ <script>
 	import { browser } from '$app/env';
 	import supabase from '$lib/db';
 	import { fade } from 'svelte/transition';
-
+	export let login_message = "Log In";
+	export let register_message = "Sign Up";
 	export let existing = true;
 	let name = '';
 	let email = '';
@@ -34,7 +45,7 @@
 
 		// Once a user has registered, we then create a row for them in the profiles database, where we hold other data relevant to them:
 		if (user) {
-			const { data, error } = await supabase
+			await supabase
 				.from('profiles')
 				.insert([{ ownerId: user.id, name: name }]);
 			window.location.replace('/');
@@ -46,26 +57,24 @@
 
 <div id="login">
 	{#if existing}
-		<h1 in:fade={{ delay: 50, duration: 500 }}>Login:</h1>
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
 				<input type="email" required placeholder="Email" bind:value={email} />
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Login </button>
+			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
 			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
 				>New User?</button
 			>
 		</form>
 	{:else}
-		<h1 in:fade={{ delay: 50, duration: 500 }}>Register:</h1>
 		<form on:submit|preventDefault={submit_registration}>
 			<fieldset>
 				<input type="text" required placeholder="Name" bind:value={name} />
 				<input type="email" required placeholder="Email" bind:value={email} />
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-			<button type="submit" in:fade={{ delay: 50, duration: 500 }}> Sign Up </button>
+			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{register_message}</button>
 			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
 				>Existing User?</button
 			>
@@ -79,16 +88,15 @@
 		/* Keeping the Login Form Centered: */
 		text-align: center;
 
-		/*Padding + Margin: */
-		padding: 1rem;
+		/*Providng some cushioning around the whole login form: */
 
-		/* Neuromorphism */
+		/* Neuromorphism: */
 		border-radius: 25px;
-
 		overflow: overlay;
 	}
 
 	input{
+		/* Providing padding between the inputs:  */
 		margin: 0.5rem;
 	}
 </style>

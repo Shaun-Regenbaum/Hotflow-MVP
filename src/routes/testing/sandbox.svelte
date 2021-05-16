@@ -1,17 +1,16 @@
 <script>
+	import Home from '$lib/Consumer/Home.svelte'
+	import Blurb from '$lib/Creator/Blurb.svelte'
+	import Login from '$lib/Login.svelte'
 	import Transaction from '$lib/Transaction.svelte'
-	// import Home from '$lib/Consumer/Home.svelte'
-	// import New from '$lib/Creator/New.svelte';
-	import Login from '$lib/Login.svelte';
-	// import Welcome from '$lib/Welcome.svelte'
 </script>
 
 <div class="testing">
-	<Transaction/>
+	<Blurb/>
 </div>
 <br>
 <div class="testing">
-	<Login/>
+	<Home/>
 </div>
 
 

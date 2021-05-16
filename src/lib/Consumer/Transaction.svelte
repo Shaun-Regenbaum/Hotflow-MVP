@@ -1,24 +1,42 @@
+<!-- @component
+    This component is designed to show up for when an existing user with suffecient balance purchases an item.
+        1) What they know:
+            a. They just clicked on an item.
+            b. They are expecting to see content.
+            c. (?) They are signed up with 402
+        2) What they don't know:
+            a. (?) That they just purchaased an article.
+            b. Specific Information about the article
+        3) What they will want to know:
+            a. How much does it cost?
+            b. Can I undo/refund it?
+ -->
+
 <script>
     export let price = 100;
     export let brand = "Anonymous"
 </script>
 
-<div id="notification">
+<div id="purchase_notification">
     <section id="price">
         <p>Amount: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
     </section>
     <section id="brand">
-        <p>{brand}</p>
+        <p>By: {brand}</p>
     </section>
     <button id="refund">Refund</button>
 </div>
 
 <style>
     /* Mobile-First: */
-    #notification{
+    #purchase_notification{
+        /* Color:  */
+        background-color: var(--bg);
+
         /* Positioning and Sizing: */
-        min-width: 335px;
+        min-width: 290px;
         max-width: 400px;
+        padding: 0px 20px 0px 10px;
         display: flex;
 
         /* Nueromorphic: */
@@ -29,7 +47,6 @@
     }
     section{
         /* Keeping the different sections seperate: */
-        padding-left: 5px;
         padding-inline: 5px;
         /* Animations: */
         transition: all 0.2s ease;
@@ -46,13 +63,16 @@
             font-size: 16px;
 
     }
-    /*Tablet:  */
+    /* Bigger than mobile:*/
     @media (min-width: 700px) {
-        #notification{
+        #purchase_notification{
         /* Positioning and Sizing: */
-        min-width: 430px;
+        min-width: 350px;
+        max-width: 450px;
         display: flex;
         font-size: 20px;
+        padding: 0px 20px 0px 20px;
+
 
         /* Nueromorphic: */
         box-shadow: var(--button);
@@ -66,8 +86,7 @@
         }
         section{
         /* Keeping the different sections seperate: */
-        padding-left: 10px;
-        padding-inline: 10px;
+        padding-inline: 5px;
         /* Animations: */
         transition: all 0.2s ease;
         } 
@@ -76,4 +95,5 @@
 
     /* 333RX4WA */
 
+    
 </style>

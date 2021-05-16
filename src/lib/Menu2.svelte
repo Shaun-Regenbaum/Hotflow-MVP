@@ -5,8 +5,10 @@
      - A slot for a component to be provided from outside this component
      - Navigation for if there are multiple components we want the user to be able switch between
 
+    It is important to note that this design is based on handling the state of the menu externally to the menu component.
+
  -->
-<script context="module" lang="ts">
+ <script context="module" lang="ts">
 	/**This is an object containing a component and all the details associated to display in a menu */
 	export type MenuComponent = {
 		/**This is the actual component to supply to another component */
@@ -46,18 +48,13 @@
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
+    <section id="blurb" style="display:{visible}">
+        <p>Get an instant refund if you think it's not worth it.</p>
+
+    </section>
 	<div id="card" style="display:{visible}">
-		<svelte:component this={current_component.component} />
+		<slot></slot>
 	</div>
-	{#if components.length > 1}
-		<nav style="display:{visible}">
-			{#each components as component}
-				<li style="display: inline;">
-					<button on:click={switchComponent(component.name)}>{component.name}</button>
-				</li>
-			{/each}
-		</nav>
-	{/if}
 </div>
 
 <style>
@@ -71,20 +68,20 @@
 
 		/* Grid Layout: */
 		display: grid;
-		grid-template-rows: 2rem 1fr 1rem auto 1rem;
+		grid-template-rows: 2rem 0.2fr 0.8fr 1rem auto 1rem;
 		grid-template-columns: 2rem 1fr 2rem;
 
 		/* Size of Container: */
 		max-height: 70vh;
 		width: 100%;
 
+        resize:horizontal;
+
 		/* Colors: */
 		background-color: #e0e0e0; /* Fallback for older browsers */
 
 		/* Nueromorphism: */
-		border-radius: 25px 25px 10px 10px;
-		box-shadow: 2px 2px 3px var(--neuro-dark), -2px -2px 3px var(--neuro-light),
-			inset -2px -10px 15px var(--neuro-dark), inset 2px 2px 15px var(--neuro-light);
+		border-radius: 25px 25px 0px 0px;
 	}
 	#toolbar {
 		/*Grid Placement:*/
@@ -109,45 +106,30 @@
 			inset -2px -2px 5px var(--neuro-dark), inset 2px 2px 5px var(--neuro-light);
 	}
 
-	#card {
-		/*Grid Placement:*/
+    #blurb {
+        /*Grid Placement:*/
 		grid-column-start: 2;
 		grid-column-end: 3;
 		grid-row-start: 2;
 		grid-row-end: 3;
+
+        text-align: center;
+
+    }
+
+	#card {
+		/*Grid Placement:*/
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 3;
+		grid-row-end: 4;
+
 		/* Positioning: */
 		overflow-y: auto;
 		max-height: 40vh;
 	}
 
-	nav {
-		/*Grid Placement:*/
-		grid-column-start: 2;
-		grid-column-end: 3;
-		grid-row-start: 4;
-
-		/* Internal Paddding */
-		padding: 0.6rem;
-
-		/* To make menu items evely spaced: */
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-
-		/* To make menu bar overflow:  */
-		padding-left: 9rem;
-		overflow-x: scroll;
-		overflow-y: hidden;
-
-		/* Shape of menu bar: */
-		border-radius: 2rem;
-
-		/* Nueuromorphism: */
-		background: #e2e2e2f3;
-		box-shadow: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
-			-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
-	}
-
+	
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
 		#menu {

@@ -40,9 +40,33 @@
 	{:else}
 		<Menu components={component_list1} />
 	{/if}
-	<a href="/testing">Click Here to see current component testing</a>
-	<br>
-	<a href="/alpha/default">Click Here to see sample new site</a>
+	<h1>Active Development:</h1>
+	<ul>
+		<li>
+			<a href="/testing/sandbox">Component Testing Environment</a>
+		</li>
+		<li>
+			<a href="/components">Component Library</a>
+		</li>
+		<li>
+			<a href="/testing/new">New User Flow (WIP)</a>
+		</li>
+		<li>
+			<a href="/testing/existing">Existing User Flow (WIP)</a>
+		</li>
+		<li>
+			<a href="/alpha/default">Live (WIP}</a>
+		</li>
+		<li>
+			<a href="/landing">Landing Page (WIP)</a>
+		</li>
+		<li>
+			<a href="/documentation">Open Questions and Documentation</a>
+		</li>
+
+
+	</ul>
+
 
 </body>
 
