@@ -4,7 +4,6 @@
 <div id="container">
     <div id="picture"></div>
     <div id="name">{name}</div>
-
 </div>
 
 <style>

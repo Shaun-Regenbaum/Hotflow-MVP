@@ -7,7 +7,7 @@
 	import New from '$lib/Creator/New.svelte';
 	import Home from '$lib/Consumer/Home.svelte';
 	import Recharge from '$lib/Consumer/Recharge.svelte';
-	import Refund from '$lib/Refund.svelte';
+	import Refund from '$lib/Consumer/Refund.svelte';
 	import supabase from '$lib/db';
 
 	let user;

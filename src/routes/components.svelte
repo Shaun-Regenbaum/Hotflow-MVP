@@ -2,7 +2,7 @@
     import Login from '$lib/Login.svelte'
     import Logout from '$lib/Logout.svelte'
     import Menu from '$lib/Menu.svelte'
-    import Refund from '$lib/Refund.svelte'
+    import Refund from '$lib/Consumer/Refund.svelte'
     import Transaction from '$lib/Transaction.svelte'
     import Welcome from '$lib/Welcome.svelte'
     import New from '$lib/Creator/New.svelte'
