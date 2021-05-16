@@ -3,7 +3,6 @@
  -->
 <script>
 	import Menu2 from '$lib/Menu2.svelte';
-	import Home from '$lib/Consumer/Home.svelte';
 	// let existing = false;
 	// Checking to see if you are logged in:
 	let permission = false;
@@ -13,7 +12,6 @@
 </script>
 
 <Menu2>
-	<Home />
 </Menu2>
 <iframe title="iframe" id="monetized" style={blur} src="\landing" frameBorder="none" />
 

@@ -1,7 +1,6 @@
 <script>
 	import Login from '$lib/Login.svelte';
 	import Logout from '$lib/Logout.svelte';
-	// import Menu from '$lib/Menu.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
 	import Welcome from '$lib/Welcome.svelte';
