@@ -3,7 +3,7 @@
 	import Logout from '$lib/Logout.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
-	import Welcome from '$lib/Welcome.svelte';
+	import Welcome from '$lib/Landing/Welcome.svelte';
 	import New from '$lib/Creator/New.svelte';
 	import Form from '$lib/Creator/Form.svelte';
 	import Recharge from '$lib/Consumer/Recharge.svelte';
