@@ -1,7 +1,6 @@
 <script context="module">
 	import supabase from '$lib/db';
 
-
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
@@ -28,29 +27,29 @@
 </script>
 
 <script lang="ts">
-	import type {Purchase, Profile, Link} from '$lib/Docs/types';
+	import type { Purchase, Profile, Link } from '$lib/Docs/types';
 	import type { User } from '@supabase/supabase-js';
-	
-	export let price = 0;
-	export let link:Link = {
+	let user = false;
+
+	export let link: Link = {
 		brand: 'Anonymous Inc.',
 		title: 'The Faraway Tree',
 		price: 0
 	};
 	export let message = '';
 
-	import makePurchase from "$lib/Endpoints/purchase"
+	import makePurchase from '$lib/Endpoints/purchase';
 	import { browser } from '$app/env';
 
 	if (browser) {
-		const user:User = supabase.auth.user();
-		let purchase:Purchase = {
+		const user: User = supabase.auth.user();
+		let purchase: Purchase = {
 			purchaserId: user.id,
 			sellerId: link.ownerId,
-			linkId:link.id,
+			linkId: link.id,
 			amount: link.price,
 			refunded: false
-		}
+		};
 		const item = makePurchase(purchase);
 	}
 

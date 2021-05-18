@@ -26,7 +26,7 @@ export default async function makePurchase(purchase: Purchase) {
 }
 
 async function getProfile(id: string) {
-	let { data, error } = await supabase.from('profiles').select().eq('id', id);
+	const { data, error } = await supabase.from('profiles').select().eq('id', id);
 	if (data) {
 		return data[0];
 	} else {
@@ -34,7 +34,7 @@ async function getProfile(id: string) {
 	}
 }
 async function createPurchase(purchase: Purchase) {
-	let { data, error }: Response = await supabase.from('purchases').insert([purchase]);
+	const { data, error }: Response = await supabase.from('purchases').insert([purchase]);
 	if (data) {
 		return data[0];
 	} else {
