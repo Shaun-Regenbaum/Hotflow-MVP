@@ -48,6 +48,7 @@
 		/* Nueromorphic: */
 		box-shadow: var(--button);
 		border-radius: 5px 25px 5px 5px;
+	
 	}
 	section {
 		/* Keeping the different sections seperate: */

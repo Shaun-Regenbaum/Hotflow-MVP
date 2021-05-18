@@ -9,11 +9,10 @@
 
  -->
 <script lang="ts">
-	let minimized = false;
+	export let minimized = false;
 	$: visible = minimized ? 'none' : '';
 
 	function minimize() {
-		console.log('Hello');
 		minimized = !minimized;
 	}
 </script>

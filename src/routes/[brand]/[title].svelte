@@ -19,7 +19,6 @@
 		let userId='';
 		const brand = page.params.brand;
 		const title = page.params.title;
-		console.log(brand, title);
 		const { data } = await supabase.from('links').select().eq('brand', brand).eq('title', title);
 		if (data[0]) {
 			const link: Link = data[0];
@@ -61,6 +60,7 @@
 	import Details from '$lib/New_Consumer/Details.svelte';
 	import Login from '$lib/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
+	import Transaction from '$lib/Consumer/Transaction.svelte'
 
 	export let permission = false;
 	export let userId = '';
@@ -79,7 +79,7 @@
 </script>
 
 {#if permission}
-	<Menu2>
+	<Menu2 minimized={true}>
 		<section id="blurb">
 			<Blurb brand={link.brand} />
 		</section>
@@ -90,6 +90,10 @@
 			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price}/>
 		</section>
 	</Menu2>
+	<div id="transaction">
+		<Transaction price={link.price} brand={link.brand}/>
+	</div>
+	
 {:else}
 	<Menu2>
 		<section id="blurb">
@@ -116,5 +120,11 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
+	}
+	#transaction{
+		position:absolute;
+		left:0;
+		bottom:0;
+		z-index: 100000;
 	}
 </style>
