@@ -21,7 +21,7 @@ export async function lend(id: string) {
 export async function checkOwnership(linkId: string, userId: string) {
 	try {
 		const fullProfile: Profile = await getProfile(userId);
-		return linkId in fullProfile.purchases;
+		return fullProfile.purchases.includes(linkId);
 	} catch (error) {
 		return error;
 	}
@@ -29,7 +29,8 @@ export async function checkOwnership(linkId: string, userId: string) {
 
 async function getProfile(id: string) {
 	const { data, error } = await supabase.from('profiles').select().eq('id', id);
-	if (data) {
+	if (data[0]) {
+		console.log
 		return data[0];
 	} else {
 		throw error;

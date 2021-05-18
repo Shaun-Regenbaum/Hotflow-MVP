@@ -1,6 +1,10 @@
 <!-- @component
-	PROPERTIES: NONE
-	
+	PROPERTIES:
+
+		1) purchaserId
+		2) linkId
+		3) sellerId
+		4) price
 	DESCRIPTION:
 
     This component is designed to be the refund button. IT NEEDS WORK.
@@ -13,28 +17,16 @@
             a. ?
  -->
 <script>
-	import supabase from '$lib/db';
+	import makeRefund from "$lib/Endpoints/refund"
 	export let purchaserId = '';
 	export let linkId = '';
 	export let sellerId = '';
-	export let price = 0;
+	export let amount = 0;
 	let message = '';
 
 	async function refund() {
-		const { data, error } = await supabase.from('purchases').insert([
-			{
-				purchaserId: purchaserId,
-				linkId: linkId,
-				amount: -1 * price,
-				sellerId: sellerId,
-				refunded: true
-			}
-		]);
-		if (data) {
-			// Do Something
-		} else {
-			message = error.message;
-		}
+		const response = await makeRefund(purchaserId, sellerId, linkId, amount);
+		window.location.href = ('../')		
 	}
 </script>
 

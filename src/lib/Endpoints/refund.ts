@@ -2,12 +2,12 @@ import supabase from '$lib/db';
 import type { Purchase, Profile } from '$lib/Docs/types';
 import type { Response } from '$lib/Endpoints/apiTypes';
 
-/**This function creates a purchase in the db, subtracts the purchaser account balance, adds to the seller account balance, and add the bought link to the purcasher's purchases.
+/**This function changes a purchase in the db to a refunded purchase, adds to the purchaser account balance, substracts from the seller account balance, and removes the bought link from the purcasher's purchases.
  * @todo Really need to optimize the number of calls, right now it is VERY Ineffecient.
  * @param {Purchase} - It takes in a purchase to create
  * @return {string | PostgrestError[]} - We will either return a "Success with the relevant information" or the error message
  */
-export default async function makePurchase(
+export default async function makeRefund(
 	purchaserId: string,
 	sellerId: string,
 	linkId: string,
@@ -16,15 +16,16 @@ export default async function makePurchase(
 	try {
 		let purchaser: Profile = await getProfile(purchaserId);
 		let seller: Profile = await getProfile(sellerId);
-		const purchase: Purchase = await createPurchase({
+		const purchase: Purchase = await createRefund({
 			purchaserId: purchaserId,
 			sellerId: sellerId,
 			linkId: linkId,
-			amount: amount
+			amount: amount,
+            refunded: true
 		});
-		purchaser = await updateBalance(purchaser.id, purchaser.balance, -1 * purchase.amount);
-		seller = await updateBalance(seller.id, seller.balance, purchase.amount);
-		purchaser = await addPurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
+		purchaser = await updateBalance(purchaser.id, purchaser.balance, purchase.amount);
+		seller = await updateBalance(seller.id, seller.balance, -1*purchase.amount);
+		purchaser = await removePurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
 		return purchase;
 	} catch (error) {
 		return error;
@@ -39,8 +40,8 @@ async function getProfile(id: string) {
 		throw error;
 	}
 }
-async function createPurchase(purchase: Purchase) {
-	const { data, error }: Response = await supabase.from('purchases').insert([purchase]);
+async function createRefund(purchase: Purchase) {
+	const { data, error }: Response = await supabase.from('purchases').upsert([purchase]);
 	if (data) {
 		return data[0];
 	} else {
@@ -53,7 +54,6 @@ async function updateBalance(id: string, initial_balance: number, amount: number
 		.from('profiles')
 		.update([{ balance: initial_balance + amount }])
 		.eq('id', id);
-	console.log(data)
 	if (data) {
 		return data[0];
 	} else {
@@ -61,15 +61,14 @@ async function updateBalance(id: string, initial_balance: number, amount: number
 	}
 }
 
-async function addPurchase(id: string, purchases: string[], purchase: string) {
+async function removePurchase(id: string, purchases: string[], purchaseId: string) {
 	const { data, error }: Response = await supabase
 		.from('profiles')
-		.update([{ purchases: purchases.concat([purchase]) }])
+		.update([{ purchases: purchases.filter((purchase) => purchase != purchaseId) }])
 		.eq('id', id);
 	if (data) {
 		return data[0];
 	} else {
-		console.log(error)
 		throw error;
 	}
 }

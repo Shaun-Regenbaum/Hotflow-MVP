@@ -7,23 +7,28 @@
 	import { checkOwnership } from '$lib/Endpoints/profile';
 	import makePurchase from '$lib/Endpoints/purchase';
 
-	/**
+	/** This function does four things:
+	 * 1) It get the relevant information from the url to know what content you want.
+	 * 2) It checks to see if you are logged in
+	 * 3) It checks to see if you have already purchased the revelent content
+	 * 3) If not, it makes the purchase and handles all the balance changes on the server. 
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
 		let permission = false;
+		let userId='';
 		const brand = page.params.brand;
 		const title = page.params.title;
 		console.log(brand, title);
 		const { data } = await supabase.from('links').select().eq('brand', brand).eq('title', title);
-
 		if (data[0]) {
 			const link: Link = data[0];
 			if (browser) {
 				const user: User = supabase.auth.user();
+				userId = user.id;
 				permission = await checkOwnership(link.id, user.id);
 				if (!permission) {
-					const { data } = await makePurchase(user.id, link.ownerId, link.id, link.price);
+					const data = await makePurchase(user.id, link.ownerId, link.id, link.price);
 					if (data) {
 						permission = true;
 					} else {
@@ -37,7 +42,8 @@
 			return {
 				props: {
 					link: data[0],
-					permission: permission
+					permission: permission,
+					userId: userId 
 				}
 			};
 		}
@@ -57,9 +63,11 @@
 	import Lend from '$lib/New_Consumer/Lend.svelte';
 
 	export let permission = false;
+	export let userId = '';
 	export let link: Link = {
 		brand: 'Anonymous Inc.',
 		title: 'The Faraway Tree',
+		ownerId: '',
 		price: 0
 	};
 	export let message = '';
@@ -79,7 +87,7 @@
 			<Details price={link.price} title={link.title} />
 		</section>
 		<section id="refund">
-			<Refund />
+			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price}/>
 		</section>
 	</Menu2>
 {:else}
