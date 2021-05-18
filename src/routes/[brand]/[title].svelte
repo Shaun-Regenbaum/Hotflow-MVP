@@ -78,6 +78,7 @@
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
 
+<p>{link.id}</p>
 {#if permission}
 	<Menu2 minimized={true}>
 		<section id="blurb">
