@@ -24,8 +24,8 @@ export default async function makeRefund(
 			refunded: true
 		});
 		purchaser = await updateBalance(purchaser.id, purchaser.balance, purchase.amount);
-		await updateBalance(seller.id, seller.balance, -1 * purchase.amount);
-		await removePurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
+		updateBalance(seller.id, seller.balance, -1 * purchase.amount);
+		removePurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
 		return purchase;
 	} catch (error) {
 		return error;

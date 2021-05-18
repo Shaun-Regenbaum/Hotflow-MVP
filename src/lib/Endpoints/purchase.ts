@@ -22,9 +22,9 @@ export default async function makePurchase(
 			linkId: linkId,
 			amount: amount
 		});
-		purchaser = await updateBalance(purchaser.id, purchaser.balance, -1 * purchase.amount);
-		seller = await updateBalance(seller.id, seller.balance, purchase.amount);
-		purchaser = await addPurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
+		updateBalance(purchaser.id, purchaser.balance, -1 * purchase.amount);
+		updateBalance(seller.id, seller.balance, purchase.amount);
+		addPurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
 		return purchase;
 	} catch (error) {
 		return error;

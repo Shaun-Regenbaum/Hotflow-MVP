@@ -31,16 +31,17 @@
 				if (userId){
 					permission = await checkOwnership(link.id, userId);
 				if (!permission) {
-					const data = await makePurchase(userId, link.ownerId, link.id, link.price);
-					if (data) {
-						permission = true;
-					} else {
-						// If error in validating purchase:
-						return {
-							status: 402,
-							error: 'Payment was not found'
-						};
-					}
+					makePurchase(userId, link.ownerId, link.id, link.price);
+					permission = true;
+					// if (data) {
+					// 	permission = true;
+					// } else {
+					// 	// If error in validating purchase:
+					// 	return {
+					// 		status: 402,
+					// 		error: 'Payment was not found'
+					// 	};
+					// }
 				}
 				}
 			}
