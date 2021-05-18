@@ -49,8 +49,7 @@
 				props: {
 					link: data[0],
 					permission: permission,
-					userId: userId,
-					loaded: true
+					userId: userId
 				}
 			};
 		}
@@ -64,7 +63,6 @@
 
 <script lang="ts">
 	// Svelte Stuff:
-	import { fade } from 'svelte/transition';
 	// Components:
 	import Menu2 from '$lib/Menu2.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
@@ -83,7 +81,6 @@
 		ownerId: '',
 		price: 0
 	};
-	export let loaded = false;
 
 	// making sure menu doesnt open prematurely
 
@@ -95,43 +92,43 @@
 	
 	// Making transacton hide after any action:
 </script>
-{#if !loaded}
-<p>Nothing</p>
-{:else}
-	{#if permission}
-			<Menu2 minimized={true}>
-				<section id="blurb">
-					<Blurb brand={link.brand} />
-				</section>
-				<section id="details">
-					<Details price={link.price} title={link.title} />
-				</section>
-				<section id="refund">
-					<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price} />
-				</section>
-			</Menu2>
-			<svelte:component this={Transaction} price={link.price}
-			brand={link.brand}
-			purchaserId={userId}
-			linkId={link.id}
-			sellerId={link.ownerId}/>
-		{:else}
-			<Menu2 minimized={false}>
-				<section id="blurb">
-					<Blurb brand={link.brand} />
-				</section>
-				<section id="details">
-					<Details price={link.price} title={link.title} />
-				</section>
-				<section id="explanation">
-					<Lend />
-				</section>
-				<section id="login">
-					<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
-				</section>
-			</Menu2>
-		{/if}
-{/if}
+
+<!-- I Don't think this did anything, figure out how to get loading screen.. -->
+
+{#if permission}
+		<Menu2 minimized={true}>
+			<section id="blurb">
+				<Blurb brand={link.brand} />
+			</section>
+			<section id="details">
+				<Details price={link.price} title={link.title} />
+			</section>
+			<section id="refund">
+				<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price} />
+			</section>
+		</Menu2>
+		<svelte:component this={Transaction} price={link.price}
+		brand={link.brand}
+		purchaserId={userId}
+		linkId={link.id}
+		sellerId={link.ownerId}/>
+	{:else}
+		<Menu2 minimized={false}>
+			<section id="blurb">
+				<Blurb brand={link.brand} />
+			</section>
+			<section id="details">
+				<Details price={link.price} title={link.title} />
+			</section>
+			<section id="explanation">
+				<Lend />
+			</section>
+			<section id="login">
+				<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
+			</section>
+		</Menu2>
+	{/if}
+
 <iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
 <style>
 	#monetized {
