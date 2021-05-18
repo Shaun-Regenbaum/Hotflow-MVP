@@ -43,7 +43,7 @@
 
 		/* Container Look: */
 		background-color: white;
-		border-radius: 50px;
+		border-radius: 5px 5px 50px 50px;
 		border-style: solid;
 	}
 
