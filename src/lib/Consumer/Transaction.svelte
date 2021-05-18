@@ -75,9 +75,10 @@
 			font-size: 20px;
 			padding: 0px 20px 0px 20px;
 
-			/* Nueromorphic: */
-			box-shadow: var(--button);
-			border-radius: 5px 25px 5px 5px;
+			/* Border: */
+			background-color: white;
+			border-radius: 50px;
+			border-style: solid;
 		}
 		section {
 			/* Keeping the different sections seperate: */
