@@ -17,7 +17,6 @@
 	let blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
-
 </script>
 
 <Menu2>
@@ -28,7 +27,7 @@
 		<Details {price} {title} />
 	</seciton>
 	<section id="explanation">
-		<Lend/>
+		<Lend />
 	</section>
 	<section id="login">
 		<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />

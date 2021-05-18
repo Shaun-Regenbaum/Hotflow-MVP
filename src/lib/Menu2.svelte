@@ -18,14 +18,13 @@
 	}
 </script>
 
-<div
-	id="menu">
+<div id="menu">
 	<section id="toolbar" on:click={minimize}>
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
 	<div id="components" style="display:{visible}">
-		<slot></slot>
+		<slot />
 	</div>
 </div>
 
@@ -39,7 +38,7 @@
 		left: 0;
 
 		/* Layout: */
-		display:flex;
+		display: flex;
 		flex-direction: column;
 
 		/* Container Look: */

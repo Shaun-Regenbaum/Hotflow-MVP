@@ -20,7 +20,7 @@
 <script>
 	import { browser } from '$app/env';
 	import supabase from '$lib/db';
-	import {lend} from '$lib/Endpoints/profile'
+	import { lend } from '$lib/Endpoints/profile';
 	import { fade } from 'svelte/transition';
 
 	export let login_message = 'Log In';
@@ -56,18 +56,19 @@
 
 		// Once a user has registered, we then create a row for them in the profiles database, where we hold other data relevant to them:
 		if (user) {
-			const { data, error } = await supabase.from('profiles').insert([{ id: user.id, name: name, balance: 40 }]);
+			const { data, error } = await supabase
+				.from('profiles')
+				.insert([{ id: user.id, name: name, balance: 40 }]);
 			if (data) {
-				console.log(data)
+				console.log(data);
 				window.location.replace('/');
 			} else {
 				// Right now supabase does not support it, but we want to delete, if we can create profile.
-				message = error.message
+				message = error.message;
 				// const { data, error } = await supabase
 				// 	.from('users')
 				// 	.delete()
 				// 	.match({ id: user.id })
-				
 			}
 		} else {
 			message = error.message;
@@ -82,9 +83,10 @@
 				<input type="email" required placeholder="Email" bind:value={email} />
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
-		<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
-		<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
-			>New User?</button>
+			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
+			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
+				>New User?</button
+			>
 		</form>
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>

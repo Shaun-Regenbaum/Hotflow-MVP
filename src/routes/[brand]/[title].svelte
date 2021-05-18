@@ -1,6 +1,7 @@
 <script context="module">
 	import supabase from '$lib/db';
 
+
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
@@ -9,15 +10,14 @@
 		const title = page.params.title;
 		let { data, error } = await supabase
 			.from('links')
-			.select('link')
+			.select()
 			.eq('brand', brand)
 			.eq('title', title);
 
 		if (data) {
 			return {
 				props: {
-					link: data[0].link,
-					price: data[0].price
+					link: data[0]
 				}
 			};
 		}
@@ -28,10 +28,31 @@
 </script>
 
 <script lang="ts">
+	import type {Purchase, Profile, Link} from '$lib/Docs/types';
+	import type { User } from '@supabase/supabase-js';
+	
 	export let price = 0;
-	export let link = 'https://nocodeneeded.com/shaun';
+	export let link:Link = {
+		brand: 'Anonymous Inc.',
+		title: 'The Faraway Tree',
+		price: 0
+	};
 	export let message = '';
+
+	import makePurchase from "$lib/Endpoints/purchase"
 	import { browser } from '$app/env';
+
+	if (browser) {
+		const user:User = supabase.auth.user();
+		let purchase:Purchase = {
+			purchaserId: user.id,
+			sellerId: link.ownerId,
+			linkId:link.id,
+			amount: link.price,
+			refunded: false
+		}
+		const item = makePurchase(purchase);
+	}
 
 	import Menu2 from '$lib/Menu2.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
@@ -39,19 +60,6 @@
 	import Details from '$lib/New_Consumer/Details.svelte';
 	import Login from '$lib/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
-
-	let brand = 'Anonymous Inc.';
-	let title = 'The Adventures of Narnia';
-
-
-
-
-	let user;
-
-	/*eslint no-empty-pattern: 1*/
-	if (browser) {
-		user = supabase.auth.user();
-	}
 
 	// Checking to see if you are logged in:
 	let permission = user ? true : false;
@@ -63,25 +71,25 @@
 {#if user}
 	<Menu2>
 		<section id="blurb">
-			<Blurb {brand} />
+			<Blurb brand={link.brand} />
 		</section>
-		<seciton id="details">
-			<Details {price} {title} />
-		</seciton>
+		<section id="details">
+			<Details price={link.price} title={link.title} />
+		</section>
 		<section id="refund">
-			<Refund/>
+			<Refund />
 		</section>
 	</Menu2>
 {:else}
 	<Menu2>
 		<section id="blurb">
-			<Blurb {brand} />
+			<Blurb brand={link.brand} />
 		</section>
-		<seciton id="details">
-			<Details {price} {title} />
-		</seciton>
+		<section id="details">
+			<Details price={link.price} title={link.title} />
+		</section>
 		<section id="explanation">
-			<Lend/>
+			<Lend />
 		</section>
 		<section id="login">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />

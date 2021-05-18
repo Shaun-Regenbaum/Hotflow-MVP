@@ -19,6 +19,7 @@
 <script>
 	export let brand = 'Mr. Anonymous';
 </script>
+
 <div id="grid">
 	<div id="container">
 		<div id="picture" />
@@ -32,7 +33,7 @@
 		--pic-length: 50px;
 	}
 	#grid {
-		display:grid;
+		display: grid;
 		grid-template-columns: 1fr auto;
 	}
 	#container {
@@ -60,7 +61,7 @@
 		align-self: center;
 		padding: 10px;
 		margin: 10px;
-	
+
 		/* Nuero: */
 		box-shadow: var(--divot);
 		border-radius: 20px;
@@ -69,7 +70,7 @@
 		align-self: center;
 		padding: 10px;
 		margin-right: 40px;
-	
+
 		/* Nuero: */
 		box-shadow: var(--divot);
 		border-radius: 20px;

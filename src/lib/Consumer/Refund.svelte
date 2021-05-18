@@ -12,27 +12,32 @@
         3) What they will want to know:
             a. ?
  -->
- <script>
-	import supabase from '$lib/db'
+<script>
+	import supabase from '$lib/db';
 	export let purchaserId = '';
 	export let linkId = '';
-	export let sellerId= '';
+	export let sellerId = '';
 	export let price = 0;
 	let message = '';
 
-	async function refund(){
-		const { data, error } = await supabase
-			.from('purchases')
-			.insert([
-				{ purchaserId: purchaserId, linkId: linkId, amount: -1*price, sellerId: sellerId, refunded: true },
-			])
-		if (data){
+	async function refund() {
+		const { data, error } = await supabase.from('purchases').insert([
+			{
+				purchaserId: purchaserId,
+				linkId: linkId,
+				amount: -1 * price,
+				sellerId: sellerId,
+				refunded: true
+			}
+		]);
+		if (data) {
 			// Do Something
-		}else {
+		} else {
 			message = error.message;
 		}
-	 }
- </script>
+	}
+</script>
+
 <div id="refund">
 	<button on:click={refund}><h3>Refund</h3></button>
 	<p>{message}</p>

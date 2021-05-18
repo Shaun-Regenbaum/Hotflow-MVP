@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-	import Default from '$lib/Default.svelte';
+	import Default from '$lib/Testing/Default.svelte';
 	export let components: MenuComponent[] = [{ component: Default, name: 'Default' }];
 	export let starting_component: MenuComponent = components[0];
 	let current_component: MenuComponent = starting_component;
