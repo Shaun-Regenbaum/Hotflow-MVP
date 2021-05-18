@@ -19,7 +19,7 @@
 	import supabase from '$lib/db';
 
 	export let brand;
-	let url = 'https://nocodeneeded.com/shaun';
+	let url = 'https://ft.com';
 	let completed = false;
 	let title = 'default';
 	let mooch = true;
@@ -31,9 +31,9 @@
 		const user = supabase.auth.user();
 		const { data, error } = await supabase.from('links').insert([
 			{
-				link: url,
+				url: url,
 				mooch: mooch,
-				owner: user.id,
+				ownerId: user.id,
 				title: title,
 				price: price,
 				brand: brand
@@ -43,7 +43,7 @@
 			completed = true;
 			base = `${brand}/${title}`;
 		} else {
-			message = error.details;
+			message = error.message;
 		}
 	}
 </script>

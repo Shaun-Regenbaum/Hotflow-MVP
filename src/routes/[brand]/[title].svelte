@@ -1,58 +1,54 @@
-<script context="module">
+<script context="module" lang="ts">
 	import supabase from '$lib/db';
+	import { browser } from '$app/env';
+	import type { Link } from '$lib/Docs/types';
+	import type { User } from '@supabase/supabase-js';
+
+	import { checkOwnership } from '$lib/Endpoints/profile';
+	import makePurchase from '$lib/Endpoints/purchase';
 
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
+		let permission = false;
 		const brand = page.params.brand;
 		const title = page.params.title;
-		let { data, error } = await supabase
-			.from('links')
-			.select()
-			.eq('brand', brand)
-			.eq('title', title);
+		console.log(brand, title);
+		const { data } = await supabase.from('links').select().eq('brand', brand).eq('title', title);
 
-		if (data) {
+		if (data[0]) {
+			const link: Link = data[0];
+			if (browser) {
+				const user: User = supabase.auth.user();
+				permission = await checkOwnership(link.id, user.id);
+				if (!permission) {
+					const { data } = await makePurchase(user.id, link.ownerId, link.id, link.price);
+					if (data) {
+						permission = true;
+					} else {
+						return {
+							status: 402,
+							error: 'Payment was not found'
+						};
+					}
+				}
+			}
 			return {
 				props: {
-					link: data[0]
+					link: data[0],
+					permission: permission
 				}
 			};
 		}
 		return {
-			message: error.message
+			status: 404,
+			error: 'Could not find that website'
 		};
 	}
 </script>
 
 <script lang="ts">
-	import type { Purchase, Profile, Link } from '$lib/Docs/types';
-	import type { User } from '@supabase/supabase-js';
-	let user = false;
-
-	export let link: Link = {
-		brand: 'Anonymous Inc.',
-		title: 'The Faraway Tree',
-		price: 0
-	};
-	export let message = '';
-
-	import makePurchase from '$lib/Endpoints/purchase';
-	import { browser } from '$app/env';
-
-	if (browser) {
-		const user: User = supabase.auth.user();
-		let purchase: Purchase = {
-			purchaserId: user.id,
-			sellerId: link.ownerId,
-			linkId: link.id,
-			amount: link.price,
-			refunded: false
-		};
-		const item = makePurchase(purchase);
-	}
-
 	import Menu2 from '$lib/Menu2.svelte';
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Blurb from '$lib/Creator/Blurb.svelte';
@@ -60,14 +56,21 @@
 	import Login from '$lib/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
 
-	// Checking to see if you are logged in:
-	let permission = user ? true : false;
+	export let permission = false;
+	export let link: Link = {
+		brand: 'Anonymous Inc.',
+		title: 'The Faraway Tree',
+		price: 0
+	};
+	export let message = '';
+
+	// Checking to see if you have permission:
 	let blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
 
-{#if user}
+{#if permission}
 	<Menu2>
 		<section id="blurb">
 			<Blurb brand={link.brand} />
@@ -95,7 +98,7 @@
 		</section>
 	</Menu2>
 {/if}
-<iframe title="iframe" id="monetized" style={blur} src={link} frameBorder="none" />
+<iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
 <p>{message}</p>
 
 <style>

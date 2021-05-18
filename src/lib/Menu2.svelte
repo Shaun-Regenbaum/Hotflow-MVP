@@ -19,13 +19,13 @@
 </script>
 
 <div id="menu">
+	<div id="components" style="display:{visible}">
+		<slot />
+	</div>
 	<section id="toolbar" on:click={minimize}>
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
 	</section>
-	<div id="components" style="display:{visible}">
-		<slot />
-	</div>
 </div>
 
 <style>
@@ -34,7 +34,7 @@
 		/* Positioning: */
 		position: absolute;
 		z-index: 1000;
-		bottom: 0;
+		top: 0;
 		left: 0;
 
 		/* Layout: */
@@ -51,6 +51,8 @@
 		/*Probably want to redo this guy*/
 		/* Centering the Box/Arrow: */
 		margin-left: 47%;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
 
 		/* Color of Box/Arrow: */
 		background-color: rgba(134, 134, 134, 0.404);
@@ -61,14 +63,17 @@
 			min-width: 380px;
 			max-width: 400px;
 			width: 50%;
-			left: 10%;
+			margin-left: auto;
+			margin-right: auto;
+			left: 0;
+			right: 0;
 		}
 	}
 
 	/* For Desktop: */
 	@media (min-width: 1100px) {
 		#menu {
-			min-width: 700px;
+			min-width: 600px;
 			width: 30%;
 		}
 	}

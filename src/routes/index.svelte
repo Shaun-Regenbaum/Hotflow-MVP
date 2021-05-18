@@ -50,6 +50,9 @@
 			<a href="/testing/existing">Existing User Flow (WIP)</a>
 		</li>
 		<li>
+			<a href="/testing/create">Create a Link</a>
+		</li>
+		<li>
 			<a href="/alpha/default">Live (WIP}</a>
 		</li>
 		<li>

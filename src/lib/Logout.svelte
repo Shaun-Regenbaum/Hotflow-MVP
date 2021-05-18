@@ -14,7 +14,6 @@
 		if (browser) {
 			console.log('cleared');
 			localStorage.clear();
-			window.location.replace('/');
 		}
 
 		let { error } = await supabase.auth.signOut();

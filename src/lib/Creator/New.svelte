@@ -24,14 +24,11 @@
 	let message = '';
 	if (browser) {
 		user = supabase.auth.user();
-		checkStatus(user);
+		checkStatus();
 	}
 
-	async function checkStatus(user) {
-		const { data, error } = await supabase
-			.from('profiles')
-			.select('brand')
-			.filter('ownerId', 'eq', user.id);
+	async function checkStatus() {
+		const { data, error } = await supabase.from('profiles').select('brand').eq('id', user.id);
 		if (data) {
 			brand = data[0].brand;
 		} else {
@@ -42,7 +39,7 @@
 		const { data, error } = await supabase
 			.from('profiles')
 			.update({ brand: brand })
-			.filter('ownerId', 'eq', user.id);
+			.eq('id', user.id);
 		if (data) {
 			brand = brand;
 		} else {
@@ -64,9 +61,9 @@
 			<div />
 			<button type="submit"><h3>Become a Creator</h3></button>
 		</form>
-		<p>{message}</p>
 	</div>
 {/if}
+<p>{message}</p>
 
 <style>
 	#new_creator {

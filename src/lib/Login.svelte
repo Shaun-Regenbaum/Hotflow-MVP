@@ -39,9 +39,7 @@
 			password: password
 		});
 		if (user) {
-			if (browser) {
-				window.location.replace('/');
-			}
+			location.reload();
 		} else {
 			message = error.message;
 		}
@@ -60,8 +58,7 @@
 				.from('profiles')
 				.insert([{ id: user.id, name: name, balance: 40 }]);
 			if (data) {
-				console.log(data);
-				window.location.replace('/');
+				location.reload();
 			} else {
 				// Right now supabase does not support it, but we want to delete, if we can create profile.
 				message = error.message;
