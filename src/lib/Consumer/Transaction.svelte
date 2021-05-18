@@ -19,8 +19,12 @@
             b. Can I undo/refund it?
  -->
 <script>
-	export let price = 100;
+	import Refund from '$lib/Consumer/Refund.svelte'
+	export let price;
 	export let brand = 'Anonymous';
+	export let purchaserId;
+	export let sellerId;
+	export let linkId;
 </script>
 
 <div id="purchase_notification">
@@ -30,7 +34,7 @@
 	<section id="brand">
 		<p>By: {brand}</p>
 	</section>
-	<button id="refund">Refund</button>
+	<Refund purchaserId={purchaserId} sellerId={sellerId} linkId={linkId} amount={price}/>
 </div>
 
 <style>

@@ -91,7 +91,7 @@
 		</section>
 	</Menu2>
 	<div id="transaction">
-		<Transaction price={link.price} brand={link.brand}/>
+		<Transaction price={link.price} brand={link.brand} purchaserId={userId} linkId={link.id} sellerId={link.ownerId}/>
 	</div>
 	
 {:else}

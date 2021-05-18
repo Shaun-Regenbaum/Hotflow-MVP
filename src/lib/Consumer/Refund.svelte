@@ -4,7 +4,7 @@
 		1) purchaserId
 		2) linkId
 		3) sellerId
-		4) price
+		4) amount
 	DESCRIPTION:
 
     This component is designed to be the refund button. IT NEEDS WORK.
