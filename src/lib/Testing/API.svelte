@@ -1,6 +1,6 @@
 <!-- This file is for testing our api calls in a safe environment: -->
 <script lang="ts">
-	import type { Profile, Purchase, Link } from '$lib/Endpoints/apiTypes';
+	import type { Profile, Purchase, Link } from '$lib/Docs/types';
 	import supabase from '$lib/db';
 	let user: Profile = {
 		id: '84b33de6-b45d-4a3d-ad5f-6345750f8888',
