@@ -118,8 +118,6 @@
 	</Menu2>
 {/if}
 <iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
-<p>{message}</p>
-
 <style>
 	#monetized {
 		position: absolute;

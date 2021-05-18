@@ -32,7 +32,7 @@
 </script>
 
 <div id="refund">
-	<button on:click={refund}><h3>Refund</h3></button>
+	<button on:click={refund}>Refund</button>
 	<p>{message}</p>
 </div>
 
@@ -41,8 +41,11 @@
 		text-align: center;
 
 		/*Padding: */
-		margin: 17px 0px 22px 7px;
+
+	}
+	button{
+		margin: 20px 0px 0px 7px;
 		font-size: 20px;
-		padding-top: 10px;
+		padding-top:10px;
 	}
 </style>

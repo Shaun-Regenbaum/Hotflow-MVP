@@ -46,12 +46,15 @@
 		/* Positioning and Sizing: */
 		min-width: 290px;
 		max-width: 400px;
-		padding: 0px 20px 0px 10px;
 		display: flex;
 
 		/* Nueromorphic: */
 		box-shadow: var(--button);
-		border-radius: 5px 25px 5px 5px;
+
+		/* Border: */
+		border-radius: 5px 35px 5px 5px;
+		background-color: white;
+		border-style: solid;
 	}
 	section {
 		/* Keeping the different sections seperate: */
@@ -75,10 +78,7 @@
 			font-size: 20px;
 			padding: 0px 20px 0px 20px;
 
-			/* Border: */
-			background-color: white;
-			border-radius: 50px;
-			border-style: solid;
+	
 		}
 		section {
 			/* Keeping the different sections seperate: */
