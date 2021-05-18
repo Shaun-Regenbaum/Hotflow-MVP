@@ -11,13 +11,15 @@
 	let message = '';
 
 	async function submitLogout() {
-		if (browser) {
-			console.log('cleared');
-			localStorage.clear();
-		}
-
 		let { error } = await supabase.auth.signOut();
-		message = error.message;
+		if (error){
+			message = error.message;
+		}else{
+			if (browser) {
+				location.reload();
+			}
+
+		}
 	}
 </script>
 

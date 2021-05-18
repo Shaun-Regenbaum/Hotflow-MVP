@@ -9,6 +9,7 @@
 
  -->
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	export let minimized = false;
 	$: visible = minimized ? 'none' : '';
 
@@ -17,7 +18,7 @@
 	}
 </script>
 
-<div id="menu">
+<div id="menu" transition:slide="{{duration:200}}">
 	<div id="components" style="display:{visible}">
 		<slot />
 	</div>

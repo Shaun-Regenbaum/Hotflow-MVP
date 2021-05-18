@@ -15,22 +15,14 @@
 		user = supabase.auth.user();
 	}
 
-	let component_list1: MenuComponent[] = [{ component: Login, name: 'Login' }];
-	let component_list2: MenuComponent[] = [
-		{ component: Logout, name: 'Logout' },
-		{ component: New, name: 'Creator' },
-		{ component: Recharge, name: 'Recharge' },
-		{ component: Refund, name: 'Refund' }
-	];
-
 	// Checking to see if you are logged in:
 </script>
 
 <body>
 	{#if user}
-		<Menu components={component_list2} starting_component={component_list2[2]} />
+		<Logout/>
 	{:else}
-		<Menu components={component_list1} />
+		<Login/>
 	{/if}
 	<h1>Active Development:</h1>
 	<ul>
@@ -47,13 +39,10 @@
 			<a href="/testing/new">New User Flow (WIP)</a>
 		</li>
 		<li>
-			<a href="/testing/existing">Existing User Flow (WIP)</a>
-		</li>
-		<li>
 			<a href="/testing/create">Create a Link</a>
 		</li>
 		<li>
-			<a href="/alpha/default">Live (WIP}</a>
+			<a href="/4/my%20story">Live (WIP}</a>
 		</li>
 		<li>
 			<a href="/landing">Landing Page (WIP)</a>

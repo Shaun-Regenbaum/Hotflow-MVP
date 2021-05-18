@@ -10,6 +10,7 @@
 	import Offerings from '$lib/Landing/Offerings.svelte';
 </script>
 
+<div style="overflow:scroll">
 <h1>Raw Components:</h1>
 <div>
 	<Login />
@@ -38,7 +39,7 @@
 <div>
 	<Offerings />
 </div>
-
+</div>
 <style>
 	div {
 		resize: both;

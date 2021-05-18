@@ -63,6 +63,7 @@
 	import Login from '$lib/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
+	import { slide } from 'svelte/transition';
 
 	export let permission = false;
 	export let userId = '';
@@ -78,6 +79,8 @@
 	let blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
+
+	// Making transacton hide after any action:
 </script>
 
 {#if permission}
@@ -92,7 +95,7 @@
 			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price} />
 		</section>
 	</Menu2>
-	<div id="transaction">
+	<div id="transaction" in:slide="{{duration:400}}" out:slide="{{delay:3000, duration:400}}">
 		<Transaction
 			price={link.price}
 			brand={link.brand}
