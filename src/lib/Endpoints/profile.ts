@@ -30,7 +30,7 @@ export async function checkOwnership(linkId: string, userId: string) {
 async function getProfile(id: string) {
 	const { data, error } = await supabase.from('profiles').select().eq('id', id);
 	if (data[0]) {
-		console.log
+		console.log;
 		return data[0];
 	} else {
 		throw error;

@@ -17,7 +17,7 @@
             a. ?
  -->
 <script>
-	import makeRefund from "$lib/Endpoints/refund"
+	import makeRefund from '$lib/Endpoints/refund';
 	export let purchaserId = '';
 	export let linkId = '';
 	export let sellerId = '';
@@ -26,7 +26,8 @@
 
 	async function refund() {
 		const response = await makeRefund(purchaserId, sellerId, linkId, amount);
-		window.location.href = ('../')		
+		console.log(response);
+		window.location.href = '../';
 	}
 </script>
 
@@ -40,6 +41,8 @@
 		text-align: center;
 
 		/*Padding: */
-		padding: 1rem;
+		margin: 17px 0px 22px 7px;
+		font-size: 20px;
+		padding-top: 10px;
 	}
 </style>

@@ -53,7 +53,7 @@ async function updateBalance(id: string, initial_balance: number, amount: number
 		.from('profiles')
 		.update([{ balance: initial_balance + amount }])
 		.eq('id', id);
-	console.log(data)
+	console.log(data);
 	if (data) {
 		return data[0];
 	} else {
@@ -69,7 +69,7 @@ async function addPurchase(id: string, purchases: string[], purchase: string) {
 	if (data) {
 		return data[0];
 	} else {
-		console.log(error)
+		console.log(error);
 		throw error;
 	}
 }

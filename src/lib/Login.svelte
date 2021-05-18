@@ -18,9 +18,7 @@
             b. Forgot Password/Account?
  -->
 <script>
-	import { browser } from '$app/env';
 	import supabase from '$lib/db';
-	import { lend } from '$lib/Endpoints/profile';
 	import { fade } from 'svelte/transition';
 
 	export let login_message = 'Log In';

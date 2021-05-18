@@ -1,7 +1,3 @@
-<script>
-	import { now } from 'svelte/internal';
-</script>
-
 <!-- @component
 	PROPERTIES: NONE
 

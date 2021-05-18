@@ -21,11 +21,11 @@ export default async function makeRefund(
 			sellerId: sellerId,
 			linkId: linkId,
 			amount: amount,
-            refunded: true
+			refunded: true
 		});
 		purchaser = await updateBalance(purchaser.id, purchaser.balance, purchase.amount);
-		seller = await updateBalance(seller.id, seller.balance, -1*purchase.amount);
-		purchaser = await removePurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
+		await updateBalance(seller.id, seller.balance, -1 * purchase.amount);
+		await removePurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
 		return purchase;
 	} catch (error) {
 		return error;

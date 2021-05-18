@@ -19,7 +19,7 @@
             b. Can I undo/refund it?
  -->
 <script>
-	import Refund from '$lib/Consumer/Refund.svelte'
+	import Refund from '$lib/Consumer/Refund.svelte';
 	export let price;
 	export let brand = 'Anonymous';
 	export let purchaserId;
@@ -34,7 +34,7 @@
 	<section id="brand">
 		<p>By: {brand}</p>
 	</section>
-	<Refund purchaserId={purchaserId} sellerId={sellerId} linkId={linkId} amount={price}/>
+	<Refund {purchaserId} {sellerId} {linkId} amount={price} />
 </div>
 
 <style>
@@ -52,7 +52,6 @@
 		/* Nueromorphic: */
 		box-shadow: var(--button);
 		border-radius: 5px 25px 5px 5px;
-	
 	}
 	section {
 		/* Keeping the different sections seperate: */
@@ -65,11 +64,6 @@
 		padding: 10px;
 		border-radius: 15px;
 		box-shadow: var(--divot);
-	}
-
-	button {
-		margin: 13px 0px 18px 7px;
-		font-size: 16px;
 	}
 	/* Bigger than mobile:*/
 	@media (min-width: 700px) {
@@ -84,11 +78,6 @@
 			/* Nueromorphic: */
 			box-shadow: var(--button);
 			border-radius: 5px 25px 5px 5px;
-		}
-		button {
-			margin: 17px 0px 22px 7px;
-			font-size: 20px;
-			padding-top: 10px;
 		}
 		section {
 			/* Keeping the different sections seperate: */

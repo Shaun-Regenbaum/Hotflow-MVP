@@ -11,12 +11,12 @@
 	 * 1) It get the relevant information from the url to know what content you want.
 	 * 2) It checks to see if you are logged in
 	 * 3) It checks to see if you have already purchased the revelent content
-	 * 3) If not, it makes the purchase and handles all the balance changes on the server. 
+	 * 3) If not, it makes the purchase and handles all the balance changes on the server.
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
 		let permission = false;
-		let userId='';
+		let userId = '';
 		const brand = page.params.brand;
 		const title = page.params.title;
 		const { data } = await supabase.from('links').select().eq('brand', brand).eq('title', title);
@@ -24,8 +24,9 @@
 			const link: Link = data[0];
 			if (browser) {
 				const user: User = supabase.auth.user();
-				userId = user.id;
-				permission = await checkOwnership(link.id, user.id);
+				if (user){
+					userId = user.id;
+					permission = await checkOwnership(link.id, user.id);
 				if (!permission) {
 					const data = await makePurchase(user.id, link.ownerId, link.id, link.price);
 					if (data) {
@@ -37,12 +38,13 @@
 						};
 					}
 				}
+				}
 			}
 			return {
 				props: {
 					link: data[0],
 					permission: permission,
-					userId: userId 
+					userId: userId
 				}
 			};
 		}
@@ -60,7 +62,7 @@
 	import Details from '$lib/New_Consumer/Details.svelte';
 	import Login from '$lib/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
-	import Transaction from '$lib/Consumer/Transaction.svelte'
+	import Transaction from '$lib/Consumer/Transaction.svelte';
 
 	export let permission = false;
 	export let userId = '';
@@ -78,7 +80,6 @@
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 </script>
 
-<p>{link.id}</p>
 {#if permission}
 	<Menu2 minimized={true}>
 		<section id="blurb">
@@ -88,13 +89,18 @@
 			<Details price={link.price} title={link.title} />
 		</section>
 		<section id="refund">
-			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price}/>
+			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price} />
 		</section>
 	</Menu2>
 	<div id="transaction">
-		<Transaction price={link.price} brand={link.brand} purchaserId={userId} linkId={link.id} sellerId={link.ownerId}/>
+		<Transaction
+			price={link.price}
+			brand={link.brand}
+			purchaserId={userId}
+			linkId={link.id}
+			sellerId={link.ownerId}
+		/>
 	</div>
-	
 {:else}
 	<Menu2>
 		<section id="blurb">
@@ -122,10 +128,10 @@
 		left: 0;
 		right: 0;
 	}
-	#transaction{
-		position:absolute;
-		left:0;
-		bottom:0;
+	#transaction {
+		position: absolute;
+		left: 0;
+		bottom: 0;
 		z-index: 100000;
 	}
 </style>
