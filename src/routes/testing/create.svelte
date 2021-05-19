@@ -1,10 +1,10 @@
 <script lang="ts">
 	import supabase from '$lib/db';
 	import type { User } from '@supabase/supabase-js';
+	import { browser } from '$app/env';
+
 	let user;
 	let message = '';
-
-	import { browser } from '$app/env';
 
 	if (browser) {
 		user = supabase.auth.user();

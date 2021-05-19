@@ -1,15 +1,12 @@
 <script>
-	import Profile from '$lib/Consumer/Profile.svelte';
+	import HistoryItem from '$lib/Consumer/HistoryItem.svelte';
 	import Purchase from '$lib/Consumer/Purchase.svelte';
 </script>
 
 <div class="testing">
-	<Purchase />
+	<HistoryItem />
 </div>
 <br />
-<div class="testing">
-	<Profile />
-</div>
 
 <style>
 </style>

@@ -8,7 +8,6 @@
         ????
  -->
 <script>
-	import Logout from '$lib/Auth/Logout.svelte';
 	export let name = 'Mr. Anonymous';
 	export let balance = 210;
 </script>
@@ -19,7 +18,6 @@
 	<section class="account_detail">
 		Balance: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}
 	</section>
-	<section><Logout /></section>
 </div>
 
 <style>

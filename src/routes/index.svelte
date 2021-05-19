@@ -28,7 +28,9 @@
 		<li>
 			<a href="/testing/sandbox">Component Testing Environment</a>
 		</li>
-
+		<li>
+			<a href="/testing/components">Component Library (WIP)</a>
+		</li>
 		<li>
 			<a href="/testing/create">Create a Link</a>
 		</li>
