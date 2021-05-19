@@ -20,21 +20,14 @@
 	export let brand = 'Mr. Anonymous';
 </script>
 
-<div id="grid">
-	<div id="container">
-		<div id="picture" />
-		<div id="brand">{brand}</div>
-	</div>
-	<div id="purchase"><b>This content requires Purchase</b></div>
+<div id="container">
+	<div id="picture" />
+	<div id="brand">{brand}</div>
 </div>
 
 <style>
 	:root {
 		--pic-length: 50px;
-	}
-	#grid {
-		display: grid;
-		grid-template-columns: 1fr auto;
 	}
 	#container {
 		/* Layout */

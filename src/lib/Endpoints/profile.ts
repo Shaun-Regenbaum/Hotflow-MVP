@@ -27,6 +27,23 @@ export async function checkOwnership(linkId: string, userId: string) {
 	}
 }
 
+export async function getBalance(userId: string){
+	try {
+		const fullProfile: Profile = await getProfile(userId);
+		return fullProfile.balance;
+	} catch (error) {
+		return error;
+	}
+}
+export async function getName(userId: string){
+	try {
+		const fullProfile: Profile = await getProfile(userId);
+		return fullProfile.name;
+	} catch (error) {
+		return error;
+	}
+}
+
 async function getProfile(id: string) {
 	const { data, error } = await supabase.from('profiles').select().eq('id', id);
 	if (data[0]) {

@@ -3,10 +3,12 @@
 
 		1) picture -> the picture to show for the consumer(NOT IMPLEMENTED).
 		2) name -> name of user.
+		3) balance -> balance of user.
 	DESCRIPTION:
         ????
  -->
  <script>
+	import Logout from '$lib/Logout.svelte'
 	export let name = 'Mr. Anonymous';
     export let balance = 210;
 </script>
@@ -15,7 +17,8 @@
 <div id="container">
     <section id="picture" />
     <section class="account_detail">{name}</section>
-    <section class="account_detail">Amount: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</section>
+    <section class="account_detail">Balance: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</section>
+	<section> <Logout/> </section>
 </div>
 
 

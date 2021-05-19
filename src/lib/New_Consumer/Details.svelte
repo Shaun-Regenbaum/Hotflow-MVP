@@ -23,12 +23,13 @@
 	export let price = 0;
 	export let refund_policy = 'Full';
 	export let title = 'The Adventures of Narnia';
+	export let brand = 'Anonymous Inc.';
 </script>
 
 <dl id="details">
 	<section>
-		<dt>Title:</dt>
-		<dd>{title}</dd>
+		<dt>Owner:</dt>
+		<dd>{brand}</dd>
 	</section>
 	<section>
 		<dt>Price:</dt>

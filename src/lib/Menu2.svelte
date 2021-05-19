@@ -40,6 +40,7 @@
 		/* Layout: */
 		display: flex;
 		flex-direction: column;
+		padding-top:10px;
 
 		/* Container Look: */
 		background-color: white;
@@ -61,7 +62,7 @@
 	@media (min-width: 550px) {
 		#menu {
 			min-width: 380px;
-			max-width: 400px;
+			max-width: 600px;
 			width: 50%;
 			margin-left: auto;
 			margin-right: auto;

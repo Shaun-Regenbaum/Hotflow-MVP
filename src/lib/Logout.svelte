@@ -24,15 +24,18 @@
 </script>
 
 <div id="logout">
-	<button on:click={submitLogout} style="position: {pos}; z-index: 2;"><h3>Logout</h3></button>
+	<button on:click={submitLogout} style="position: {pos}; z-index: 2;">Logout</button>
 	<p>{message}</p>
 </div>
 
 <style>
 	#logout {
 		text-align: center;
+	}
 
-		/*Padding: */
-		padding: 1rem;
+	button{
+		margin: 20px 0px 0px 7px;
+		font-size: 20px;
+		padding-top:10px;
 	}
 </style>
