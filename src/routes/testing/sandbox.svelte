@@ -1,5 +1,5 @@
 <script>
-	import Blurb from '$lib/Creator/Blurb.svelte';
+	import Profile from '$lib/Consumer/Profile.svelte';
 	import Login from '$lib/Login.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
 	import Details from '$lib/New_Consumer/Details.svelte';
@@ -7,7 +7,7 @@
 </script>
 
 <div class="testing">
-	<Lend />
+	<Profile />
 </div>
 <br />
 <div class="testing">

@@ -20,20 +20,15 @@
  -->
 <script>
 	import Refund from '$lib/Consumer/Refund.svelte';
-	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	export let price;
 	export let brand = 'Anonymous';
 	export let purchaserId;
 	export let sellerId;
 	export let linkId;
-	let timeout = false;
 
-	onMount(async() => {
-		timeout = true;
-	})
 </script>
-{#if !timeout}
+
 <div id="purchase_notification" in:slide="{{duration:400}}" out:slide="{{delay:3000, duration:400}}">
 	<section id="price">
 		<p>Amount: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
@@ -43,7 +38,7 @@
 	</section>
 	<Refund {purchaserId} {sellerId} {linkId} amount={price} />
 </div>
-{/if}
+
 
 <style>
 	/* Mobile-First: */
