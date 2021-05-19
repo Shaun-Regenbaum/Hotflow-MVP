@@ -8,7 +8,7 @@
         ????
  -->
  <script>
-	import Logout from '$lib/Logout.svelte'
+	import Logout from '$lib/Auth/Logout.svelte'
 	export let name = 'Mr. Anonymous';
     export let balance = 210;
 </script>

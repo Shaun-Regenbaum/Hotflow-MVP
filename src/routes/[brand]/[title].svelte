@@ -79,16 +79,20 @@
 			}
 	}
 
-	// Svelte Stuff:
 	// Components:
 	import Menu2 from '$lib/Menu2.svelte';
+	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
-	import Details from '$lib/New_Consumer/Details.svelte';
-	import Login from '$lib/Login.svelte';
+	import Transaction from '$lib/Consumer/Transaction.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
 	import Notice from '$lib/New_Consumer/Notice.svelte';
-	import Transaction from '$lib/Consumer/Transaction.svelte';
+	// Creator:
+	import Details from '$lib/New_Consumer/Details.svelte';
+	// Auth:
+	import Login from '$lib/Auth/Login.svelte';
+	
+	
 
 	// Blurring based on permission:
 	$: blur = permission

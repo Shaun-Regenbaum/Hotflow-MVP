@@ -27,30 +27,20 @@
 	<h1>Active Development:</h1>
 	<ul>
 		<li>
-			<a href="/testing/api">Database + API testing</a>
+			<a href="/4/my%20story">Live Example</a>
 		</li>
 		<li>
 			<a href="/testing/sandbox">Component Testing Environment</a>
 		</li>
-		<li>
-			<a href="/components">Component Library</a>
-		</li>
-		<li>
-			<a href="/testing/new">New User Flow (WIP)</a>
-		</li>
+	
 		<li>
 			<a href="/testing/create">Create a Link</a>
 		</li>
 		<li>
-			<a href="/4/my%20story">Live (WIP}</a>
-		</li>
-		<li>
 			<a href="/landing">Landing Page (WIP)</a>
 		</li>
-		<li>
-			<a href="/documentation">Open Questions and Documentation</a>
-		</li>
 	</ul>
+	<p>The components library is now being done with storybooks, will update later.</p>
 </body>
 
 <style>

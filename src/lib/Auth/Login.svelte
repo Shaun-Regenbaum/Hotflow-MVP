@@ -79,7 +79,7 @@
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
-			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
+			<button on:click|preventDefault={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
 				>New User?</button
 			>
 		</form>
@@ -91,7 +91,7 @@
 				<input type="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{register_message}</button>
-			<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
+			<button on:click|preventDefault={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
 				>Existing User?</button
 			>
 		</form>
