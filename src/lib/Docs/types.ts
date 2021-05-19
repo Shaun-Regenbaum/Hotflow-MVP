@@ -44,6 +44,7 @@ export type Profile = {
 	name?: string;
 	balance?: number;
 	purchases?: string[];
+	links?: string[];
 	created_at?: string;
 	updated_at?: string;
 };

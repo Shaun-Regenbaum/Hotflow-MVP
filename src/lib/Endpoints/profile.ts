@@ -21,7 +21,11 @@ export async function lend(id: string) {
 export async function checkOwnership(linkId: string, userId: string) {
 	try {
 		const fullProfile: Profile = await getProfile(userId);
-		return fullProfile.purchases.includes(linkId);
+		console.log(fullProfile);
+		if (fullProfile.links == null){
+			fullProfile.links = [];
+		}
+		return fullProfile.links.includes(linkId);
 	} catch (error) {
 		return error;
 	}

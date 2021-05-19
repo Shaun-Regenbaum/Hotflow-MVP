@@ -23,9 +23,11 @@ export default async function makeRefund(
 			amount: amount,
 			refunded: true
 		});
-		purchaser = await updateBalance(purchaser.id, purchaser.balance, purchase.amount);
+		console.log(purchaser.links)
+		removeLink(purchaserId, purchaser.links, linkId);
+		purchaser = await updateBalance(purchaserId, purchaser.balance, purchase.amount);
 		updateBalance(seller.id, seller.balance, -1 * purchase.amount);
-		removePurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
+		console.log(purchaser.links)
 		return purchase;
 	} catch (error) {
 		return error;
@@ -61,10 +63,10 @@ async function updateBalance(id: string, initial_balance: number, amount: number
 	}
 }
 
-async function removePurchase(id: string, purchases: string[], purchaseId: string) {
+async function removeLink(id: string, links: string[], linkId: string) {
 	const { data, error }: Response = await supabase
 		.from('profiles')
-		.update([{ purchases: purchases.filter((purchase) => purchase != purchaseId) }])
+		.update([{ links: links.filter((link) => link != linkId) }])
 		.eq('id', id);
 	if (data) {
 		return data[0];
@@ -72,3 +74,5 @@ async function removePurchase(id: string, purchases: string[], purchaseId: strin
 		throw error;
 	}
 }
+
+

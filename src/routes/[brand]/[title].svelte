@@ -61,12 +61,10 @@
 		const user = supabase.auth.user();
 		if (user){
 			userId = user.id;
-			automaticPurchase(userId);
-			permission = true;
 			getBalance(userId).then((result)=>(userBalance=result));
 			getName(userId).then((result)=>(userName=result));
-			console.log("done")
-			
+			automaticPurchase(userId);
+			permission = true;	
 		}else{
 			newUser=true;
 		}
@@ -74,8 +72,10 @@
 	async function automaticPurchase(userId){
 		permission = await checkOwnership(link.id, userId);
 			if (!permission) {
+				// This step is to not have to do a live reload to get an accurate balance.
+				userBalance = userBalance - link.price;
 				makePurchase(userId, link.ownerId, link.id, link.price);
-				permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.
+				permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.			
 			}
 	}
 
@@ -87,8 +87,8 @@
 	import Details from '$lib/New_Consumer/Details.svelte';
 	import Login from '$lib/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
+	import Notice from '$lib/New_Consumer/Notice.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
-import Logout from '$lib/Logout.svelte';
 
 	// Blurring based on permission:
 	$: blur = permission
@@ -115,7 +115,8 @@ import Logout from '$lib/Logout.svelte';
 	sellerId={link.ownerId}/>
 {:else if newUser}
 	<Menu2 minimized={false}>
-		<section id="blurb">
+		<section id="payment_required">
+			<Notice/>
 		</section>
 		<section id="details">
 			<Details price={link.price} brand={link.brand} />
