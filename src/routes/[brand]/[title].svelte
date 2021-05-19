@@ -54,6 +54,7 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 		if (user){
 			userId = user.id
 			automaticPurchase(userId);
+			permission = true;
 		}else{
 			newUser=true;
 		}
@@ -78,14 +79,13 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 	import Transaction from '$lib/Consumer/Transaction.svelte';
 
 	// Blurring based on permission:
-	let blur = permission
+	$: blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 
 	
 </script>
 
-<iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
 {#if permission}
 	<Menu2 minimized={true}>
 		<section id="blurb">
@@ -119,8 +119,10 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 		</section>
 	</Menu2>
 {:else}
-
+<p>It seems an error has occured.</p>
 {/if}
+<iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
+
 
 <style>
 	#monetized {
