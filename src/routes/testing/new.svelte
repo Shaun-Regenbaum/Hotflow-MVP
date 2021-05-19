@@ -5,7 +5,7 @@
 	import Menu2 from '$lib/Menu2.svelte';
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	import Details from '$lib/New_Consumer/Details.svelte';
-	import Login from '$lib/Login.svelte';
+	import Login from '$lib/Auth/Login.svelte';
 	import Lend from '$lib/New_Consumer/Lend.svelte';
 
 	let brand = 'Anonymous Inc.';

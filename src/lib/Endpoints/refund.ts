@@ -15,7 +15,7 @@ export default async function makeRefund(
 ) {
 	try {
 		let purchaser: Profile = await getProfile(purchaserId);
-		let seller: Profile = await getProfile(sellerId);
+		const seller: Profile = await getProfile(sellerId);
 		const purchase: Purchase = await createRefund({
 			purchaserId: purchaserId,
 			sellerId: sellerId,
@@ -23,11 +23,9 @@ export default async function makeRefund(
 			amount: amount,
 			refunded: true
 		});
-		console.log(purchaser.links)
 		removeLink(purchaserId, purchaser.links, linkId);
 		purchaser = await updateBalance(purchaserId, purchaser.balance, purchase.amount);
 		updateBalance(seller.id, seller.balance, -1 * purchase.amount);
-		console.log(purchaser.links)
 		return purchase;
 	} catch (error) {
 		return error;
@@ -74,5 +72,3 @@ async function removeLink(id: string, links: string[], linkId: string) {
 		throw error;
 	}
 }
-
-

@@ -1,5 +1,5 @@
 <script>
-	import Login from '$lib/Login.svelte';
+	import Login from '$lib/Auth/Login.svelte';
 </script>
 
 <Login existing={true} />

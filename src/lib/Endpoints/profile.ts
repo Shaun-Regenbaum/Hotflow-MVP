@@ -22,7 +22,7 @@ export async function checkOwnership(linkId: string, userId: string) {
 	try {
 		const fullProfile: Profile = await getProfile(userId);
 		console.log(fullProfile);
-		if (fullProfile.links == null){
+		if (fullProfile.links == null) {
 			fullProfile.links = [];
 		}
 		return fullProfile.links.includes(linkId);
@@ -31,7 +31,7 @@ export async function checkOwnership(linkId: string, userId: string) {
 	}
 }
 
-export async function getBalance(userId: string){
+export async function getBalance(userId: string) {
 	try {
 		const fullProfile: Profile = await getProfile(userId);
 		return fullProfile.balance;
@@ -39,7 +39,7 @@ export async function getBalance(userId: string){
 		return error;
 	}
 }
-export async function getName(userId: string){
+export async function getName(userId: string) {
 	try {
 		const fullProfile: Profile = await getProfile(userId);
 		return fullProfile.name;

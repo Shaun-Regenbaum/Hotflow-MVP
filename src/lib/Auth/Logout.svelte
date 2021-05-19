@@ -12,13 +12,12 @@
 
 	async function submitLogout() {
 		let { error } = await supabase.auth.signOut();
-		if (error){
+		if (error) {
 			message = error.message;
-		}else{
+		} else {
 			if (browser) {
 				location.reload();
 			}
-
 		}
 	}
 </script>
@@ -33,9 +32,9 @@
 		text-align: center;
 	}
 
-	button{
+	button {
 		margin: 20px 0px 0px 7px;
 		font-size: 20px;
-		padding-top:10px;
+		padding-top: 10px;
 	}
 </style>

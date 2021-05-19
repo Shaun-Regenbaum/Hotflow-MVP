@@ -24,7 +24,7 @@
  -->
 <script>
 	import Refund from '$lib/Consumer/Refund.svelte';
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	export let price;
 	export let brand = 'Anonymous';
@@ -33,29 +33,29 @@ import { onMount } from 'svelte';
 	export let linkId;
 	export let minimized = false;
 
-	onMount(()=> {
+	onMount(() => {
 		minimized = false;
-		setTimeout(()=> (minimized=true), 7000);
+		setTimeout(() => (minimized = true), 7000);
 	});
 
 	// Making transaction component dissappear after some interaction:
-	function minimize(){
-		setTimeout(()=> (minimized=true), 2000);
-	}	
+	function minimize() {
+		setTimeout(() => (minimized = true), 2000);
+	}
 </script>
-<svelte:window on:pointermove="{minimize}" on:mousemove="{minimize}"/>
-{#if !minimized}
-<div id="purchase_notification" transition:slide="{{duration:200}}">
-	<section id="price">
-		<p>Amount: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
-	</section>
-	<section id="brand">
-		<p>By: {brand}</p>
-	</section>
-	<Refund {purchaserId} {sellerId} {linkId} amount={price} />
-</div>
-{/if}
 
+<svelte:window on:pointermove={minimize} on:mousemove={minimize} />
+{#if !minimized}
+	<div id="purchase_notification" transition:slide={{ duration: 200 }}>
+		<section id="price">
+			<p>Amount: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
+		</section>
+		<section id="brand">
+			<p>By: {brand}</p>
+		</section>
+		<Refund {purchaserId} {sellerId} {linkId} amount={price} />
+	</div>
+{/if}
 
 <style>
 	/* Mobile-First: */
@@ -71,7 +71,6 @@ import { onMount } from 'svelte';
 		left: 0;
 		bottom: 0;
 		z-index: 100000;
-
 
 		/* Nueromorphic: */
 		box-shadow: var(--button);
@@ -104,8 +103,6 @@ import { onMount } from 'svelte';
 			display: flex;
 			font-size: 20px;
 			padding: 0px 20px 0px 20px;
-
-	
 		}
 		section {
 			/* Keeping the different sections seperate: */

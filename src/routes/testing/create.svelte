@@ -12,8 +12,8 @@
 
 	import Menu2 from '$lib/Menu2.svelte';
 	import New from '$lib/Creator/New.svelte';
-	import Login from '$lib/Login.svelte';
-	import Logout from '$lib/Logout.svelte';
+	import Login from '$lib/Auth/Login.svelte';
+	import Logout from '$lib/Auth/Logout.svelte';
 </script>
 
 {#if user}

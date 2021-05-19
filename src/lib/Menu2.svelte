@@ -18,7 +18,7 @@
 	}
 </script>
 
-<div id="menu" transition:slide="{{duration:200}}">
+<div id="menu" transition:slide={{ duration: 200 }}>
 	<div id="components" style="display:{visible}">
 		<slot />
 	</div>
@@ -40,7 +40,7 @@
 		/* Layout: */
 		display: flex;
 		flex-direction: column;
-		padding-top:10px;
+		padding-top: 10px;
 
 		/* Container Look: */
 		background-color: white;

@@ -15,7 +15,7 @@ export default async function makePurchase(
 ) {
 	try {
 		let purchaser: Profile = await getProfile(purchaserId);
-		let seller: Profile = await getProfile(sellerId);
+		const seller: Profile = await getProfile(sellerId);
 		const purchase: Purchase = await createPurchase({
 			purchaserId: purchaserId,
 			sellerId: sellerId,
@@ -24,12 +24,8 @@ export default async function makePurchase(
 		});
 		updateBalance(purchaser.id, purchaser.balance, -1 * purchase.amount);
 		updateBalance(seller.id, seller.balance, purchase.amount);
-		console.log(purchase.purchaseId)
 		addPurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
-		console.log(purchaser);
-		purchaser  = await addLink(purchaser.id, purchaser.links, linkId);
-		console.log(purchaser);
-
+		purchaser = await addLink(purchaser.id, purchaser.links, linkId);
 	} catch (error) {
 		return error;
 	}
@@ -65,7 +61,7 @@ async function updateBalance(id: string, initial_balance: number, amount: number
 }
 
 async function addPurchase(id: string, purchases: string[], purchaseId: string) {
-	if (purchases == null){
+	if (purchases == null) {
 		purchases = [];
 	}
 	const { data, error }: Response = await supabase
@@ -79,17 +75,17 @@ async function addPurchase(id: string, purchases: string[], purchaseId: string) 
 	}
 }
 
-async function addLink(id: string, links: string[], linkId:string){
-	if (links == null){
+async function addLink(id: string, links: string[], linkId: string) {
+	if (links == null) {
 		links = [];
 	}
 	const { data, error }: Response = await supabase
-	.from('profiles')
-	.update([{ links: links.concat([linkId]) }])
-	.eq('id', id);
-if (data) {
-	return data[0];
-} else {
-	throw error;
-}
+		.from('profiles')
+		.update([{ links: links.concat([linkId]) }])
+		.eq('id', id);
+	if (data) {
+		return data[0];
+	} else {
+		throw error;
+	}
 }

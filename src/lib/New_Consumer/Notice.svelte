@@ -5,7 +5,7 @@
 
     This component is designed to show up for a new user to let them know that content requires Payment:
  -->
- <div id="container">
+<div id="container">
 	<h3>This Content Requires Payment</h3>
 </div>
 

@@ -7,20 +7,20 @@
 	DESCRIPTION:
         ????
  -->
- <script>
-	import Logout from '$lib/Auth/Logout.svelte'
+<script>
+	import Logout from '$lib/Auth/Logout.svelte';
 	export let name = 'Mr. Anonymous';
-    export let balance = 210;
+	export let balance = 210;
 </script>
 
-
 <div id="container">
-    <section id="picture" />
-    <section class="account_detail">{name}</section>
-    <section class="account_detail">Balance: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</section>
-	<section> <Logout/> </section>
+	<section id="picture" />
+	<section class="account_detail">{name}</section>
+	<section class="account_detail">
+		Balance: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}
+	</section>
+	<section><Logout /></section>
 </div>
-
 
 <style>
 	:root {
@@ -38,11 +38,11 @@
 		margin-left: 30px;
 	}
 
-    section{
-        padding: 10px;
-        margin:10px;
-    }
-    
+	section {
+		padding: 10px;
+		margin: 10px;
+	}
+
 	#picture {
 		/* Picture Size and shape: */
 		width: var(--pic-length);

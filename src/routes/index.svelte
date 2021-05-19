@@ -1,13 +1,9 @@
 <script lang="ts">
-	import { browser } from '$app/env';
-	import type { MenuComponent } from '$lib/Menu.svelte';
-	import Menu from '$lib/Menu.svelte';
-	import Login from '$lib/Login.svelte';
-	import Logout from '$lib/Logout.svelte';
-	import New from '$lib/Creator/New.svelte';
-	import Recharge from '$lib/Consumer/Recharge.svelte';
-	import Refund from '$lib/Consumer/Refund.svelte';
 	import supabase from '$lib/db';
+
+	import { browser } from '$app/env';
+	import Login from '$lib/Auth/Login.svelte';
+	import Logout from '$lib/Auth/Logout.svelte';
 
 	let user;
 	/*eslint no-empty-pattern: 1*/
@@ -20,9 +16,9 @@
 
 <body>
 	{#if user}
-		<Logout/>
+		<Logout />
 	{:else}
-		<Login/>
+		<Login />
 	{/if}
 	<h1>Active Development:</h1>
 	<ul>
@@ -32,7 +28,7 @@
 		<li>
 			<a href="/testing/sandbox">Component Testing Environment</a>
 		</li>
-	
+
 		<li>
 			<a href="/testing/create">Create a Link</a>
 		</li>
