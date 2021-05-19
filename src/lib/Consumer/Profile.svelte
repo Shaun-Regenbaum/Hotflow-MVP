@@ -8,22 +8,20 @@
  -->
  <script>
 	export let name = 'Mr. Anonymous';
+    export let balance = 210;
 </script>
 
-<div id="grid">
-	<div id="container">
-		<div id="picture" />
-		<div id="name">{name}</div>
-	</div>
+
+<div id="container">
+    <section id="picture" />
+    <section class="account_detail">{name}</section>
+    <section class="account_detail">Amount: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</section>
 </div>
+
 
 <style>
 	:root {
 		--pic-length: 50px;
-	}
-	#grid {
-		display: grid;
-		grid-template-columns: 1fr auto;
 	}
 	#container {
 		/* Layout */
@@ -36,6 +34,12 @@
 		min-width: 200px;
 		margin-left: 30px;
 	}
+
+    section{
+        padding: 10px;
+        margin:10px;
+    }
+    
 	#picture {
 		/* Picture Size and shape: */
 		width: var(--pic-length);
@@ -46,10 +50,8 @@
 		/* Nuero: */
 		box-shadow: var(--divot);
 	}
-	#name {
+	.account_detail {
 		align-self: center;
-		padding: 10px;
-		margin: 10px;
 
 		/* Nuero: */
 		box-shadow: var(--divot);

@@ -3,6 +3,10 @@
 
 		1) price -> the price of the content purchased.
 		2) brand -> the brand name of the creator.
+		3) purchaserId
+		4) sellerId
+		5) linkId
+		6) minimized -> Whether the component should fade away or not.
 	DESCRIPTION:
 
     This component is designed to show up for when an existing user with suffecient balance purchases an item.
@@ -20,16 +24,28 @@
  -->
 <script>
 	import Refund from '$lib/Consumer/Refund.svelte';
+import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	export let price;
 	export let brand = 'Anonymous';
 	export let purchaserId;
 	export let sellerId;
 	export let linkId;
+	export let minimized = false;
 
+	onMount(()=> {
+		minimized = false;
+		setTimeout(()=> (minimized=true), 7000);
+	});
+
+	// Making transaction component dissappear after some interaction:
+	function minimize(){
+		setTimeout(()=> (minimized=true), 2000);
+	}	
 </script>
-
-<div id="purchase_notification" in:slide="{{duration:400}}" out:slide="{{delay:3000, duration:400}}">
+<svelte:window on:pointermove="{minimize}" on:mousemove="{minimize}"/>
+{#if !minimized}
+<div id="purchase_notification" transition:slide="{{duration:200}}">
 	<section id="price">
 		<p>Amount: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 	</section>
@@ -38,6 +54,7 @@
 	</section>
 	<Refund {purchaserId} {sellerId} {linkId} amount={price} />
 </div>
+{/if}
 
 
 <style>
@@ -63,6 +80,8 @@
 		border-radius: 5px 35px 5px 5px;
 		background-color: white;
 		border-style: solid;
+
+		transition: all 0.2s ease;
 	}
 	section {
 		/* Keeping the different sections seperate: */

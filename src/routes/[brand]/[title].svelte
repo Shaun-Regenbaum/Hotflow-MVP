@@ -48,8 +48,11 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 	let permission = false;
 	let userId = '';
 	let newUser = false;
+	let minimized=false;
+
 
 	onMount(() => {
+		minimized=false;
 		const user = supabase.auth.user();
 		if (user){
 			userId = user.id
@@ -83,9 +86,7 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 
-	
 </script>
-
 {#if permission}
 	<Menu2 minimized={true}>
 		<section id="blurb">
@@ -98,7 +99,7 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price} />
 		</section>
 	</Menu2>
-	<svelte:component this={Transaction} price={link.price}
+	<Transaction minimized={minimized} price={link.price}
 	brand={link.brand}
 	purchaserId={userId}
 	linkId={link.id}
@@ -118,10 +119,10 @@ On Mount (meaning before any components are loaded), we will check if a user is 
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
 		</section>
 	</Menu2>
-{:else}
-<p>It seems an error has occured.</p>
-{/if}
-<iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
+{/if}\
+
+<iframe title="iframe" id="monetized" style="{blur}" src={link.url} frameBorder="none" />
+
 
 
 <style>
