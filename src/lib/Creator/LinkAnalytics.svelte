@@ -42,17 +42,31 @@
 
 <div class="container" transition:slide={{ duration: 500 }}>
     <div class="header" on:click={minimize}>
-        <div class="headitem , type"><p>{content_type}</p></div>
-        <div class="headitem , title"><p>{title}</p></div>
+        <div class="type">
+            <p>{content_type}</p>
+        </div>
+        <div class="title">
+            <p>{title}</p>
+        </div>
         <div class="minimize">
-            <button style="transform: rotate( {minimized ? '360deg' : '0deg'});" />
+            <button style="transform: rotate( {minimized ? '360deg' : '0deg'});"/>
         </div>
     </div>
     <div class="hideable" style="display:{visible}">
-        <div class="item" id="payed"><p>{payed}</p><p class="subtitle">Payed</p></div>
-        <div class="item" id="clicks"><p>{clicks}</p> <p class="subtitle">Clicks</p></div>
-        <div class="item" id="refunds"><p>{refunds}</p><p class="subtitle">Refunds</p></div>
-        <div class="item" id="total"><p>${Number(total / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p><p class="subtitle">Total</p></div>
+        <div class="item" id="payed">
+            <p>{payed}</p>
+            <p class="subtitle">Payed</p>
+        </div>
+        <div class="item" id="clicks">
+            <p>{clicks}</p>
+            <p class="subtitle">Clicks</p>
+        </div>
+        <div class="item" id="refunds">
+            <p>{refunds}</p>
+            <p class="subtitle">Refunds</p></div>
+        <div class="item" id="total">
+            <p>${Number(total / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
+            <p class="subtitle">Total</p></div>
     </div>
 </div>
 
@@ -96,14 +110,6 @@
         box-shadow: var(--divot);
         border-radius: 25px; 
     }
-    .type{
-        /* GRID PLACEMENT: */
-        grid-column-start: 1;
-        grid-column-end: 2;
-
-        /* POSITIONING: */
-
-    }
     .title{
         text-align: center;
         flex-grow: 1;
@@ -116,12 +122,7 @@
     
     }
     .minimize{
-        /* GRID PLACEMENT: */
-        grid-column-start: 5;
-        grid-column-end: 6;
-
         /* DESIGN: */
-        justify-self: center;
         margin-top: 8px;
     }
 
