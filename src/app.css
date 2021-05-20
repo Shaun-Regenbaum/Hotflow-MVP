@@ -7,16 +7,17 @@
 
 	/* General Properties: */
 	--bg: #f8f6ff;
-	--negative: #ff4a4a;
+	--negative: #ff9a9a;
+	--positive: #aeff9a;
 
 	/* Neuromorphic Properties: */
 	--neuro-light: #fdfdfd3b;
 	--neuro-dark: #0202028a;
 
 	/* Nueromorphic Active Properties */
-	--neuro1-bg: #fcf4d8;
-	--neuro1-light: #fffaea;
-	--neuro1-dark: #c5bfa4;
+	--neuro1-bg: #fffaeace;
+	--neuro1-light: #fffaeace;
+	--neuro1-dark: #c9c7bd;
 
 	/* Nueromorphic Hover Properties */
 	--neuro2-bg: #ffffff;
@@ -72,7 +73,10 @@ fieldset {
 
 label {
 	/* We want label for accessibility reasons, but we want to hide it for aesthetics: */
-	display: none;
+	display: block;
+	font-size: 0.8rem;
+	margin-left:10px;
+	color: var(--greyed-out);
 }
 
 input {

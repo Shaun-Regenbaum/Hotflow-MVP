@@ -23,10 +23,13 @@
 	<h1>Active Development:</h1>
 	<ul>
 		<li>
-			<a href="/4/my%20story">Live Example</a>
+			<a href="/Seller/testLink">Live Example</a>
 		</li>
 		<li>
-			<a href="/testing/sandbox">Component Testing Environment</a>
+			<a href="/testing/sandbox">Component Testing</a>
+		</li>
+		<li>
+			<a href="/testing/endpoints">Endpoint Testing </a>
 		</li>
 		<li>
 			<a href="/testing/components">Component Library (WIP)</a>

@@ -1,45 +1,56 @@
-import supabase from '$lib/db';
 import type { Purchase, Profile } from '$lib/Docs/types';
 import type { Response } from '$lib/Endpoints/apiTypes';
 
-/**This function creates a purchase in the db, subtracts the purchaser account balance, adds to the seller account balance, and add the bought link to the purcasher's purchases.
- * @todo Really need to optimize the number of calls, right now it is VERY Ineffecient.
- * @param {Purchase} - It takes in a purchase to create
- * @return {string | PostgrestError[]} - We will either return a "Success with the relevant information" or the error message
+import supabase from '$lib/db'
+import { getProfile } from '$lib/Endpoints/profile'
+
+
+
+
+/** 5 Parts:
+ * 1) Creates purchase in db
+ * 2) Subtracts from purchaser account balance
+ * 3) Add to seller account balance
+ * 4) Append purchase id to purcasheses array
+ * 5) Append link id to the links array
+ * @param {purchaserId} - uuid of purchaser
+ * @param {sellerId} - uuid of seller
+ * @param {linkId} - uuid of link
+ * @param {price} - price of link
+ * @return {void} - It will always succeed :)
+ * @todo - Error Handling + Undoing previous calls on failure, may impact performance though, fix addPurchase and addLink
  */
-export default async function makePurchase(
+export async function makePurchase(
 	purchaserId: string,
 	sellerId: string,
 	linkId: string,
-	amount: number
-) {
+	price: number
+): Promise<any> {
 	try {
 		let purchaser: Profile = await getProfile(purchaserId);
-		const seller: Profile = await getProfile(sellerId);
 		const purchase: Purchase = await createPurchase({
 			purchaserId: purchaserId,
 			sellerId: sellerId,
 			linkId: linkId,
-			amount: amount
+			amount: price
 		});
-		updateBalance(purchaser.id, purchaser.balance, -1 * purchase.amount);
-		updateBalance(seller.id, seller.balance, purchase.amount);
+		const negative_amount:number = -1*price
+		await supabase.rpc('update_balance2', {amount: negative_amount, user_id: purchaserId});
+		await supabase.rpc('update_balance2', {amount: price, user_id: sellerId});		
 		addPurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
-		purchaser = await addLink(purchaser.id, purchaser.links, linkId);
+		addLink(purchaserId, purchaser.links, linkId);
 	} catch (error) {
-		return error;
-	}
-}
-
-async function getProfile(id: string) {
-	const { data, error } = await supabase.from('profiles').select().eq('id', id);
-	if (data) {
-		return data[0];
-	} else {
+		console.dir(error);
 		throw error;
 	}
 }
-async function createPurchase(purchase: Purchase) {
+
+/** Insert purchase in db
+ * @param {Purchase} - Purchase Type
+ * @return {Promise<Purchase>} - It will always succeed :)
+ * @todo - Error Checking | maybe turn into stored procedure in supabase?
+ */
+async function createPurchase(purchase: Purchase): Promise<Purchase> {
 	const { data, error }: Response = await supabase.from('purchases').insert([purchase]);
 	if (data) {
 		return data[0];
@@ -48,19 +59,11 @@ async function createPurchase(purchase: Purchase) {
 	}
 }
 
-async function updateBalance(id: string, initial_balance: number, amount: number) {
-	const { data, error }: Response = await supabase
-		.from('profiles')
-		.update([{ balance: initial_balance + amount }])
-		.eq('id', id);
-	if (data) {
-		return data[0];
-	} else {
-		throw error;
-	}
-}
-
+/** Add a purchaseId to purchases array in user profile
+ * @todo - Need to turn into stored procedure in supabase
+ */
 async function addPurchase(id: string, purchases: string[], purchaseId: string) {
+	// This fixes an annoying supabase error:
 	if (purchases == null) {
 		purchases = [];
 	}
@@ -75,7 +78,11 @@ async function addPurchase(id: string, purchases: string[], purchaseId: string) 
 	}
 }
 
+/** Add a linkId to links array in user profile
+ * @todo - Need to turn into stored procedure in supabase
+ */
 async function addLink(id: string, links: string[], linkId: string) {
+	// This fixes an annoying supabase error:
 	if (links == null) {
 		links = [];
 	}

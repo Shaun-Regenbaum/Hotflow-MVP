@@ -1,3 +1,5 @@
+OUT OF DATE:
+
 I have moved on from full "nueromorhism" to using it subtly in different places. We need to have a deeper conversation with Isa. Right now I am wasting a lot of my time on design. I should only be working on what Isa has designed and what I approve.
 
 Nueromorphism is:

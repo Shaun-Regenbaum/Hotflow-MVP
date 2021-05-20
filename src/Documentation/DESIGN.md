@@ -1,3 +1,4 @@
+OUT OF DATE:
 Every Component needs to focus on providing its utlity as simply and as thoughtfully as possible.
 
 Every Design desicion needs to ask 3 questions:

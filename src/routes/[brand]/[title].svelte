@@ -44,7 +44,7 @@
 	};
 	// Client-Side Mounting
 	import { checkOwnership, getBalance, getName } from '$lib/Endpoints/profile';
-	import makePurchase from '$lib/Endpoints/purchase';
+	import { makePurchase } from '$lib/Endpoints/purchase';
 	import { onMount } from 'svelte';
 	let permission = false;
 	let userId = '';
@@ -59,6 +59,7 @@
 		const user = supabase.auth.user();
 		if (user) {
 			userId = user.id;
+			// We are using .then here to improve load times allowing us to not wait for it to resolve.
 			getBalance(userId).then((result) => (userBalance = result));
 			getName(userId).then((result) => (userName = result));
 			automaticPurchase(userId);

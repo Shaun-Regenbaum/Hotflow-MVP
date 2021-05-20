@@ -75,8 +75,10 @@
 	{#if existing}
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
-				<input type="email" required placeholder="Email" bind:value={email} />
-				<input type="password" required placeholder="Password" bind:value={password} />
+				<label for="email">Email:</label>
+				<input type="email" name="email"required placeholder="Email" bind:value={email} />
+				<label for="password">Password:</label>
+				<input type="password" name="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
 			<button
@@ -87,9 +89,12 @@
 	{:else}
 		<form on:submit|preventDefault={submit_registration}>
 			<fieldset>
-				<input type="text" required placeholder="Name" bind:value={name} />
-				<input type="email" required placeholder="Email" bind:value={email} />
-				<input type="password" required placeholder="Password" bind:value={password} />
+				<label for="name">Full Name:</label>
+				<input type="text" name="name" required placeholder="Anonymous" bind:value={name} />
+				<label for="email">Email:</label>
+				<input type="email" name="email"required placeholder="Email" bind:value={email} />
+				<label for="password">Password:</label>
+				<input type="password" name="password" required placeholder="Password" bind:value={password} />
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{register_message}</button>
 			<button
@@ -104,17 +109,11 @@
 <style>
 	#login {
 		/* Keeping the Login Form Centered: */
-		text-align: center;
 
 		/*Providng some cushioning around the whole login form: */
 
 		/* Neuromorphism: */
 		border-radius: 25px;
 		overflow: overlay;
-	}
-
-	input {
-		/* Providing padding between the inputs:  */
-		margin: 0.5rem;
 	}
 </style>
