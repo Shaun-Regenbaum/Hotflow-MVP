@@ -17,11 +17,13 @@
 
     export let minimized = false;
     export let linkId;
+    export let purchaserId;
 
     let content_type:string = "PDF";
     let title:string = "Loading...";
     let brand:string = "Loading...";
     let price:number = 0;
+    let sellerId:string;
 
 	$: visible = minimized ? 'none' : '';
 
@@ -34,6 +36,7 @@
         title = link.title;
         brand = link.brand;
         price = link.price;
+        sellerId = link.ownerId;
     })
 </script>
 
@@ -59,7 +62,7 @@
             <p class="subtitle">Creator</p>
         </div>
         <div class="item" id="refund">
-            <Refund fontSize={1}/>
+            <Refund purchaserId = {purchaserId} sellerId={sellerId} amount={price} fontSize={1}/>
         </div>
     </div>
 </div>
