@@ -1,17 +1,23 @@
 <!-- @component
 	PROPERTIES:
         1) minimized -> Whether to start component minimized or not
+        2) linkId -> linkId for analytics
 	DESCRIPTION:
     This component is a small analytics component so that creators can quickly see relevant data associated with one specific item of content.
  -->
 
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { slide } from 'svelte/transition';
 
-    export let minimized = false;
+    import type { Link } from '$lib/Docs/types';
+    import { getLink } from '$lib/Endpoints/links'
 
-    let content_type:string = "pdf";
-    let title:string = "Loading";
+    export let minimized = false;
+    export let linkId;
+
+    let content_type:string = "PDF";
+    let title:string = "Loading...";
     let payed:number = 0;
     let clicks:number = 0;
     let refunds:number = 0;
@@ -23,6 +29,11 @@
     function minimize() {
 		minimized = !minimized;
 	}
+
+    onMount(async()=>{
+        const link:Link = await getLink(linkId);
+
+    })
 </script>
 
 <div class="container" transition:slide={{ duration: 500 }}>
@@ -53,17 +64,15 @@
         max-width: 700px;
 
         /* DESIGN: */
+        border: 3px solid black;
         box-shadow: var(--divot);
-        border-radius: 25px;
+        border-radius: 15px;
     }
     .header{
         /* LAYOUT (GRID): */
-        display: grid;
-        grid-template-columns: 80px 0px 1fr 10px 70px;
-        grid-template-rows: 100%;
-
-        padding:10px;
-
+        display: flex;
+        justify-content: space-between;
+        padding:10px 10px 10px 20px;
     }
 
     .hideable{
@@ -72,17 +81,8 @@
         grid-template-columns: 50% 50%;
         grid-template-rows: 50% 50%;
 
-        padding:10px;
+        padding: 0px 10px 10px 10px;
 
-    }
-    .headitem{
-        /* POSITIONING: */
-        justify-self: center;
-
-        /* SIZING: */
-        width: max-content;
-        padding-left:5px;
-        padding-right:5px;
     }
     .item{
         margin:5px;
@@ -90,8 +90,7 @@
 
         /* DESIGN: */
         box-shadow: var(--divot);
-        border-radius: 25px;
-        
+        border-radius: 25px; 
     }
     .type{
         /* GRID PLACEMENT: */
@@ -102,10 +101,14 @@
 
     }
     .title{
-        /* GRID PLACEMENT: */
-        grid-column-start: 3;
-        grid-column-end: 4;
+        text-align: center;
+        flex-grow: 1;
 
+        /* DESIGN: */
+        box-shadow: var(--divot);
+        border-radius: 25px;
+        margin-left:20px;
+        margin-right:20px;
     
     }
     .minimize{
