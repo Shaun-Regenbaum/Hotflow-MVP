@@ -1,7 +1,8 @@
 <script>
     // Consumer:
-	import HistoryItem from '$lib/Consumer/HistoryItem.svelte';
+	import Purchase from '$lib/Consumer/Purchase.svelte';
     import Profile from '$lib/Consumer/Profile.svelte';
+
     // Creator:
     import LinkAnalytics from '$lib/Creator/LinkAnalytics.svelte';
 
@@ -14,7 +15,7 @@
 <input type="text" placeholder="placeholder" />
 <br>
 <br>
-<HistoryItem/>
+<Purchase/>
 <br>
 <br>
 <Profile/>

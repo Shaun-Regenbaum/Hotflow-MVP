@@ -47,6 +47,8 @@
         </div>
         <div class="title">
             <p>{title}</p>
+            <p class="subtitle">Title</p>
+
         </div>
         <div id="price">
             <p>${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
@@ -108,9 +110,9 @@
     .title{
         text-align: center;
         flex-grow: .5;
-        padding-top: 5px;
 
         /* DESIGN: */
+        background-color: #f1f1f1;
         box-shadow: var(--divot);
         border-radius: 15px;
         margin-left:20px;
@@ -133,7 +135,7 @@
 
         /* DESIGN: */
         border-radius: 10px;
-        background-color: var(--positive);
+        background-color: #f1f1f1;
     }
     #price{
          /* DESIGN: */
@@ -146,6 +148,7 @@
     }
 
     #refund{
+        background-color: #f1f1f1;
         padding-top: 10px;
         padding-bottom: -10px;
         border-radius: 10px;
