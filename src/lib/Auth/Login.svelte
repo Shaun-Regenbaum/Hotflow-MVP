@@ -108,12 +108,10 @@
 
 <style>
 	#login {
-		/* Keeping the Login Form Centered: */
-
-		/*Providng some cushioning around the whole login form: */
 
 		/* Neuromorphism: */
 		border-radius: 25px;
 		overflow: overlay;
 	}
+
 </style>

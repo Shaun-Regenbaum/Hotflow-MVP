@@ -41,13 +41,11 @@
 		display: flex;
 		flex-direction: column;
 		padding-top: 10px;
-
 		/* Container Look: */
 		background-color: white;
 		border-radius: 5px 5px 50px 50px;
 		border-style: solid;
 	}
-
 	#minimize {
 		/*Probably want to redo this guy*/
 		/* Centering the Box/Arrow: */

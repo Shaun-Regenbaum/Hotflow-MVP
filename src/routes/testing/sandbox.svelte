@@ -1,10 +1,10 @@
 <script>
-	import HistoryItem from '$lib/Consumer/HistoryItem.svelte';
+	import LinkAnalytics from '$lib/Creator/LinkAnalytics.svelte';
 	import Purchase from '$lib/Consumer/Purchase.svelte';
 </script>
 
 <div class="testing">
-	<HistoryItem />
+	<LinkAnalytics />
 </div>
 <br />
 
