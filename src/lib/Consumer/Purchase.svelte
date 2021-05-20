@@ -84,7 +84,7 @@
         /* LAYOUT (GRID): */
         display: flex;
         justify-content: space-between;
-        padding:10px 10px 10px 20px;
+        padding: 10px 21px 10px 21px;
     }
 
     .hideable{
@@ -105,16 +105,20 @@
     .title{
         text-align: center;
         flex-grow: .5;
+        padding-top: 5px;
 
         /* DESIGN: */
         box-shadow: var(--divot);
         border-radius: 15px;
         margin-left:20px;
         margin-right:20px;
-    
+    }
+    .type{
+        padding-top: 5px;
     }
     .minimize{
         /* DESIGN: */
+        padding-top: 5px;
         margin-top: 8px;
     }
 
@@ -129,13 +133,13 @@
         background-color: var(--positive);
     }
     #price{
-        /* GRID PLACEMENT: */
-        grid-column-start: 2;
-        grid-column-end: 3;
-
          /* DESIGN: */
-         border-radius: 10px;
-        background-color: var(--positive);
+         flex-grow: .3;
+        margin-right:10px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: var(--divot);
+        background-color: var(--negative);
     }
 
     #refund{

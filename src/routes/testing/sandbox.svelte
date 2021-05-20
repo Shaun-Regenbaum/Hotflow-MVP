@@ -4,7 +4,7 @@
 </script>
 
 <div class="testing">
-	<LinkAnalytics />
+	<Purchase />
 </div>
 <br />
 
