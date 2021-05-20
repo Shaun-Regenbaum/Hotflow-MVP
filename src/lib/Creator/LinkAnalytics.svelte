@@ -22,8 +22,8 @@
     let clicks:number = 0;
     let refunds:number = 0;
     let price:number = 0;
-    let total:number = (payed - refunds)*price;
 
+    $: total = (payed - refunds)*price;
 	$: visible = minimized ? 'none' : '';
 
     function minimize() {
@@ -32,7 +32,11 @@
 
     onMount(async()=>{
         const link:Link = await getLink(linkId);
-
+        title = link.title;
+        payed = link.payed;
+        clicks = link.clicks;
+        refunds = link.refunds;
+        price = link.price;
     })
 </script>
 

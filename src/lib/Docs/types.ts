@@ -57,6 +57,9 @@ export type Link = {
 	ownerId?: string;
 	price?: number;
 	title?: string;
+	payed? :number;
+	clicks?: number;
+	refunds?: number;
 };
 
 /** This type is for a given purchase/refund where one user gains or loses access to a link by sending some amount from one accout balance to another. */
