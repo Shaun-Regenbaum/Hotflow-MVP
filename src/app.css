@@ -46,8 +46,6 @@ button {
 	/* Adding some padding around button text: */
 	padding: 0.5rem 1rem 0.5rem 1rem;
 
-	/* Keeping Next door buttons seperate: */
-	margin: 0rem 0.5rem;
 
 	/* Button Nueromorphism */
 	color: var(--primary-color);

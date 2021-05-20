@@ -5,6 +5,7 @@
 		2) linkId
 		3) sellerId
 		4) amount
+		5) font-size
 	DESCRIPTION:
 
     This component is designed to be the refund button. IT NEEDS WORK.
@@ -22,6 +23,7 @@
 	export let linkId = '';
 	export let sellerId = '';
 	export let amount = 0;
+	export let fontSize = 1;
 	let message = '';
 
 	async function refund() {
@@ -32,19 +34,12 @@
 </script>
 
 <div id="refund">
-	<button on:click={refund}>Refund</button>
+	<button on:click={refund} style="font-size: {fontSize}rem">Refund</button>
 	<p>{message}</p>
 </div>
 
 <style>
 	#refund {
 		text-align: center;
-
-		/*Padding: */
-	}
-	button {
-		margin: 20px 0px 0px 7px;
-		font-size: 20px;
-		padding-top: 10px;
 	}
 </style>
