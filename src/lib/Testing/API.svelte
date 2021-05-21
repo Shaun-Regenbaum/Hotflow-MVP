@@ -1,10 +1,9 @@
 <!-- This file is for testing our api calls in a safe environment: -->
 <script lang="ts">
 	import type { Profile, Link } from '$lib/Docs/types';
-	import supabase from '$lib/db'
-	import { makePurchase } from '$lib/Endpoints/purchase'
-	import { getBalance } from '$lib/Endpoints/profile'
-
+	import supabase from '$lib/db';
+	import { makePurchase } from '$lib/Endpoints/purchase';
+	import { getBalance } from '$lib/Endpoints/profile';
 
 	let message = 'no error';
 	let purchaser: Profile = {
@@ -18,29 +17,29 @@
 	};
 
 	let link: Link = {
-		brand: "Seller",
-		title: 'testLink',
+		brand: 'Seller',
+		title: 'testLink'
 	};
 
-	async function simulateTransaction(){
+	async function simulateTransaction() {
 		seller.balance = await getBalance(seller.id);
 		purchaser.balance = await getBalance(purchaser.id);
-		const { data, error } = await supabase.from('links').select().eq('brand', link.brand).eq('title', link.title)
-		if (data){
+		const { data, error } = await supabase
+			.from('links')
+			.select()
+			.eq('brand', link.brand)
+			.eq('title', link.title);
+		if (data) {
 			link.price = data[0].price;
 			link.id = data[0].id;
 			console.log(link.price, link.id);
-			const {data2, error} = await makePurchase(purchaser.id, seller.id, link.id, link.price);
+			const { data2, error } = await makePurchase(purchaser.id, seller.id, link.id, link.price);
 			seller.balance = await getBalance(seller.id);
 			purchaser.balance = await getBalance(purchaser.id);
-
-			
-		}else{
+		} else {
 			message = error.message;
 		}
-		
 	}
-
 </script>
 
 <div id="container">
@@ -48,16 +47,15 @@
 		<h1>Create Transaction:</h1>
 		<label for="brand">linkBrand:</label>
 		<input type="text" name="brand" bind:value={link.brand} />
-		<br>
+		<br />
 		<label for="title">linkTitle:</label>
 		<input type="text" name="title" bind:value={link.title} />
-		<br>
+		<br />
 		<label for="purchaser">purchaserId:</label>
 		<input type="text" name="purchaser" bind:value={purchaser.id} />
-		<br>
+		<br />
 		<label for="seller">sellerId:</label>
 		<input type="text" name="seller" bind:value={seller.id} />
-
 
 		<button on:click={simulateTransaction}>Test The Call</button>
 
@@ -76,6 +74,6 @@
 	p {
 		padding: 3px;
 		box-shadow: var(--divot);
-		border-radius: 10px;		
+		border-radius: 10px;
 	}
 </style>

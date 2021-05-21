@@ -1,11 +1,8 @@
 import type { Purchase, Profile } from '$lib/Docs/types';
 import type { Response } from '$lib/Endpoints/apiTypes';
 
-import supabase from '$lib/db'
-import { getProfile } from '$lib/Endpoints/profile'
-
-
-
+import supabase from '$lib/db';
+import { getProfile } from '$lib/Endpoints/profile';
 
 /** 5 Parts:
  * 1) Creates purchase in db
@@ -34,9 +31,9 @@ export async function makePurchase(
 			linkId: linkId,
 			amount: price
 		});
-		const negative_amount:number = -1*price
-		await supabase.rpc('update_balance2', {amount: negative_amount, user_id: purchaserId});
-		await supabase.rpc('update_balance2', {amount: price, user_id: sellerId});		
+		const negative_amount: number = -1 * price;
+		await supabase.rpc('update_balance2', { amount: negative_amount, user_id: purchaserId });
+		await supabase.rpc('update_balance2', { amount: price, user_id: sellerId });
 		addPurchase(purchaser.id, purchaser.purchases, purchase.purchaseId);
 		addLink(purchaserId, purchaser.links, linkId);
 	} catch (error) {

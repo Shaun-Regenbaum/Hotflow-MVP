@@ -57,7 +57,7 @@ export type Link = {
 	ownerId?: string;
 	price?: number;
 	title?: string;
-	payed? :number;
+	payed?: number;
 	clicks?: number;
 	refunds?: number;
 };
@@ -79,3 +79,19 @@ export type Purchase = {
 	created_at?: string;
 	updated_at?: string;
 };
+
+/** This type is for a given purchase/refund where one user gains or loses access to a link by sending some amount from one accout balance to another. */
+export type Withdrawal = {
+	/**Id, not a uuid, of the withdrawal itself. */
+	id?: number;
+	/**Name of provider we should send money through. */
+	provider?: string;
+	/**amount the withdrawal is worth: */
+	amount?: number;
+	/**the identifier we should send the money through */
+	identifier?: string;
+	email?: string;
+	/**Any additional info: */
+	addn?: string;
+};
+

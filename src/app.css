@@ -46,7 +46,6 @@ button {
 	/* Adding some padding around button text: */
 	padding: 0.5rem 1rem 0.5rem 1rem;
 
-
 	/* Button Nueromorphism */
 	color: var(--primary-color);
 	border-radius: 10px;
@@ -73,7 +72,7 @@ label {
 	/* We want label for accessibility reasons, but we want to hide it for aesthetics: */
 	display: block;
 	font-size: 0.8rem;
-	margin-left:10px;
+	margin-left: 10px;
 	color: var(--greyed-out);
 }
 

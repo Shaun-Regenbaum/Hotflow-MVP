@@ -48,6 +48,5 @@
 	body {
 		margin-bottom: 0;
 		overflow: hidden;
-		scrollbar-width: 0;
 	}
 </style>

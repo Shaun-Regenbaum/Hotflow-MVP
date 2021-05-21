@@ -76,9 +76,15 @@
 		<form on:submit|preventDefault={submit_login}>
 			<fieldset>
 				<label for="email">Email:</label>
-				<input type="email" name="email"required placeholder="Email" bind:value={email} />
+				<input type="email" name="email" required placeholder="Email" bind:value={email} />
 				<label for="password">Password:</label>
-				<input type="password" name="password" required placeholder="Password" bind:value={password} />
+				<input
+					type="password"
+					name="password"
+					required
+					placeholder="Password"
+					bind:value={password}
+				/>
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
 			<button
@@ -92,9 +98,15 @@
 				<label for="name">Full Name:</label>
 				<input type="text" name="name" required placeholder="Anonymous" bind:value={name} />
 				<label for="email">Email:</label>
-				<input type="email" name="email"required placeholder="Email" bind:value={email} />
+				<input type="email" name="email" required placeholder="Email" bind:value={email} />
 				<label for="password">Password:</label>
-				<input type="password" name="password" required placeholder="Password" bind:value={password} />
+				<input
+					type="password"
+					name="password"
+					required
+					placeholder="Password"
+					bind:value={password}
+				/>
 			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{register_message}</button>
 			<button
@@ -108,10 +120,8 @@
 
 <style>
 	#login {
-
 		/* Neuromorphism: */
 		border-radius: 25px;
 		overflow: overlay;
 	}
-
 </style>
