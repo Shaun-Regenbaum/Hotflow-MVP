@@ -26,6 +26,9 @@
 			<a href="/Seller/testLink">Live Example</a>
 		</li>
 		<li>
+			<a href="/testing/test">Test Example</a>
+		</li>
+		<li>
 			<a href="/testing/sandbox">Component Testing</a>
 		</li>
 		<li>

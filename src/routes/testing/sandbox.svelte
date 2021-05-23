@@ -1,11 +1,8 @@
 <script>
-	import Profile from '$lib/Consumer/Profile.svelte';
+	import Balance from '$lib/Consumer/Balance.svelte';
 </script>
 
 <div class="testing">
-	<Profile />
+	<Balance />
 </div>
 <br />
-
-<style>
-</style>

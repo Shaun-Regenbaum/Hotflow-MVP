@@ -6,5 +6,5 @@
 </script>
 
 <script>
-//We may want to use onMount (actually, probs better) instead of load.
+	//We may want to use onMount (actually, probs better) instead of load.
 </script>

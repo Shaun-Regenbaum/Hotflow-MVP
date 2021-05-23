@@ -1,42 +1,70 @@
-<script lang='ts'>
-	import { onMount } from 'svelte';
-	import { Profile } from '../Docs/types';
-	import { getProfile } from '../Endpoints/profile';
+<!-- @component
+	PROPERTIES:
 
+		1) picture -> the picture to show for the consumer(NOT IMPLEMENTED).
+		2) name -> name of user.
+	DESCRIPTION:
+
+	This components contains the balance and options to add and withdraw funds.
+ -->
+<script lang="ts">
 	export let balance = 0;
-	export let userId;
-
-	onMount(async () => {
-		if(userId) {
-			const profile: Profile = await getProfile(userId);
-			balance = profile.balance
-		}
-	});
 </script>
 
-<body id="container">
+<section id="balance_container">
 	<div id="balance">
-		<p>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
+		<h1>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</h1>
 	</div>
-</body>
+	<div id="recharge">
+		<p>Recharge</p>
+	</div>
+	<div id="withdraw">
+		<p>Withdraw</p>
+	</div>
+</section>
 
 <style>
-	#container {
-		/* Layout */
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+	#balance_container {
+		/* GRID: */
+		display: grid;
+		grid-template-rows: 80% 20%;
+		grid-template-columns: 50% 50%;
+
+		/* DESIGN: */
+		border: black solid 3px;
+		border-radius: 20px;
 
 		/* Positioning: */
-		justify-content: flex-start;
 		min-width: 200px;
-		margin-left: 30px;
 	}
 	#balance {
-		align-self: center;
+		/* GRID: */
+		grid-row-start: 1;
+		grid-row-end: 2;
+		grid-column-start: 1;
+		grid-column-end: 3;
 
-		/* Nuero: */
-		box-shadow: var(--divot);
-		border-radius: 20px;
+		/* POSITIONING: */
+		justify-self: center;
+	}
+	#recharge {
+		/* GRID: */
+		grid-row-start: 2;
+		grid-row-end: 3;
+		grid-column-start: 1;
+		grid-column-end: 2;
+
+		/* POSITIONING: */
+		justify-self: center;
+	}
+	#withdraw {
+		/* GRID: */
+		grid-row-start: 2;
+		grid-row-end: 3;
+		grid-column-start: 2;
+		grid-column-end: 3;
+
+		/* POSITIONING: */
+		justify-self: center;
 	}
 </style>

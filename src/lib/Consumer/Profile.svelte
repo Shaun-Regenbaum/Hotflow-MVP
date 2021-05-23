@@ -7,10 +7,11 @@
 
 	This components contains the most basic information about a user.
  -->
-<script lang='ts'>
+<script lang="ts">
 	import { onMount } from 'svelte';
-	import { Profile } from '$lib/Docs/types';
+	import type { Profile } from '$lib/Docs/types';
 	import { getProfile } from '$lib/Endpoints/profile';
+
 	export let userId;
 	export let name = 'Mr. Anonymous';
 
@@ -26,7 +27,7 @@
 </body>
 
 <style>
-	ß :root {
+	:root {
 		--pic-length: 50px;
 	}
 	#container {
