@@ -7,7 +7,7 @@
 
 	This components contains the balance and options to add and withdraw funds.
  -->
-<script lang="ts">
+<script lang='ts'>
 	export let balance = 0;
 </script>
 
@@ -54,8 +54,8 @@
 		grid-column-start: 1;
 		grid-column-end: 2;
 
-		/* POSITIONING: */
-		justify-self: center;
+			/* POSITIONING: */
+			justify-self: center;
 	}
 	#withdraw {
 		/* GRID: */
@@ -64,7 +64,13 @@
 		grid-column-start: 2;
 		grid-column-end: 3;
 
-		/* POSITIONING: */
+			/* POSITIONING: */
 		justify-self: center;
+
 	}
+
+	p {
+		padding: 20px;
+	}
+	
 </style>
