@@ -3,25 +3,30 @@
 
 		1) picture -> the picture to show for the consumer(NOT IMPLEMENTED).
 		2) name -> name of user.
-		3) balance -> balance of user.
 	DESCRIPTION:
-        ????
+
+	This components contains the most basic information about a user.
  -->
-<script>
+<script lang='ts'>
+	import { onMount } from 'svelte';
+	import { Profile } from '$lib/Docs/types';
+	import { getProfile } from '$lib/Endpoints/profile';
+	export let userId;
 	export let name = 'Mr. Anonymous';
-	export let balance = 210;
+
+	onMount(async () => {
+		const profile: Profile = await getProfile(userId);
+		name = profile.name;
+	});
 </script>
 
-<div id="container">
+<body id="container">
 	<section id="picture" />
 	<section class="account_detail">{name}</section>
-	<section class="account_detail">
-		Balance: ${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}
-	</section>
-</div>
+</body>
 
 <style>
-	:root {
+	ß :root {
 		--pic-length: 50px;
 	}
 	#container {
@@ -30,7 +35,7 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 
-		/* Positionging: */
+		/* Positioning: */
 		justify-content: flex-start;
 		min-width: 200px;
 		margin-left: 30px;

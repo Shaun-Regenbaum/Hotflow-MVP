@@ -44,11 +44,11 @@
 		<div class="type">
 			<p>{content_type}</p>
 		</div>
-		<div class='email'>
+		<div class="email">
 			<p>{title}</p>
 			<p class="subtitle">Title</p>
 		</div>
-		<div id='amount'>
+		<div id="amount">
 			<p>${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 			<p class="subtitle">Price</p>
 		</div>

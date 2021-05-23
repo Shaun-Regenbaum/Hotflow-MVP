@@ -94,4 +94,3 @@ export type Withdrawal = {
 	/**Any additional info: */
 	addn?: string;
 };
-

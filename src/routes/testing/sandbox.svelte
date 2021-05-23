@@ -1,11 +1,9 @@
 <script>
-	import LinkAnalytics from '$lib/Creator/LinkAnalytics.svelte';
-	import WithdrawalRequest from '$lib/Admin/WithdrawalRequest.svelte';
-	import Purchase from '$lib/Consumer/Purchase.svelte';
+	import Profile from '$lib/Consumer/Profile.svelte';
 </script>
 
 <div class="testing">
-	<WithdrawalRequest />
+	<Profile />
 </div>
 <br />
 

@@ -47,7 +47,7 @@
 <svelte:window on:pointermove={minimize} on:mousemove={minimize} />
 {#if !minimized}
 	<div id="purchase_notification" transition:slide={{ duration: 200 }}>
-		<section id='amount'>
+		<section id="amount">
 			<p>Amount: ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 		</section>
 		<section id="brand">

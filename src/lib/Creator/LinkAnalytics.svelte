@@ -44,7 +44,7 @@
 		<div class="type">
 			<p>{content_type}</p>
 		</div>
-		<div class='email'>
+		<div class="email">
 			<p>{title}</p>
 		</div>
 		<div class="minimize">

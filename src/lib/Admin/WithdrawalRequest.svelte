@@ -19,7 +19,7 @@
 	let email: string = 'Loading...';
 	let identifier: string = 'Loading...';
 	let amount: number = 0;
-	let addn:string = "None";
+	let addn: string = 'None';
 
 	$: visible = minimized ? 'none' : '';
 
@@ -34,7 +34,6 @@
 		identifier = withdrawal.identifier;
 		amount = withdrawal.amount;
 		addn = withdrawal.addn;
-
 	});
 </script>
 
@@ -43,16 +42,16 @@
 		<div class="type">
 			<p>{provider}</p>
 		</div>
-		<div class='email'>
+		<div class="email">
 			<p>{email}</p>
 			<p class="subtitle">Email</p>
 		</div>
-		<div id='amount'>
+		<div id="amount">
 			<p>${Number(amount / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 			<p class="subtitle">Amount</p>
 		</div>
 		<div class="minimize">
-			<button style="transform: rotate ({minimized ? '360deg' : '0deg' })"></button>
+			<button style="transform: rotate ({minimized ? '360deg' : '0deg'})" />
 		</div>
 	</div>
 	<div class="hideable" style="display:{visible}">
@@ -68,89 +67,89 @@
 </div>
 
 <style>
-    .container {
-        /* LAYOUT (FLEX): */
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+	.container {
+		/* LAYOUT (FLEX): */
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
 
-        /* SIZING: */
-        min-width: 310px;
-        max-width: 700px;
+		/* SIZING: */
+		min-width: 310px;
+		max-width: 700px;
 
-        /* DESIGN: */
-        border: 3px solid black;
-        box-shadow: var(--divot);
-        border-radius: 15px;
-    }
-    .header {
-        /* LAYOUT (GRID): */
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 21px 10px 21px;
-    }
+		/* DESIGN: */
+		border: 3px solid black;
+		box-shadow: var(--divot);
+		border-radius: 15px;
+	}
+	.header {
+		/* LAYOUT (GRID): */
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 21px 10px 21px;
+	}
 
-    .hideable {
-        /* LAYOUT (GRID): */
-        display: grid;
-        grid-template-columns: 50% 50%;
+	.hideable {
+		/* LAYOUT (GRID): */
+		display: grid;
+		grid-template-columns: 50% 50%;
 
-        padding: 0 10px 10px 10px;
-    }
-    .item {
-        margin: 5px;
-        text-align: center;
+		padding: 0 10px 10px 10px;
+	}
+	.item {
+		margin: 5px;
+		text-align: center;
 
-        /* DESIGN: */
-        box-shadow: var(--divot);
-    }
-    .email {
-        text-align: center;
-        flex-grow: 0.5;
+		/* DESIGN: */
+		box-shadow: var(--divot);
+	}
+	.email {
+		text-align: center;
+		flex-grow: 0.5;
 
-        /* DESIGN: */
-        background-color: #f1f1f1;
-        box-shadow: var(--divot);
-        border-radius: 15px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .type {
-        padding-top: 5px;
-    }
-    .minimize {
-        /* DESIGN: */
-        padding-top: 5px;
-        margin-top: 8px;
-    }
+		/* DESIGN: */
+		background-color: #f1f1f1;
+		box-shadow: var(--divot);
+		border-radius: 15px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	.type {
+		padding-top: 5px;
+	}
+	.minimize {
+		/* DESIGN: */
+		padding-top: 5px;
+		margin-top: 8px;
+	}
 
-    #brand {
-        /* GRID PLACEMENT: */
-        grid-column-start: 1;
-        grid-column-end: 2;
+	#brand {
+		/* GRID PLACEMENT: */
+		grid-column-start: 1;
+		grid-column-end: 2;
 
-        /* DESIGN: */
-        border-radius: 10px;
-        background-color: #f1f1f1;
-    }
-    #amount {
-        /* DESIGN: */
-        flex-grow: 0.3;
-        margin-right: 10px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: var(--divot);
-        background-color: var(--positive);
-    }
+		/* DESIGN: */
+		border-radius: 10px;
+		background-color: #f1f1f1;
+	}
+	#amount {
+		/* DESIGN: */
+		flex-grow: 0.3;
+		margin-right: 10px;
+		border-radius: 10px;
+		text-align: center;
+		box-shadow: var(--divot);
+		background-color: var(--positive);
+	}
 
-    #addn {
-        background-color: #f1f1f1;
-        padding-top: 10px;
-        padding-bottom: -10px;
-        border-radius: 10px;
-    }
-    .subtitle {
-        margin-top: -18px;
-        font-size: 0.7rem;
-    }
+	#addn {
+		background-color: #f1f1f1;
+		padding-top: 10px;
+		padding-bottom: -10px;
+		border-radius: 10px;
+	}
+	.subtitle {
+		margin-top: -18px;
+		font-size: 0.7rem;
+	}
 </style>
