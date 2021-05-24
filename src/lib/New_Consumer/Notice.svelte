@@ -16,7 +16,5 @@
 
 		justify-content: center;
 		text-align: center;
-		padding: 10px;
-		box-shadow: var(--divot);
-	}
+			}
 </style>

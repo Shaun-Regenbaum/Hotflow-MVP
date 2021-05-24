@@ -23,7 +23,7 @@
 
 	export let login_message = 'Log In';
 	export let register_message = 'Sign Up';
-	export let existing;
+	export let existing = false;
 
 	let name = '';
 	let email = '';
@@ -32,12 +32,18 @@
 
 	// The login action:
 	async function submit_login() {
+		console.log("logging in"
+		)
 		let { user, error } = await supabase.auth.signIn({
 			email: email,
 			password: password
 		});
+		console.log(user, error);
+
 		if (user) {
-			location.reload();
+			console.log("succc in"
+		)
+			// location.reload();
 		} else {
 			message = error.message;
 		}
@@ -49,6 +55,8 @@
 			email: email,
 			password: password
 		});
+		console.log(user, error);
+
 
 		// Once a user has registered, we then create a row for them in the profiles database, where we hold other data relevant to them:
 		if (user) {
@@ -56,9 +64,9 @@
 				.from('profiles')
 				.insert([{ id: user.id, name: name, balance: 40 }]);
 			if (data) {
-				location.reload();
+				// location.reload();
 			} else {
-				// Right now supabase does not support it, but we want to delete, if we can create profile.
+				// Right now supabase does not support it, but we want to delete, if we cannot create profile.
 				message = error.message;
 				// const { data, error } = await supabase
 				// 	.from('users')
@@ -74,7 +82,6 @@
 <div id="login">
 	{#if existing}
 		<form on:submit|preventDefault={submit_login}>
-			<fieldset>
 				<label for="email">Email:</label>
 				<input type="email" name="email" required placeholder="Email" bind:value={email} />
 				<label for="password">Password:</label>
@@ -85,17 +92,16 @@
 					placeholder="Password"
 					bind:value={password}
 				/>
-			</fieldset>
+
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
-			<button
-				on:click|preventDefault={() => (existing = !existing)}
-				in:fade={{ delay: 50, duration: 500 }}>New User?</button
-			>
 		</form>
+		<button
+		on:click={() => (existing = !existing)}
+		in:fade={{ delay: 50, duration: 500 }}>New User?</button
+	>
 	{:else}
-		<form on:submit|preventDefault={submit_registration}>
-			<fieldset>
-				<label for="name">Full Name:</label>
+	<form on:submit|preventDefault={submit_registration}>
+	<label for="name">Full Name:</label>
 				<input type="text" name="name" required placeholder="Anonymous" bind:value={name} />
 				<label for="email">Email:</label>
 				<input type="email" name="email" required placeholder="Email" bind:value={email} />
@@ -107,13 +113,13 @@
 					placeholder="Password"
 					bind:value={password}
 				/>
-			</fieldset>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{register_message}</button>
-			<button
-				on:click|preventDefault={() => (existing = !existing)}
-				in:fade={{ delay: 50, duration: 500 }}>Existing User?</button
-			>
+	
 		</form>
+		<button
+		on:click|preventDefault={() => (existing = !existing)}
+		in:fade={{ delay: 50, duration: 500 }}>Existing?</button
+	>
 	{/if}
 	<p>{message}</p>
 </div>
@@ -124,4 +130,9 @@
 		border-radius: 25px;
 		overflow: overlay;
 	}
+
+	button{
+		justify-self: center;
+	}
+
 </style>

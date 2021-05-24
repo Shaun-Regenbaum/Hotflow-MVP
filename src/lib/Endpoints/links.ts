@@ -1,4 +1,3 @@
-import type { Profile } from '$lib/Docs/types';
 import type { Link } from '$lib/Docs/types';
 import supabase from '$lib/db';
 /**

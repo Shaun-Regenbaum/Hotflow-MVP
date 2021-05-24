@@ -74,7 +74,7 @@
 {#if permission}
 	<Menu2 minimized={true}>
 		<section id="blurb">
-			<Profile name={userName} balance={userBalance} />
+			<Profile name={userName} />
 		</section>
 		<section id="details">
 			<Details price={link.price} brand={link.brand} />
@@ -93,18 +93,12 @@
 	/>
 {:else if newUser}
 	<Menu2 minimized={false}>
-		<section id="payment_required">
-			<Notice />
-		</section>
-		<section id="details">
-			<Details price={link.price} brand={link.brand} />
-		</section>
-		<section id="explanation">
-			<Lend />
-		</section>
-		<section id="login">
+		<Notice />
+		<Details price={link.price} brand={link.brand} />
+		<Lend />
+		<div id="login_container">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
-		</section>
+		</div>
 	</Menu2>
 {/if}\
 
@@ -117,5 +111,10 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
+	}
+	#login_container{
+		width: 50%;
+  		margin: 0 auto;
+
 	}
 </style>
