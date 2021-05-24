@@ -2,6 +2,7 @@
 	// Consumer:
 	import Purchase from '$lib/Consumer/Purchase.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
+	import Balance from '$lib/Consumer/Balance.svelte';
 
 	// Creator:
 	import LinkAnalytics from '$lib/Creator/LinkAnalytics.svelte';
@@ -22,6 +23,9 @@
 <br />
 <br />
 <Profile />
+<br />
+<br />
+<Balance />
 <br />
 <br />
 <LinkAnalytics />

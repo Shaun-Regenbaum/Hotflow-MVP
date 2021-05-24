@@ -7,13 +7,13 @@
 
 	This components contains the balance and options to add and withdraw funds.
  -->
-<script lang='ts'>
+<script lang="ts">
 	export let balance = 0;
 </script>
 
 <section id="balance_container">
 	<div id="balance">
-		<h1>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</h1>
+		<p>${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 	</div>
 	<div id="recharge">
 		<p>Recharge</p>
@@ -30,12 +30,9 @@
 		grid-template-rows: 80% 20%;
 		grid-template-columns: 50% 50%;
 
-		/* DESIGN: */
-		border: black solid 3px;
-		border-radius: 20px;
-
 		/* Positioning: */
 		min-width: 200px;
+		min-height: 150px;
 	}
 	#balance {
 		/* GRID: */
@@ -45,7 +42,18 @@
 		grid-column-end: 3;
 
 		/* POSITIONING: */
-		justify-self: center;
+		text-align: center;
+		width: 100%;
+
+		/* DESIGN: */
+		border: black solid 3px;
+		border-bottom: 0;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+
+		/* Text: */
+		font-weight: bold;
+		font-size: 5rem;
 	}
 	#recharge {
 		/* GRID: */
@@ -54,8 +62,14 @@
 		grid-column-start: 1;
 		grid-column-end: 2;
 
-			/* POSITIONING: */
-			justify-self: center;
+		/* POSITIONING: */
+		text-align: center;
+		width: 100%;
+
+		/* DESIGN: */
+		border: 3px solid black;
+		border-right: 1px;
+		border-bottom-left-radius: 20px;
 	}
 	#withdraw {
 		/* GRID: */
@@ -64,13 +78,12 @@
 		grid-column-start: 2;
 		grid-column-end: 3;
 
-			/* POSITIONING: */
-		justify-self: center;
+		/* POSITIONING: */
+		text-align: center;
+		width: 100%;
 
+		/* DESIGN: */
+		border: 3px solid black;
+		border-bottom-right-radius: 20px;
 	}
-
-	p {
-		padding: 20px;
-	}
-	
 </style>
