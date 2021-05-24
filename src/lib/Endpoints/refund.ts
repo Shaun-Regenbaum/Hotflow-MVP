@@ -5,14 +5,14 @@ import type { Response } from '$lib/Endpoints/apiTypes';
 /**This function changes a purchase in the db to a refunded purchase, adds to the purchaser account balance, substracts from the seller account balance, and removes the bought link from the purcasher's purchases.
  * @todo Really need to optimize the number of calls, right now it is VERY Ineffecient.
  * @param {Purchase} - It takes in a purchase to create
- * @return {string | PostgrestError[]} - We will either return a "Success with the relevant information" or the error message
+ * @return {Promise<string | PostgrestError[]>} - We will either return a "Success with the relevant information" or the error message
  */
 export default async function makeRefund(
 	purchaserId: string,
 	sellerId: string,
 	linkId: string,
 	amount: number
-) {
+): Promise<string> {
 	try {
 		let purchaser: Profile = await getProfile(purchaserId);
 		const seller: Profile = await getProfile(sellerId);
@@ -26,7 +26,6 @@ export default async function makeRefund(
 		removeLink(purchaserId, purchaser.links, linkId);
 		purchaser = await updateBalance(purchaserId, purchaser.balance, purchase.amount);
 		updateBalance(seller.id, seller.balance, -1 * purchase.amount);
-		return purchase;
 	} catch (error) {
 		return error;
 	}

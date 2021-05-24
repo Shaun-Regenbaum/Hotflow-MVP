@@ -22,7 +22,6 @@
 <script>
 	export let price = 0;
 	export let refund_policy = 'Full';
-	export let title = 'The Adventures of Narnia';
 	export let brand = 'Anonymous Inc.';
 </script>
 
