@@ -8,7 +8,6 @@
 	This components contains the most basic information about a user.
  -->
 <script lang="ts">
-
 	export let name = 'Mr. Anonymous';
 </script>
 

@@ -112,9 +112,8 @@
 		left: 0;
 		right: 0;
 	}
-	#login_container{
+	#login_container {
 		width: 50%;
-  		margin: 0 auto;
-
+		margin: 0 auto;
 	}
 </style>

@@ -18,10 +18,10 @@
 	export let linkId;
 	export let purchaserId;
 
-	let content_type: string = 'PDF';
-	let title: string = 'Loading...';
-	let brand: string = 'Loading...';
-	let price: number = 0;
+	let content_type = 'PDF';
+	let title = 'Loading...';
+	let brand = 'Loading...';
+	let price = 0;
 	let sellerId: string;
 
 	$: visible = minimized ? 'none' : '';

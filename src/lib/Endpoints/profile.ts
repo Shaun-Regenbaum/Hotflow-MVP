@@ -18,9 +18,9 @@ export async function lend40(user_id: string): Promise<void> {
  * @todo - Better Error Checking
  */
 export async function checkOwnership(link_id: string, user_id: string): Promise<boolean> {
-	try{
+	try {
 		let { purchased_links } = await getProfile(user_id, 'purchased_links');
-	
+
 		if (purchased_links == null) {
 			purchased_links = [];
 		}
@@ -37,8 +37,11 @@ export async function checkOwnership(link_id: string, user_id: string): Promise<
  * @param column_name - a specific column name, otherwise will default to '*' aka every column
  * @returns A profile or an error
  */
-export async function getProfile(user_id: string, column_name?:string): Promise<Profile> {
-	const {data, error} = await  supabase.from('profiles').select(column_name).eq('user_id', user_id);
+export async function getProfile(user_id: string, column_name?: string): Promise<Profile> {
+	const { data, error } = await supabase
+		.from('profiles')
+		.select(column_name)
+		.eq('user_id', user_id);
 	// DEBUGGING:
 	if (data) {
 		return data[0];

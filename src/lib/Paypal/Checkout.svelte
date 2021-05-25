@@ -1,19 +1,18 @@
 <script lang="ts">
-  import type {PayPalNamespace} from '@paypal/paypal-js'
+	import type { PayPalNamespace } from '@paypal/paypal-js';
 	import { loadScript } from '@paypal/paypal-js';
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-  export let price = 260;
-  let value = String(price/100);
-  console.log(value)
-  
+	export let price = 260;
+	let value = String(price / 100);
+	console.log(value);
+
 	const CLIENT_ID =
 		'AWTs40Ro2u2dmymDna1F_2TZzAMo3uWik_Gh1-fL1tR1E6AC6HGiGYNlKJFzIwXTuYcb50Cy3ZfsqUCm';
 
-
-  	onMount(async () => {
-      const paypal:PayPalNamespace = await loadScript({ 'client-id': CLIENT_ID })
-      paypal
+	onMount(async () => {
+		const paypal: PayPalNamespace = await loadScript({ 'client-id': CLIENT_ID });
+		paypal
 			.Buttons({
 				style: {
 					color: 'white',
@@ -45,10 +44,7 @@
 			})
 			.render('#paypal-button-container');
 	});
-
-	
 </script>
-
 
 <div id="paypal-button-container" />
 

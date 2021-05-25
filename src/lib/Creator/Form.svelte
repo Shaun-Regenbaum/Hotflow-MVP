@@ -15,13 +15,13 @@
         3) What they will want to know:
             a. ?
  -->
- 
 <script>
 	import supabase from '$lib/db';
 	export let brand;
-	
+
 	$: submitted = false;
-	let url = 'https://docs.google.com/document/d/e/2PACX-1vT7qXp6doZoEUJVpe8i71Wq1h4yr7Gx23-UpKxJdJHCR_aHAO9DIJM8z4A8k1NgLvEohyX3Rz57yCVG/pub';
+	let url =
+		'https://docs.google.com/document/d/e/2PACX-1vT7qXp6doZoEUJVpe8i71Wq1h4yr7Gx23-UpKxJdJHCR_aHAO9DIJM8z4A8k1NgLvEohyX3Rz57yCVG/pub';
 	let title = 'default';
 	let price = 10;
 	let promise;
@@ -36,17 +36,17 @@
 				brand: brand
 			}
 		]);
-		promise.then(function({data}){
-			supabase.rpc('add_owned_link', {user_id: user.id, link_id:data[0].link_id});
-		})
+		promise.then(function ({ data }) {
+			supabase.rpc('add_owned_link', { user_id: user.id, link_id: data[0].link_id });
+		});
 		submitted = true;
 	}
 </script>
 
-{#if (!submitted)}
-<form id="link_form" on:submit|preventDefault={submit}>
-	<fieldset>
-		<legend>Monetization Form</legend>
+{#if !submitted}
+	<form id="link_form" on:submit|preventDefault={submit}>
+		<fieldset>
+			<legend>Monetization Form</legend>
 			<label for="title">Title for Content - Optional</label>
 			<input type="text" name="title" placeholder="Content Title (Optional)" bind:value={title} />
 			<label for="title">Source Url of Content</label>
@@ -54,22 +54,23 @@
 			<label for="price">Price</label>
 			<p>Price: <input type="number" name="price" bind:value={price} /></p>
 			<input type="range" name="price" bind:value={price} />
-	</fieldset>
-	<button type="submit"> Monetize </button>
-</form>
+		</fieldset>
+		<button type="submit"> Monetize </button>
+	</form>
 {:else}
-{#await promise}
-	<p>Setting Stuff Up...</p>
-{:then {error}} 
-	{#if error}
-	<p>{error.message}</p>
-	{:else}
-	<h1>Here is your monetized link:</h1>
-	<a href={location.origin + '\\' + brand + '\\' + title}>{location.origin + '\\' + brand + '\\' + title}</a>
+	{#await promise}
+		<p>Setting Stuff Up...</p>
+	{:then { error }}
+		{#if error}
+			<p>{error.message}</p>
+		{:else}
+			<h1>Here is your monetized link:</h1>
+			<a href={location.origin + '\\' + brand + '\\' + title}
+				>{location.origin + '\\' + brand + '\\' + title}</a
+			>
 		{/if}
 	{/await}
 {/if}
-
 
 <style>
 	/* Container Properties: */

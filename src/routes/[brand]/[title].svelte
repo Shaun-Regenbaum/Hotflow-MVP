@@ -54,25 +54,24 @@
 	let minimized = false;
 	let error_message = '';
 
-	onMount(async function(){
-		await supabase.rpc('increment_click', {link_id: link.link_id});
+	onMount(async function () {
+		await supabase.rpc('increment_click', { link_id: link.link_id });
 		const user = supabase.auth.user();
 		if (user) {
 			userId = user.id;
 			// We are using .then here to improve load times allowing us to not wait for it to resolve.
-			getProfile(user.id).then(function(result){
+			getProfile(user.id).then(function (result) {
 				userBalance = result.balance;
 				userName = result.name;
 			});
 			permission = await checkOwnership(link.link_id, user.id);
-			console.log(permission);
 			if (!permission) {
-			// This step is to not have to do a live reload to get an accurate balance.
-			userBalance = userBalance - link.price;
-			makePurchase(user.id, link.owner_id, link.link_id, link.price);
-			permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.
+				// This step is to not have to do a live reload to get an accurate balance.
+				userBalance = userBalance - link.price;
+				makePurchase(user.id, link.owner_id, link.link_id, link.price);
+				permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.
 			}
-		}else {
+		} else {
 			newUser = true;
 		}
 	});
@@ -104,7 +103,12 @@
 			<Details price={link.price} brand={link.brand} />
 		</section>
 		<section id="refund">
-			<Refund purchaserId={userId} linkId={link.link_id} sellerId={link.owner_id} amount={link.price} />
+			<Refund
+				purchaserId={userId}
+				linkId={link.link_id}
+				sellerId={link.owner_id}
+				amount={link.price}
+			/>
 		</section>
 	</Menu2>
 	<Transaction

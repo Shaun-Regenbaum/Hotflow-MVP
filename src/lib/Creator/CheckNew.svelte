@@ -13,10 +13,10 @@
         3) What they will want to know:
             a. ?
  -->
- <script>
+<script>
 	import supabase from '$lib/db';
 	import Form from '$lib/Creator/Form.svelte';
-    import New from '$lib/Creator/New.svelte';
+	import New from '$lib/Creator/New.svelte';
 	import { onMount } from 'svelte';
 
 	$: mounted = false;
@@ -28,22 +28,23 @@
 		return supabase.from('profiles').select('brand').eq('user_id', user.id);
 	}
 
-	onMount(async function(){
+	onMount(async function () {
 		promise = checkStatus();
 		mounted = true;
 	});
 </script>
+
 {#if mounted}
 	{#await promise}
 		<p>Loading...</p>
 	{:then value}
 		{#if value['data'][0].brand}
-           
-			<Form brand={value['data'][0].brand}/>
+			<Form brand={value['data'][0].brand} />
 		{:else}
-            <New user={user}/>
+			<New {user} />
 		{/if}
 	{/await}
 {/if}
+
 <style>
 </style>

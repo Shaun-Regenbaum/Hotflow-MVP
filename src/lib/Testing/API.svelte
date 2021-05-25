@@ -5,12 +5,11 @@
 
 	let column;
 	let data = '';
-	let user:Profile = {
-		user_id: "a6de1c1c-4038-4ad6-b885-77ee3b08c646"
+	let user: Profile = {
+		user_id: 'a6de1c1c-4038-4ad6-b885-77ee3b08c646'
 	};
 
-
-	async function getStuff(){
+	async function getStuff() {
 		data = JSON.stringify(await getProfile(user.user_id, column));
 		console.log(data);
 	}
@@ -22,7 +21,7 @@
 		<label for="user_id">user_id:</label>
 		<input type="text" name="user_id" bind:value={user.user_id} />
 		<label for="column">column:</label>
-		<input type="text" name="column" bind:value={column}/>
+		<input type="text" name="column" bind:value={column} />
 		<button on:click={getStuff}>Test The Call</button>
 	</div>
 	<p>{data}</p>

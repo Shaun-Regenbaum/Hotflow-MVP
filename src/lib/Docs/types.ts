@@ -59,9 +59,9 @@ export type Transaction_Record = {
 	purchaser_id?: string;
 	/**UUID of invoker of purchase/refund, i.e. the person gaining or losing access to something. */
 	seller_id?: string;
-	transaction_id?:string;
+	transaction_id?: string;
 	/**type of refund, can be either purchase or refund */
-	type?: "refund" | "purchase";
+	type?: 'refund' | 'purchase';
 };
 
 /** This type is for a given purchase/refund where one user gains or loses access to a link by sending some amount from one accout balance to another. */
@@ -76,5 +76,5 @@ export type Withdrawal = {
 	/**the identifier we should send the money through */
 	identifier?: string;
 	/**Name of provider we should send money through. */
-	platform?: string;	
+	platform?: string;
 };

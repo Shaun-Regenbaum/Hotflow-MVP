@@ -15,12 +15,12 @@
 	export let minimized = false;
 	export let linkId;
 
-	let content_type: string = 'PDF';
-	let title: string = 'Loading...';
-	let payed: number = 0;
-	let clicks: number = 0;
-	let refunds: number = 0;
-	let price: number = 0;
+	let content_type = 'PDF';
+	let title = 'Loading...';
+	let payed = 0;
+	let clicks = 0;
+	let refunds = 0;
+	let price = 0;
 
 	$: total = (payed - refunds) * price;
 	$: visible = minimized ? 'none' : '';

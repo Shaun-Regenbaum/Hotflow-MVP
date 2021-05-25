@@ -12,40 +12,37 @@
 	let promise;
 	let brand;
 
-
 	async function assignCreator() {
 		promise = supabase.from('profiles').update({ brand: brand }).eq('user_id', user.id);
-		promise.then(
-			function({data, error}){
-			if(data){
-				location.reload();			
-			}else{
+		promise.then(function ({ data, error }) {
+			if (data) {
+				location.reload();
+			} else {
 				error_message = error.message;
 				submitted = false;
 			}
 		});
-
 	}
-
 </script>
-{#if (!submitted)}
-<div id="new_creator">
-	<h2>Become a Creator</h2>
-	<p>Just tell us the brand under which your content should be:</p>
-	<form on:submit|preventDefault={assignCreator}>
-		<label for="title">Title for Content - Optional</label>
-		<input type="text" name="brand" placeholder="Brand Name" bind:value={brand} />
-		<button type="submit"><h3>Become a Creator</h3></button>
-	</form>
-</div>
-<p>{error_message}</p>
+
+{#if !submitted}
+	<div id="new_creator">
+		<h2>Become a Creator</h2>
+		<p>Just tell us the brand under which your content should be:</p>
+		<form on:submit|preventDefault={assignCreator}>
+			<label for="title">Title for Content - Optional</label>
+			<input type="text" name="brand" placeholder="Brand Name" bind:value={brand} />
+			<button type="submit"><h3>Become a Creator</h3></button>
+		</form>
+	</div>
+	<p>{error_message}</p>
 {:else}
-<!-- Information about status of Request:-->
-{#await promise}
-	<p>Updating Profile...</p>
-{:then {user, error}}
-	<p>{user ? "Done!" : error.message}</p>
-{/await}
+	<!-- Information about status of Request:-->
+	{#await promise}
+		<p>Updating Profile...</p>
+	{:then { user, error }}
+		<p>{user ? 'Done!' : error.message}</p>
+	{/await}
 {/if}
 
 <style>

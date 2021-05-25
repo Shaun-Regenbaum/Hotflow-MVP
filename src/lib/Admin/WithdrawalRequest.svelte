@@ -15,11 +15,11 @@
 	export let minimized = false;
 	export let withdrawalId;
 
-	let provider: string = '402';
-	let email: string = 'Loading...';
-	let identifier: string = 'Loading...';
-	let amount: number = 0;
-	let addn: string = 'None';
+	let provider = '402';
+	let email = 'Loading...';
+	let identifier = 'Loading...';
+	let amount = 0;
+	let addn = 'None';
 
 	$: visible = minimized ? 'none' : '';
 

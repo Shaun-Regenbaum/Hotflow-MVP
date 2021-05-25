@@ -23,23 +23,23 @@ export async function makePurchase(
 	link_id: string,
 	amount: number
 ): Promise<any> {
-		const purchase: Transaction_Record = {
-			purchaser_id: purchaser_id,
-			seller_id: seller_id,
-			link_id: link_id,
-			amount: amount,
-			type: "purchase"
-		}
-		const { data, error }: Response = await supabase.from('transaction_records').insert([purchase]);
-		if (data[0]) {
-			const negative_amount: number = -1 * amount;
-			// I have removed the await from all stored procedure calls, not sure if they return anything anyways.
-			await supabase.rpc('update_balance', { amount: negative_amount, user_id: purchaser_id });
-			await supabase.rpc('update_balance', { amount: amount, user_id: seller_id });
-			await supabase.rpc('add_purchased_link' , {purchaser_id: purchaser_id, link_id: link_id});
-			await supabase.rpc('increment_payment', {link_id});
-		} else{
-			console.dir(error)
-			return error;
-		}
+	const purchase: Transaction_Record = {
+		purchaser_id: purchaser_id,
+		seller_id: seller_id,
+		link_id: link_id,
+		amount: amount,
+		type: 'purchase'
+	};
+	const { data, error }: Response = await supabase.from('transaction_records').insert([purchase]);
+	if (data[0]) {
+		const negative_amount: number = -1 * amount;
+		// I have removed the await from all stored procedure calls, not sure if they return anything anyways.
+		await supabase.rpc('update_balance', { amount: negative_amount, user_id: purchaser_id });
+		await supabase.rpc('update_balance', { amount: amount, user_id: seller_id });
+		await supabase.rpc('add_purchased_link', { purchaser_id: purchaser_id, link_id: link_id });
+		await supabase.rpc('increment_payment', { link_id });
+	} else {
+		console.dir(error);
+		return error;
+	}
 }

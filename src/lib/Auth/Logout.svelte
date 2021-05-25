@@ -10,17 +10,17 @@
 	let promise;
 
 	function submitLogout() {
-		promise =  supabase.auth.signOut();
-		promise.then(()=>(location.reload()))
+		promise = supabase.auth.signOut();
+		promise.then(() => location.reload());
 	}
 </script>
 
 <div id="logout">
 	<button on:click={submitLogout} style="position: {pos}; z-index: 2;">Logout</button>
 	{#await promise}
-	Logging Out...
-	{:catch error }
-	<p>{error.message}</p> 
+		Logging Out...
+	{:catch error}
+		<p>{error.message}</p>
 	{/await}
 </div>
 
