@@ -52,7 +52,6 @@
 	let userId;
 	let newUser = false;
 	let minimized = false;
-	let error_message = '';
 
 	onMount(async function () {
 		await supabase.rpc('increment_click', { link_id: link.link_id });
