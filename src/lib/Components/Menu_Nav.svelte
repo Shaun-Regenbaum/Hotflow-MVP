@@ -13,7 +13,14 @@
 </nav>
 
 <style>
-    nav
+    nav{
+
+		/* Nuero: */
+		box-shadow: var(--divot);
+		border-radius: 20px;
+        padding: 5px;
+        margin: 0 10px;
+    }
     ul{
         display: flex;
         flex-direction: row;

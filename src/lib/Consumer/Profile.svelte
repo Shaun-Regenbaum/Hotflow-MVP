@@ -12,14 +12,10 @@
 </script>
 
 <body id="container">
-	<section id="picture" />
-	<section class="account_detail">{name}</section>
+	<div class="account_detail">Welcome Back <i>{name}</i></div>
 </body>
 
 <style>
-	:root {
-		--pic-length: 50px;
-	}
 	#container {
 		/* Layout */
 		display: flex;
@@ -27,31 +23,12 @@
 		flex-wrap: wrap;
 
 		/* Positioning: */
-		justify-content: flex-start;
+		justify-content: space-evenly;
 		min-width: 200px;
-		margin-left: 30px;
-	}
-
-	section {
-		padding: 10px;
-		margin: 10px;
-	}
-
-	#picture {
-		/* Picture Size and shape: */
-		width: var(--pic-length);
-		height: var(--pic-length);
-		border-radius: 100%;
-		background-color: var(--bg);
-
-		/* Nuero: */
-		box-shadow: var(--divot);
 	}
 	.account_detail {
 		align-self: center;
-
-		/* Nuero: */
-		box-shadow: var(--divot);
-		border-radius: 20px;
+		padding: 10px;
+		font-size: 2rem;
 	}
 </style>
