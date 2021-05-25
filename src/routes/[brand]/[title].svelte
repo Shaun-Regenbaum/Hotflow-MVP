@@ -76,6 +76,7 @@
 	});
 	// Components:
 	import Menu2 from '$lib/Menu2.svelte';
+	import Menu_Nav from '$lib/Components/Menu_Nav.svelte'
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
@@ -86,6 +87,7 @@
 	import Details from '$lib/Link/Details.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
+import MenuNav from '$lib/Components/Menu_Nav.svelte';
 
 	// Blurring based on permission:
 	$: blur = permission
@@ -95,6 +97,7 @@
 
 {#if permission}
 	<Menu2 minimized={true}>
+			<MenuNav/>
 			<Profile name={userName} />
 			<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
 			<Refund
