@@ -21,6 +21,8 @@
  -->
 <script>
 	export let price = 0;
+	export let clicks = 0;
+	export let refunds = 0;
 	export let refund_policy = 'Full';
 	export let brand = 'Anonymous Inc.';
 </script>
@@ -29,6 +31,14 @@
 	<section>
 		<dt>Owner:</dt>
 		<dd>{brand}</dd>
+	</section>
+	<section>
+		<dt>Clicks:</dt>
+		<dd>{clicks}</dd>
+	</section>
+	<section>
+		<dt>Refunds:</dt>
+		<dd>{refunds}</dd>
 	</section>
 	<section>
 		<dt>Price:</dt>

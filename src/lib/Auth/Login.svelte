@@ -77,6 +77,7 @@
 					placeholder="Email"
 					bind:value={email}
 					autocomplete="username"
+					autofocus
 				/>
 				<label for="password">Password:</label>
 				<input
@@ -100,6 +101,7 @@
 					placeholder="Anonymous"
 					bind:value={name}
 					autocomplete="name"
+					autofocus
 				/>
 				<label for="email">Email:</label>
 				<input
@@ -141,3 +143,15 @@
 		{/await}
 	{/if}
 </div>
+
+<style>
+	#container{
+		display: block;
+		width: fit-content;
+		margin: 0 auto;
+	}
+	button{
+		display: block;
+		margin: 10px auto;
+	}
+</style>

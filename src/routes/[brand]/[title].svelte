@@ -83,7 +83,7 @@
 	import Lend from '$lib/New_Consumer/Lend.svelte';
 	import Notice from '$lib/New_Consumer/Notice.svelte';
 	// Creator:
-	import Details from '$lib/New_Consumer/Details.svelte';
+	import Details from '$lib/Link/Details.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
 
@@ -95,20 +95,14 @@
 
 {#if permission}
 	<Menu2 minimized={true}>
-		<section id="blurb">
 			<Profile name={userName} />
-		</section>
-		<section id="details">
-			<Details price={link.price} brand={link.brand} />
-		</section>
-		<section id="refund">
+			<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
 			<Refund
 				purchaserId={userId}
 				linkId={link.link_id}
 				sellerId={link.owner_id}
 				amount={link.price}
 			/>
-		</section>
 	</Menu2>
 	<Transaction
 		{minimized}
@@ -120,18 +114,12 @@
 	/>
 {:else if newUser}
 	<Menu2 minimized={false}>
-		<section id="payment_required">
 			<Notice />
-		</section>
-		<section id="details">
-			<Details price={link.price} brand={link.brand} />
-		</section>
-		<section id="explanation">
+			<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
 			<Lend />
-		</section>
-		<section id="login">
+		<div id="login">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
-		</section>
+		</div>
 	</Menu2>
 {/if}\
 
@@ -145,4 +133,8 @@
 		left: 0;
 		right: 0;
 	}
+
+	#login{
+		width: fit-content;
+		margin: 0 auto;	}
 </style>
