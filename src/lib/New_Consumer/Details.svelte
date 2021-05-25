@@ -3,7 +3,7 @@
 
 		1) price -> what is the price of content?
 		2) refund-policy -> what is the refundability of the content? Default is "Full"
-		3) title -> what is the title of the content?
+		3) brand -> what is the brand of the content?
 	DESCRIPTION:
 
     This component is designed to show a new user the details about the content they clicked on to provide context for them to sign up.

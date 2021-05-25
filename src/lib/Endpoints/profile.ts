@@ -3,82 +3,44 @@ import type { Profile } from '$lib/Docs/types';
 
 /**
  * Set a user balance to 40 when a user first registers.
- * @param userId - uuid of new user.
- * @returns {Promise<void>}
- * @todo - We may to avoid using await, but I think since its in an async function, it should have no impact on performance.
+ * @param user_id - uuid of the new user.
+ * @returns hopefully returns nothing.
  */
-export async function lend(userId: string): Promise<void> {
-	const { data, error } = await supabase
-		.from('profiles')
-		.update({ balance: '40' })
-		.eq('id', userId);
-	if (data) {
-	} else {
-		console.dir(error);
-		throw error;
-	}
+export async function lend40(user_id: string): Promise<void> {
+	supabase.rpc('update_balance', { amount: 40, user_id: user_id });
 }
 
 /**
  * Check if a given user has permission to see a given link.
- * @param linkId - uuid of link
- * @param userId - uuid of user
+ * @param link_id - uuid of link
+ * @param user_id - uuid of user
  * @returns {Promise<boolean>}
  * @todo - Better Error Checking
  */
-export async function checkOwnership(linkId: string, userId: string): Promise<boolean> {
-	try {
-		const fullProfile: Profile = await getProfile(userId);
-		if (fullProfile.links == null) {
-			fullProfile.links = [];
+export async function checkOwnership(link_id: string, user_id: string): Promise<boolean> {
+	try{
+		let { purchased_links } = await getProfile(user_id, 'purchased_links');
+	
+		if (purchased_links == null) {
+			purchased_links = [];
 		}
-		return fullProfile.links.includes(linkId);
+		return purchased_links.includes(link_id);
 	} catch (error) {
 		console.dir(error);
 		throw error;
 	}
 }
 
-/**
- * Get balance of a user's profile
- * @param userId - uuid of user
- * @returns {Promise<number>}
- * @todo - Better Error Checking
- */
-export async function getBalance(userId: string): Promise<number> {
-	try {
-		const fullProfile: Profile = await getProfile(userId);
-		return fullProfile.balance;
-	} catch (error) {
-		console.dir(error);
-		throw error;
-	}
-}
-
-/**
- * Get name of a user's profile
- * @param userId - uuid of user
- * @returns {Promise<string>}
- * @todo - Better Error Checking
- */
-export async function getName(userId: string): Promise<string> {
-	try {
-		const fullProfile: Profile = await getProfile(userId);
-		return fullProfile.name;
-	} catch (error) {
-		console.dir(error);
-		throw error;
-	}
-}
 /**
  * Get full profile of a user
  * @param userId - uuid of user
- * @returns {Promise<Profile>}
- * @todo - Better Error Checking + Allow for calls for specific columns with Typesupport (will it improve performance?)
+ * @param column_name - a specific column name, otherwise will default to '*' aka every column
+ * @returns A profile or an error
  */
-export async function getProfile(id: string): Promise<Profile> {
-	const { data, error } = await supabase.from('profiles').select().eq('id', id);
-	if (data[0]) {
+export async function getProfile(user_id: string, column_name?:string): Promise<Profile> {
+	const {data, error} = await  supabase.from('profiles').select(column_name).eq('user_id', user_id);
+	// DEBUGGING:
+	if (data) {
 		return data[0];
 	} else {
 		console.dir(error);

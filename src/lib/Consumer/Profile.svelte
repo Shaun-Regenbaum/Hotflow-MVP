@@ -8,17 +8,8 @@
 	This components contains the most basic information about a user.
  -->
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { Profile } from '$lib/Docs/types';
-	import { getProfile } from '$lib/Endpoints/profile';
 
-	export let userId;
 	export let name = 'Mr. Anonymous';
-
-	onMount(async () => {
-		const profile: Profile = await getProfile(userId);
-		name = profile.name;
-	});
 </script>
 
 <body id="container">

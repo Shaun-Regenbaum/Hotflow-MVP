@@ -39,45 +39,43 @@
 	export let link: Link = {
 		brand: 'Anonymous Inc.',
 		title: 'The Faraway Tree',
-		ownerId: '',
+		owner_id: null,
 		price: 0
 	};
 	// Client-Side Mounting
-	import { checkOwnership, getBalance, getName } from '$lib/Endpoints/profile';
+	import { checkOwnership, getProfile } from '$lib/Endpoints/profile';
 	import { makePurchase } from '$lib/Endpoints/purchase';
 	import { onMount } from 'svelte';
 	let permission = false;
-	let userId = '';
 	let userBalance = 0;
 	let userName = 'Mr.Anonymous';
+	let userId;
 	let newUser = false;
 	let minimized = false;
-	let message = '';
+	let error_message = '';
 
-	onMount(() => {
-		minimized = false;
+	onMount(async function(){
+		await supabase.rpc('increment_click', {link_id: link.link_id});
 		const user = supabase.auth.user();
 		if (user) {
 			userId = user.id;
 			// We are using .then here to improve load times allowing us to not wait for it to resolve.
-			getBalance(userId).then((result) => (userBalance = result));
-			getName(userId).then((result) => (userName = result));
-			automaticPurchase(userId);
-			permission = true;
-		} else {
+			getProfile(user.id).then(function(result){
+				userBalance = result.balance;
+				userName = result.name;
+			});
+			permission = await checkOwnership(link.link_id, user.id);
+			console.log(permission);
+			if (!permission) {
+			// This step is to not have to do a live reload to get an accurate balance.
+			userBalance = userBalance - link.price;
+			makePurchase(user.id, link.owner_id, link.link_id, link.price);
+			permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.
+			}
+		}else {
 			newUser = true;
 		}
 	});
-	async function automaticPurchase(userId) {
-		permission = await checkOwnership(link.id, userId);
-		if (!permission) {
-			// This step is to not have to do a live reload to get an accurate balance.
-			userBalance = userBalance - link.price;
-			makePurchase(userId, link.ownerId, link.id, link.price);
-			permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.
-		}
-	}
-
 	// Components:
 	import Menu2 from '$lib/Menu2.svelte';
 	// Consumer:
@@ -100,13 +98,13 @@
 {#if permission}
 	<Menu2 minimized={true}>
 		<section id="blurb">
-			<Profile name={userName} balance={userBalance} />
+			<Profile name={userName} />
 		</section>
 		<section id="details">
 			<Details price={link.price} brand={link.brand} />
 		</section>
 		<section id="refund">
-			<Refund purchaserId={userId} linkId={link.id} sellerId={link.ownerId} amount={link.price} />
+			<Refund purchaserId={userId} linkId={link.link_id} sellerId={link.owner_id} amount={link.price} />
 		</section>
 	</Menu2>
 	<Transaction
@@ -114,8 +112,8 @@
 		price={link.price}
 		brand={link.brand}
 		purchaserId={userId}
-		linkId={link.id}
-		sellerId={link.ownerId}
+		linkId={link.link_id}
+		sellerId={link.owner_id}
 	/>
 {:else if newUser}
 	<Menu2 minimized={false}>

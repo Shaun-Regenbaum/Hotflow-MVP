@@ -2,16 +2,6 @@
  *
  */
 
-/**This is the user info stored in local storage */
-export type User = {
-	/**This is the name of user */
-	name?: string | undefined;
-	/**This is the uuid of the user in the database to reference */
-	userId?: string | undefined;
-	/**This is the session token for the user for permissions*/
-	token?: string | boolean;
-};
-
 export type LoadInput = {
 	page: {
 		host: string;
@@ -35,62 +25,56 @@ export type LoadOutput = {
 
 /** This type is for a given user's profile. */
 export type Profile = {
-	/**This is a UUID associated with the porfile, not the user. */
-	profileId?: string;
-	/**This is a UUID associated with the user, not the profile. */
-	id?: string;
+	balance?: number;
 	/**This is the name of the brand associated with a creator, if empty, they are not registered as a creator. */
 	brand?: string;
-	name?: string;
-	balance?: number;
-	purchases?: string[];
-	links?: string[];
 	created_at?: string;
+	name?: string;
+	owned_links?: string[];
+	purchased_links?: string[];
 	updated_at?: string;
+	user_id?: string;
 };
 
 /** This type is for a link that has been monetized by a creator*/
 export type Link = {
-	id?: string;
 	brand?: string;
-	url?: string;
-	ownerId?: string;
-	price?: number;
-	title?: string;
-	payed?: number;
 	clicks?: number;
+	created_at?: string;
+	link_id?: string;
+	owner_id?: string;
+	payments?: number;
+	price?: number;
 	refunds?: number;
+	title?: string;
+	url?: string;
 };
 
 /** This type is for a given purchase/refund where one user gains or loses access to a link by sending some amount from one accout balance to another. */
-export type Purchase = {
-	/**UUID of the purchase itself. Has nothing to do with the participants, it is simply a way to reference a transaction. */
-	purchaseId?: string;
-	/**UUID of invoker of purchase/refund, i.e. the person gaining or losing access to something. */
-	purchaserId?: string;
-	/**UUID of the reciever of the purchase, i.e. the person selling something in the transaction. */
-	sellerId?: string;
-	/**UUID for the link that a given user is gaining/losing access to. */
-	linkId?: string;
-	/**The amount of the purchase, either positive for purchase or negative for refund. */
+export type Transaction_Record = {
+	/**The amount of the purchase, only positive, subtraction/addition will be determined by transaction type. */
 	amount?: number;
-	/**true for a refund, false for a purchase */
-	refunded?: boolean;
 	created_at?: string;
-	updated_at?: string;
+	link_id?: string;
+	purchaser_id?: string;
+	/**UUID of invoker of purchase/refund, i.e. the person gaining or losing access to something. */
+	seller_id?: string;
+	transaction_id?:string;
+	/**type of refund, can be either purchase or refund */
+	type?: "refund" | "purchase";
 };
 
 /** This type is for a given purchase/refund where one user gains or loses access to a link by sending some amount from one accout balance to another. */
 export type Withdrawal = {
-	/**Id, not a uuid, of the withdrawal itself. */
-	id?: number;
-	/**Name of provider we should send money through. */
-	provider?: string;
+	/**Any additional info: */
+	additional_info?: string;
 	/**amount the withdrawal is worth: */
 	amount?: number;
+	email?: string;
+	/**Id, not a uuid, of the withdrawal itself. */
+	withdrawal_id?: string;
 	/**the identifier we should send the money through */
 	identifier?: string;
-	email?: string;
-	/**Any additional info: */
-	addn?: string;
+	/**Name of provider we should send money through. */
+	platform?: string;	
 };

@@ -1,34 +1,28 @@
 <script lang="ts">
 	import supabase from '$lib/db';
-	import type { User } from '@supabase/supabase-js';
-	import { browser } from '$app/env';
-
-	let user;
-	let message = '';
-
-	if (browser) {
-		user = supabase.auth.user();
-	}
-
 	import Menu2 from '$lib/Menu2.svelte';
-	import New from '$lib/Creator/New.svelte';
+	import CheckNew from '$lib/Creator/CheckNew.svelte';
 	import Login from '$lib/Auth/Login.svelte';
 	import Logout from '$lib/Auth/Logout.svelte';
+import { onMount } from 'svelte';
+
+	let user;
+	
+	onMount(async function(){
+		
+		user = supabase.auth.user();
+	})
+
 </script>
 
-{#if user}
-	<Menu2>
-		<section id="form">
-			<New />
-		</section>
-		<section id="logout">
-			<Logout />
-		</section>
-	</Menu2>
+{#if !(user)}
+<Menu2>
+		<Login login_message={'Login'} register_message={'Sign up'} existing={true} />
+</Menu2>
+	
 {:else}
-	<Menu2>
-		<section id="login">
-			<Login login_message={'Login'} register_message={'Sign up'} existing={true} />
-		</section>
-	</Menu2>
+<Menu2>
+		<CheckNew />
+		<Logout />
+</Menu2>
 {/if}

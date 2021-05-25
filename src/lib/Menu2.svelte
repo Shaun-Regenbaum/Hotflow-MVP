@@ -18,7 +18,7 @@
 	}
 </script>
 
-<div id="menu" transition:slide={{ duration: 200 }}>
+<div id="menu" transition:slide={{ duration: 600 }}>
 	<div id="components" style="display:{visible}">
 		<slot />
 	</div>

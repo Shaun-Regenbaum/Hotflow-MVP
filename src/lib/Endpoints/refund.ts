@@ -1,73 +1,42 @@
 import supabase from '$lib/db';
-import type { Purchase, Profile } from '$lib/Docs/types';
+import type { Transaction_Record } from '$lib/Docs/types';
 import type { Response } from '$lib/Endpoints/apiTypes';
 
-/**This function changes a purchase in the db to a refunded purchase, adds to the purchaser account balance, substracts from the seller account balance, and removes the bought link from the purcasher's purchases.
- * @todo Really need to optimize the number of calls, right now it is VERY Ineffecient.
- * @param {Purchase} - It takes in a purchase to create
- * @return {Promise<string | PostgrestError[]>} - We will either return a "Success with the relevant information" or the error message
+/** 5 Parts:
+ * 1) Creates a refund transaction record in the db
+ * 2) Subtracts from purchaser account balance
+ * 3) Add to seller account balance
+ * 4) remove purchase id to purchased_links
+ * 5) incremement refunds counter in link entry
+ * @param purchaser_id uuid of purchaser
+ * @param seller_id - uuid of seller
+ * @param link_id - uuid of link
+ * @param amount - price of link
+ * @return - return nothing on success, return PostgrestError otherwise
+ * @todo - I am not sure if it needs to be async, but better safe than sorry I suppose.
  */
 export default async function makeRefund(
-	purchaserId: string,
-	sellerId: string,
-	linkId: string,
+	purchaser_id: string,
+	seller_id: string,
+	link_id: string,
 	amount: number
-): Promise<string> {
-	try {
-		let purchaser: Profile = await getProfile(purchaserId);
-		const seller: Profile = await getProfile(sellerId);
-		const purchase: Purchase = await createRefund({
-			purchaserId: purchaserId,
-			sellerId: sellerId,
-			linkId: linkId,
-			amount: amount,
-			refunded: true
-		});
-		removeLink(purchaserId, purchaser.links, linkId);
-		purchaser = await updateBalance(purchaserId, purchaser.balance, purchase.amount);
-		updateBalance(seller.id, seller.balance, -1 * purchase.amount);
-	} catch (error) {
+): Promise<any> {
+	const purchase: Transaction_Record = {
+		purchaser_id: purchaser_id,
+		seller_id: seller_id,
+		link_id: link_id,
+		amount: amount,
+		type: "refund"
+	}
+	const { data, error }: Response = await supabase.from('transaction_records').insert([purchase]);
+	if (data[0]) {
+		const negative_amount: number = -1 * amount;
+		await supabase.rpc('update_balance', { amount: amount, user_id: purchaser_id });
+		await supabase.rpc('update_balance', { amount: negative_amount, user_id: seller_id });
+		await supabase.rpc('remove_purchased_link' , {purchaser_id: purchaser_id, link_id: link_id});
+		await supabase.rpc('increment_refund', {link_id});
+	} else{
+		console.dir(error)
 		return error;
-	}
-}
-
-async function getProfile(id: string) {
-	const { data, error } = await supabase.from('profiles').select().eq('id', id);
-	if (data) {
-		return data[0];
-	} else {
-		throw error;
-	}
-}
-async function createRefund(purchase: Purchase) {
-	const { data, error }: Response = await supabase.from('purchases').upsert([purchase]);
-	if (data) {
-		return data[0];
-	} else {
-		throw error;
-	}
-}
-
-async function updateBalance(id: string, initial_balance: number, amount: number) {
-	const { data, error }: Response = await supabase
-		.from('profiles')
-		.update([{ balance: initial_balance + amount }])
-		.eq('id', id);
-	if (data) {
-		return data[0];
-	} else {
-		throw error;
-	}
-}
-
-async function removeLink(id: string, links: string[], linkId: string) {
-	const { data, error }: Response = await supabase
-		.from('profiles')
-		.update([{ links: links.filter((link) => link != linkId) }])
-		.eq('id', id);
-	if (data) {
-		return data[0];
-	} else {
-		throw error;
 	}
 }

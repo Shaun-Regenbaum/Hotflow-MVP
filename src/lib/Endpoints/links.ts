@@ -3,8 +3,7 @@ import supabase from '$lib/db';
 /**
  * Get full data of a link
  * @param linkId - uuid of link
- * @returns {Promise<Link>}
- * @todo - Better Error Checking + Allow for calls for specific columns with Typesupport (will it improve performance?)
+ * @returns a promise containing either a link or an error
  */
 export async function getLink(id: string): Promise<Link> {
 	const { data, error } = await supabase.from('links').select().eq('id', id);

@@ -5,26 +5,23 @@
  -->
 <script>
 	import supabase from '$lib/db';
-	import { browser } from '$app/env';
 
 	export let pos = 'inherit';
-	let message = '';
+	let promise;
 
-	async function submitLogout() {
-		let { error } = await supabase.auth.signOut();
-		if (error) {
-			message = error.message;
-		} else {
-			if (browser) {
-				location.reload();
-			}
-		}
+	function submitLogout() {
+		promise =  supabase.auth.signOut();
+		promise.then(()=>(location.reload()))
 	}
 </script>
 
 <div id="logout">
 	<button on:click={submitLogout} style="position: {pos}; z-index: 2;">Logout</button>
-	<p>{message}</p>
+	{#await promise}
+	Logging Out...
+	{:catch error }
+	<p>{error.message}</p> 
+	{/await}
 </div>
 
 <style>
