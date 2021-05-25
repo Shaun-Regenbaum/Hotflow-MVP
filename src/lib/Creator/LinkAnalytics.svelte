@@ -17,12 +17,12 @@
 
 	let content_type = 'PDF';
 	let title = 'Loading...';
-	let payed = 0;
+	let payments = 0;
 	let clicks = 0;
 	let refunds = 0;
 	let price = 0;
 
-	$: total = (payed - refunds) * price;
+	$: total = (payments - refunds) * price;
 	$: visible = minimized ? 'none' : '';
 
 	function minimize() {
@@ -32,7 +32,7 @@
 	onMount(async () => {
 		const link: Link = await getLink(linkId);
 		title = link.title;
-		payed = link.payed;
+		payments = link.payments;
 		clicks = link.clicks;
 		refunds = link.refunds;
 		price = link.price;
@@ -53,7 +53,7 @@
 	</div>
 	<div class="hideable" style="display:{visible}">
 		<div class="item" id="payed">
-			<p>{payed}</p>
+			<p>{payments}</p>
 			<p class="subtitle">Payed</p>
 		</div>
 		<div class="item" id="clicks">

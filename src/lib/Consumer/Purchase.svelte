@@ -15,7 +15,7 @@
 	import Refund from '$lib/Consumer/Refund.svelte';
 
 	export let minimized = false;
-	export let linkId;
+	export let link_id;
 	export let purchaserId;
 
 	let content_type = 'PDF';
@@ -31,11 +31,11 @@
 	}
 
 	onMount(async () => {
-		const link: Link = await getLink(linkId);
+		const link: Link = await getLink(link_id);
 		title = link.title;
 		brand = link.brand;
 		price = link.price;
-		sellerId = link.ownerId;
+		sellerId = link.owner_id;
 	});
 </script>
 

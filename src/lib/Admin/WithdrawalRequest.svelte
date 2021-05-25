@@ -15,11 +15,11 @@
 	export let minimized = false;
 	export let withdrawalId;
 
-	let provider = '402';
+	let platform = '402';
 	let email = 'Loading...';
 	let identifier = 'Loading...';
 	let amount = 0;
-	let addn = 'None';
+	let additional_info = 'None';
 
 	$: visible = minimized ? 'none' : '';
 
@@ -29,18 +29,18 @@
 
 	onMount(async () => {
 		const withdrawal: Withdrawal = await getWithdrawal(withdrawalId);
-		provider = withdrawal.provider;
+		platform = withdrawal.platform;
 		email = withdrawal.email;
 		identifier = withdrawal.identifier;
 		amount = withdrawal.amount;
-		addn = withdrawal.addn;
+		additional_info = withdrawal.additional_info;
 	});
 </script>
 
 <div class="container" transition:slide={{ duration: 500 }}>
 	<div class="header" on:click={minimize}>
 		<div class="type">
-			<p>{provider}</p>
+			<p>{platform}</p>
 		</div>
 		<div class="email">
 			<p>{email}</p>
@@ -60,7 +60,7 @@
 			<p class="subtitle">Identifier</p>
 		</div>
 		<div class="item" id="addn">
-			<p>{addn}</p>
+			<p>{additional_info}</p>
 			<p class="subtitle">Additional Info:</p>
 		</div>
 	</div>
