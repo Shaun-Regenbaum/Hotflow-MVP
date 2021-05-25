@@ -83,7 +83,7 @@
 	{#if existing}
 		<form on:submit|preventDefault={submit_login}>
 				<label for="email">Email:</label>
-				<input type="email" name="email" required placeholder="Email" bind:value={email} />
+				<input type="email" name="email" required placeholder="Email" bind:value={email} autocomplete="username"/>
 				<label for="password">Password:</label>
 				<input
 					type="password"
@@ -91,6 +91,7 @@
 					required
 					placeholder="Password"
 					bind:value={password}
+					autocomplete="current-password"
 				/>
 
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{login_message}</button>
@@ -102,9 +103,9 @@
 	{:else}
 	<form on:submit|preventDefault={submit_registration}>
 	<label for="name">Full Name:</label>
-				<input type="text" name="name" required placeholder="Anonymous" bind:value={name} />
+				<input type="text" name="name" required placeholder="Anonymous" bind:value={name} autocomplete="name"/>
 				<label for="email">Email:</label>
-				<input type="email" name="email" required placeholder="Email" bind:value={email} />
+				<input type="email" name="email" required placeholder="Email" bind:value={email} autocomplete="username"/>
 				<label for="password">Password:</label>
 				<input
 					type="password"
@@ -112,6 +113,7 @@
 					required
 					placeholder="Password"
 					bind:value={password}
+					autocomplete="new-password"
 				/>
 			<button type="submit" in:fade={{ delay: 50, duration: 500 }}>{register_message}</button>
 	
