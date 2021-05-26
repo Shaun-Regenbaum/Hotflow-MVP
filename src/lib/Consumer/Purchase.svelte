@@ -26,14 +26,8 @@
 
 	$: visible = minimized ? 'none' : '';
 
-	function minimize() {
-		minimized = !minimized;
-	}
-
 	onMount(async function(){
-		console.log(link_id)
 		const link: Link = await getLink(link_id);
-		console.log(link)
 		title = link.title;
 		brand = link.brand;
 		price = link.price;
@@ -42,15 +36,19 @@
 </script>
 
 <div class="container" transition:slide={{ duration: 500 }}>
-	<div class="header" on:click={minimize}>
+	<div class="header" on:click={()=> (minimized = !minimized)}>
 		<div class="type">
 			<p>{content_type}</p>
 		</div>
-		<div class="email">
+		<div class="item">
 			<p>{title}</p>
 			<p class="subtitle">Title</p>
 		</div>
-		<div id="amount">
+		<div class="item" id="brand">
+			<p>{brand}</p>
+			<p class="subtitle">Creator</p>
+		</div>
+		<div class="item" id="amount">
 			<p>${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 			<p class="subtitle">Price</p>
 		</div>
@@ -59,11 +57,7 @@
 		</div>
 	</div>
 	<div class="hideable" style="display:{visible}">
-		<div class="item" id="brand">
-			<p>{brand}</p>
-			<p class="subtitle">Creator</p>
-		</div>
-		<div class="item" id="refund">
+		<div id="refund">
 			<Refund purchaserId = {purchaser_id} sellerId ={seller_id} linkId={link_id} amount={price} fontSize={1} />
 		</div>
 	</div>
@@ -86,7 +80,7 @@
 		border-radius: 15px;
 	}
 	.header {
-		/* LAYOUT (GRID): */
+		/* LAYOUT (FLEX): */
 		display: flex;
 		justify-content: space-between;
 		padding: 10px 21px 10px 21px;
@@ -94,28 +88,17 @@
 
 	.hideable {
 		/* LAYOUT (GRID): */
-		display: grid;
-		grid-template-columns: 50% 50%;
-
-		padding: 0px 10px 10px 10px;
+		display: flex;
+		justify-content: space-around;
 	}
 	.item {
+		padding: 5px 10px;
+		border-radius: 10px;
 		margin: 5px;
 		text-align: center;
 
 		/* DESIGN: */
 		box-shadow: var(--divot);
-	}
-	.email {
-		text-align: center;
-		flex-grow: 0.5;
-
-		/* DESIGN: */
-		background-color: #f1f1f1;
-		box-shadow: var(--divot);
-		border-radius: 15px;
-		margin-left: 20px;
-		margin-right: 20px;
 	}
 	.type {
 		padding-top: 5px;
@@ -126,33 +109,25 @@
 		margin-top: 8px;
 	}
 
-	#brand {
-		/* GRID PLACEMENT: */
-		grid-column-start: 1;
-		grid-column-end: 2;
-
-		/* DESIGN: */
-		border-radius: 10px;
-		background-color: #f1f1f1;
-	}
 	#amount {
 		/* DESIGN: */
-		flex-grow: 0.3;
-		margin-right: 10px;
-		border-radius: 10px;
-		text-align: center;
-		box-shadow: var(--divot);
 		background-color: var(--negative);
 	}
 
-	#refund {
-		background-color: #f1f1f1;
-		padding-top: 10px;
-		padding-bottom: -10px;
-		border-radius: 10px;
-	}
+
 	.subtitle {
 		margin-top: -18px;
 		font-size: 0.7rem;
+	}
+	button{
+	background-color: white;
+	border: 0;
+	border-bottom: 5px solid black;
+	outline: 0;
+	padding: 2px 10px;
+	transition: all .8s ease;
+}
+	button:hover{
+		box-shadow: none;
 	}
 </style>

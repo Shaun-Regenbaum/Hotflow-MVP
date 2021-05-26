@@ -5,15 +5,6 @@
 	DESCRIPTION:
 
     This component is designed to show up for whenever a user needs to login or register:
-
-        1) What they know:
-            a. That they want to monetize a link.
-        2) What they don't know:
-            a. What does it take to monetize a link?
-            b. How customizable is it?
-			c. More?
-        3) What they will want to know:
-            a. ?
  -->
 <script>
 	import supabase from '$lib/db';
@@ -99,11 +90,5 @@
 	input[type='range'] {
 		appearance: none;
 		width: 10rem;
-	}
-	input[type='checkbox']:focus,
-	input[type='checkbox']:checked {
-		background: none;
-		box-shadow: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
-			-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 	}
 </style>

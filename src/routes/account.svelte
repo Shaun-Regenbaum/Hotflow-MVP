@@ -1,10 +1,11 @@
 <script lang="ts">
-    import type {Profile} from '$lib/Docs/types'
-    import supabase from '$lib/db'
-    import {getProfile} from '$lib/Endpoints/profile'
-    import History from '$lib/Consumer/History.svelte'
-    import Balance from '$lib/Consumer/Balance.svelte'
-    import { onMount } from 'svelte'
+    import type {Profile} from '$lib/Docs/types';
+    import supabase from '$lib/db';
+    import {getProfile} from '$lib/Endpoints/profile';
+    import History from '$lib/Consumer/History.svelte';
+    import Balance from '$lib/Consumer/Balance.svelte';
+    import CheckNew from  '$lib/Creator/CheckNew.svelte';
+    import { onMount } from 'svelte';
 
     $: selected = Balance;
     let name="..."
@@ -25,13 +26,11 @@
     <div id="name"><h1>{name}</h1></div>
     <nav id="nav"><ul>
         <button class="btn--stripe" on:click="{() => changeSelected(History)}">History</button>
-        <button on:click="{() => changeSelected(History)}">Creator Page</button>
+        <button on:click="{() => changeSelected(CheckNew)}">Creator Page</button>
         <button on:click="{() => changeSelected(Balance)}">Wallet</button>
     </ul></nav>
     <div id="item">
-        {#key selected}
-        <svelte:component this={selected}/>
-        {/key}
+        <svelte:component this={selected} purchases={profile.purchased_links} purchaser_id={profile.user_id} brand={profile.brand} balance={profile.balance} />
     </div>
 </div>
 <style>
