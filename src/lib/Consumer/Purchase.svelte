@@ -58,6 +58,10 @@
 	</div>
 	<div class="hideable" style="display:{visible}">
 		<div id="refund">
+			<div class="item">
+				<p>{location.origin + '/' + brand + '/' + title}</p>
+				<p class="subtitle">Url</p>
+			</div>
 			<Refund purchaserId = {purchaser_id} sellerId ={seller_id} linkId={link_id} amount={price} fontSize={1} />
 		</div>
 	</div>
@@ -89,6 +93,7 @@
 	.hideable {
 		/* LAYOUT (GRID): */
 		display: flex;
+		flex-direction: column;
 		justify-content: space-around;
 	}
 	.item {
