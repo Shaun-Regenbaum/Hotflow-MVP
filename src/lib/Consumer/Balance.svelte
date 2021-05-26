@@ -12,6 +12,7 @@
 </script>
 
 <div id="container">
+	<h3>Balance:</h3>
 	<div id="balance">${Number(balance / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</div>
 	<div id="options">
 		<div id="withdraw"><button>Withdraw</button></div>

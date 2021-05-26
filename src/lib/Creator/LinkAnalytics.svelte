@@ -1,6 +1,7 @@
 <!-- @component
 	PROPERTIES:
         1) minimized -> Whether to start component minimized or not
+		
         2) linkId -> linkId for analytics
 	DESCRIPTION:
     This component is a small analytics component so that creators can quickly see relevant data associated with one specific item of content.

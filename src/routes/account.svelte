@@ -5,6 +5,7 @@
     import History from '$lib/Consumer/History.svelte';
     import Balance from '$lib/Consumer/Balance.svelte';
     import CheckNew from  '$lib/Creator/CheckNew.svelte';
+    import Links from '$lib/Creator/Links.svelte'
     import { onMount } from 'svelte';
 
     $: selected = Balance;
@@ -25,12 +26,13 @@
 <div id="container">
     <div id="name"><h1>{name}</h1></div>
     <nav id="nav"><ul>
-        <button class="btn--stripe" on:click="{() => changeSelected(History)}">History</button>
-        <button on:click="{() => changeSelected(CheckNew)}">Creator Page</button>
+        <button on:click="{() => changeSelected(History)}">History</button>
+        <button on:click="{() => changeSelected(Links)}">Link Analytics</button>
+        <button on:click="{() => changeSelected(CheckNew)}">Link Creation</button>
         <button on:click="{() => changeSelected(Balance)}">Wallet</button>
     </ul></nav>
     <div id="item">
-        <svelte:component this={selected} purchases={profile.purchased_links} purchaser_id={profile.user_id} brand={profile.brand} balance={profile.balance} />
+        <svelte:component this={selected} purchases={profile.purchased_links} owned={profile.owned_links} purchaser_id={profile.user_id} brand={profile.brand} balance={profile.balance} />
     </div>
 </div>
 <style>
@@ -56,7 +58,7 @@
         grid-row: nav-row / item-row;
         grid-column: start-col / end-col;
 
-        width: 50%;
+        width: 80%;
         padding-top: 20px;
     }
     #item{
