@@ -15,7 +15,7 @@
 	import Refund from '$lib/Consumer/Refund.svelte';
 
 	export let minimized = true;
-	export let link_id;
+	export let link_id ='';
 	export let purchaser_id ='';
 
 	$: content_type = 'PDF';

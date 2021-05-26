@@ -125,8 +125,7 @@
 			</form>
 		{/if}
 		<!-- The button to switch forms: -->
-		<button on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}
-			>New User?</button
+		<button id="switch_form" on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}>{existing ? "New User?" : "Already Have an Account?"}</button
 		>
 		<p>{error_message}</p>
 	{:else}
@@ -153,5 +152,10 @@
 	button{
 		display: block;
 		margin: 10px auto;
+	}
+
+	#switch_form{
+		font-size: 0.8rem;
+		border-bottom: 3px solid black;
 	}
 </style>

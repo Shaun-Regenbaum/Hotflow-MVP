@@ -4,53 +4,79 @@
     import {getProfile} from '$lib/Endpoints/profile'
     import History from '$lib/Consumer/History.svelte'
     import Balance from '$lib/Consumer/Balance.svelte'
-import { onMount } from 'svelte'
+    import { onMount } from 'svelte'
+
+    $: selected = Balance;
     let name="..."
-    let user = {
-        id: null
-    };
+
+    function changeSelected(selection){
+        console.log(selected)
+        selected = selection;
+    }
     let profile:Profile ={purchased_links: []};
     onMount(async function(){
-        user = supabase.auth.user();
+        const user = supabase.auth.user();
         profile = await getProfile(user.id)
         name=profile.name;
     })
 </script>
 
 <div id="container">
-    <div id="nav"></div>
     <div id="name"><h1>{name}</h1></div>
-    <div id="balance"><Balance balance={profile.balance}/></div>
-    <div id="collection"><History purchaser_id={user.id} purchases={profile.purchased_links}/></div>
-
+    <nav id="nav"><ul>
+        <button class="btn--stripe" on:click="{() => changeSelected(History)}">History</button>
+        <button on:click="{() => changeSelected(History)}">Creator Page</button>
+        <button on:click="{() => changeSelected(Balance)}">Wallet</button>
+    </ul></nav>
+    <div id="item">
+        {#key selected}
+        <svelte:component this={selected}/>
+        {/key}
+    </div>
 </div>
 <style>
     #container{
         /* GRID: */
         display:grid;
-        grid-template-rows: [nav-row] 70px [name-row] 100px [balance-row] 300px [items-row] 400px;
-        grid-template-columns: 100%;
+        grid-template-rows: [name-row] 150px [nav-row] 150px [item-row] 1fr [end-row];
+        grid-template-columns: [start-col] 100% [end-col];
         justify-items: center;
-    }
-    #nav{
-        /* GRID: */
-        grid-row-start: nav-row;
-        grid-row-end: name-row;
-    }
+
+        height: 600px;
+        max-height:100%;
+    }  
     #name{
         /* GRID: */
-        grid-row-start: name-row;
-        grid-row-end: balance-row;
-    }
-    #balance{
-        /* GRID: */
-        padding-top: 1rem;
-        grid-row-start: balance-row;
-        grid-row-end: items-row;
+        grid-row: name-row / balance-row;
+        grid-column: start-col / end-col;
+        padding-top: 20px;
     }
 
-    #items{
+    #nav{
         /* GRID: */
-        grid-row-start: items-row;
+        grid-row: nav-row / item-row;
+        grid-column: start-col / end-col;
+
+        width: 50%;
+        padding-top: 20px;
+    }
+    #item{
+        /* GRID: */
+        grid-row: item-row / end-row;
+        grid-column: start-col / end-col;
+        align-self: center;
+
+    }
+
+    ul{
+        /* FLEX: */
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+    }
+    button{
+        font-size: 1.5rem;
     }
 </style>

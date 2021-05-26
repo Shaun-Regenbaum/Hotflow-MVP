@@ -1,7 +1,7 @@
 <script>
     import Purchase from "$lib/Consumer/Purchase.svelte"
-    export let purchases;
-    export let purchaser_id;
+    export let purchases = ['default'];
+    export let purchaser_id ='';
 </script>
 
 <div id="container">
