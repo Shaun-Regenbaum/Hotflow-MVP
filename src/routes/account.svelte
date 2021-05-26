@@ -12,7 +12,6 @@
     let name="..."
 
     function changeSelected(selection){
-        console.log(selected)
         selected = selection;
     }
     let profile:Profile ={purchased_links: []};
@@ -20,6 +19,7 @@
         const user = supabase.auth.user();
         profile = await getProfile(user.id)
         name=profile.name;
+        console.log(profile.owned_links)
     })
 </script>
 

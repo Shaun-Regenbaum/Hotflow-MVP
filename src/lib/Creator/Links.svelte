@@ -9,6 +9,7 @@
  <script>
     import LinkAnalytics from "$lib/Creator/LinkAnalytics.svelte"
     export let owned;
+    console.log(owned);
 </script>
 
 <div id="container">

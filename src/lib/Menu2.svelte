@@ -52,10 +52,15 @@
 		margin-left: 47%;
 		margin-top: 0.5rem;
 		margin-bottom: 0.5rem;
-
-		/* Color of Box/Arrow: */
-		background-color: rgba(134, 134, 134, 0.404);
+		width: 40px;
+		box-shadow: none;
 	}
+	#minimize:hover, #minimize:active{
+		width: 40px;
+		box-shadow: none;
+	}
+
+	
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
 		#menu {

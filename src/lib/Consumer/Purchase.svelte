@@ -127,7 +127,7 @@
 	padding: 2px 10px;
 	transition: all .8s ease;
 }
-	button:hover{
+	button:hover, button:active{
 		box-shadow: none;
 	}
 </style>

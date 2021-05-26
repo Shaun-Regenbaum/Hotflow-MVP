@@ -27,8 +27,8 @@
 				brand: brand
 			}
 		]);
-		promise.then(function ({ data }) {
-			supabase.rpc('add_owned_link', { user_id: user.id, link_id: data[0].link_id });
+		promise.then(async function ({ data }) {
+			await supabase.rpc('add_owned_link', { user_id: user.id, link_id: data[0].link_id });
 		});
 		submitted = true;
 	}
