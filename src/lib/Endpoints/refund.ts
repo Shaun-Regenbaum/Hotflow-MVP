@@ -21,14 +21,16 @@ export default async function makeRefund(
 	link_id: string,
 	amount: number
 ): Promise<any> {
-	const purchase: Transaction_Record = {
+	const refund: Transaction_Record = {
 		purchaser_id: purchaser_id,
 		seller_id: seller_id,
 		link_id: link_id,
 		amount: amount,
 		type: 'refund'
 	};
-	const { data, error }: Response = await supabase.from('transaction_records').insert([purchase]);
+	console.log(refund);
+	const { data, error }: Response = await supabase.from('transaction_records').insert([refund]);
+	console.log(data[0], error);
 	if (data[0]) {
 		const negative_amount: number = -1 * amount;
 		await supabase.rpc('update_balance', { amount: amount, user_id: purchaser_id });

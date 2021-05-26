@@ -14,15 +14,15 @@
 
 	import Refund from '$lib/Consumer/Refund.svelte';
 
-	export let minimized = false;
+	export let minimized = true;
 	export let link_id;
-	export let purchaserId;
+	export let purchaser_id ='';
 
-	let content_type = 'PDF';
-	let title = 'Loading...';
-	let brand = 'Loading...';
-	let price = 0;
-	let sellerId: string;
+	$: content_type = 'PDF';
+	$: title = 'Loading...';
+	$: brand = 'Loading...';
+	$: price = 0;
+	$: seller_id = '';
 
 	$: visible = minimized ? 'none' : '';
 
@@ -30,12 +30,14 @@
 		minimized = !minimized;
 	}
 
-	onMount(async () => {
+	onMount(async function(){
+		console.log(link_id)
 		const link: Link = await getLink(link_id);
+		console.log(link)
 		title = link.title;
 		brand = link.brand;
 		price = link.price;
-		sellerId = link.owner_id;
+		seller_id = link.owner_id;
 	});
 </script>
 
@@ -62,7 +64,7 @@
 			<p class="subtitle">Creator</p>
 		</div>
 		<div class="item" id="refund">
-			<Refund {purchaserId} {sellerId} amount={price} fontSize={1} />
+			<Refund purchaserId = {purchaser_id} sellerId ={seller_id} linkId={link_id} amount={price} fontSize={1} />
 		</div>
 	</div>
 </div>

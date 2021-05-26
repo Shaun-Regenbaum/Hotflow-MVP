@@ -29,6 +29,8 @@
 		inset -2px -2px 4px var(--neuro-dark), inset 2px 2px 4px var(--neuro-light);
 	--button: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
 		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
+	--button-compliment: 0px 0px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
+		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 	--button-hover: 2px 2px 5px var(--neuro-dark), -2px -2px 5px var(--neuro-light),
 		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 	--button-highlight: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
@@ -43,12 +45,9 @@ button {
 	border: 0;
 	outline: 0;
 
-	/* Adding some padding around button text: */
-	padding: 0.5rem 1rem 0.5rem 1rem;
 
 	/* Button Nueromorphism */
 	color: var(--primary-color);
-	border-radius: 10px;
 	background: var(--bg);
 	box-shadow: var(--button);
 	/* Animations: */
