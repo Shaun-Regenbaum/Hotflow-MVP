@@ -23,7 +23,10 @@
 	<h1>Active Development:</h1>
 	<ul>
 		<li>
-			<a href="/test_brand/test_title">Live Example</a>
+			<a href="/test_brand/test_title">Sample Link</a>
+		</li>
+		<li>
+			<a href="/account">Account</a>
 		</li>
 		<li>
 			<a href="/testing/sandbox">Component Testing</a>
@@ -38,7 +41,7 @@
 			<a href="/landing">Landing Page (WIP)</a>
 		</li>
 	</ul>
-	<p>The components library is now being done with storybooks, will update later.</p>
+	<p>thinks are not optimized for mobile/desktop and make sure you are logged in to see full functionality.</p>
 </body>
 
 <style>
