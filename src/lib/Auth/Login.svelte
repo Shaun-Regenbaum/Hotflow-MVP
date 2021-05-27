@@ -157,6 +157,6 @@
 	#switch_form{
 		font-size: 0.8rem;
 		color: rgb(192, 192, 192);
-		border-bottom: 3px solid rgb(192, 192, 192);
+		border-bottom: 3px double rgb(192, 192, 192);
 	}
 </style>

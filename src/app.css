@@ -25,8 +25,8 @@
 	--neuro2-dark: #a5a5a5;
 
 	/* Nueromorphic Element Types: */
-	--card: 3px 3px 7px var(--neuro-dark), -4px -4px 7px var(--neuro-light),
-		inset -2px -2px 4px var(--neuro-dark), inset 2px 2px 4px var(--neuro-light);
+	--card: 1px 1px 4px var(--neuro2-dark), -2px -2px 5px var(--neuro-light),
+		inset -2px -2px 4px var(--neuro-light), inset 2px 2px 4px var(--neuro-light);
 	--button: 5px 5px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
 		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 	--button-compliment: 0px 0px 7px var(--neuro-dark), -5px -5px 7px var(--neuro-light),
@@ -35,21 +35,24 @@
 		inset -2px -2px 3px var(--neuro-dark), inset 2px 2px 3px var(--neuro-light);
 	--button-highlight: 2px 2px 3px var(--neuro1-dark), -2px -2px 3px var(--neuro1-light),
 		inset -2px -2px 3px var(--neuro1-dark), inset 2px 2px 3px var(--neuro1-light);
-	--divot: inset 1px 1px 4px #cccccc81, inset -1px -1px 10rem #ffffff70;
+	--divot: inset 2px 2px 4px #cccccc81, inset -2px -2px 10rem #ffffff70;
 	--input: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
 		-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 }
 button{
 	background-color: white;
 	border: 0;
-	border-bottom: 5px solid black;
+	border-bottom: 4px double rgb(0, 0, 0);
 	outline: 0;
-	padding: 10px 20px 10px 20px;
-	transition: all .8s ease;
+	padding: 10px 10px 10px 10px;
+	transition: all .5s ease;
 }
 button:hover{
-	padding: 5px;
-	padding-bottom:0px;
+	padding: 15px 20px 5px 20px;
+	box-shadow: var(--card);
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+
 }
 button:active, button:focus{
 	background-color: rgb(255, 250, 225);
@@ -93,9 +96,8 @@ input {
 input:focus {
 	/* Making selection very clear: */
 	background: var(--neuro1-bg);
-	border-radius:20px;
-	box-shadow: inset 5px 5px 10px var(--neuro1-dark), inset -5px -5px 10px var(--neuro1-light),
-		-2px -2px 5px var(--neuro1-dark), 2px 2px 5px var(--neuro1-light);
+	border-radius:8px;
+	box-shadow: var(--divot)
 }
 
 .testing {
