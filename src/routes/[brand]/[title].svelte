@@ -76,7 +76,7 @@
 	});
 	// Components:
 	import Menu from '$lib/Menu.svelte';
-	import Menu_Nav from '$lib/Account/Menu_Nav.svelte'
+	import Menu_Nav from '$lib/Components/Menu_Nav.svelte'
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
@@ -87,7 +87,7 @@
 	import Details from '$lib/Link/Details.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
-import MenuNav from '$lib/Account/Menu_Nav.svelte';
+import MenuNav from '$lib/Components/Menu_Nav.svelte';
 
 	// Blurring based on permission:
 	$: blur = permission

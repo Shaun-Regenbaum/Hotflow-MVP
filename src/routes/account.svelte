@@ -85,15 +85,7 @@
         justify-content: space-around;
         padding: 0;
     }
-    button{
-        font-size: 0.8rem;
-        border-bottom: 4px solid black;
-	    padding: 5px 5px 5px 5px;
-    }
-button:hover{
-	padding: 10px;
-	padding-bottom:0px;
-}
+
     @media (min-width: 550px) {
         button{
         font-size: 1.5rem;
