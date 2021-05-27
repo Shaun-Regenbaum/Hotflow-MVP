@@ -25,7 +25,7 @@
 	let promise;
 	let register_promise;
 
-	// The login action (be careful with brackets, they're important.):
+	// The login action:
 	async function submit_login() {
 		submitted = true;
 		promise = supabase.auth.signIn({
@@ -58,7 +58,7 @@
 				location.reload();
 			} else {
 				error_message = error.message;
-				submitted = false;
+				submitted = false; // If there is an error, go back to the form.
 			}
 		});
 	}
@@ -74,7 +74,7 @@
 					type="email"
 					name="email"
 					required
-					placeholder="Email"
+					placeholder=""
 					bind:value={email}
 					autocomplete="username"
 					autofocus
@@ -84,7 +84,7 @@
 					type="password"
 					name="password"
 					required
-					placeholder="Password"
+					placeholder=""
 					bind:value={password}
 					autocomplete="current-password"
 				/>
@@ -98,7 +98,7 @@
 					type="text"
 					name="name"
 					required
-					placeholder="Anonymous"
+					placeholder=""
 					bind:value={name}
 					autocomplete="name"
 					autofocus
@@ -108,7 +108,7 @@
 					type="email"
 					name="email"
 					required
-					placeholder="Email"
+					placeholder=""
 					bind:value={email}
 					autocomplete="username"
 				/>
@@ -117,7 +117,7 @@
 					type="password"
 					name="password"
 					required
-					placeholder="Password"
+					placeholder=""
 					bind:value={password}
 					autocomplete="new-password"
 				/>
@@ -129,7 +129,7 @@
 		>
 		<p>{error_message}</p>
 	{:else}
-		<!-- Information about status of Request:-->
+		<!-- Information about status of Request, TODO: I don't think this is a great way to go about it. It does account for network timeouts, but its not pretty and im not proud of it:-->
 		{#await promise}
 			<p>{existing ? 'Logging You In' : 'Signing You Up'}</p>
 		{:then { user, error }}
@@ -156,6 +156,7 @@
 
 	#switch_form{
 		font-size: 0.8rem;
-		border-bottom: 3px solid black;
+		color: rgb(192, 192, 192);
+		border-bottom: 3px solid rgb(192, 192, 192);
 	}
 </style>

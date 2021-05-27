@@ -1,6 +1,6 @@
 <script>
-	import Balance from '$lib/Consumer/Balance.svelte';
-	import Recharge from '$lib/Consumer/Recharge.svelte';
+	import Balance from '$lib/Account/Balance.svelte';
+	import Recharge from '$lib/Account/Recharge.svelte';
 </script>
 
 <div class="testing">

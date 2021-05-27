@@ -3,10 +3,10 @@
     import type {Profile} from '$lib/Docs/types';
     import supabase from '$lib/db';
     import {getProfile} from '$lib/Endpoints/profile';
-    import History from '$lib/Consumer/History.svelte';
-    import Balance from '$lib/Consumer/Balance.svelte';
-    import CheckNew from  '$lib/Creator/CheckNew.svelte';
-    import Links from '$lib/Creator/Links.svelte'
+    import History from '$lib/Account/History.svelte';
+    import Balance from '$lib/Account/Balance.svelte';
+    import CheckNew from  '$lib/Account/CheckNew.svelte';
+    import Links from '$lib/Account/Links.svelte'
     import { onMount } from 'svelte';
 
     $: selected = Balance;

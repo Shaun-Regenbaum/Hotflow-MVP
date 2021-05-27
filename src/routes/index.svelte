@@ -32,9 +32,6 @@
 			<a href="/testing/endpoints">Endpoint Testing </a>
 		</li>
 		<li>
-			<a href="/testing/components">Component Library (WIP)</a>
-		</li>
-		<li>
 			<a href="/testing/create">Create a Link</a>
 		</li>
 		<li>
