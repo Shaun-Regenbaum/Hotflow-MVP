@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Login from '$lib/Auth/Login.svelte'
     import type {Profile} from '$lib/Docs/types';
     import supabase from '$lib/db';
     import {getProfile} from '$lib/Endpoints/profile';
@@ -9,6 +10,7 @@
     import { onMount } from 'svelte';
 
     $: selected = Balance;
+    $: existing = false;
     let name="..."
 
     function changeSelected(selection){
@@ -17,29 +19,35 @@
     let profile:Profile ={purchased_links: []};
     onMount(async function(){
         const user = supabase.auth.user();
+        if(user){
+            existing=true
+        }
         profile = await getProfile(user.id)
         name=profile.name;
         console.log(profile.owned_links)
     })
 </script>
-
+{#if existing}
 <div id="container">
     <div id="name"><h1>{name}</h1></div>
     <nav id="nav"><ul>
         <button on:click="{() => changeSelected(History)}">History</button>
-        <button on:click="{() => changeSelected(Links)}">Link Analytics</button>
-        <button on:click="{() => changeSelected(CheckNew)}">Link Creation</button>
+        <button on:click="{() => changeSelected(Links)}">Analytics</button>
+        <button on:click="{() => changeSelected(CheckNew)}">Create</button>
         <button on:click="{() => changeSelected(Balance)}">Wallet</button>
     </ul></nav>
     <div id="item">
         <svelte:component this={selected} purchases={profile.purchased_links} owned={profile.owned_links} purchaser_id={profile.user_id} brand={profile.brand} balance={profile.balance} />
     </div>
 </div>
+{:else}
+<Login/>
+{/if}
 <style>
     #container{
         /* GRID: */
         display:grid;
-        grid-template-rows: [name-row] 150px [nav-row] 150px [item-row] 1fr [end-row];
+        grid-template-rows: [name-row] 100px [nav-row] 150px [item-row] 1fr [end-row];
         grid-template-columns: [start-col] 100% [end-col];
         justify-items: center;
 
@@ -78,6 +86,17 @@
         padding: 0;
     }
     button{
+        font-size: 0.8rem;
+        border-bottom: 4px solid black;
+	    padding: 5px 5px 5px 5px;
+    }
+button:hover{
+	padding: 10px;
+	padding-bottom:0px;
+}
+    @media (min-width: 550px) {
+        button{
         font-size: 1.5rem;
+    }
     }
 </style>

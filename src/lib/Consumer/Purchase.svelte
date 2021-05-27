@@ -58,8 +58,8 @@
 	</div>
 	<div class="hideable" style="display:{visible}">
 		<div id="refund">
-			<div class="item">
-				<p>{location.origin + '/' + brand + '/' + title}</p>
+			<div class="item" id="url">
+				<p>{ '/' + brand + '/' + title}</p>
 				<p class="subtitle">Url</p>
 			</div>
 			<Refund purchaserId = {purchaser_id} sellerId ={seller_id} linkId={link_id} amount={price} fontSize={1} />
@@ -75,19 +75,23 @@
 		flex-wrap: wrap;
 
 		/* SIZING: */
-		min-width: 310px;
+		width: 300px;
 		max-width: 700px;
 
 		/* DESIGN: */
 		border: 3px solid black;
 		box-shadow: var(--divot);
 		border-radius: 15px;
+
+	}
+
+	p{
+		font-size: 0.7rem;
 	}
 	.header {
 		/* LAYOUT (FLEX): */
 		display: flex;
 		justify-content: space-between;
-		padding: 10px 21px 10px 21px;
 	}
 
 	.hideable {
@@ -97,21 +101,26 @@
 		justify-content: space-around;
 	}
 	.item {
-		padding: 5px 10px;
 		border-radius: 10px;
-		margin: 5px;
 		text-align: center;
+		margin:5px 0;
+		padding-bottom: 5px;
 
 		/* DESIGN: */
 		box-shadow: var(--divot);
 	}
 	.type {
-		padding-top: 5px;
+		padding-top: 4px;
+		margin-left:5px;
 	}
 	.minimize {
 		/* DESIGN: */
-		padding-top: 5px;
-		margin-top: 8px;
+		margin-right:10px;
+	}
+
+	#url{
+		margin: 0 10px;
+		padding-top:0.5px;
 	}
 
 	#amount {
@@ -121,16 +130,12 @@
 
 
 	.subtitle {
-		margin-top: -18px;
-		font-size: 0.7rem;
+		margin: -10px 0 0 0;
+		padding:0;
+		font-size: 0.3rem;
 	}
 	button{
-	background-color: white;
-	border: 0;
-	border-bottom: 5px solid black;
-	outline: 0;
-	padding: 2px 10px;
-	transition: all .8s ease;
+		padding: 2px 10px;
 }
 	button:hover, button:active{
 		box-shadow: none;
