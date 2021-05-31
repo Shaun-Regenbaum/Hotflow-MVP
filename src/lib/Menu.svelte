@@ -35,12 +35,16 @@
 		position: absolute;
 		z-index: 1000;
 		top: 0px;
-		left: 0;
+		left:0;
+		right:0;
+		margin-left: auto; 
+  		margin-right: auto; 
+		width: fit-content;
 
 		/* Layout: */
 		display: flex;
 		flex-direction: column;
-		padding-top: 10px;
+		padding: 10px 20px;
 		/* Container Look: */
 		background-color: white;
 		border-radius: 5px 5px 50px 50px;
