@@ -43,8 +43,11 @@
 			<label for="title">Source Url of Content</label>
 			<input type="url" name="url" placeholder="URL" bind:value={url} />
 			<label for="price">Price</label>
-			<p>Price: <input type="number" name="price" bind:value={price} /></p>
-			<input type="range" name="price" bind:value={price} />
+			<div>
+				<input class='align_together' type="number" name="price" bind:value={price} />
+				<input class='align_together' type="range" name="price" bind:value={price} />
+			</div>
+		
 		</fieldset>
 		<button type="submit"> Monetize </button>
 	</form>
@@ -90,5 +93,9 @@
 	input[type='range'] {
 		appearance: none;
 		width: 10rem;
+	}
+
+	label {
+		color: black;
 	}
 </style>

@@ -1,6 +1,6 @@
 <script>
 	import Balance from '$lib/Account/Balance.svelte';
-	import Recharge from '$lib/Account/Recharge.svelte';
+	import Deposit from '$lib/Account/Deposit.svelte';
 </script>
 
 <div class="testing">
@@ -8,6 +8,6 @@
 </div>
 <br />
 <div class="testing">
-	<Recharge />
+	<Deposit />
 </div>
 <br />
