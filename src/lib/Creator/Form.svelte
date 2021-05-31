@@ -14,7 +14,8 @@
 	let url =
 		'https://docs.google.com/document/d/e/2PACX-1vT7qXp6doZoEUJVpe8i71Wq1h4yr7Gx23-UpKxJdJHCR_aHAO9DIJM8z4A8k1NgLvEohyX3Rz57yCVG/pub';
 	let title = 'default';
-	let price = 10;
+	let dollars=.1
+	$: price = dollars*100;
 	let promise;
 	async function submit() {
 		const user = supabase.auth.user();
@@ -42,10 +43,12 @@
 			<input type="text" name="title" placeholder="Content Title (Optional)" bind:value={title} />
 			<label for="title">Source Url of Content</label>
 			<input type="url" name="url" placeholder="URL" bind:value={url} />
-			<label for="price">Price (cents)</label>
+			<label for="price">Price</label>
 			<div id="align_together">
-				<input type="number" name="price" bind:value={price} />
-				<input type="range" name="price" bind:value={price} />
+				<span class="currency_symbol">
+					<input type="number" id="amount" name="amount" step="0.01" bind:value={dollars}/>
+				</span>
+				<input type="range" name="price" step="0.01" max="10" bind:value={dollars} />
 			</div>
 		
 		</fieldset>
@@ -88,11 +91,18 @@
 	/* Element Properties: */
 	/* TODO - We need to rehaul these */
 	input[type='number'] {
-		width: 2rem;
+		padding-right: 3px;
+		width: 3rem;
+		padding-top: 0px;
+		padding-bottom: 5px;
+
 	}
 	input[type='range'] {
 		appearance: none;
 		width: 10rem;
+		padding-top: 0px;		
+		padding-bottom: 4px;
+
 	}
 	label {
 		color: black;
@@ -100,6 +110,20 @@
 	#align_together{
 		display: flex;
 		justify-content: flex-start;
+		
 	}
+
+	.currency_symbol {
+    position: relative;
+}
+.currency_symbol input {
+    padding-left:25px;
+}
+.currency_symbol:before {
+    position: absolute;
+    top: 0px;
+    content:"$";
+    left: 10px;
+}
 	
 </style>
