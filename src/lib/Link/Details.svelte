@@ -63,8 +63,7 @@
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
-		overflow:hidden;
-		padding: 0;
+		overflow-y:hidden;
 		padding-bottom: 0;
 		margin-bottom: -20px;
 		overflow-x: scroll;
