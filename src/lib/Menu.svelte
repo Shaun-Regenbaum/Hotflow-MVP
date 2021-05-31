@@ -24,7 +24,7 @@
 	</div>
 	<section id="toolbar" on:click={minimize}>
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
-		<button id="minimize" style="transform: rotate( {minimized ? '180deg' : '0deg'});" />
+		<button id="minimize" style="transform: rotateY( {minimized ? '70deg' : '0deg'});" />
 	</section>
 </div>
 
@@ -54,6 +54,7 @@
 		margin-bottom: 0.5rem;
 		width: 40px;
 		box-shadow: none;
+		border-bottom: rgb(136, 136, 136) dotted 5px;
 	}
 	#minimize:hover, #minimize:active{
 		width: 40px;
