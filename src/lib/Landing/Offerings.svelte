@@ -30,6 +30,7 @@
 		padding: 10px;
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: space-around;
 		flex-grow: 20;
 		background: var(--bg);
 

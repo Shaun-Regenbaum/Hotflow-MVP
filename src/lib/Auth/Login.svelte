@@ -77,7 +77,6 @@
 					placeholder=""
 					bind:value={email}
 					autocomplete="username"
-					autofocus
 				/>
 				<label for="password">Password:</label>
 				<input
@@ -101,7 +100,6 @@
 					placeholder=""
 					bind:value={name}
 					autocomplete="name"
-					autofocus
 				/>
 				<label for="email">Email:</label>
 				<input

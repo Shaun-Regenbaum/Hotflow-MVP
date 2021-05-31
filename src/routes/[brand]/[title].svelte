@@ -116,14 +116,14 @@ import MenuNav from '$lib/Components/Menu_Nav.svelte';
 		sellerId={link.owner_id}
 	/>
 {:else if newUser}
-	<Menu2 minimized={false}>
+	<Menu minimized={false}>
 			<Notice />
 			<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
 			<Lend />
 		<div id="login">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
 		</div>
-	</Menu2>
+	</Menu>
 {/if}\
 
 <iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />

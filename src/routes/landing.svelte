@@ -16,11 +16,11 @@
 </script>
 
 <body>
-	<section id="heading">
-		<h1>Welcome to 402</h1>
+	<section id="header">
+		<h1>402</h1>
 	</section>
 	<section id="402-description">
-		<h3>We make it possible to sell anything on the internet.</h3>
+		<h3>Sell anything on the internet.</h3>
 		<h3>All you need is a link. That's it.</h3>
 	</section>
 	<section>
@@ -29,18 +29,23 @@
 </body>
 
 <style>
+	h1{
+		font-size: 4rem;
+	}
 	body {
 		background-color: #ebebeb;
 	}
 
-	#heading {
+	#header {
 		/* Color: */
 
 		/* Sizing and Positioning: */
-		width: 80vw;
-		max-width: 500px;
-		padding: 2rem;
-		margin: auto;
+		margin: 0 auto;
 		text-align: center;
+	}
+
+	section{
+		width: fit-content;
+		margin: 0 auto;
 	}
 </style>
