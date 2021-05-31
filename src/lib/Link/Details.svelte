@@ -63,10 +63,16 @@
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
-		overflow-x: scroll;
+		overflow:hidden;
 		padding: 0;
 		padding-bottom: 0;
+		margin-bottom: -20px;
+		overflow-x: scroll;
 		margin: 0;
+		border: black solid 3px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+
 	}
 	section {
 		/* Design and Layout: */

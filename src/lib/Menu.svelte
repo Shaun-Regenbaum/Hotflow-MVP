@@ -49,8 +49,6 @@
 	#minimize {
 		/*Probably want to redo this guy*/
 		/* Centering the Box/Arrow: */
-		margin-left: 47%;
-		margin-top: 0.5rem;
 		margin-bottom: 0.5rem;
 		width: 40px;
 		box-shadow: none;
@@ -59,6 +57,10 @@
 	#minimize:hover, #minimize:active{
 		width: 40px;
 		box-shadow: none;
+	}
+
+	#toolbar{
+		margin: 0 auto;
 	}
 
 	
