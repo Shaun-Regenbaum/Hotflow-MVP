@@ -34,7 +34,7 @@
 		/* Positioning: */
 		position: absolute;
 		z-index: 1000;
-		top: 0;
+		top: 0px;
 		left: 0;
 
 		/* Layout: */

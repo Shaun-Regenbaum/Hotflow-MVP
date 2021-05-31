@@ -42,10 +42,10 @@
 			<input type="text" name="title" placeholder="Content Title (Optional)" bind:value={title} />
 			<label for="title">Source Url of Content</label>
 			<input type="url" name="url" placeholder="URL" bind:value={url} />
-			<label for="price">Price</label>
-			<div>
-				<input class='align_together' type="number" name="price" bind:value={price} />
-				<input class='align_together' type="range" name="price" bind:value={price} />
+			<label for="price">Price (cents)</label>
+			<div id="align_together">
+				<input type="number" name="price" bind:value={price} />
+				<input type="range" name="price" bind:value={price} />
 			</div>
 		
 		</fieldset>
@@ -94,8 +94,12 @@
 		appearance: none;
 		width: 10rem;
 	}
-
 	label {
 		color: black;
 	}
+	#align_together{
+		display: flex;
+		justify-content: flex-start;
+	}
+	
 </style>

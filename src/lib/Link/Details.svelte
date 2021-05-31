@@ -20,12 +20,18 @@
             b. Can I undo/refund it?
  -->
 <script>
+	import { onMount } from "svelte";
+
+
 	export let price = 0;
 	export let clicks = 0;
 	export let refunds = 0;
 	export let refund_policy = 'Full';
 	export let brand = 'Anonymous Inc.';
+
 </script>
+
+
 
 <dl id="details">
 	<section>
@@ -50,12 +56,17 @@
 	</section>
 </dl>
 
+
 <style>
 	#details {
 		/* Layout */
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		justify-content: center;
+		overflow-x: scroll;
+		padding: 0;
+		padding-bottom: 0;
+		margin: 0;
 	}
 	section {
 		/* Design and Layout: */

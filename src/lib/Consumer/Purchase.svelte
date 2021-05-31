@@ -35,7 +35,7 @@
 	});
 </script>
 
-<div class="container" transition:slide={{ duration: 500 }}>
+<div class="container" in:slide={{ duration: 500 }}>
 	<div class="header" on:click={()=> (minimized = !minimized)}>
 		<div class="type">
 			<p>{content_type}</p>

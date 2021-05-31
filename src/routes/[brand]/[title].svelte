@@ -76,30 +76,42 @@
 	});
 	// Components:
 	import Menu from '$lib/Menu.svelte';
-	import Menu_Nav from '$lib/Components/Menu_Nav.svelte'
+	import Menu_Nav from '$lib/Random_Components/Menu_Nav.svelte'
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
 	import Transaction from '$lib/Consumer/Transaction.svelte';
-	import Lend from '$lib/New_Consumer/Lend.svelte';
 	import Notice from '$lib/New_Consumer/Notice.svelte';
 	// Creator:
 	import Details from '$lib/Link/Details.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
-import MenuNav from '$lib/Components/Menu_Nav.svelte';
 
 	// Blurring based on permission:
 	$: blur = permission
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
+
+export let minimized2 = false;
+
+
+onMount(() => {
+	minimized = false;
+	setTimeout(() => (minimized2 = true), 7000);
+});
 </script>
+
+{#if !minimized2}
+	<div id=details on:click="{() => minimized2 = true}"> 
+	<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
+	</div>
+{/if}
+
 
 {#if permission}
 	<Menu minimized={true}>
-			<MenuNav/>
+			<Menu_Nav/>
 			<Profile name={userName} />
-			<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
 			<Refund
 				purchaserId={userId}
 				linkId={link.link_id}
@@ -107,19 +119,9 @@ import MenuNav from '$lib/Components/Menu_Nav.svelte';
 				amount={link.price}
 			/>
 	</Menu>
-	<Transaction
-		{minimized}
-		price={link.price}
-		brand={link.brand}
-		purchaserId={userId}
-		linkId={link.link_id}
-		sellerId={link.owner_id}
-	/>
 {:else if newUser}
 	<Menu minimized={false}>
 			<Notice />
-			<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
-			<Lend />
 		<div id="login">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
 		</div>
@@ -140,4 +142,12 @@ import MenuNav from '$lib/Components/Menu_Nav.svelte';
 	#login{
 		width: fit-content;
 		margin: 0 auto;	}
+	#details{
+		position: absolute;
+		bottom: 0;
+		left:0;
+		z-index: 500;
+		background-color: white;
+		width:100%;
+	}
 </style>

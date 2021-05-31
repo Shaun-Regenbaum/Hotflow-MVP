@@ -53,7 +53,7 @@
 			if (user) {
 				register_promise = supabase
 					.from('profiles')
-					.insert([{ user_id: user.id, name: name, balance: 40 }]);
+					.insert([{ user_id: user.id, name: name, balance: 0 }]);
 				// Instead of reloading I should be emitting an event
 				location.reload();
 			} else {

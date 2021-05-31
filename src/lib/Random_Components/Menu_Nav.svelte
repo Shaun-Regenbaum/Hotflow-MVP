@@ -1,13 +1,15 @@
+
+<script> import Logout from '$lib/Auth/Logout.svelte'</script>
 <nav>
     <ul>
         <li>
-            <a href="/account">Account</a>
+            <button><a href="/account">Account</a></button>
         </li>
         <li>
-            <a href="/account">Other</a>
+            <button><a href="/account">Other</a></button>
         </li>
         <li>
-            <a href="/account">Other2</a>
+            <Logout/>
         </li>
     </ul>
 </nav>
@@ -26,6 +28,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content:space-around;
+        align-items: center;
         padding: 0;
     }
     li{

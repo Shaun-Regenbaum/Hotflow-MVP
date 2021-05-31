@@ -32,7 +32,7 @@
 	}
 
 	button {
-		margin: 20px 0px 0px 7px;
+		margin: 0px 0px 0px 0px;
 		font-size: 20px;
 		padding-top: 10px;
 	}
