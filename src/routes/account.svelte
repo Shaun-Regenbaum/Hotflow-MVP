@@ -24,7 +24,7 @@
         }
         profile = await getProfile(user.id)
         name=profile.name;
-        console.log(profile.owned_links)
+        console.log(profile)
     })
 </script>
 {#if existing}

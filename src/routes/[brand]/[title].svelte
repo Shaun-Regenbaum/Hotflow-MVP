@@ -80,7 +80,6 @@
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
-	import Transaction from '$lib/Consumer/Transaction.svelte';
 	import Notice from '$lib/New_Consumer/Notice.svelte';
 	// Creator:
 	import Details from '$lib/Link/Details.svelte';

@@ -1,15 +1,14 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Logout
+	This component is for logging out, it should be very basic.
 
-		1) position -> does the logout button need to be inline or relative, or just whatev.
-	DESCRIPTION:
-
-    This component is for logging out, it should be very basic.
+	@example
+	<Logout pos="inherit" />
  -->
-<script>
+<script lang='ts'>
 	import supabase from '$lib/db';
 	export let pos = 'inherit'; // to allow the refund button to go in wierd places
-	let promise; // To allow for telling the user about problems with logging out.
+
+	let promise:Promise<{error: globalThis.Error}>; // To allow for telling the user about an error with logging out.
 
 	function submitLogout() {
 		promise = supabase.auth.signOut();

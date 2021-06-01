@@ -1,35 +1,26 @@
-<!-- @component
-	PROPERTIES:
+<!--  @component Refund
 
-		1) purchaserId
-		2) linkId
-		3) sellerId
-		4) amount
-		5) font-size
-	DESCRIPTION:
+	A refund button that triggers a refund transaction to be recorded in the db, and to do balance changes.
 
-    This component is designed to be the refund button. IT NEEDS WORK.
-	
-        1) What they know:
-			a. ?
-        2) What they don't know:
-            a. ?
-        3) What they will want to know:
-            a. ?
+	@example 
+	<Refund purchaserId={purchaser_id} linkId={link_id} sellerId={seller_id} amount={price} fontsize={1} } />
+
  -->
-<script>
+<script lang='ts'>
 	import makeRefund from '$lib/Endpoints/refund';
-	export let purchaserId = '';
-	export let linkId = '';
-	export let sellerId = '';
-	export let amount = 0;
+
+	export let purchaserId:string;
+	export let linkId:string;
+	export let sellerId:string;
+	export let amount:number;
 	export let fontSize = 1;
+
 	let message = '';
 
 	async function refund() {
-		const response = await makeRefund(purchaserId, sellerId, linkId, amount);
-		console.log(response);
-		window.location.href = '../';
+		message = await makeRefund(purchaserId, sellerId, linkId, amount);
+		console.log(message);
+		window.location.href = '../'; //Where do we want to direct to?
 	}
 </script>
 

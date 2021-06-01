@@ -1,11 +1,8 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Profile
+	A component to show the most basic information about a user.
 
-		1) picture -> the picture to show for the consumer(NOT IMPLEMENTED).
-		2) name -> name of user.
-	DESCRIPTION:
-
-	This components contains the most basic information about a user.
+	@example
+	<Profile name={name}/>
  -->
 <script lang="ts">
 	export let name = 'Mr. Anonymous';

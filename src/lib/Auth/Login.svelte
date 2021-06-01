@@ -1,29 +1,31 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Login
+	This contains a form for BOTH login and register and the ability to switch between them.
+	
+	@example
+	<Login login_message={"Log In"} register_message={"Sign Up"} existing={false}
 
-		1) login-message -> message to show in login-button
-		2) register-message -> message to show in register-button
-		3) exsiting -> show login or register form first?
-	TODO:
-		I should probably add forgot password options here.
+	@todo
+	I should probably add forgot password options here.
+	I also need to totally redo the await thingies and how we handle errors.
  -->
-<script>
+<script lang='ts'>
 	import supabase from '$lib/db';
+	import type { PostgrestFilterBuilder } from '@supabase/postgrest-js';
 	import { fade } from 'svelte/transition';
 
 	export let login_message = 'Log In';
 	export let register_message = 'Sign Up';
 	export let existing = false;
 
-	let name = '';
-	let email = '';
-	let password = '';
+	let name:string;
+	let email:string;
+	let password:string;
 
 	// For notifying the user of the status of their request;
 	$: submitted = false;
-	let error_message = '';
-	let promise;
-	let register_promise;
+	let error_message:string;
+	let promise:Promise<any>;
+	let register_promise: PostgrestFilterBuilder<any>;
 
 	// The login action:
 	async function submit_login() {
@@ -54,8 +56,8 @@
 				register_promise = supabase
 					.from('profiles')
 					.insert([{ user_id: user.id, name: name, balance: 0 }]);
-				// Instead of reloading I should be emitting an event
-				location.reload();
+				location.reload(); // Instead of reloading I should be emitting an event
+
 			} else {
 				error_message = error.message;
 				submitted = false; // If there is an error, go back to the form.
