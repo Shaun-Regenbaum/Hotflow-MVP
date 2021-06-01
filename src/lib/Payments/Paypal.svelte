@@ -10,7 +10,7 @@
 	import type { PayPalNamespace } from '@paypal/paypal-js';
 	import { loadScript } from '@paypal/paypal-js';
 	import { onMount } from 'svelte';
-	import supabase from '$lib/db'
+	import supabase from '$lib/db';
 
 	export let price = 0;
 	let value = String(price / 100);
@@ -20,7 +20,7 @@
 		'AWTs40Ro2u2dmymDna1F_2TZzAMo3uWik_Gh1-fL1tR1E6AC6HGiGYNlKJFzIwXTuYcb50Cy3ZfsqUCm';
 
 	onMount(async () => {
-		const user = supabase.auth.user()
+		const user = supabase.auth.user();
 		console.log(user);
 		const paypal: PayPalNamespace = await loadScript({ 'client-id': CLIENT_ID });
 		paypal
@@ -44,13 +44,14 @@
 				onApprove: function (data, actions) {
 					// Capture order after payment approved
 					return actions.order.capture().then(async function (details) {
-						console.log("Check Done")
-						await supabase.from('deposits').insert([
-							{ company: 'paypal', user_id: user.id, amount: price, capture_id: details.id },
+						console.log('Check Done');
+						await supabase
+							.from('deposits')
+							.insert([
+								{ company: 'paypal', user_id: user.id, amount: price, capture_id: details.id }
 							]);
 						alert('Payment successful!');
-						await supabase.rpc('update_balance', {amount: price, user_id: user.id})
-						
+						await supabase.rpc('update_balance', { amount: price, user_id: user.id });
 					});
 				},
 				onError: function (err) {

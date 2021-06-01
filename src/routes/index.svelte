@@ -41,11 +41,14 @@
 			<a href="/landing">Landing Page (WIP)</a>
 		</li>
 	</ul>
-	<p>thinks are not optimized for mobile/desktop and make sure you are logged in to see full functionality.</p>
+	<p>
+		thinks are not optimized for mobile/desktop and make sure you are logged in to see full
+		functionality.
+	</p>
 
 	<button>Sample Button</button>
-	<br>
-	<input placeholder="Sample Input"/>
+	<br />
+	<input placeholder="Sample Input" />
 </body>
 
 <style>

@@ -4,11 +4,11 @@
 	@example
 	<Logout pos="inherit" />
  -->
-<script lang='ts'>
+<script lang="ts">
 	import supabase from '$lib/db';
 	export let pos = 'inherit'; // to allow the refund button to go in wierd places
 
-	let promise:Promise<{error: globalThis.Error}>; // To allow for telling the user about an error with logging out.
+	let promise: Promise<{ error: globalThis.Error }>; // To allow for telling the user about an error with logging out.
 
 	function submitLogout() {
 		promise = supabase.auth.signOut();

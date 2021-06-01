@@ -14,8 +14,8 @@
 	let url =
 		'https://docs.google.com/document/d/e/2PACX-1vT7qXp6doZoEUJVpe8i71Wq1h4yr7Gx23-UpKxJdJHCR_aHAO9DIJM8z4A8k1NgLvEohyX3Rz57yCVG/pub';
 	let title = 'default';
-	let dollars=.1
-	$: price = dollars*100;
+	let dollars = 0.1;
+	$: price = dollars * 100;
 	let promise;
 	async function submit() {
 		const user = supabase.auth.user();
@@ -46,11 +46,10 @@
 			<label for="price">Price</label>
 			<div id="align_together">
 				<span class="currency_symbol">
-					<input type="number" id="amount" name="amount" step="0.01" bind:value={dollars}/>
+					<input type="number" id="amount" name="amount" step="0.01" bind:value={dollars} />
 				</span>
 				<input type="range" name="price" step="0.01" max="10" bind:value={dollars} />
 			</div>
-		
 		</fieldset>
 		<button type="submit"> Monetize </button>
 	</form>
@@ -95,35 +94,31 @@
 		width: 3rem;
 		padding-top: 0px;
 		padding-bottom: 5px;
-
 	}
 	input[type='range'] {
 		appearance: none;
 		width: 10rem;
-		padding-top: 0px;		
+		padding-top: 0px;
 		padding-bottom: 4px;
-
 	}
 	label {
 		color: black;
 	}
-	#align_together{
+	#align_together {
 		display: flex;
 		justify-content: flex-start;
-		
 	}
 
 	.currency_symbol {
-    position: relative;
-}
-.currency_symbol input {
-    padding-left:25px;
-}
-.currency_symbol:before {
-    position: absolute;
-    top: 0px;
-    content:"$";
-    left: 10px;
-}
-	
+		position: relative;
+	}
+	.currency_symbol input {
+		padding-left: 25px;
+	}
+	.currency_symbol:before {
+		position: absolute;
+		top: 0px;
+		content: '$';
+		left: 10px;
+	}
 </style>

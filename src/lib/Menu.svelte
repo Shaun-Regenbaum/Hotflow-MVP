@@ -35,10 +35,10 @@
 		position: absolute;
 		z-index: 1000;
 		top: 0px;
-		left:0;
-		right:0;
-		margin-left: auto; 
-  		margin-right: auto; 
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
 		width: fit-content;
 
 		/* Layout: */
@@ -58,16 +58,16 @@
 		box-shadow: none;
 		border-bottom: rgb(136, 136, 136) dotted 5px;
 	}
-	#minimize:hover, #minimize:active{
+	#minimize:hover,
+	#minimize:active {
 		width: 40px;
 		box-shadow: none;
 	}
 
-	#toolbar{
+	#toolbar {
 		margin: 0 auto;
 	}
 
-	
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
 		#menu {

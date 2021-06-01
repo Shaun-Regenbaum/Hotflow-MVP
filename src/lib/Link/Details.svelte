@@ -20,18 +20,14 @@
             b. Can I undo/refund it?
  -->
 <script>
-	import { onMount } from "svelte";
-
+	import { onMount } from 'svelte';
 
 	export let price = 0;
 	export let clicks = 0;
 	export let refunds = 0;
 	export let refund_policy = 'Full';
 	export let brand = 'Anonymous Inc.';
-
 </script>
-
-
 
 <dl id="details">
 	<section>
@@ -56,14 +52,13 @@
 	</section>
 </dl>
 
-
 <style>
 	#details {
 		/* Layout */
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
-		overflow-y:hidden;
+		overflow-y: hidden;
 		padding-bottom: 0;
 		margin-bottom: -20px;
 		overflow-x: scroll;
@@ -71,7 +66,6 @@
 		border: black solid 3px;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
-
 	}
 	section {
 		/* Design and Layout: */

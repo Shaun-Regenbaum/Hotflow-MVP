@@ -21,8 +21,7 @@
 </script>
 
 {#if brand}
-	<Form brand={brand}/>
+	<Form {brand} />
 {:else}
-	<New/>
+	<New />
 {/if}
-

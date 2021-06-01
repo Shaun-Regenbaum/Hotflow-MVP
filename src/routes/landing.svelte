@@ -29,7 +29,7 @@
 </body>
 
 <style>
-	h1{
+	h1 {
 		font-size: 4rem;
 	}
 	body {
@@ -44,7 +44,7 @@
 		text-align: center;
 	}
 
-	section{
+	section {
 		width: fit-content;
 		margin: 0 auto;
 	}

@@ -12,10 +12,10 @@
 
 	import Refund from '$lib/Consumer/Refund.svelte';
 
-	export let minimized:boolean = true; // Expanded View?
-	export let link_id:string; // For Link Data
-	export let purchaser_id:string; // For Refund
-	let seller_id:string; //For Refund
+	export let minimized: boolean = true; // Expanded View?
+	export let link_id: string; // For Link Data
+	export let purchaser_id: string; // For Refund
+	let seller_id: string; //For Refund
 
 	$: content_type = '📦';
 	$: title = 'Loading...';
@@ -25,7 +25,7 @@
 	$: visible = minimized ? 'none' : '';
 
 	// Update Data when component is created. @todo: Optimize?
-	onMount(async function(){
+	onMount(async function () {
 		const link: Link = await getLink(link_id);
 		title = link.title;
 		brand = link.brand;
@@ -35,7 +35,7 @@
 </script>
 
 <div id="container">
-	<div id="header" on:click={()=> (minimized = !minimized)}>
+	<div id="header" on:click={() => (minimized = !minimized)}>
 		<div id="content_type">
 			<p>{content_type}</p>
 		</div>
@@ -58,24 +58,23 @@
 	<div id="hideable" style="display:{visible}">
 		<div id="refund">
 			<div class="item" id="url">
-				<p>{ '/' + brand + '/' + title}</p>
+				<p>{'/' + brand + '/' + title}</p>
 				<p class="subtitle">Url</p>
 			</div>
-			<Refund purchaserId = {purchaser_id} sellerId ={seller_id} linkId={link_id} amount={price} />
+			<Refund purchaserId={purchaser_id} sellerId={seller_id} linkId={link_id} amount={price} />
 		</div>
 	</div>
 </div>
 
 <style>
-
 	/* General Stuff: */
-	p{
+	p {
 		font-size: 0.7rem;
 	}
 	.item {
 		border-radius: 10px;
 		text-align: center;
-		margin:5px 0;
+		margin: 5px 0;
 		padding-bottom: 5px;
 
 		/* DESIGN: */
@@ -84,7 +83,7 @@
 
 	.subtitle {
 		margin: -10px 0 0 0;
-		padding:0;
+		padding: 0;
 		font-size: 0.3rem;
 	}
 
@@ -104,7 +103,6 @@
 		border: 3px solid black;
 		box-shadow: var(--divot);
 		border-radius: 15px;
-
 	}
 	#header {
 		/* LAYOUT (FLEX): */
@@ -120,26 +118,27 @@
 
 	#content_type {
 		padding-top: 4px;
-		margin-left:5px;
+		margin-left: 5px;
 	}
 	#minimize {
 		/* DESIGN: */
-		margin-right:10px;
+		margin-right: 10px;
 	}
 
-	#url{
+	#url {
 		margin: 0 10px;
-		padding-top:0.5px;
+		padding-top: 0.5px;
 	}
 
 	#amount {
 		/* DESIGN: */
 		background-color: var(--negative);
 	}
-	button{
+	button {
 		padding: 2px 10px;
-}
-	button:hover, button:active{
+	}
+	button:hover,
+	button:active {
 		box-shadow: none;
 	}
 </style>

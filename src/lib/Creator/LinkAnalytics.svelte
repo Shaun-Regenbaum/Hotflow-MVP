@@ -177,15 +177,16 @@
 		font-size: 0.7rem;
 	}
 
-	button{
-	background-color: white;
-	border: 0;
-	border-bottom: 5px solid black;
-	outline: 0;
-	padding: 2px 10px;
-	transition: all .8s ease;
-}
-	button:hover, button:active{
+	button {
+		background-color: white;
+		border: 0;
+		border-bottom: 5px solid black;
+		outline: 0;
+		padding: 2px 10px;
+		transition: all 0.8s ease;
+	}
+	button:hover,
+	button:active {
 		box-shadow: none;
 	}
 </style>

@@ -8,7 +8,7 @@
 	I should probably add forgot password options here.
 	I also need to totally redo the await thingies and how we handle errors.
  -->
-<script lang='ts'>
+<script lang="ts">
 	import supabase from '$lib/db';
 	import type { PostgrestFilterBuilder } from '@supabase/postgrest-js';
 	import { fade } from 'svelte/transition';
@@ -17,14 +17,14 @@
 	export let register_message = 'Sign Up';
 	export let existing = false;
 
-	let name:string;
-	let email:string;
-	let password:string;
+	let name: string;
+	let email: string;
+	let password: string;
 
 	// For notifying the user of the status of their request;
 	$: submitted = false;
-	let error_message:string;
-	let promise:Promise<any>;
+	let error_message: string;
+	let promise: Promise<any>;
 	let register_promise: PostgrestFilterBuilder<any>;
 
 	// The login action:
@@ -57,7 +57,6 @@
 					.from('profiles')
 					.insert([{ user_id: user.id, name: name, balance: 0 }]);
 				location.reload(); // Instead of reloading I should be emitting an event
-
 			} else {
 				error_message = error.message;
 				submitted = false; // If there is an error, go back to the form.
@@ -125,7 +124,11 @@
 			</form>
 		{/if}
 		<!-- The button to switch forms: -->
-		<button id="switch_form" on:click={() => (existing = !existing)} in:fade={{ delay: 50, duration: 500 }}>{existing ? "New User?" : "Already Have an Account?"}</button
+		<button
+			id="switch_form"
+			on:click={() => (existing = !existing)}
+			in:fade={{ delay: 50, duration: 500 }}
+			>{existing ? 'New User?' : 'Already Have an Account?'}</button
 		>
 		<p>{error_message}</p>
 	{:else}
@@ -144,17 +147,17 @@
 </div>
 
 <style>
-	#container{
+	#container {
 		display: block;
 		width: fit-content;
 		margin: 0 auto;
 	}
-	button{
+	button {
 		display: block;
 		margin: 10px auto;
 	}
 
-	#switch_form{
+	#switch_form {
 		font-size: 0.8rem;
 		color: rgb(192, 192, 192);
 		border-bottom: 3px double rgb(192, 192, 192);

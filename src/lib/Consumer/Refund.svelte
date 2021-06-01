@@ -6,13 +6,13 @@
 	<Refund purchaserId={purchaser_id} linkId={link_id} sellerId={seller_id} amount={price} fontsize={1} } />
 
  -->
-<script lang='ts'>
+<script lang="ts">
 	import makeRefund from '$lib/Endpoints/refund';
 
-	export let purchaserId:string;
-	export let linkId:string;
-	export let sellerId:string;
-	export let amount:number;
+	export let purchaserId: string;
+	export let linkId: string;
+	export let sellerId: string;
+	export let amount: number;
 	export let fontSize = 1;
 
 	let message = '';

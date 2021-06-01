@@ -76,7 +76,7 @@
 	});
 	// Components:
 	import Menu from '$lib/Menu.svelte';
-	import Menu_Nav from '$lib/Random_Components/Menu_Nav.svelte'
+	import Menu_Nav from '$lib/Random_Components/Menu_Nav.svelte';
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
@@ -91,36 +91,34 @@
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 
-export let minimized2 = false;
+	export let minimized2 = false;
 
-
-onMount(() => {
-	minimized = false;
-	setTimeout(() => (minimized2 = true), 7000);
-});
+	onMount(() => {
+		minimized = false;
+		setTimeout(() => (minimized2 = true), 7000);
+	});
 </script>
 
 {#if !minimized2}
-	<div id=details on:click="{() => minimized2 = true}"> 
-	<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
+	<div id="details" on:click={() => (minimized2 = true)}>
+		<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
 	</div>
 {/if}
 
-
 {#if permission}
 	<Menu minimized={true}>
-			<Menu_Nav/>
-			<Profile name={userName} />
-			<Refund
-				purchaserId={userId}
-				linkId={link.link_id}
-				sellerId={link.owner_id}
-				amount={link.price}
-			/>
+		<Menu_Nav />
+		<Profile name={userName} />
+		<Refund
+			purchaserId={userId}
+			linkId={link.link_id}
+			sellerId={link.owner_id}
+			amount={link.price}
+		/>
 	</Menu>
 {:else if newUser}
 	<Menu minimized={false}>
-			<Notice />
+		<Notice />
 		<div id="login">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
 		</div>
@@ -138,15 +136,16 @@ onMount(() => {
 		right: 0;
 	}
 
-	#login{
+	#login {
 		width: fit-content;
-		margin: 0 auto;	}
-	#details{
+		margin: 0 auto;
+	}
+	#details {
 		position: absolute;
 		bottom: 0;
-		left:0;
+		left: 0;
 		z-index: 500;
 		background-color: white;
-		width:100%;
+		width: 100%;
 	}
 </style>
