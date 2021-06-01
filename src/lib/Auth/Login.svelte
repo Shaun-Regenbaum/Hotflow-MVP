@@ -136,8 +136,8 @@
 			<p>{user ? 'Done!' : error.message}</p>
 			{#await register_promise}
 				<p>Creating Your Profile</p>
-			{:then { user, error }}
-				<p>{user ? 'Done!' : error.message}</p>
+			{:then { data, error }}
+				<p>{data ? 'Done!' : error.message}</p>
 			{/await}
 		{/await}
 	{/if}
