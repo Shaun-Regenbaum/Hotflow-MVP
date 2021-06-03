@@ -6,7 +6,10 @@
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"format": "prettier --write --plugin-search-dir=. .",
+		"testrunner": "cypress open",
+		"test": "cypress run --record --key 9bafca8e-7062-4f98-80a0-742b8d1c504e"
+		
 	},
 	"devDependencies": {
 		"@paypal/paypal-js": "^3.1.10",
