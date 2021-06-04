@@ -1,4 +1,5 @@
 {
   "pluginsFile": false,
-  "projectId": "m3wags"
+  "projectId": "m3wags",
+  "baseUrl": "http://localhost:3000"
 }

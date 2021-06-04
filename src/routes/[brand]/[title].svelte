@@ -95,15 +95,8 @@
 
 	onMount(() => {
 		minimized = false;
-		setTimeout(() => (minimized2 = true), 7000);
 	});
 </script>
-
-{#if !minimized2}
-	<div id="details" on:click={() => (minimized2 = true)}>
-		<Details price={link.price} brand={link.brand} clicks={link.clicks} refunds={link.refunds} />
-	</div>
-{/if}
 
 {#if permission}
 	<Menu minimized={true}>
