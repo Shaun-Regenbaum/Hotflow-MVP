@@ -46,14 +46,17 @@
 	// Client-Side Mounting
 	import { checkOwnership, getProfile } from '$lib/Endpoints/profile';
 	import { makePurchase } from '$lib/Endpoints/purchase';
+	import makeRefund from '$lib/Endpoints/refund';
 	import { onMount } from 'svelte';
 	let purchased = false;
 	let userBalance = 40;
 	let userName = 'Mr.Anonymous';
+	let user;
 	let userId;
 
 	// State Management:
-	let showLogin= false;
+	let showRegistration= false;
+	let showLogIn = false;
 	let newUser = false;
 	let minimized = false;
 
@@ -67,17 +70,29 @@
 				userBalance = result.balance;
 				userName = result.name;
 			});
-			purchased = await checkOwnership(link.link_id, user.id);
-			if (!purchased) {
+			tryPurchase();
+		} else {
+			newUser = true;
+		}
+	});
+
+	async function tryPurchase(){
+		const user = supabase.auth.user();
+		purchased = await checkOwnership(link.link_id, user.id);
+		if (!purchased) {
 				// This step is to not have to do a live reload to get an accurate balance.
 				userBalance = userBalance - link.price;
 				makePurchase(user.id, link.owner_id, link.link_id, link.price);
 				purchased = true; //This could be a problem as were are setting purchased to true before the promise resolves and the purchase is made.
 			}
-		} else {
-			newUser = true;
-		}
-	});
+	}
+	async function refund() {
+		userBalance = userBalance + link.price;
+		const user = supabase.auth.user();
+		await makeRefund(user.id, link.owner_id, link.link_id, link.price);
+		purchased = false;
+		console.log(purchased);
+	}
 
 	// Components:
 	import Menu from '$lib/Menu.svelte';
@@ -89,7 +104,8 @@
 	// Creator:
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	// Auth:
-	import Login from '$lib/Auth/Login.svelte';
+	import Login2 from '$lib/Auth/Login2.svelte';
+	import Register from '$lib/Auth/Register.svelte';
 
 	// Blurring based on purchased:
 	$: blur = purchased
@@ -100,18 +116,33 @@
 	onMount(() => {
 		minimized = false;
 	});
+
+	function handle_auth(){
+		newUser = false;
+		tryPurchase();
+	}
 </script>
 
+{#key purchased}
 {#if newUser}
 <Menu minimized={false}>
-	{#if showLogin}
-	<Login/>
+	{#if showRegistration}
+	<section>
+		{#if showLogIn}
+		<h3 style="font-size: 1.3rem; text-align:center;">Log In to see the content of <b>{link.brand}</b>:</h3>
+		<Login2 on:logged_in={handle_auth}/>
+		{:else}
+		<h3 style="font-size: 1.3rem; text-align:center;">Register and support <b>{link.brand}</b>:</h3>
+		<Register on:registered={handle_auth}/>
+		{/if}
+		<button id="switch_forms" on:click={() => (showLogIn=!showLogIn)}>{showLogIn ? "Dont have an acount?" : "Already have an Account?"}</button>
+	</section>
 	{:else}
 	<section style="margin: 20px 10px;">
 		<Blurb brand_name={link.brand} />
 	</section>
 	<section>
-		<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={() => (showLogin=true)}/>
+		<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={() => (showRegistration=true)}/>
 	</section>
 	{/if}
 </Menu>
@@ -119,14 +150,22 @@
 	<Menu minimized={true}>
 		<Menu_Nav />
 		<Profile name={userName} />
-		<Refund
-			purchaser_id={userId}
-			link_id={link.link_id}
-			seller_id={link.owner_id}
-			amount={link.price}
-		/>
+		<button on:click={refund}>
+            Refund ${Number(link.price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}
+        </button>
 	</Menu>
+{:else}
+	<Menu minimized={false}>
+		<section style="margin: 20px 10px;">
+			<Blurb brand_name={link.brand} />
+		</section>
+		<section>
+			<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={tryPurchase} on:refund={refund} />
+		</section>
+	</Menu>
+
 {/if}
+{/key}
 
 <iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
 
@@ -137,6 +176,13 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
+	}
+
+	#switch_forms{
+		font-size: 0.7rem; 
+		border-bottom: 2px solid black; 
+		display: block;
+		margin: 0 auto;
 	}
 
 </style>

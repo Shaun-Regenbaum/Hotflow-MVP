@@ -20,7 +20,6 @@
 	async function refund() {
 		message = await makeRefund(purchaser_id, seller_id, link_id, amount);
 		console.log(message);
-		window.location.href = '../'; //Where do we want to direct to?
 	}
 </script>
 
