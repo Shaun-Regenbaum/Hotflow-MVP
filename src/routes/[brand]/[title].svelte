@@ -109,6 +109,7 @@
 	// Auth:
 	import Login2 from '$lib/Auth/Login2.svelte';
 	import Register from '$lib/Auth/Register.svelte';
+import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
 
 	// Blurring based on purchased:
 	$: blur = purchased
@@ -151,6 +152,7 @@
 </Menu>
 {:else if purchased}
 	<Menu minimized={true}>
+		<MenuNav minimized={minimized}/>
 		{#if showHistory}
 		<History purchases={userPurchases}/>
 		{:else}

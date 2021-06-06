@@ -1,8 +1,15 @@
+<!-- @component Purchase
+	This is a navigation header.
+
+	@example 
+	<Menu_Nav minimized={true} />
+ -->
 <script>
 	import Logout from '$lib/Auth/Logout.svelte';
+	export let minimized=true;
 </script>
 
-<nav>
+<nav style="display:{minimized}">
 	<ul>
 		<li>
 			<button><a href="/account">Account</a></button>
@@ -18,11 +25,14 @@
 
 <style>
 	nav {
-		/* Nuero: */
-		box-shadow: var(--divot);
-		border-radius: 20px;
-		padding: 5px;
-		margin: 0 10px;
+		position: relative;
+		top: -30px;
+		z-index: 500;
+		background-color: white;
+		border: 3px solid black;
+		width:fit-content;
+		margin: 0 auto;
+		border-radius: 10px;
 	}
 	ul {
 		display: flex;
@@ -30,9 +40,10 @@
 		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: center;
-		padding: 0;
+		padding-left:0;
 	}
 	li {
 		display: inline;
+		margin: 0 10px;
 	}
 </style>
