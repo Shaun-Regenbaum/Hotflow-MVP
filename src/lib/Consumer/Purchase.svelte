@@ -59,6 +59,8 @@
 		/* SIZING: */
 		width: 300px;
 		max-width: 700px;
+		/* To make room for scrollbar: */
+		margin-right:10px;
 
 		/* DESIGN: */
 		border: 2px solid rgb(163, 163, 163);

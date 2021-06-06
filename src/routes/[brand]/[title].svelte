@@ -158,7 +158,7 @@
 			<p style="text-align:center">You Purchased this content. <button on:click={()=> (showHistory=true)} id="history"><u>History.</u></button></p>
 		</section>
 		<section>
-			<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={() => (showRegistration=true)}/>
+			<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={tryPurchase} on:refund={refund}/>
 		</section>
 		{/if}
 	</Menu>
