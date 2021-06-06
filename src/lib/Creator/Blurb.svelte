@@ -1,33 +1,27 @@
-<!-- @component
-	PROPERTIES:
+<!--  @component Blurb
 
-		1) picture -> the picture to show for content-creator (NOT IMPLEMENTED).
-		2) brand -> name of content creator to show.
-	DESCRIPTION:
+	A small component that contains minimal information about the creator of some content on a page. It requires data from the parent, aka does NOT make its own API calls. 
 
-    This component is designed to show up for whenever a user needs to login or register:
+	@example 
+	<Blurn brand_name={brand} supporters={supporters}/>
 
-        1) What they know:
-            a. The basics of what login/registration is.
-        2) What they don't know:
-            a. What is behind the login/registration (TODO as contextually dependant).
-            b. What will be done with the information provided.
-        3) What they will want to know:
-            a. What information can they use to login/register?
-            b. Forgot Password/Account?
  -->
 <script>
-	export let brand = 'Mr. Anonymous';
+	export let brand_name = 'Mr. Anonymous';
+	export let supporters = 100;
 </script>
 
 <div id="container">
 	<div id="picture" />
-	<div id="brand">{brand}</div>
+	<div id="details_container">
+		<p style="font-size: 1.2rem;">{brand_name}</p>
+		<p style="font-size: 0.8rem;">{supporters} Supporters</p>
+	</div>
 </div>
 
 <style>
 	:root {
-		--pic-length: 50px;
+		--pic-length: 3rem;
 	}
 	#container {
 		/* Layout */
@@ -37,35 +31,30 @@
 
 		/* Positionging: */
 		justify-content: flex-start;
-		min-width: 200px;
+		margin-left: 30px;
+	}
+
+	#details_container {
+		/* Layout */
+		display: flex;
+		flex-direction: column;
+
+		/* Positionging: */
+		justify-content: left;
 		margin-left: 30px;
 	}
 	#picture {
+		/* Positionging: */
+		align-self: center;
+
 		/* Picture Size and shape: */
 		width: var(--pic-length);
 		height: var(--pic-length);
 		border-radius: 100%;
-		background-color: var(--bg);
-
-		/* Nuero: */
-		box-shadow: var(--divot);
+		background-color: burlywood;
 	}
-	#brand {
-		align-self: center;
-		padding: 10px;
-		margin: 10px;
-
-		/* Nuero: */
-		box-shadow: var(--divot);
-		border-radius: 20px;
-	}
-	#purchase {
-		align-self: center;
-		padding: 10px;
-		margin-right: 40px;
-
-		/* Nuero: */
-		box-shadow: var(--divot);
-		border-radius: 20px;
+	p {
+		font-size: 1.2rem;
+		margin: 0.25rem 0;
 	}
 </style>

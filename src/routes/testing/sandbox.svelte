@@ -1,12 +1,10 @@
 <script>
-	import Balance from '$lib/Account/Balance.svelte';
+	import Blurb from '$lib/Creator/Blurb.svelte';
 	import Deposit from '$lib/Account/Deposit.svelte';
 </script>
 
-
-
 <div class="testing">
-	<Balance />
+	<Blurb />
 </div>
 <br />
 <div class="testing">
@@ -15,11 +13,11 @@
 <br />
 
 <style>
-.testing {
-	background: rgba(0, 128, 0, 0);
-	padding: 1rem;
-	border: 4px solid rgb(248, 233, 20);
-	overflow: auto;
-	resize: both;
-}
+	.testing {
+		background: rgba(0, 128, 0, 0);
+		padding: 1rem;
+		border: 4px solid rgb(248, 233, 20);
+		overflow: auto;
+		resize: both;
+	}
 </style>

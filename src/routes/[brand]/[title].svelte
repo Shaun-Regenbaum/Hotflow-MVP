@@ -80,9 +80,6 @@
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
-	import Notice from '$lib/New_Consumer/Notice.svelte';
-	// Creator:
-	import Details from '$lib/Link/Details.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
 
@@ -111,7 +108,6 @@
 	</Menu>
 {:else if newUser}
 	<Menu minimized={false}>
-		<Notice />
 		<div id="login">
 			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
 		</div>
