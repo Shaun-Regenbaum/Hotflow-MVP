@@ -35,7 +35,7 @@
 			if (user) {
 				const { data:profiles, error } = await supabase
 					.from('profiles')
-					.insert([{ user_id: user.id, name: name, balance: 0.40 }]);
+					.insert([{ user_id: user.id, name: name, balance: 40 }]);
                 if (profiles){
                     dispatch('registered')
                 }
