@@ -128,7 +128,22 @@ import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
 </script>
 
 {#key purchased}
-{#if newUser}
+{#if purchased}
+<Menu minimized={true}>
+	<MenuNav minimized={minimized}/>
+	{#if showHistory}
+	<History purchases={userPurchases}/>
+	{:else}
+	<section style="margin: 20px 10px;">
+		<p style="text-align:center">You Purchased this content. <button on:click={()=> (showHistory=true)} id="history"><u>History.</u></button></p>
+	</section>
+	<section>
+		<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={tryPurchase} on:refund={refund}/>
+	</section>
+	{/if}
+</Menu>
+
+{:else if newUser}
 <Menu minimized={false}>
 	{#if showRegistration}
 	<section>
@@ -150,22 +165,8 @@ import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
 	</section>
 	{/if}
 </Menu>
-{:else if purchased}
-	<Menu minimized={true}>
-		<MenuNav minimized={minimized}/>
-		{#if showHistory}
-		<History purchases={userPurchases}/>
-		{:else}
-		<section style="margin: 20px 10px;">
-			<p style="text-align:center">You Purchased this content. <button on:click={()=> (showHistory=true)} id="history"><u>History.</u></button></p>
-		</section>
-		<section>
-			<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={tryPurchase} on:refund={refund}/>
-		</section>
-		{/if}
-	</Menu>
 {:else}
-	<Menu minimized={false}>
+	<Menu minimized={true}>
 		<section style="margin: 20px 10px;">
 			<Blurb brand_name={link.brand} />
 		</section>
