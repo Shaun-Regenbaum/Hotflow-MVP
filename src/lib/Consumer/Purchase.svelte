@@ -33,9 +33,7 @@
 
 <div id="container">
 	<p id="content_type">{content_type}</p>
-	<a href={origin+ '\\' + brand + '\\' + title}
-				>{title}</a
-				>
+	<a href={origin+ '\\' + brand + '\\' + title}>{title}</a>
 	<p id="amount">- ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 </div>
 

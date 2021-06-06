@@ -1,3 +1,13 @@
+<!-- @component Content_Page
+	The Structure of this page will work as such:
+		1) On Load, we will get info about the page/content the user is requesting. 
+		2) On Mount (meaning before any components are loaded), we will check if a user is logged in.
+		3) Then, we'll check if they have already purchased this content.
+		4) If not, we will automatically purchase it for them.
+	
+	Other than that, there are six states for this component. Where should we manage all those states?
+
+ -->
 <!-- The Structure of this page will work as such:
 1) On Load, we will get info about the page/content the user is requesting. 
 2) On Mount (meaning before any components are loaded), we will check if a user is logged in.
@@ -109,7 +119,7 @@
 	// Auth:
 	import Login2 from '$lib/Auth/Login2.svelte';
 	import Register from '$lib/Auth/Register.svelte';
-import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
+	import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
 
 	// Blurring based on purchased:
 	$: blur = purchased
@@ -128,9 +138,8 @@ import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
 </script>
 
 {#key purchased}
-{#if purchased}
+{#if !newUser}
 <Menu minimized={true}>
-	<MenuNav minimized={minimized}/>
 	{#if showHistory}
 	<History purchases={userPurchases}/>
 	{:else}

@@ -1,22 +1,20 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Links
+	The container for all the different links a given creator owns, takes in an array of link_ids
 
-    1) purchases 
-
-    2) purchaser_id
-
+	@example 
+	<Histroy owned={owned_links} />
  -->
 <script>
 	import LinkAnalytics from '$lib/Creator/LinkAnalytics.svelte';
 	export let owned;
 </script>
 
+<h3>Content History:</h3>
 <div id="container">
-	<h3>Purchase History:</h3>
 	{#if owned}
 		{#each owned as link_id}
-			<div id="purchase_container">
-				<LinkAnalytics minimized={true} linkId={link_id} />
+			<div id="link_container">
+				<LinkAnalytics minimized={true} {link_id} />
 			</div>
 		{/each}
 	{:else}
@@ -28,10 +26,14 @@
 	#container {
 		width: fit-content;
 		margin: 0 auto;
-		border: 3px soldi black;
 		text-align: center;
+		max-height: 25vh;
+		overflow-y: scroll;
 	}
-	#purchase_container {
+	#link_container {
 		margin-bottom: 10px;
+	}
+	h3{
+		text-align: center;
 	}
 </style>

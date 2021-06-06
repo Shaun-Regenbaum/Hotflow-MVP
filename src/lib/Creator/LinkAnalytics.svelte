@@ -8,21 +8,25 @@
  -->
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { slide } from 'svelte/transition';
 
 	import type { Link } from '$lib/Docs/types';
 	import { getLink } from '$lib/Endpoints/links';
+	import { browser } from '$app/env';
 
 	export let minimized = false;
-	export let linkId;
+	export let link_id: string; // For Link Data
 
-	let content_type = 'PDF';
-	let title = 'Loading...';
-	let payments = 0;
-	let clicks = 0;
-	let refunds = 0;
-	let price = 0;
-
+	let origin="402.netlify.app"
+	if (browser){
+		origin=location.origin;
+	}
+	$: content_type = '📦';
+	$: title = 'Loading...';
+	$: brand = '...';
+	$: price = 0;
+	$: payments = 0;
+	$: clicks = 0;
+	$: refunds = 0;
 	$: total = (payments - refunds) * price;
 	$: visible = minimized ? 'none' : '';
 
@@ -31,23 +35,20 @@
 	}
 
 	onMount(async () => {
-		const link: Link = await getLink(linkId);
+		const link: Link = await getLink(link_id);
 		title = link.title;
 		payments = link.payments;
 		clicks = link.clicks;
 		refunds = link.refunds;
 		price = link.price;
+		brand = link.brand;
 	});
 </script>
 
-<div class="container" in:slide={{ duration: 500 }}>
+<div class="container">
 	<div class="header" on:click={minimize}>
-		<div class="type">
-			<p>{content_type}</p>
-		</div>
-		<div class="email">
-			<p>{title}</p>
-		</div>
+		<p id="content_type">{content_type}</p>
+		<a href={origin+ '\\' + brand + '\\' + title}>{title}</a>
 		<div class="minimize">
 			<button style="transform: rotate( {minimized ? '360deg' : '0deg'});" />
 		</div>
@@ -80,20 +81,20 @@
 		flex-wrap: wrap;
 
 		/* SIZING: */
-		min-width: 250px;
+		width: 300px;
 		max-width: 700px;
+		/* To make room for scrollbar: */
+		margin-right:10px;
 
 		/* DESIGN: */
-		border: 3px solid black;
-		box-shadow: var(--divot);
-		border-radius: 15px;
+		border: 2px solid rgb(163, 163, 163);
+		border-radius: 10px;
 	}
 	.header {
 		/* LAYOUT (GRID): */
 		display: flex;
-		justify-content: space-between;
-		padding: 10px 20px 10px 20px;
-	}
+		justify-content: space-around;
+		align-items: baseline;	}
 
 	.hideable {
 		/* LAYOUT (GRID): */
@@ -110,20 +111,6 @@
 		/* DESIGN: */
 		box-shadow: var(--divot);
 		border-radius: 25px;
-	}
-	.email {
-		text-align: center;
-		flex-grow: 1;
-
-		/* DESIGN: */
-		box-shadow: var(--divot);
-		border-radius: 25px;
-		margin-left: 20px;
-		margin-right: 20px;
-	}
-	.minimize {
-		/* DESIGN: */
-		margin-top: 8px;
 	}
 
 	#payed {
@@ -180,7 +167,8 @@
 	button {
 		background-color: white;
 		border: 0;
-		border-bottom: 5px solid black;
+		border-radius:0;
+		border-top: 5px solid black;
 		outline: 0;
 		padding: 2px 10px;
 		transition: all 0.8s ease;

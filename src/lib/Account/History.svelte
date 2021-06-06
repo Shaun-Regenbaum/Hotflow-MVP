@@ -25,7 +25,6 @@
 	#container {
 		width: fit-content;
 		margin: 0 auto;
-		border: 3px soldi black;
 		text-align: center;
 		max-height: 25vh;
 		overflow-y: scroll;
