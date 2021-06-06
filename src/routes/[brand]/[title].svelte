@@ -88,7 +88,6 @@
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 
-	export let minimized2 = false;
 
 	onMount(() => {
 		minimized = false;
@@ -100,9 +99,9 @@
 		<Menu_Nav />
 		<Profile name={userName} />
 		<Refund
-			purchaserId={userId}
-			linkId={link.link_id}
-			sellerId={link.owner_id}
+			purchaser_id={userId}
+			link_id={link.link_id}
+			seller_id={link.owner_id}
 			amount={link.price}
 		/>
 	</Menu>
@@ -128,13 +127,5 @@
 	#login {
 		width: fit-content;
 		margin: 0 auto;
-	}
-	#details {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		z-index: 500;
-		background-color: white;
-		width: 100%;
 	}
 </style>

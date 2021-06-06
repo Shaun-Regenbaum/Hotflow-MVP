@@ -31,7 +31,6 @@
 
 		/* Positionging: */
 		justify-content: flex-start;
-		margin-left: 30px;
 	}
 
 	#details_container {
@@ -54,7 +53,6 @@
 		background-color: burlywood;
 	}
 	p {
-		font-size: 1.2rem;
 		margin: 0.25rem 0;
 	}
 </style>
