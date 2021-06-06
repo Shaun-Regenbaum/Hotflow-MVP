@@ -37,19 +37,23 @@
 <script lang="ts">
 	// Loaded Properties:
 	export let link: Link = {
-		brand: 'Anonymous Inc.',
+		brand: 'Anonymous Brand Inc.',
 		title: 'The Faraway Tree',
 		owner_id: null,
 		price: 0
 	};
+
 	// Client-Side Mounting
 	import { checkOwnership, getProfile } from '$lib/Endpoints/profile';
 	import { makePurchase } from '$lib/Endpoints/purchase';
 	import { onMount } from 'svelte';
-	let permission = false;
-	let userBalance = 0;
+	let purchased = false;
+	let userBalance = 40;
 	let userName = 'Mr.Anonymous';
 	let userId;
+
+	// State Management:
+	let showLogin= false;
 	let newUser = false;
 	let minimized = false;
 
@@ -63,28 +67,32 @@
 				userBalance = result.balance;
 				userName = result.name;
 			});
-			permission = await checkOwnership(link.link_id, user.id);
-			if (!permission) {
+			purchased = await checkOwnership(link.link_id, user.id);
+			if (!purchased) {
 				// This step is to not have to do a live reload to get an accurate balance.
 				userBalance = userBalance - link.price;
 				makePurchase(user.id, link.owner_id, link.link_id, link.price);
-				permission = true; //This could be a problem as were are setting permission to true before the promise resolves and the purchase is made.
+				purchased = true; //This could be a problem as were are setting purchased to true before the promise resolves and the purchase is made.
 			}
 		} else {
 			newUser = true;
 		}
 	});
+
 	// Components:
 	import Menu from '$lib/Menu.svelte';
 	import Menu_Nav from '$lib/Random_Components/Menu_Nav.svelte';
 	// Consumer:
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
+	import Balance_Card from '$lib/Consumer/Balance_Card.svelte';
+	// Creator:
+	import Blurb from '$lib/Creator/Blurb.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
 
-	// Blurring based on permission:
-	$: blur = permission
+	// Blurring based on purchased:
+	$: blur = purchased
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 
@@ -94,7 +102,20 @@
 	});
 </script>
 
-{#if permission}
+{#if newUser}
+<Menu minimized={false}>
+	{#if showLogin}
+	<Login/>
+	{:else}
+	<section style="margin: 20px 10px;">
+		<Blurb brand_name={link.brand} />
+	</section>
+	<section>
+		<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={() => (showLogin=true)}/>
+	</section>
+	{/if}
+</Menu>
+{:else if purchased}
 	<Menu minimized={true}>
 		<Menu_Nav />
 		<Profile name={userName} />
@@ -105,13 +126,7 @@
 			amount={link.price}
 		/>
 	</Menu>
-{:else if newUser}
-	<Menu minimized={false}>
-		<div id="login">
-			<Login login_message={'Purchase'} register_message={'Purchase'} existing={false} />
-		</div>
-	</Menu>
-{/if}\
+{/if}
 
 <iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
 
@@ -124,8 +139,4 @@
 		right: 0;
 	}
 
-	#login {
-		width: fit-content;
-		margin: 0 auto;
-	}
 </style>

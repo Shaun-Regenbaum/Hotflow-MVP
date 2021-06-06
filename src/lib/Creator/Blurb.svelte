@@ -3,11 +3,11 @@
 	A small component that contains minimal information about the creator of some content on a page. It requires data from the parent, aka does NOT make its own API calls. 
 
 	@example 
-	<Blurn brand_name={brand} supporters={supporters}/>
+	<Blurn brand_name={Mr. Anonymous} supporters={supporters}/>
 
  -->
 <script>
-	export let brand_name = 'Mr. Anonymous';
+	export let brand_name = 'Anonymous Brand Inc.';
 	export let supporters = 100;
 </script>
 
