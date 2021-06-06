@@ -53,10 +53,12 @@
 	let userName = 'Mr.Anonymous';
 	let user;
 	let userId;
+	let userPurchases;
 
 	// State Management:
 	let showRegistration= false;
 	let showLogIn = false;
+	let showHistory = false;
 	let newUser = false;
 	let minimized = false;
 
@@ -69,6 +71,7 @@
 			getProfile(user.id).then(function (result) {
 				userBalance = result.balance;
 				userName = result.name;
+				userPurchases = result.purchased_links;
 			});
 			tryPurchase();
 		} else {
@@ -98,7 +101,6 @@
 	import Menu from '$lib/Menu.svelte';
 	import Menu_Nav from '$lib/Random_Components/Menu_Nav.svelte';
 	// Consumer:
-	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
 	import Balance_Card from '$lib/Consumer/Balance_Card.svelte';
 	import History from '$lib/Account/History.svelte'
@@ -149,11 +151,16 @@
 </Menu>
 {:else if purchased}
 	<Menu minimized={true}>
-		<Menu_Nav />
-		<Profile name={userName} />
-		<button on:click={refund}>
-            Refund ${Number(link.price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}
-        </button>
+		{#if showHistory}
+		<History purchases={userPurchases}/>
+		{:else}
+		<section style="margin: 20px 10px;">
+			<p style="text-align:center">You Purchased this content. <button on:click={()=> (showHistory=true)} id="history"><u>History.</u></button></p>
+		</section>
+		<section>
+			<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={() => (showRegistration=true)}/>
+		</section>
+		{/if}
 	</Menu>
 {:else}
 	<Menu minimized={false}>
@@ -185,5 +192,15 @@
 		display: block;
 		margin: 0 auto;
 	}
+	#history, #history:hover{
+		border: none;
+		padding: 0px;
+		box-shadow: none;
+		color: rgb(189, 189, 189);
+		font-size: 1rem;
+	}
 
+	#history:hover{
+		color: blue;
+	}
 </style>
