@@ -2,28 +2,25 @@
 	Showing relevant data for ONE PURCHASE of a single link tied to a given user.
 
 	@example 
-	<Purchase minimized={true} linkId={link_id} />
+	<Purchase link_id={link_id} />
  -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 
 	import type { Link } from '$lib/Docs/types';
 	import { getLink } from '$lib/Endpoints/links';
+	import { browser } from '$app/env';
 
-	import Refund from '$lib/Consumer/Refund.svelte';
-
-	export let minimized: boolean = true; // Expanded View?
 	export let link_id: string; // For Link Data
-	export let purchaser_id: string; // For Refund
 	let seller_id: string; //For Refund
-
+	let origin="402.netlify.app"
+	if (browser){
+		origin=location.origin;
+	}
 	$: content_type = '📦';
 	$: title = 'Loading...';
 	$: brand = 'Loading...';
 	$: price = 0;
-
-	$: visible = minimized ? 'none' : '';
-
 	// Update Data when component is created. @todo: Optimize?
 	onMount(async function () {
 		const link: Link = await getLink(link_id);
@@ -35,110 +32,41 @@
 </script>
 
 <div id="container">
-	<div id="header" on:click={() => (minimized = !minimized)}>
-		<div id="content_type">
-			<p>{content_type}</p>
-		</div>
-		<div class="item">
-			<p>{title}</p>
-			<p class="subtitle">Title</p>
-		</div>
-		<div class="item" id="brand">
-			<p>{brand}</p>
-			<p class="subtitle">Creator</p>
-		</div>
-		<div class="item" id="amount">
-			<p>${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
-			<p class="subtitle">Price</p>
-		</div>
-		<div id="minimize">
-			<button style="transform: rotate( {minimized ? '360deg' : '0deg'});" />
-		</div>
-	</div>
-	<div id="hideable" style="display:{visible}">
-		<div id="refund">
-			<div class="item" id="url">
-				<p>{'/' + brand + '/' + title}</p>
-				<p class="subtitle">Url</p>
-			</div>
-			<Refund purchaserId={purchaser_id} sellerId={seller_id} linkId={link_id} amount={price} />
-		</div>
-	</div>
+	<p id="content_type">{content_type}</p>
+	<a href={origin+ '\\' + brand + '\\' + title}
+				>{title}</a
+				>
+	<p id="amount">- ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 </div>
 
 <style>
 	/* General Stuff: */
 	p {
-		font-size: 0.7rem;
+		font-size: 1rem;
+		margin: 8px 0;
 	}
-	.item {
-		border-radius: 10px;
-		text-align: center;
-		margin: 5px 0;
-		padding-bottom: 5px;
-
-		/* DESIGN: */
-		box-shadow: var(--divot);
-	}
-
-	.subtitle {
-		margin: -10px 0 0 0;
-		padding: 0;
-		font-size: 0.3rem;
-	}
-
 	/* Specific Stuff: */
 
 	#container {
 		/* LAYOUT (FLEX): */
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: baseline;
+
 
 		/* SIZING: */
 		width: 300px;
 		max-width: 700px;
 
 		/* DESIGN: */
-		border: 3px solid black;
-		box-shadow: var(--divot);
-		border-radius: 15px;
-	}
-	#header {
-		/* LAYOUT (FLEX): */
-		display: flex;
-		justify-content: space-between;
-	}
-	#hideable {
-		/* LAYOUT (GRID): */
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-	}
-
-	#content_type {
-		padding-top: 4px;
-		margin-left: 5px;
-	}
-	#minimize {
-		/* DESIGN: */
-		margin-right: 10px;
-	}
-
-	#url {
-		margin: 0 10px;
-		padding-top: 0.5px;
+		border: 2px solid rgb(163, 163, 163);
+		border-radius: 10px;
 	}
 
 	#amount {
 		/* DESIGN: */
-		background-color: var(--negative);
-	}
-	button {
-		padding: 2px 10px;
-	}
-	button:hover,
-	button:active {
-		box-shadow: none;
+		color: var(--negative);
 	}
 </style>

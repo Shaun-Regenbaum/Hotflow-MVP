@@ -101,6 +101,7 @@
 	import Refund from '$lib/Consumer/Refund.svelte';
 	import Profile from '$lib/Consumer/Profile.svelte';
 	import Balance_Card from '$lib/Consumer/Balance_Card.svelte';
+	import History from '$lib/Account/History.svelte'
 	// Creator:
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	// Auth:

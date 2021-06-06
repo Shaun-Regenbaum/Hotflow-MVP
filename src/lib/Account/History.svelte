@@ -1,28 +1,24 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Purchase
+	The container for all the different purchases a given user has made, takes in a list of link+ids
 
-    1) purchases 
-
-    2) purchaser_id
-
+	@example 
+	<Histroy purchases={purchase_history} />
  -->
 <script>
 	import Purchase from '$lib/Consumer/Purchase.svelte';
 	export let purchases;
-	export let purchaser_id;
 </script>
 
+<h3>Purchase History:</h3>
 <div id="container">
-	<h3>Purchase History:</h3>
-	{#if purchases}
 		{#each purchases as link_id}
 			<div id="purchase_container">
-				<Purchase {link_id} {purchaser_id} />
+				<Purchase {link_id}/>
 			</div>
+		{:else}
+		<p>No Purchasde History</p>
 		{/each}
-	{:else}
-		<p>No Purchase History.</p>
-	{/if}
+
 </div>
 
 <style>
@@ -31,8 +27,14 @@
 		margin: 0 auto;
 		border: 3px soldi black;
 		text-align: center;
+		max-height: 25vh;
+		overflow-y: scroll;
 	}
 	#purchase_container {
 		margin-bottom: 10px;
+	}
+
+	h3{
+		text-align: center;
 	}
 </style>
