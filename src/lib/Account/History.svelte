@@ -16,7 +16,7 @@
 				<Purchase {link_id}/>
 			</div>
 		{:else}
-		<p>No Purchasde History</p>
+		<p>No Purchase History (recent purchases can take a minute to load...)</p>
 		{/each}
 
 </div>

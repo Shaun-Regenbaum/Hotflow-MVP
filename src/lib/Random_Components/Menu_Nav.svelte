@@ -25,9 +25,9 @@
 
 <style>
 	nav {
-		position: relative;
-		top: -30px;
-		z-index: 500;
+		position: absolute;
+		top: -85px;
+		left: 10%;
 		background-color: white;
 		border: 3px solid black;
 		width:fit-content;
