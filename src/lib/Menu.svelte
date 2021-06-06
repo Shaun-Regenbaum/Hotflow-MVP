@@ -47,7 +47,8 @@
 		padding: 10px 20px;
 		/* Container Look: */
 		background-color: white;
-		border-radius: 50px 50px 5px 5px;
+		border-radius: 50px 50px 0px 0px;
+		border-bottom: 0px;
 		border-style: solid;
 	}
 	#minimize {
