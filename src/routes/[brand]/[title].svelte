@@ -140,6 +140,7 @@
 {#key purchased}
 {#if !newUser}
 <Menu minimized={true}>
+	<MenuNav/>
 	{#if showHistory}
 	<History purchases={userPurchases}/>
 	{:else}

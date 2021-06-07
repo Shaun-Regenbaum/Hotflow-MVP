@@ -15,9 +15,6 @@
 			<button><a href="/account">Account</a></button>
 		</li>
 		<li>
-			<button><a href="/account">Other</a></button>
-		</li>
-		<li>
 			<Logout />
 		</li>
 	</ul>
@@ -25,7 +22,7 @@
 
 <style>
 	nav {
-		position: absolute;
+		position: block;
 		top: -85px;
 		left: 10%;
 		background-color: white;

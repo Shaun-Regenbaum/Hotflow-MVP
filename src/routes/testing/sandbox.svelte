@@ -19,10 +19,7 @@
 </div>
 <br />
 
-<Menu>
-	<Blurb/>
-	<p>Get an instant refund if you don't like Mr. Anonymous's content.</p>
-	<Balance_Card price={100}/>
+<Menu>  
 	<Links owned={purchases}/>
 </Menu>
 
