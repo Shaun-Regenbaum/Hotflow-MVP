@@ -53,9 +53,10 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		height:fit-content;
 
 		text-align: center;
-		margin: 0 auto;
+		margin: 10px auto;
 	}
 	#options {
 		display: flex;
@@ -73,5 +74,10 @@
 
 	button {
 		border-bottom: 2px solid black;
+	}
+
+	#withdraw_action, #load_money_action{
+		height: fit-content;
+	
 	}
 </style>
