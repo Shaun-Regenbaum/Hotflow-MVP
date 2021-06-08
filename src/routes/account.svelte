@@ -95,6 +95,30 @@
 		padding: 0;
 	}
 
+	button {
+	background-color: white;
+	border: 0;
+	border-bottom: 4px solid rgb(0, 0, 0);
+	outline: 0;
+	padding: 10px 10px 10px 10px;
+	transition: all 0.5s ease;
+}
+button:hover {
+	padding: 15px 20px 5px 20px;
+	box-shadow: var(--card);
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+}
+button:active,
+button:focus {
+	background-color: rgb(255, 250, 225);
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+
+	background: var(--neuro1-bg);
+	box-shadow: none;
+}
+
 	@media (min-width: 550px) {
 		button {
 			font-size: 1.5rem;

@@ -44,7 +44,6 @@ button{
 	background-color: white;
 	border-radius: 10px;
 	border: 2px solid black;
-	transition: all 0.5s ease;
 	padding: 10px;
 }
 button:hover {
@@ -54,8 +53,6 @@ button:hover {
 button:active,
 button:focus {
 	background-color: rgb(255, 230, 119);
-	box-shadow: var(--divot);
-
 	
 }
 

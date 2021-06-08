@@ -173,8 +173,6 @@
 		padding: 2px 10px;
 		transition: all 0.8s ease;
 	}
-	button:hover,
-	button:active {
-		box-shadow: none;
-	}
+
+
 </style>
