@@ -31,7 +31,7 @@
 <br />
 
 <Menu>
-	<Links owned={purchases} />
+	<LinkAnalytics owned={purchases} />
 </Menu>
 
 <style>
