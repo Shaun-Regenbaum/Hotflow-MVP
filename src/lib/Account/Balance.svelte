@@ -5,7 +5,6 @@
  -->
 <script lang="ts">
 	import Deposit from '$lib/Account/Deposit.svelte';
-	import { fade } from 'svelte/transition';
 	export let balance = 0;
 
 	// Making different parts appear and dissappear:
@@ -37,11 +36,11 @@
 		</div>
 	</div>
 	{#if selected_withdraw}
-		<div id="withdraw_action" in:fade>
+		<div id="withdraw_action">
 			<h1>Coming Soon.</h1>
 		</div>
 	{:else if selected_load_money}
-		<div id="load_money_action" in:fade>
+		<div id="load_money_action">
 			<Deposit />
 		</div>
 	{/if}

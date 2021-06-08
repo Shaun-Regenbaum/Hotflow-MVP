@@ -5,7 +5,6 @@
 
  -->
 <script>
-	import { fade } from 'svelte/transition';
 	import Paypal from '$lib/Payments/Paypal.svelte';
 
 	let dollars = 0;
@@ -27,7 +26,7 @@
 				<input type="number" id="amount" name="amount" step="0.01" bind:value={dollars} />
 			</span>
 			<div>
-				<button type="submit" in:fade={{ delay: 50, duration: 500 }}>Choose Payment</button>
+				<button type="submit">Choose Payment</button>
 			</div>
 		</form>
 	{/if}
