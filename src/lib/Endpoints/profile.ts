@@ -20,11 +20,15 @@ export async function lend40(user_id: string): Promise<void> {
 export async function checkOwnership(link_id: string, user_id: string): Promise<boolean> {
 	try {
 		let { purchased_links } = await getProfile(user_id, 'purchased_links');
+		let { owned_links } = await getProfile(user_id, 'owned_links');
 
 		if (purchased_links == null) {
 			purchased_links = [];
 		}
-		return purchased_links.includes(link_id);
+		if (owned_links == null) {
+			owned_links = [];
+		}
+		return (purchased_links.includes(link_id)||owned_links.includes(link_id));
 	} catch (error) {
 		console.dir(error);
 		throw error;
