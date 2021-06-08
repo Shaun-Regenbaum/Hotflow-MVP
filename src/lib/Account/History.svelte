@@ -11,7 +11,7 @@
 
 <h3>Purchase History:</h3>
 <div id="container">
-	{#each purchases as link_id}
+	{#each purchases.reverse() as link_id}
 		<div id="purchase_container">
 			<Purchase {link_id} />
 		</div>

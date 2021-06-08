@@ -12,7 +12,7 @@
 <h3>Content History:</h3>
 <div id="container">
 	{#if owned}
-		{#each owned as link_id}
+		{#each owned.reverse() as link_id}
 			<div id="link_container">
 				<AnalyticsItem minimized={true} {link_id} />
 			</div>
