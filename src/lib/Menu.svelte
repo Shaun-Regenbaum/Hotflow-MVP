@@ -7,6 +7,10 @@
 
     It is important to note that this design is based on handling the state of the menu externally to the menu component.
 
+
+	@example 
+	<Menu minimized={false} />
+
  -->
 <script lang="ts">
 	import { slide } from 'svelte/transition';

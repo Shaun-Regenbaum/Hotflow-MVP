@@ -20,8 +20,7 @@
 	// Backend:
 	import supabase from '$lib/db';
 
-	/** This function does only one thing:
-	 * 1) It gets the relevant information from the url to know what content you want.
+	/** Gets relevant information from the url to know what content you want.
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
@@ -58,7 +57,6 @@
 	import { makePurchase } from '$lib/Endpoints/purchase';
 	import makeRefund from '$lib/Endpoints/refund';
 	import { onMount } from 'svelte';
-	let purchased = false;
 	let userBalance = 40;
 	let userName = 'Mr.Anonymous';
 	let user;
@@ -66,7 +64,8 @@
 	let userPurchases;
 
 	// State Management:
-	let showRegistration= false;
+	let purchased = false; // This determines whether content is blurred.
+	let showRegistration= false; 
 	let showLogIn = false;
 	let showHistory = false;
 	let newUser = false;
@@ -117,7 +116,7 @@
 	// Creator:
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	// Auth:
-	import Login2 from '$lib/Auth/Login2.svelte';
+	import Login from '$lib/Auth/Login.svelte';
 	import Register from '$lib/Auth/Register.svelte';
 	import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
 
@@ -154,12 +153,12 @@
 </Menu>
 
 {:else if newUser}
-<Menu minimized={false}>
+<Menu>
 	{#if showRegistration}
 	<section>
 		{#if showLogIn}
 		<h3 style="font-size: 1.3rem; text-align:center;">Log In to see the content of <b>{link.brand}</b>:</h3>
-		<Login2 on:logged_in={handle_auth}/>
+		<Login on:logged_in={handle_auth}/>
 		{:else}
 		<h3 style="font-size: 1.3rem; text-align:center;">Register and support <b>{link.brand}</b>:</h3>
 		<Register on:registered={handle_auth}/>

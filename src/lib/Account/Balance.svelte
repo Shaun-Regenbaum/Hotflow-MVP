@@ -1,10 +1,7 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Contains balance information, and buttons to add or withdraw funds
 
-		1) balance -> balance of user.
-	DESCRIPTION:
-
-	This components contains the balance and options to add and withdraw funds.
+	@example
+	<Balanace balance={balance} />
  -->
 <script lang="ts">
 	import Deposit from '$lib/Account/Deposit.svelte';
