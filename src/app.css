@@ -40,7 +40,7 @@
 		-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 }
 
-button{
+button {
 	background-color: white;
 	border-radius: 10px;
 	border: 2px solid black;
@@ -48,12 +48,10 @@ button{
 }
 button:hover {
 	background-color: rgb(185, 212, 252);
-
 }
 button:active,
 button:focus {
 	background-color: rgb(255, 230, 119);
-	
 }
 
 fieldset {

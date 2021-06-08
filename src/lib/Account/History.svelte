@@ -11,14 +11,13 @@
 
 <h3>Purchase History:</h3>
 <div id="container">
-		{#each purchases as link_id}
-			<div id="purchase_container">
-				<Purchase {link_id}/>
-			</div>
-		{:else}
+	{#each purchases as link_id}
+		<div id="purchase_container">
+			<Purchase {link_id} />
+		</div>
+	{:else}
 		<p>No Purchase History (recent purchases can take a minute to load...)</p>
-		{/each}
-
+	{/each}
 </div>
 
 <style>
@@ -33,7 +32,7 @@
 		margin-bottom: 10px;
 	}
 
-	h3{
+	h3 {
 		text-align: center;
 	}
 </style>

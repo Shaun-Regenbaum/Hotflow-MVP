@@ -1,13 +1,3 @@
-<!-- @component Content_Page
-	The Structure of this page will work as such:
-		1) On Load, we will get info about the page/content the user is requesting. 
-		2) On Mount (meaning before any components are loaded), we will check if a user is logged in.
-		3) Then, we'll check if they have already purchased this content.
-		4) If not, we will automatically purchase it for them.
-	
-	Other than that, there are six states for this component. Where should we manage all those states?
-
- -->
 <!-- The Structure of this page will work as such:
 1) On Load, we will get info about the page/content the user is requesting. 
 2) On Mount (meaning before any components are loaded), we will check if a user is logged in.
@@ -65,7 +55,7 @@
 
 	// State Management:
 	let purchased = false; // This determines whether content is blurred.
-	let showRegistration= false; 
+	let showRegistration = false;
 	let showLogIn = false;
 	let showHistory = false;
 	let newUser = false;
@@ -88,15 +78,15 @@
 		}
 	});
 
-	async function tryPurchase(){
+	async function tryPurchase() {
 		const user = supabase.auth.user();
 		purchased = await checkOwnership(link.link_id, user.id);
 		if (!purchased) {
-				// This step is to not have to do a live reload to get an accurate balance.
-				userBalance = userBalance - link.price;
-				makePurchase(user.id, link.owner_id, link.link_id, link.price);
-				purchased = true; //This could be a problem as were are setting purchased to true before the promise resolves and the purchase is made.
-			}
+			// This step is to not have to do a live reload to get an accurate balance.
+			userBalance = userBalance - link.price;
+			makePurchase(user.id, link.owner_id, link.link_id, link.price);
+			purchased = true; //This could be a problem as were are setting purchased to true before the promise resolves and the purchase is made.
+		}
 	}
 	async function refund() {
 		userBalance = userBalance + link.price;
@@ -111,7 +101,7 @@
 	// Consumer:
 	import Profile from '$lib/Consumer/Profile.svelte';
 	import Balance_Card from '$lib/Consumer/Card.svelte';
-	import History from '$lib/Account/History.svelte'
+	import History from '$lib/Account/History.svelte';
 	// Creator:
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	// Auth:
@@ -124,66 +114,102 @@
 		? 'width: 100%; height: 100vh;'
 		: 'width: 100%; height: 100vh; filter: blur(0.3rem);';
 
-
 	onMount(() => {
 		minimized = false;
 	});
 
-	function handle_auth(){
+	function handle_auth() {
 		newUser = false;
 		tryPurchase();
 	}
 </script>
 
+<!-- @component Content_Page
+	The Structure of this page will work as such:
+		1) On Load, we will get info about the page/content the user is requesting. 
+		2) On Mount (meaning before any components are loaded), we will check if a user is logged in.
+		3) Then, we'll check if they have already purchased this content.
+		4) If not, we will automatically purchase it for them.
+	
+	Other than that, there are six states for this component. Where should we manage all those states?
+
+ -->
+
+
 {#key purchased}
-{#if !newUser}
-<Menu minimized={true}>
-	<MenuNav/>
-	{#if showHistory}
-	<History purchases={userPurchases}/>
+	{#if !newUser}
+		<Menu minimized={true}>
+			<MenuNav />
+			{#if showHistory}
+				<History purchases={userPurchases} />
+			{:else}
+				<section style="margin: 20px 10px;">
+					<p style="text-align:center">
+						You Purchased this content. <button on:click={() => (showHistory = true)} id="history"
+							><u>History.</u></button
+						>
+					</p>
+				</section>
+				<section>
+					<Balance_Card
+						{purchased}
+						price={link.price}
+						balance={userBalance}
+						on:purchase={tryPurchase}
+						on:refund={refund}
+					/>
+				</section>
+			{/if}
+		</Menu>
+	{:else if newUser}
+		<Menu>
+			{#if showRegistration}
+				<section>
+					{#if showLogIn}
+						<h3 style="font-size: 1.3rem; text-align:center;">
+							Log In to see the content of <b>{link.brand}</b>:
+						</h3>
+						<Login on:logged_in={handle_auth} />
+					{:else}
+						<h3 style="font-size: 1.3rem; text-align:center;">
+							Register and support <b>{link.brand}</b>:
+						</h3>
+						<Register on:registered={handle_auth} />
+					{/if}
+					<button id="switch_forms" on:click={() => (showLogIn = !showLogIn)}
+						>{showLogIn ? 'Dont have an acount?' : 'Already have an Account?'}</button
+					>
+				</section>
+			{:else}
+				<section style="margin: 20px 10px;">
+					<Blurb brand_name={link.brand} />
+				</section>
+				<section>
+					<Balance_Card
+						{purchased}
+						price={link.price}
+						balance={userBalance}
+						on:purchase={() => (showRegistration = true)}
+					/>
+				</section>
+			{/if}
+		</Menu>
 	{:else}
-	<section style="margin: 20px 10px;">
-		<p style="text-align:center">You Purchased this content. <button on:click={()=> (showHistory=true)} id="history"><u>History.</u></button></p>
-	</section>
-	<section>
-		<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={tryPurchase} on:refund={refund}/>
-	</section>
+		<Menu minimized={true}>
+			<section style="margin: 20px 10px;">
+				<Blurb brand_name={link.brand} />
+			</section>
+			<section>
+				<Balance_Card
+					{purchased}
+					price={link.price}
+					balance={userBalance}
+					on:purchase={tryPurchase}
+					on:refund={refund}
+				/>
+			</section>
+		</Menu>
 	{/if}
-</Menu>
-
-{:else if newUser}
-<Menu>
-	{#if showRegistration}
-	<section>
-		{#if showLogIn}
-		<h3 style="font-size: 1.3rem; text-align:center;">Log In to see the content of <b>{link.brand}</b>:</h3>
-		<Login on:logged_in={handle_auth}/>
-		{:else}
-		<h3 style="font-size: 1.3rem; text-align:center;">Register and support <b>{link.brand}</b>:</h3>
-		<Register on:registered={handle_auth}/>
-		{/if}
-		<button id="switch_forms" on:click={() => (showLogIn=!showLogIn)}>{showLogIn ? "Dont have an acount?" : "Already have an Account?"}</button>
-	</section>
-	{:else}
-	<section style="margin: 20px 10px;">
-		<Blurb brand_name={link.brand} />
-	</section>
-	<section>
-		<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={() => (showRegistration=true)}/>
-	</section>
-	{/if}
-</Menu>
-{:else}
-	<Menu minimized={true}>
-		<section style="margin: 20px 10px;">
-			<Blurb brand_name={link.brand} />
-		</section>
-		<section>
-			<Balance_Card purchased={purchased} price={link.price} balance={userBalance} on:purchase={tryPurchase} on:refund={refund} />
-		</section>
-	</Menu>
-
-{/if}
 {/key}
 
 <iframe title="iframe" id="monetized" style={blur} src={link.url} frameBorder="none" />
@@ -197,13 +223,14 @@
 		right: 0;
 	}
 
-	#switch_forms{
-		font-size: 0.7rem; 
-		border-bottom: 2px solid black; 
+	#switch_forms {
+		font-size: 0.7rem;
+		border-bottom: 2px solid black;
 		display: block;
 		margin: 0 auto;
 	}
-	#history, #history:hover{
+	#history,
+	#history:hover {
 		border: none;
 		padding: 0px;
 		box-shadow: none;
@@ -211,7 +238,7 @@
 		font-size: 1rem;
 	}
 
-	#history:hover{
+	#history:hover {
 		color: blue;
 	}
 </style>

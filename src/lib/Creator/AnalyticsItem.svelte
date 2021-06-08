@@ -13,7 +13,7 @@
 	export let minimized = false;
 	export let link_id: string; // For Link Data
 
-	let origin="402.netlify.app";
+	let origin = '402.netlify.app';
 
 	// Link Data:
 	$: content_type = '📦'; // @future: Eventually this will be changed as well.
@@ -39,8 +39,8 @@
 		brand = link.brand;
 
 		// @question: Not sure if I need to wrap in broswer?
-		if (browser){ 
-		origin=location.origin;
+		if (browser) {
+			origin = location.origin;
 		}
 	});
 </script>
@@ -48,7 +48,7 @@
 <div class="container">
 	<div class="header" on:click={() => (minimized = !minimized)}>
 		<p id="content_type">{content_type}</p>
-		<a href={origin+ '\\' + brand + '\\' + title}>{title}</a>
+		<a href={origin + '\\' + brand + '\\' + title}>{title}</a>
 		<div class="minimize">
 			<button style="transform: rotate( {minimized ? '360deg' : '0deg'});" />
 		</div>
@@ -84,7 +84,7 @@
 		width: 300px;
 		max-width: 700px;
 		/* To make room for scrollbar: */
-		margin-right:10px;
+		margin-right: 10px;
 
 		/* DESIGN: */
 		border: 2px solid rgb(163, 163, 163);
@@ -94,7 +94,8 @@
 		/* LAYOUT (GRID): */
 		display: flex;
 		justify-content: space-around;
-		align-items: baseline;	}
+		align-items: baseline;
+	}
 
 	.hideable {
 		/* LAYOUT (GRID): */
@@ -167,12 +168,10 @@
 	button {
 		background-color: white;
 		border: 0;
-		border-radius:0;
+		border-radius: 0;
 		border-top: 5px solid black;
 		outline: 0;
 		padding: 2px 10px;
 		transition: all 0.8s ease;
 	}
-
-
 </style>

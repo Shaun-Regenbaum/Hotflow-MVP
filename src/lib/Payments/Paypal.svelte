@@ -62,9 +62,9 @@
 </script>
 
 {#await paypal}
-<p>Loading...</p>
+	<p>Loading...</p>
 {:then}
-<div id="paypal-button-container" />
+	<div id="paypal-button-container" />
 {/await}
 
 <style>

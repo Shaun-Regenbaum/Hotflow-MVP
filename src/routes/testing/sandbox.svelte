@@ -1,18 +1,28 @@
 <script>
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	import Balance_Card from '$lib/Consumer/Card.svelte';
-	import Menu from '$lib/Menu.svelte'
+	import Menu from '$lib/Menu.svelte';
 
 	import Purchase from '$lib/Consumer/HistoryItem.svelte';
 	import History from '$lib/Account/History.svelte';
 	import Links from '$lib/Account/Analytics.svelte';
 	import Withdraw from '$lib/Account/Withdraw.svelte';
 
-	let purchases = ["17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007"]
+	let purchases = [
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007',
+		'17711384-b0ca-4804-850c-977802d16007'
+	];
 </script>
 
 <div class="testing">
-	<Withdraw/>
+	<Withdraw />
 </div>
 <br />
 <div class="testing">
@@ -20,8 +30,8 @@
 </div>
 <br />
 
-<Menu>  
-	<Links owned={purchases}/>
+<Menu>
+	<Links owned={purchases} />
 </Menu>
 
 <style>

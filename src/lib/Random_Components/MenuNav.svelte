@@ -6,7 +6,7 @@
  -->
 <script>
 	import Logout from '$lib/Auth/Logout.svelte';
-	export let minimized=true;
+	export let minimized = true;
 </script>
 
 <nav style="display:{minimized}">
@@ -27,7 +27,7 @@
 		left: 10%;
 		background-color: white;
 		border: 3px solid black;
-		width:fit-content;
+		width: fit-content;
 		margin: 0 auto;
 		border-radius: 10px;
 	}
@@ -37,7 +37,7 @@
 		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: center;
-		padding-left:0;
+		padding-left: 0;
 	}
 	li {
 		display: inline;

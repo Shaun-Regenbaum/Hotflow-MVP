@@ -33,7 +33,7 @@
 	#link_container {
 		margin-bottom: 10px;
 	}
-	h3{
+	h3 {
 		text-align: center;
 	}
 </style>

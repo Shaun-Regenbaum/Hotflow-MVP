@@ -13,13 +13,12 @@
 	//Properties:
 	export let link_id: string;
 
-	let origin="402.netlify.app"
+	let origin = '402.netlify.app';
 
 	$: content_type = '📦'; // @future: Eventually this will be changed as well.
 	$: title = 'Loading...';
 	$: brand = 'Loading...';
 	$: price = 0;
-
 
 	onMount(async function () {
 		// @question: Will allowing specific calls to backend be faster than full row call?
@@ -28,7 +27,7 @@
 		brand = link.brand;
 		price = link.price;
 		// @question: Not sure if I need to wrap in broswer?
-		if (browser){
+		if (browser) {
 			origin = location.origin;
 		}
 	});
@@ -46,7 +45,7 @@
 		font-size: 1rem;
 		margin: 8px 0;
 	}
-	
+
 	/* Specific Stuff: */
 	#container {
 		/* LAYOUT (FLEX): */
@@ -56,12 +55,11 @@
 		justify-content: space-around;
 		align-items: baseline;
 
-
 		/* SIZING: */
 		width: 300px;
 		max-width: 700px;
 		/* To make room for scrollbar: */
-		margin-right:10px;
+		margin-right: 10px;
 
 		/* DESIGN: */
 		border: 2px solid rgb(163, 163, 163);

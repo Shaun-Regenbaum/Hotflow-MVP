@@ -38,7 +38,7 @@
 	</div>
 	{#if selected_withdraw}
 		<div id="withdraw_action">
-			<Withdraw/>
+			<Withdraw />
 		</div>
 	{:else if selected_load_money}
 		<div id="load_money_action">

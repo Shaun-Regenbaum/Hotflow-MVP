@@ -8,13 +8,12 @@
 	I should probably add forgot password options here.
 	I also need to totally redo the await thingies and how we handle errors.
  -->
- <script lang="ts">
+<script lang="ts">
 	import supabase from '$lib/db';
-    import {createEventDispatcher} from 'svelte';
-
+	import { createEventDispatcher } from 'svelte';
 
 	export let login_message = 'Log In';
-    const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 
 	let email: string;
 	let password: string;
@@ -32,43 +31,43 @@
 		});
 		promise.then(function ({ user, error }) {
 			if (user) {
-                dispatch('logged_in')
+				dispatch('logged_in');
 			} else {
-				console.log(error.message)
+				console.log(error.message);
 			}
 		});
 	}
 </script>
 
 <div id="container">
-        <!-- The Login Form -->
-        <form on:submit|preventDefault={submit_login}>
-            <label for="email">Email:</label>
-            <input
-                type="email"
-                name="email"
-                required
-                placeholder=""
-                bind:value={email}
-                autocomplete="username"
-            />
-            <label for="password">Password:</label>
-            <input
-                type="password"
-                name="password"
-                required
-                placeholder=""
-                bind:value={password}
-                autocomplete="current-password"
-            />
-            <button type="submit">{login_message}</button>
-        </form>
+	<!-- The Login Form -->
+	<form on:submit|preventDefault={submit_login}>
+		<label for="email">Email:</label>
+		<input
+			type="email"
+			name="email"
+			required
+			placeholder=""
+			bind:value={email}
+			autocomplete="username"
+		/>
+		<label for="password">Password:</label>
+		<input
+			type="password"
+			name="password"
+			required
+			placeholder=""
+			bind:value={password}
+			autocomplete="current-password"
+		/>
+		<button type="submit">{login_message}</button>
+	</form>
 </div>
 {#if submitted}
-{#await promise}
-<p>Trying to Log You In...</p>
-{:then { user, error }}
-<p>{user ? 'Logged In' : error.message}.</p>{/await}
+	{#await promise}
+		<p>Trying to Log You In...</p>
+	{:then { user, error }}
+		<p>{user ? 'Logged In' : error.message}.</p>{/await}
 {/if}
 
 <style>
@@ -82,8 +81,8 @@
 		margin: 10px auto;
 		font-size: 1.4rem;
 	}
-	p{
-        text-align: center;
-        color: rgb(255, 138, 117);
-    }
+	p {
+		text-align: center;
+		color: rgb(255, 138, 117);
+	}
 </style>
