@@ -62,7 +62,7 @@
 
 		/* DESIGN: */
 		border-radius: 25px;
-		background-color: rgb(255, 161, 250);
+		background-color: rgb(255, 212, 253);
 	}
 	#balance_container {
 		/* LAYOUT: */

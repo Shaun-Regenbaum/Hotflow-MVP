@@ -21,6 +21,7 @@
 		<p>No Owned Links.</p>
 	{/if}
 </div>
+<p>Scroll for More</p>
 
 <style>
 	#container {
@@ -29,11 +30,20 @@
 		text-align: center;
 		max-height: 25vh;
 		overflow-y: scroll;
+		padding-bottom: 5px;
+		border-bottom: 2px dashed black;
 	}
 	#link_container {
 		margin-bottom: 10px;
 	}
 	h3 {
 		text-align: center;
+	}
+	p{
+		color: grey;
+		text-align: center;
+		padding: 0px 10px 0px 0px;
+		margin-top: 5px;
+		font-size: 0.7rem;
 	}
 </style>

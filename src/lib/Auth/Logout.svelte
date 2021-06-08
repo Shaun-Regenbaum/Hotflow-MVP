@@ -29,10 +29,9 @@
 	#logout {
 		text-align: center;
 	}
-
-	button {
-		margin: 0px 0px 0px 0px;
-		font-size: 20px;
-		padding-top: 10px;
+	button{
+		border: none;
+		border-radius: 0px;
+		border-bottom: 2px dotted black;
 	}
 </style>

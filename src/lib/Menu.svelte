@@ -26,9 +26,10 @@
 	<div id="components" style="display:{visible}">
 		<slot />
 	</div>
-	<section id="toolbar" on:click={minimize}>
+	<section id="toolbar">
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
-		<button id="minimize" style="transform: rotateY( {minimized ? '70deg' : '0deg'});" />
+		<button id="minimize" on:click={minimize} style="transform: rotateZ( {minimized ? '90deg' : '270deg'}) scale(0.8, 1.4);">&lt;</button>
+		<slot id="nav"name="nav"></slot>
 	</section>
 </div>
 
@@ -51,27 +52,30 @@
 		padding: 10px 20px;
 		/* Container Look: */
 		background-color: white;
-		border-radius: 50px 50px 0px 0px;
+		border-radius: 10px 10px 0px 0px;
 		border-bottom: 0px;
 		border-style: solid;
 	}
-	#minimize {
-		/*Probably want to redo this guy*/
-		/* Centering the Box/Arrow: */
-		margin-bottom: 0.5rem;
-		width: 40px;
-		box-shadow: none;
-		border-bottom: rgb(136, 136, 136) dotted 5px;
-	}
-	#minimize:hover,
-	#minimize:active {
-		width: 40px;
-		box-shadow: none;
-	}
-
-	#toolbar {
+		#toolbar {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 		margin: 0 auto;
+		min-height:1rem;
+		max-height:7rem;
 	}
+		#minimize{
+			padding:10px;
+			width:3rem;
+			background: none;
+			margin:0;
+		}
+
+		button, button:hover, button:focus{
+			font-size: 2rem;
+			border: 0;
+			background-color: white;
+		}
 
 	/*Between Mobile and Desktop specific:  */
 	@media (min-width: 550px) {
