@@ -1,10 +1,10 @@
 <!--  @component Refund
-
 	A refund button that triggers a refund transaction to be recorded in the db, and to do balance changes.
 
 	@example 
 	<Refund purchaser_id={purchaser_id} link_id={link_id} seller_id={seller_id} amount={price} fontsize={1} } />
 
+	@question: You probably don't want to make a button do all of this, rather trigger an event for a parent to do heavy lifting, but its here for now...
  -->
 <script lang="ts">
 	import makeRefund from '$lib/Endpoints/refund';

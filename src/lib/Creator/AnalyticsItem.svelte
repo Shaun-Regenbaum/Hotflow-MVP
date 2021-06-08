@@ -1,26 +1,22 @@
-<!-- @component
-	PROPERTIES:
-        1) minimized -> Whether to start component minimized or not
-		
-        2) linkId -> linkId for analytics
-	DESCRIPTION:
-    This component is a small analytics component so that creators can quickly see relevant data associated with one specific item of content.
- -->
+<!-- @component AnalyticsItem
+	An single item that contains analytics about a link. Needs to be provided a link Id. This goes into the Analytics container component. 
+
+	@example <AnalyticsItem minimized={false} link_id={link_id}/>
+-->
 <script lang="ts">
 	import { onMount } from 'svelte';
-
 	import type { Link } from '$lib/Docs/types';
 	import { getLink } from '$lib/Endpoints/links';
 	import { browser } from '$app/env';
 
+	// Properties:
 	export let minimized = false;
 	export let link_id: string; // For Link Data
 
-	let origin="402.netlify.app"
-	if (browser){
-		origin=location.origin;
-	}
-	$: content_type = '📦';
+	let origin="402.netlify.app";
+
+	// Link Data:
+	$: content_type = '📦'; // @future: Eventually this will be changed as well.
 	$: title = 'Loading...';
 	$: brand = '...';
 	$: price = 0;
@@ -28,13 +24,12 @@
 	$: clicks = 0;
 	$: refunds = 0;
 	$: total = (payments - refunds) * price;
+
+	// State:
 	$: visible = minimized ? 'none' : '';
 
-	function minimize() {
-		minimized = !minimized;
-	}
-
 	onMount(async () => {
+		// @question: Will allowing specific calls to backend be faster than full row call?
 		const link: Link = await getLink(link_id);
 		title = link.title;
 		payments = link.payments;
@@ -42,11 +37,16 @@
 		refunds = link.refunds;
 		price = link.price;
 		brand = link.brand;
+
+		// @question: Not sure if I need to wrap in broswer?
+		if (browser){ 
+		origin=location.origin;
+		}
 	});
 </script>
 
 <div class="container">
-	<div class="header" on:click={minimize}>
+	<div class="header" on:click={() => (minimized = !minimized)}>
 		<p id="content_type">{content_type}</p>
 		<a href={origin+ '\\' + brand + '\\' + title}>{title}</a>
 		<div class="minimize">

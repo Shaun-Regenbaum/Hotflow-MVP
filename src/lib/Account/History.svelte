@@ -5,7 +5,7 @@
 	<Histroy purchases={purchase_history} />
  -->
 <script>
-	import Purchase from '$lib/Consumer/Purchase.svelte';
+	import Purchase from '$lib/Consumer/HistoryItem.svelte';
 	export let purchases;
 </script>
 

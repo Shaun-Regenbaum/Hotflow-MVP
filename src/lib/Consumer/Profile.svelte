@@ -1,5 +1,5 @@
 <!-- @component Profile
-	A component to show the most basic information about a user.
+	A component to show the most basic information about a user. Which right now, is literally just the name...
 
 	@example
 	<Profile name={name}/>

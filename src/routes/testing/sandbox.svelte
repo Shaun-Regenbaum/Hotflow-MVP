@@ -12,7 +12,7 @@
 </script>
 
 <div class="testing">
-	<Links owned={purchases}/>
+	<Withdraw/>
 </div>
 <br />
 <div class="testing">

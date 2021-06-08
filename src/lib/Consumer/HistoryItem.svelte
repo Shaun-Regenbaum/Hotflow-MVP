@@ -5,35 +5,38 @@
 	<Purchase link_id={link_id} />
  -->
 <script lang="ts">
+	import { browser } from '$app/env';
 	import { onMount } from 'svelte';
-
 	import type { Link } from '$lib/Docs/types';
 	import { getLink } from '$lib/Endpoints/links';
-	import { browser } from '$app/env';
 
-	export let link_id: string; // For Link Data
-	let seller_id: string; //For Refund
+	//Properties:
+	export let link_id: string;
+
 	let origin="402.netlify.app"
-	if (browser){
-		origin=location.origin;
-	}
-	$: content_type = '📦';
+
+	$: content_type = '📦'; // @future: Eventually this will be changed as well.
 	$: title = 'Loading...';
 	$: brand = 'Loading...';
 	$: price = 0;
-	// Update Data when component is created. @todo: Optimize?
+
+
 	onMount(async function () {
+		// @question: Will allowing specific calls to backend be faster than full row call?
 		const link: Link = await getLink(link_id);
 		title = link.title;
 		brand = link.brand;
 		price = link.price;
-		seller_id = link.owner_id;
+		// @question: Not sure if I need to wrap in broswer?
+		if (browser){
+			origin = location.origin;
+		}
 	});
 </script>
 
 <div id="container">
 	<p id="content_type">{content_type}</p>
-	<a href={origin+ '\\' + brand + '\\' + title}>{title}</a>
+	<a href={origin + '\\' + brand + '\\' + title}>{title}</a>
 	<p id="amount">- ${Number(price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}</p>
 </div>
 
@@ -43,8 +46,8 @@
 		font-size: 1rem;
 		margin: 8px 0;
 	}
+	
 	/* Specific Stuff: */
-
 	#container {
 		/* LAYOUT (FLEX): */
 		display: flex;
