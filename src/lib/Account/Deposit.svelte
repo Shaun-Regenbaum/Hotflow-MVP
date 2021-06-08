@@ -1,8 +1,8 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Deposit
+	A component to connect be able to deposit money through Paypal.
 
-		1) price -> The amount the paypal button should be configured for.
-
+	@example
+	<Deposit price={amount}/>
  -->
 <script>
 	import Paypal from '$lib/Payments/Paypal.svelte';

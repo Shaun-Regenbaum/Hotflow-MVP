@@ -1,10 +1,8 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component Paypal
+	Holds the paypal button and calls to render when invoked.
 
-		1) price -> The price to associate the paypal buttons for.
-	DESCRIPTION:
-
-	This components contains the most basic information about a user.
+	@example
+	<Paypal price={0}/>
  -->
 <script lang="ts">
 	import type { PayPalNamespace } from '@paypal/paypal-js';
@@ -14,6 +12,7 @@
 
 	export let price = 0;
 	let value = String(price / 100);
+	let paypal: PayPalNamespace;
 	console.log(value);
 
 	const CLIENT_ID =
@@ -22,7 +21,7 @@
 	onMount(async () => {
 		const user = supabase.auth.user();
 		console.log(user);
-		const paypal: PayPalNamespace = await loadScript({ 'client-id': CLIENT_ID });
+		paypal = await loadScript({ 'client-id': CLIENT_ID });
 		paypal
 			.Buttons({
 				style: {
@@ -64,7 +63,11 @@
 	});
 </script>
 
+{#await paypal}
+<p>Loading...</p>
+{:then}
 <div id="paypal-button-container" />
+{/await}
 
 <style>
 	#paypal-button-container {

@@ -5,7 +5,8 @@
 
 	import Purchase from '$lib/Consumer/Purchase.svelte';
 	import History from '$lib/Account/History.svelte';
-	import Links from '$lib/Account/Links.svelte'
+	import Links from '$lib/Account/Links.svelte';
+	import Withdraw from '$lib/Account/Withdraw.svelte';
 
 	let purchases = ["17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007","17711384-b0ca-4804-850c-977802d16007"]
 </script>
