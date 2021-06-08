@@ -23,7 +23,7 @@
 	<h1>Active Development:</h1>
 	<ul>
 		<li>
-			<a href="/test_brand/test_title">Sample Link</a>
+			<a href="/test_brand/newsletters">Sample Link</a>
 		</li>
 		<li>
 			<a href="/account">Account</a>

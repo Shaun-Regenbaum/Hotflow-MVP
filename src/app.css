@@ -60,7 +60,7 @@ fieldset {
 }
 
 label {
-	/* We want label for accessibility reasons, but we want to hide it for aesthetics: */
+	/* labels for inputs */
 	display: block;
 	font-size: 0.8rem;
 	margin-left: 10px;
@@ -84,7 +84,6 @@ input {
 	transition: all 0.2s ease;
 }
 input:focus {
-	/* Making selection very clear: */
 	background: var(--neuro1-bg);
 	border-radius: 8px;
 	box-shadow: var(--divot);
