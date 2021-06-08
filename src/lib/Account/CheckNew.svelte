@@ -18,6 +18,7 @@
 	import New from '$lib/Creator/New.svelte';
 
 	export let brand;
+	export let userId;
 </script>
 
 {#if brand}

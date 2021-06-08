@@ -45,6 +45,7 @@
 				owned={profile.owned_links}
 				purchaser_id={profile.user_id}
 				brand={profile.brand}
+				userId={profile.user_id}
 				balance={profile.balance}
 			/>
 		</div>

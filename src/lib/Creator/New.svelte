@@ -1,19 +1,20 @@
-<!-- @component
-	PROPERTIES:
+<!-- @component New
+	this is the firm for a new creator, needs complete refactoring.:
 
-		1) user
+	@example 
+	<New userId={userId}/>
  -->
 <script>
 	import supabase from '$lib/db';
 
-	export let user;
+	export let userId;
 	$: submitted = false;
 	let error_message = '';
 	let promise;
 	let brand;
 
 	async function assignCreator() {
-		promise = supabase.from('profiles').update({ brand: brand }).eq('user_id', user.id);
+		promise = supabase.from('profiles').update({ brand: brand }).eq('user_id', userId);
 		promise.then(function ({ data, error }) {
 			if (data) {
 				location.reload();
