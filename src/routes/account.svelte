@@ -9,7 +9,7 @@
 	import LinkAnalytics from '$lib/Account/LinkAnalytics.svelte';
 	import { onMount } from 'svelte';
 
-	$: selected = Balance;
+	$: selected = CheckNew;
 	$: existing = false;
 	let name = '...';
 
