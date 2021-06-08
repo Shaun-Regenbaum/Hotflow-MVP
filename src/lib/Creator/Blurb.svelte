@@ -50,7 +50,8 @@
 		width: var(--pic-length);
 		height: var(--pic-length);
 		border-radius: 100%;
-		background-color: burlywood;
+		background: rgb(238,174,202);
+		background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 	}
 	p {
 		margin: 0.25rem 0;
