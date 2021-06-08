@@ -50,7 +50,7 @@
 		<p id="content_type">{content_type}</p>
 		<a href={origin + '\\' + brand + '\\' + title}>{title}</a>
 		<div class="minimize">
-			<button style="transform: rotate( {minimized ? '360deg' : '0deg'});" />
+			<button style="transform: rotate( {minimized ? '360deg' : '0deg'});" >⬇️</button>
 		</div>
 	</div>
 	<div class="hideable" style="display:{visible}">
@@ -163,5 +163,10 @@
 	.subtitle {
 		margin-top: -18px;
 		font-size: 0.7rem;
+	}
+
+	button{
+		border: 0;
+		border-radius: 0;
 	}
 </style>
