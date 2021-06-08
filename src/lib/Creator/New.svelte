@@ -31,8 +31,8 @@
 		<h2>Become a Creator</h2>
 		<p>Just tell us the brand under which your content should be:</p>
 		<form on:submit|preventDefault={assignCreator}>
-			<label for="title">Title for Content - Optional</label>
-			<input type="text" name="brand" placeholder="Brand Name" bind:value={brand} />
+			<label for="title">Brand Name</label>
+			<input type="text" name="brand" placeholder="The_Best_Brand" bind:value={brand} />
 			<button type="submit"><h3>Become a Creator</h3></button>
 		</form>
 	</div>

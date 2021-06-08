@@ -24,5 +24,5 @@
 {#if brand}
 	<Form {brand} />
 {:else}
-	<New />
+	<New {userId} />
 {/if}
