@@ -13,14 +13,12 @@
 	export let price = 0;
 	let value = String(price / 100);
 	let paypal: PayPalNamespace;
-	console.log(value);
 
 	const CLIENT_ID =
 		'AWTs40Ro2u2dmymDna1F_2TZzAMo3uWik_Gh1-fL1tR1E6AC6HGiGYNlKJFzIwXTuYcb50Cy3ZfsqUCm';
 
 	onMount(async () => {
 		const user = supabase.auth.user();
-		console.log(user);
 		paypal = await loadScript({ 'client-id': CLIENT_ID });
 		paypal
 			.Buttons({

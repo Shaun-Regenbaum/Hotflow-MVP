@@ -23,7 +23,6 @@
 			existing = true;
 			profile = await getProfile(user.id);
 			name = profile.name;
-			console.log(profile);
 		}
 	});
 </script>

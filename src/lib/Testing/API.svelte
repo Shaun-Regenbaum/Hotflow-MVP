@@ -11,7 +11,6 @@
 
 	async function getStuff() {
 		data = JSON.stringify(await getProfile(user.user_id, column));
-		console.log(data);
 	}
 </script>
 

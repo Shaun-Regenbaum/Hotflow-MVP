@@ -103,7 +103,6 @@
 		const user = supabase.auth.user();
 		await makeRefund(user.id, link.owner_id, link.link_id, link.price);
 		purchased = false;
-		console.log(purchased);
 	}
 
 	// Components:
