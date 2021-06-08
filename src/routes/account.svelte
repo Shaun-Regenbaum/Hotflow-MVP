@@ -6,7 +6,7 @@
 	import History from '$lib/Account/History.svelte';
 	import Balance from '$lib/Account/Balance.svelte';
 	import CheckNew from '$lib/Account/CheckNew.svelte';
-	import Links from '$lib/Account/Links.svelte';
+	import Links from '$lib/Account/Analytics.svelte';
 	import { onMount } from 'svelte';
 
 	$: selected = Balance;

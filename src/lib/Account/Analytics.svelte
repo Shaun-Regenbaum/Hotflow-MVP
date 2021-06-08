@@ -5,7 +5,7 @@
 	<Histroy owned={owned_links} />
  -->
 <script>
-	import LinkAnalytics from '$lib/Creator/LinkAnalytics.svelte';
+	import AnalyticsItem from '$lib/Creator/AnalyticsItem.svelte';
 	export let owned;
 </script>
 
@@ -14,7 +14,7 @@
 	{#if owned}
 		{#each owned as link_id}
 			<div id="link_container">
-				<LinkAnalytics minimized={true} {link_id} />
+				<AnalyticsItem minimized={true} {link_id} />
 			</div>
 		{/each}
 	{:else}

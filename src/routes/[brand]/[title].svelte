@@ -107,17 +107,17 @@
 
 	// Components:
 	import Menu from '$lib/Menu.svelte';
-	import Menu_Nav from '$lib/Random_Components/Menu_Nav.svelte';
+	import Menu_Nav from '$lib/Random_Components/MenuNav.svelte';
 	// Consumer:
 	import Profile from '$lib/Consumer/Profile.svelte';
-	import Balance_Card from '$lib/Consumer/Balance_Card.svelte';
+	import Balance_Card from '$lib/Consumer/Card.svelte';
 	import History from '$lib/Account/History.svelte'
 	// Creator:
 	import Blurb from '$lib/Creator/Blurb.svelte';
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
 	import Register from '$lib/Auth/Register.svelte';
-	import MenuNav from '$lib/Random_Components/Menu_Nav.svelte';
+	import MenuNav from '$lib/Random_Components/MenuNav.svelte';
 
 	// Blurring based on purchased:
 	$: blur = purchased

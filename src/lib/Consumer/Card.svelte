@@ -74,19 +74,7 @@
 
     button{
         font-size: 1.1rem;
-        border-radius: 10px;
-        border: 2px solid black;
         width: 200px;
         box-shadow: none;
-    }
-    button:hover {
-        background-color: rgb(185, 212, 252);
-        padding: 10px 20px 10px 20px;
-
-    }
-    button:active,
-    button:focus {
-        background-color: rgb(255, 230, 119);
-        
     }
 </style>

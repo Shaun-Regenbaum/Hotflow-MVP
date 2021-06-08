@@ -39,28 +39,24 @@
 	--input: inset 5px 5px 10px var(--neuro-dark), inset -5px -5px 10px var(--neuro-light),
 		-2px -2px 5px var(--neuro-dark), 2px 2px 5px var(--neuro-light);
 }
-button {
+
+button{
 	background-color: white;
-	border: 0;
-	border-bottom: 4px double rgb(0, 0, 0);
-	outline: 0;
-	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 2px solid black;
 	transition: all 0.5s ease;
+	padding: 10px;
 }
 button:hover {
-	padding: 15px 20px 5px 20px;
-	box-shadow: var(--card);
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
+	background-color: rgb(185, 212, 252);
+
 }
 button:active,
 button:focus {
-	background-color: rgb(255, 250, 225);
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
-
-	background: var(--neuro1-bg);
+	background-color: rgb(255, 230, 119);
 	box-shadow: var(--divot);
+
+	
 }
 
 fieldset {

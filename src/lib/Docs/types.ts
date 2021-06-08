@@ -71,10 +71,13 @@ export type Withdrawal = {
 	/**amount the withdrawal is worth: */
 	amount?: number;
 	email?: string;
-	/**Id, not a uuid, of the withdrawal itself. */
-	withdrawal_id?: string;
+
 	/**the identifier we should send the money through */
 	identifier?: string;
 	/**Name of provider we should send money through. */
 	platform?: string;
+	/** uuid (automatically generated) of the withdrawal itself. */
+	withdrawal_id?: string;
+	/** uuid of the user requesting the withdrawal itself. */
+	user_id?: string;
 };
