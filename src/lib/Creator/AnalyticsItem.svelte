@@ -164,14 +164,4 @@
 		margin-top: -18px;
 		font-size: 0.7rem;
 	}
-
-	button {
-		background-color: white;
-		border: 0;
-		border-radius: 0;
-		border-top: 5px solid black;
-		outline: 0;
-		padding: 2px 10px;
-		transition: all 0.8s ease;
-	}
 </style>
