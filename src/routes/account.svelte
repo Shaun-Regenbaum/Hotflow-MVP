@@ -6,7 +6,7 @@
 	import History from '$lib/Account/History.svelte';
 	import Balance from '$lib/Account/Balance.svelte';
 	import CheckNew from '$lib/Account/CheckNew.svelte';
-	import Links from '$lib/Account/Analytics.svelte';
+	import LinkAnalytics from '$lib/Account/LinkAnalytics.svelte';
 	import { onMount } from 'svelte';
 
 	$: selected = Balance;
@@ -33,7 +33,7 @@
 		<nav id="nav">
 			<ul>
 				<button on:click={() => changeSelected(History)}>History</button>
-				<button on:click={() => changeSelected(Links)}>Analytics</button>
+				<button on:click={() => changeSelected(LinkAnalytics)}>Analytics</button>
 				<button on:click={() => changeSelected(CheckNew)}>Create</button>
 				<button on:click={() => changeSelected(Balance)}>Wallet</button>
 			</ul>

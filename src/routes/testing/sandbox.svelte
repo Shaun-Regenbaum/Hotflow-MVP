@@ -5,7 +5,7 @@
 
 	import Purchase from '$lib/Consumer/HistoryItem.svelte';
 	import History from '$lib/Account/History.svelte';
-	import Links from '$lib/Account/Analytics.svelte';
+	import LinkAnalytics from '$lib/Account/LinkAnalytics.svelte';
 	import Withdraw from '$lib/Account/Withdraw.svelte';
 
 	let purchases = [
