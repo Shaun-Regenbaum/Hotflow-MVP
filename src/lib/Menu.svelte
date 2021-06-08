@@ -78,7 +78,7 @@
 	#minimize {
 		width: 3rem;
 		background: none;
-		margin: 0;
+		margin: 0 auto;
 	}
 
 	button,

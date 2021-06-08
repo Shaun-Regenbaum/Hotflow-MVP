@@ -51,7 +51,7 @@
 	let userName = 'Mr.Anonymous';
 	let user;
 	let userId;
-	let userPurchases;
+	let userPurchases = [];
 
 	// State Management:
 	let purchased = false; // This determines whether content is blurred.
@@ -97,9 +97,9 @@
 
 	// Components:
 	import Menu from '$lib/Menu.svelte';
-	import Menu_Nav from '$lib/Random_Components/MenuNav.svelte';
+	import MenuNav from '$lib/Random_Components/MenuNav.svelte';
+
 	// Consumer:
-	import Profile from '$lib/Consumer/Profile.svelte';
 	import Balance_Card from '$lib/Consumer/Card.svelte';
 	import History from '$lib/Account/History.svelte';
 	// Creator:
@@ -107,7 +107,6 @@
 	// Auth:
 	import Login from '$lib/Auth/Login.svelte';
 	import Register from '$lib/Auth/Register.svelte';
-	import MenuNav from '$lib/Random_Components/MenuNav.svelte';
 
 	// Blurring based on purchased:
 	$: blur = purchased
@@ -158,7 +157,7 @@
 					/>
 				</section>
 			{/if}
-			<MenuNav slot="nav" />
+			<MenuNav on:refund={() => (showHistory=false)} on:history={() => (showHistory=true)} slot="nav" />
 		</Menu>
 	{:else if newUser}
 		<Menu>
