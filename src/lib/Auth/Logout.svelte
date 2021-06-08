@@ -29,7 +29,7 @@
 	#logout {
 		text-align: center;
 	}
-	button{
+	button {
 		border: none;
 		border-radius: 0px;
 		border-bottom: 2px dotted black;

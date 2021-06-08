@@ -8,7 +8,7 @@
 	import LinkAnalytics from '$lib/Account/LinkAnalytics.svelte';
 	import Withdraw from '$lib/Account/Withdraw.svelte';
 
-	import MenuNav from "$lib/Random_Components/MenuNav.svelte";
+	import MenuNav from '$lib/Random_Components/MenuNav.svelte';
 
 	let purchases = [
 		'17711384-b0ca-4804-850c-977802d16007',
@@ -34,7 +34,7 @@
 
 <Menu>
 	<LinkAnalytics owned={purchases} />
-	<MenuNav slot="nav"/>
+	<MenuNav slot="nav" />
 </Menu>
 
 <style>

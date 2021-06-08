@@ -39,7 +39,7 @@
 	h3 {
 		text-align: center;
 	}
-	p{
+	p {
 		color: grey;
 		text-align: center;
 		padding: 0px 10px 0px 0px;

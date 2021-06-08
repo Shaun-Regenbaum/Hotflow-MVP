@@ -158,7 +158,7 @@
 					/>
 				</section>
 			{/if}
-			<MenuNav slot="nav"/>
+			<MenuNav slot="nav" />
 		</Menu>
 	{:else if newUser}
 		<Menu>

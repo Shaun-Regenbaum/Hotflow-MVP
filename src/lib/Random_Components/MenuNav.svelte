@@ -16,10 +16,7 @@
 			<button>Refund</button>
 		</li>
 		<li>
-			<button on:click={() => (goto('/account'))}>Account</button>
-		</li>
-		<li>
-			<button>History</button>
+			<button on:click={() => goto('/account')}>Account</button>
 		</li>
 		<li>
 			<button>History</button>
@@ -31,9 +28,9 @@
 </nav>
 
 <style>
-
-	nav{
-		margin-left:10px;
+	nav {
+		width: 100%;
+		padding-right: 20px;
 	}
 	ul {
 		display: flex;
@@ -41,13 +38,12 @@
 		flex-wrap: wrap;
 		justify-content: space-evenly;
 		align-items: center;
-		padding-left: 0;
-		margin: 0 auto;
+		padding: 0px;
 	}
 	li {
 		display: inline;
 	}
-	button{
-		border:none;
+	button {
+		border: none;
 	}
 </style>
