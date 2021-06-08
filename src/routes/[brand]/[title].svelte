@@ -135,7 +135,6 @@
 
  -->
 
-
 {#key purchased}
 	{#if !newUser}
 		<Menu minimized={true}>

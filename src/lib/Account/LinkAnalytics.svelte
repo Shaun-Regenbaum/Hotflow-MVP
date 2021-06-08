@@ -14,7 +14,7 @@
 	{#if owned}
 		{#each owned as link_id}
 			<div id="link_container">
-				<AnalyticsItem minimized={true} link_id={link_id} />
+				<AnalyticsItem minimized={true} {link_id} />
 			</div>
 		{/each}
 	{:else}
@@ -36,6 +36,4 @@
 	h3 {
 		text-align: center;
 	}
-
-	
 </style>

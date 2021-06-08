@@ -81,9 +81,15 @@
 			>
 		</fieldset>
 		<label for="identifier">Id/Username on Platform:</label>
-		<input type="text" id="identifier" name="identifier" bind:value={withdrawal.identifier} required/>
+		<input
+			type="text"
+			id="identifier"
+			name="identifier"
+			bind:value={withdrawal.identifier}
+			required
+		/>
 		<label for="email">Email (for if problems arise):</label>
-		<input type="email" id="email" name="email" bind:value={withdrawal.email} required/>
+		<input type="email" id="email" name="email" bind:value={withdrawal.email} required />
 		<label for="info">Any Additional Info/Requests?</label>
 		<textarea id="info" name="info" bind:value={withdrawal.additional_info} />
 		<div>

@@ -53,7 +53,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		height:fit-content;
+		height: fit-content;
 
 		text-align: center;
 		margin: 10px auto;
@@ -76,8 +76,9 @@
 		border-bottom: 2px solid black;
 	}
 
-	#withdraw_action, #load_money_action{
+	#withdraw_action,
+	#load_money_action {
 		height: fit-content;
-	
+		padding-bottom: 50px;
 	}
 </style>
