@@ -31,7 +31,7 @@
 	<div id="action_container">
 		{#if purchased}
 			<button
-				on:click={() => {
+				on:click|preventDefault|capture={() => {
 					dispatch('refund');
 				}}
 			>
@@ -39,7 +39,7 @@
 			</button>
 		{:else}
 			<button
-				on:click={() => {
+				on:click|preventDefault|capture={() => {
 					dispatch('purchase');
 				}}
 			>
