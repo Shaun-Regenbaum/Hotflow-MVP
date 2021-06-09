@@ -29,7 +29,9 @@
 			on:click={()=>(minimized = !minimized)}
 			style="transform: rotateZ( {minimized ? '90deg' : '270deg'}) scale(0.8, 1.4);">&lt;</button
 		>
-		<slot id="nav" name="nav"/>
+		<div style="display:{visible}">
+			<slot id="nav" name="nav" />
+		</div>
 	</section>
 </div>
 
@@ -69,12 +71,12 @@
 		min-height: 1rem;
 		max-height: 7rem;
 		width: 100%;
-		margin: 0px 10px;
+		margin: 0px 0px;
 	}
 	#minimize {
 		width: 3rem;
 		background: none;
-		margin: 0 auto;
+		margin: 0 25px;
 	}
 
 	button,
