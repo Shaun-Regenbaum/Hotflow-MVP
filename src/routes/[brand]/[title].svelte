@@ -136,10 +136,11 @@
 
 {#key purchased}
 	{#if !newUser}
-		<Menu minimized={true}>
+		<Menu minimized={purchased}>
 			{#if showHistory}
 				<History purchases={userPurchases} />
 			{:else}
+				{#if purchased}
 				<section style="margin: 20px 10px;">
 					<p style="text-align:center">
 						You Purchased this content. <button on:click={() => (showHistory = true)} id="history"
@@ -147,6 +148,13 @@
 						>
 					</p>
 				</section>
+				{:else}
+				<section style="margin: 20px 10px;">
+					<p style="text-align:center">
+						This Content Requires Purchase
+					</p>
+				</section>
+				{/if}
 				<section>
 					<Balance_Card
 						{purchased}
@@ -191,21 +199,6 @@
 					/>
 				</section>
 			{/if}
-		</Menu>
-	{:else}
-		<Menu minimized={true}>
-			<section style="margin: 20px 10px;">
-				<Blurb brand_name={link.brand} />
-			</section>
-			<section>
-				<Balance_Card
-					{purchased}
-					price={link.price}
-					balance={userBalance}
-					on:purchase={tryPurchase}
-					on:refund={refund}
-				/>
-			</section>
 		</Menu>
 	{/if}
 {/key}

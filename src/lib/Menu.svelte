@@ -53,7 +53,7 @@
 		flex-direction: column;
 		/* Container Look: */
 		background-color: white;
-		border-radius: 10px 10px 0px 0px;
+		border-radius: 3px 3px 0px 0px;
 		border-bottom: 0px;
 		border-style: solid;
 	}
