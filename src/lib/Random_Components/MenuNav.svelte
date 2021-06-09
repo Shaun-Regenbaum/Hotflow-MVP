@@ -32,8 +32,8 @@
 
 <style>
 	nav {
-		width: 80%;
-		padding-right: 30px;
+		width: 100%;
+		padding-right: 10px;
 	}
 	ul {
 		display: flex;
