@@ -32,13 +32,13 @@
 
 <style>
 	nav {
-		width: 100%;
-		padding-right: 20px;
+		width: 80%;
+		padding-right: 30px;
 	}
 	ul {
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		justify-content: space-evenly;
 		align-items: center;
 		padding: 0px;
