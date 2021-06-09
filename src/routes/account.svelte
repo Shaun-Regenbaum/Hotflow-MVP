@@ -12,9 +12,11 @@
 	$: selected = CheckNew;
 	$: existing = false;
 	let name = '...';
+	$: message = "DID THIS CHANGE?"
 
 	function changeSelected(selection) {
 		selected = selection;
+		message="YES IT DID";
 	}
 	let profile: Profile = { purchased_links: [] };
 	onMount(async function () {
@@ -30,12 +32,13 @@
 {#if existing}
 	<div id="container">
 		<div id="name"><h1>{name}</h1></div>
+		<p>{message}</p>
 		<nav id="nav">
 			<ul>
-				<button class="nav_item" on:click={() => changeSelected(History)}>History</button>
-				<button class="nav_item" on:click={() => changeSelected(LinkAnalytics)}>Analytics</button>
-				<button class="nav_item" on:click={() => changeSelected(CheckNew)}>Create</button>
-				<button class="nav_item" on:click={() => changeSelected(Balance)}>Wallet</button>
+				<button class="nav_item" on:click|preventDefault={() => changeSelected(History)}>History</button>
+				<button class="nav_item" on:click|preventDefault={() => changeSelected(LinkAnalytics)}>Analytics</button>
+				<button class="nav_item" on:click|preventDefault={() => changeSelected(CheckNew)}>Create</button>
+				<button class="nav_item" on:click|preventDefault={() => changeSelected(Balance)}>Wallet</button>
 			</ul>
 		</nav>
 		<div id="item">

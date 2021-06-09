@@ -22,14 +22,14 @@
 	<div id="components" style="display:{visible}">
 		<slot />
 	</div>
-	<section id="toolbar">
+	<section id="toolbar" >
 		<!-- Right now we are essentially doing fancy css stuff to make an arrow, we may want to simplify that -->
 		<button
 			id="minimize"
 			on:click={()=>(minimized = !minimized)}
 			style="transform: rotateZ( {minimized ? '90deg' : '270deg'}) scale(0.8, 1.4);">&lt;</button
 		>
-		<slot id="nav" name="nav" />
+		<slot id="nav" name="nav"/>
 	</section>
 </div>
 
