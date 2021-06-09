@@ -28,7 +28,8 @@
 
 		const user_balance = (await getProfile(user.id)).balance;
 		console.log(user_balance);
-		if (withdrawal.amount <= user_balance) {
+		// You have to withdraw at least 3 dollars.
+		if (withdrawal.amount <= user_balance-300) {
 			const { data, error } = await supabase.from('withdrawals').insert([withdrawal]);
 			if (data) {
 				const negative_amount: number = -1 * withdrawal.amount;
@@ -39,7 +40,7 @@
 			}
 			request_finished = true;
 		} else {
-			message = "You don't have suffecient balance.";
+			message = "You don't have suffecient balance, must be at least 3 dollars.";
 			request_finished = true;
 		}
 	}

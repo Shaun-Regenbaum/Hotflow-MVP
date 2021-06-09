@@ -90,17 +90,11 @@
 	/* Element Properties: */
 	/* TODO - We need to rehaul these */
 	input[type='number'] {
-		padding-right: 3px;
 		width: 3rem;
-		padding-top: 0px;
-		padding-bottom: 5px;
 	}
 	input[type='range'] {
 		appearance: none;
-		width: 10rem;
-		padding-top: 0px;
-		padding-bottom: 4px;
-	}
+		}
 	label {
 		color: black;
 	}

@@ -41,7 +41,7 @@
 	/* Everything here is for mobile and desktop, desktop specific comes after: */
 	#menu {
 		/* Positioning: */
-		position: absolute;
+		position: fixed;
 		z-index: 1000;
 		bottom: 0;
 		left: 0;
