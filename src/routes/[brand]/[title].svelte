@@ -18,7 +18,7 @@
 		const title = page.params.title;
 		const { data } = await supabase.from('links').select().eq('brand', brand).eq('title', title);
 		if (data[0]) {
-			// If Successful
+			// If Successful 
 			return {
 				props: {
 					link: data[0]
@@ -166,6 +166,13 @@
 				</section>
 			{/if}
 			<MenuNav on:refund={() => (showHistory=false)} on:history={() => (showHistory=true)} slot="nav" />
+			<svelte:fragment slot="notification">
+				{#if purchased}
+				<p>
+					You Purchased This Content For ${Number(link.price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}.
+				</p>	
+			{/if}</svelte:fragment>
+			
 		</Menu>
 	{:else if newUser}
 		<Menu>

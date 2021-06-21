@@ -32,6 +32,9 @@
 		<div style="display:{visible}">
 			<slot id="nav" name="nav" />
 		</div>
+		<div style="display:{minimized ? '' : 'none'}">
+			<slot id="notification" name="notification" />
+		</div>
 	</section>
 </div>
 
