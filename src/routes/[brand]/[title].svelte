@@ -169,7 +169,7 @@
 			<svelte:fragment slot="notification">
 				{#if purchased}
 				<p>
-					You Purchased This Content For ${Number(link.price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}.
+					You Purchased This Content For ${Number(link.price / 100).toLocaleString('en', { minimumFractionDigits: 2 })}
 				</p>	
 			{/if}</svelte:fragment>
 			
