@@ -39,6 +39,7 @@ import Create from './testing/create.svelte';
 	</ul>
 	<p>
 		Things are not optimized for mobile/desktop.
+		To see functionality, just register a fake email or use a test account.
 		The first link is a sample of what happens when you click on a link a given creator might create.
 		If you navigate to account, you will see four links:
 	</p>
@@ -56,10 +57,6 @@ import Create from './testing/create.svelte';
 			Wallet: This is just a quick reference to being able to put money into the wallet and taking it out.
 		</li>
 	</ul>
-
-	<button>Sample Button</button>
-	<br />
-	<input placeholder="Sample Input" />
 </body>
 
 <style>
