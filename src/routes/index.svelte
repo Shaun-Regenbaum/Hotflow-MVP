@@ -4,6 +4,8 @@
 	import { browser } from '$app/env';
 	import Login from '$lib/Auth/Login.svelte';
 	import Logout from '$lib/Auth/Logout.svelte';
+import History from '$lib/Account/History.svelte';
+import Create from './testing/create.svelte';
 
 	let user;
 	/*eslint no-empty-pattern: 1*/
@@ -34,17 +36,26 @@
 		<li>
 			<a href="/testing/endpoints">Endpoint Testing </a>
 		</li>
-		<li>
-			<a href="/testing/create">Create a Link</a>
-		</li>
-		<li>
-			<a href="/landing">Landing Page (WIP)</a>
-		</li>
 	</ul>
 	<p>
-		thinks are not optimized for mobile/desktop and make sure you are logged in to see full
-		functionality.
+		Things are not optimized for mobile/desktop.
+		The first link is a sample of what happens when you click on a link a given creator might create.
+		If you navigate to account, you will see four links:
 	</p>
+	<ul>
+		<li>
+			History: This is not-functional (as we have made database changes)
+		</li>
+		<li>
+			Analytics: This is not-functional (as we have made database changes)
+		</li>
+		<li>
+			Create: This is the process for a creator to create their own paywalled link. All you need is a Url. This is also an older demo, so does not reflect the current status of the tech.
+		</li>
+		<li>
+			Wallet: This is just a quick reference to being able to put money into the wallet and taking it out.
+		</li>
+	</ul>
 
 	<button>Sample Button</button>
 	<br />

@@ -1,7 +1,11 @@
 
 import fetch from 'node-fetch'
 
-// a function to fetch a url's eligibility to be put in an iframe
+/**
+ * Check Url's eligibility to be a valid iframe
+ * @param url
+ * @returns a boolean promise
+ */
 export default async function checkIframeEligibility(url: string): Promise<boolean|void> {
   return fetch(url)
     .then(response => {

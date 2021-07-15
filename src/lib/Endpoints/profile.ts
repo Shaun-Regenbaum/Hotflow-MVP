@@ -11,7 +11,8 @@ export async function lend40(user_id: string): Promise<void> {
 }
 
 /**
- * Check if a given user has permission to see a given link.
+ * Check if a given user has permission to see a given link
+ * Either because he is the owner or because he purchased.
  * @param link_id - uuid of link
  * @param user_id - uuid of user
  * @returns {Promise<boolean>}
@@ -29,6 +30,27 @@ export async function checkOwnership(link_id: string, user_id: string): Promise<
 			owned_links = [];
 		}
 		return (purchased_links.includes(link_id)||owned_links.includes(link_id));
+	} catch (error) {
+		console.dir(error);
+		throw error;
+	}
+}
+
+/**
+ * Check if a given user is the creator of a given link.
+ * @param link_id - uuid of link
+ * @param user_id - uuid of user
+ * @returns {Promise<boolean>}
+ * @todo - Better Error Checking
+ */
+ export async function checkCreatorship(link_id: string, user_id: string): Promise<boolean> {
+	try {
+		let { owned_links } = await getProfile(user_id, 'owned_links');
+
+		if (owned_links == null) {
+			owned_links = [];
+		}
+		return (owned_links.includes(link_id));
 	} catch (error) {
 		console.dir(error);
 		throw error;
@@ -54,3 +76,5 @@ export async function getProfile(user_id: string, column_name?: string): Promise
 		throw error;
 	}
 }
+
+
