@@ -32,3 +32,27 @@ export default async function checkIframeEligibility(url: string): Promise<boole
 }  
 
 
+/** 
+ * Take a url in and return the iframe url for it
+ * @param {string} url
+ * @returns {string}
+*/
+export function getIframeUrl(url: string): string {
+  // if a youtube link, return the iframe url
+  if (url.match(/^https?:\/\/(?:www\.)?youtube\.com/)) {
+        return `https://www.youtube.com/embed/${url.split('v=')[1]}`
+  }
+  // if a vimeo link, return the iframe url 
+  if (url.match(/^https?:\/\/(?:www\.)?vimeo\.com/)) {
+        return `https://player.vimeo.com/video/${url.split('/')[3]}`
+  }
+  // if a soundcloud link, return the iframe url
+  if (url.match(/^https?:\/\/(?:www\.)?soundcloud\.com/)) {
+        return `https://w.soundcloud.com/player/?url=${url}`
+  }
+  // if a google drive link, return the iframe url
+  if (url.match(/^https?:\/\/drive\.google\.com/)) {
+        return `https://drive.google.com/file/d/${url.split('id=')[1]}/preview`
+  }
+}
+

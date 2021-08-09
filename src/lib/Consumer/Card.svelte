@@ -15,7 +15,7 @@
 	export let purchased = true;
 	export let balance = 40;
 	// Required:
-	export let price: number;
+	export let price: number;adfjsafkjlh
 
 	const dispatch = createEventDispatcher();
 </script>
