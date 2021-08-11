@@ -18,6 +18,11 @@
 	$: price = dollars * 100;
 	let promise;
 	async function submit() {
+		  // if a youtube link, return the iframe url
+  		if (url.match(/^https?:\/\/(?:www\.)?youtube\.com/)) {
+        url = `https://www.youtube.com/embed/${url.split('v=')[1]}`
+		}
+		
 		const user = supabase.auth.user();
 		promise = supabase.from('links').insert([
 			{
